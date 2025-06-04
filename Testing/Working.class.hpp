@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   Working.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 13:17:16 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/04 23:21:50 by mintan           ###   ########.fr       */
+/*   Created: 2025/06/04 23:44:08 by mintan            #+#    #+#             */
+/*   Updated: 2025/06/05 00:06:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef WORKING_CLASS_H
+# define WORKING_CLASS_H
 
-int	main(void)
+class Poor
 {
-	char	buff[128];
+	public:
 
-	// std::cout << "Test";
-	// std::cout << std::endl;
+		Poor(void);
+		~Poor(void);
+};
 
-	std::cout << "Type something" << std::endl;
-	std::cin >> buff;
-	std::cout << "You typed this: [" << buff << "] " << std::endl;
-
-	return 0;
-}
+#endif

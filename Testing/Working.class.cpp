@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   Working.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 13:17:16 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/04 23:21:50 by mintan           ###   ########.fr       */
+/*   Created: 2025/06/05 00:01:44 by mintan            #+#    #+#             */
+/*   Updated: 2025/06/05 00:09:31 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "Working.class.hpp"
 
-int	main(void)
+Poor::Poor(void)
 {
-	char	buff[128];
+	std::cout << "Constructing Poor" << std::endl;
+	return;
+}
 
-	// std::cout << "Test";
-	// std::cout << std::endl;
-
-	std::cout << "Type something" << std::endl;
-	std::cin >> buff;
-	std::cout << "You typed this: [" << buff << "] " << std::endl;
-
-	return 0;
+Poor::~Poor(void)
+{
+	std::cout << "Destructing Poor" << std::endl;
+	return;
 }
