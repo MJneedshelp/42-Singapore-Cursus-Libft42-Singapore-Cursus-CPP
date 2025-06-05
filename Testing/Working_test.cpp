@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Working_test.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:06:46 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/05 00:07:48 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/05 14:20:08 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	Poor	person;
+	Poor	person('M', 42, 1.67f);
 
 	return 0;
 }
