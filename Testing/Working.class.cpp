@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:01:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/07 13:02:23 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 13:20:32 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,19 @@ void	Poor::fx_intro(void) const
 void	Poor::_security(void) const
 {
 	std::cout << "Shhhhhh..." << std::endl;
+
+	return;
+}
+
+int	Poor::getSelfesteem(void) const
+{
+	return(this->_selfesteem);
+}
+
+void	Poor::setSelfesteem(int se)
+{
+	if (se >= 0)
+		this->_selfesteem = se;
 
 	return;
 }
