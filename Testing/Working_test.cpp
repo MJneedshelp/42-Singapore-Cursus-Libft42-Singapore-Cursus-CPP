@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:06:46 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/07 13:56:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 14:26:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,27 @@ int	main(void)
 		std::cout << "beggar and chooser are structually differnet" << std::endl;
 
 
+	//Using pointers to point to members variables within a class
+	int		Poor::*ptr = NULL;
+	ptr = &Poor::money;
+
+	beggar.*ptr = 10000;
+	std::cout << "Beggar money: " << beggar.money << std::endl;
+
+	chooser.*ptr = 50000;
+	std::cout << "Chooser money: " << chooser.money << std::endl;
+
+
+
+	//Using pointers to point to member functions within a class
+	Poor	*beggar_ptr = &beggar;
+	void	(Poor::*fx)(void) const;
+
+	fx = &Poor::fx_intro;
+	//Accessing the member function using the function pointer
+	(beggar.*fx)();
+	//Accessing the member function using the function pointer
+	(beggar_ptr->*fx)();
 
 
 	return 0;
