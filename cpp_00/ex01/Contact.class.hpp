@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.class.hpp                                :+:      :+:    :+:   */
+/*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/07 18:48:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 22:51:14 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#ifndef PHONEBOOK_CLASS_H
-# define PHONEBOOK_CLASS_H
+#ifndef CONTACT_CLASS_H
+# define CONTACT_CLASS_H
 
-class Phonebook
+class Contact
 {
 	public:
 
-		Phonebook(void);
-		~Phonebook(void);
+		Contact(void);
+		~Contact(void);
 
-		//circular array of contacts to manage the contact instances
-		//functions:
-			//Add
-			//Search
-			//Exit
+	//get function
+	//set function
 
 	private:
+		char	*fname;
+		char	*lname;
+		char	*nname;
+		char	*phnum;
+		char	*ucudie;
 
 
 };
