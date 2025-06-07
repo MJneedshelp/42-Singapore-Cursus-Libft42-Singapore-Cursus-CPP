@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:01:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/07 13:20:32 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 13:36:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,13 @@ void	Poor::setSelfesteem(int se)
 		this->_selfesteem = se;
 
 	return;
+}
+
+int	Poor::compareSelfesteem(Poor *other) const
+{
+	if (this->_selfesteem > other->_selfesteem)
+		return (1);
+	if (this->_selfesteem < other->_selfesteem)
+		return (-1);
+	return (0);
 }

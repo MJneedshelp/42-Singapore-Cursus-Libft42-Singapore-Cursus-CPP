@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:06:46 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/07 13:22:14 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 13:41:00 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 int	main(void)
 {
-	Poor	person('M', 24, 42);
+	Poor	beggar('M', 24, 42);
+	Poor	chooser('M', 11, 22);
 
-	person.setSelfesteem(99);
-	std::cout << "Self-esteem: " << person.getSelfesteem() << std::endl;
-	person.setSelfesteem(-42);
-	std::cout << "Self-esteem: " << person.getSelfesteem() << std::endl;
+	std::cout << "Address of beggar: " << &beggar << std::endl;
+	std::cout << "Address of chooser: " << &chooser << std::endl;
+
+	beggar.setSelfesteem(42);
+	chooser.setSelfesteem(24);
+
+	if (beggar.compareSelfesteem(&chooser) == 0)
+		std::cout << "beggar and chooser are structually the same" << std::endl;
+	else
+		std::cout << "beggar and chooser are structually differnet" << std::endl;
 
 
 	return 0;
