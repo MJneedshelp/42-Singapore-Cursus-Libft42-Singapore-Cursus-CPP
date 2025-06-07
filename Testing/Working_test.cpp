@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:06:46 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/05 14:20:08 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 12:53:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	Poor	person('M', 42, 1.67f);
+	Poor	person('M', 24, 42);
 
 	return 0;
 }

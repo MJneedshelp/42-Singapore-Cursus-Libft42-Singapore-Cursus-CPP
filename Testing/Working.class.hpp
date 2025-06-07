@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 23:44:08 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/05 14:19:37 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 12:53:18 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ class Poor
 {
 	public:
 
-		char	name;
-		int		money;
-		float	height;
+		char		name;
+		int			money;
+		float		height;
+		int	const	age;
 
-		void	fx_job(void);
-		void	fx_intro(void);
+		void	fx_intro(void) const;
 
 
-		Poor(char p1, int p2, float p3);
+		Poor(char p1, int p2, int const p3);
 		~Poor(void);
 };
 
