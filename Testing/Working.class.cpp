@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 00:01:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/07 12:55:14 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/07 13:02:23 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ Poor::Poor(char p1, int p2, int const p3):
 {
 	std::cout << "Constructing Poor" << std::endl;
 	this->fx_intro();
+
+	this->_selfesteem = 1;
+	this->_security();
 	return;
 }
 
@@ -36,6 +39,13 @@ void	Poor::fx_intro(void) const
 	std::cout << "Money: " << this->money <<std::endl;
 	std::cout << "Height: " << this->height <<std::endl;
 	std::cout << "Age: " << this->age <<std::endl;
+
+	return;
+}
+
+void	Poor::_security(void) const
+{
+	std::cout << "Shhhhhh..." << std::endl;
 
 	return;
 }
