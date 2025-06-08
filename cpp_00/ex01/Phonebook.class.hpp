@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/07 22:51:56 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/08 16:10:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ class Phonebook
 			//Exit
 
 	private:
+
+		static	int	_StartIdx;
+		static	int	_EndIdx;
 
 
 };
