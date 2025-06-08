@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.class.cpp                                :+:      :+:    :+:   */
+/*   Contact.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/08 18:17:56 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/08 16:48:21 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.class.hpp"
 #include "Contact.class.hpp"
 
-/* Description: Constructor for the Phonebook instance
+/* Description: Constructor for the Contact instance. Initialises all the
+   contact fields to NULL
 */
-Phonebook::Phonebook(void):
-	_StartIdx(0), _EndIdx(0), _NumFriends(0)
+Contact::Contact(void):
+	fname(NULL), lname(NULL), nname(NULL),
+	phnum(NULL), ucudie(NULL)
 {
-	std::cout << "Creating Phonebook with 8 contact instances\n";
-	// Contact	Contacts[2];
+	std::cout << "Creating Contact\n";
+	// std::cout << "First Name: " << fname << "\n";
+
 	return;
 }
 
-/* Description: Destructor for the Phonebook instance
+/* Description: Destructor for the Contact instance
 */
-Phonebook::~Phonebook(void)
+Contact::~Contact(void)
 {
-	std::cout << "Destroying Phonebook\n";
+	std::cout << "Destroying Contact\n";
 	return;
 }
 
-int	Phonebook::getNumFriends(void) const
-{
-	return this->_NumFriends;
-}

@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 15:29:24 by mintan            #+#    #+#              #
-#    Updated: 2025/06/08 16:22:44 by mintan           ###   ########.fr        #
+#    Updated: 2025/06/08 16:38:08 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ STDFLAG = -std=c++98
 
 # Definitions
 NAME = myeightfriends
-SRCS = main.cpp Phonebook.class.cpp
+SRCS = main.cpp Phonebook.class.cpp Contact.class.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 # Target to make using Make all
