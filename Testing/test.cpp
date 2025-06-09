@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:17:16 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/04 23:21:50 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/09 08:25:14 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	main(void)
 {
-	char	buff[128];
+	std::string Test;
 
 	// std::cout << "Test";
 	// std::cout << std::endl;
 
 	std::cout << "Type something" << std::endl;
-	std::cin >> buff;
-	std::cout << "You typed this: [" << buff << "] " << std::endl;
+	std::getline(std::cin, Test);
+	std::cout << "Input: [" << Test << "] " << std::endl;
+	std::cout << "Length of input: [" << Test.length() << "] " << std::endl;
+
 
 	return 0;
 }
