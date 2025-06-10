@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 08:42:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 09:31:59 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ class Contact
 
 		Contact(void);
 		~Contact(void);
-		void	SetFields(int Idx, std::string Val);
+		void		SetFields(int Idx, std::string Val);
+		std::string	GetField(int Idx);
+
 	//get function
 	//set function
 
