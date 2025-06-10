@@ -6,13 +6,14 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:24:54 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 23:38:16 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 #include "Contact.class.hpp"
 
 
@@ -37,15 +38,17 @@ class Phonebook
 			//Exit
 			//print contacts:use the start and end index to know which one to print first
 
-		Contact	Contacts[BOOK_SZ];
+		// Contact	Contacts[BOOK_SZ];
 
 		int		GetNumFriends(void) const;
 		void	AddFriend(void);
 		void	ShowOff(void) const;
+		void	ShowFriendDetails(int Idx) const;
 		void	FindFriend(int Idx) const;
 
 	private:
 
+		Contact	Contacts[BOOK_SZ];
 		int	_Head;
 		int	_Tail;
 		int	_NumFriends;

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:33:33 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/11 01:12:21 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ Phonebook::Phonebook(void):
 	for (int i = 0; i < 6; i++)
 	{
 		AddFriend();
-		Contacts[i].SetFields(0, "Friend" + i);
 	}
 
 	std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
 
 	ShowOff();
-	FindFriend(1);
 
 	return;
 }
@@ -71,9 +69,30 @@ void	Phonebook::ShowOff(void) const
 	for (int i = 0; i < this->_NumFriends; i++)
 	{
 		//function to display the the contact starting from the head
-		std::cout << (this->_Head + i) % BOOK_SZ << "\n";
+		std::cout << std::setfill (' ') << std::setw (10);
+		std::cout << i << "|";
+		ShowFriendDetails((this->_Head + i) % BOOK_SZ);
 	}
 }
+
+void	Phonebook::ShowFriendDetails(int Idx) const
+{
+	std::string	Val;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Val = this->Contacts[Idx].GetField(i);
+		if (Val.length() > 10)
+			Val = Val.substr(0, 8).append(".");
+		std::cout << std::setfill (' ') << std::setw (10);
+		std::cout << Val << "|";
+	}
+	std::cout << std::endl;
+}
+
+
+
+
 
 /* Description: Accesses the contact based on the given order.
 */

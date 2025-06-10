@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 14:39:31 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 23:00:00 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ std::string	get_command(Phonebook *MyEightFriends)
 	if (std::getline(std::cin, Cmd))
 		return(Cmd);
 	else
-	{
-		std::cout << MSG_EXIT;
-		exit(EXIT_SUCCESS);
-	}
+		return("EXIT");
 }
 
 
