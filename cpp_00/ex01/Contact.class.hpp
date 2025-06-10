@@ -6,12 +6,14 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 09:31:59 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 10:57:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <sstream>
+
 
 #ifndef CONTACT_CLASS_H
 # define CONTACT_CLASS_H

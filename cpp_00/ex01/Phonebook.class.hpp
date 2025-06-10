@@ -6,14 +6,17 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 09:46:42 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 11:10:12 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <sstream>
+#include "Contact.class.hpp"
 
-#define BOOK_SZ 8
+
+#define BOOK_SZ 4
 
 #ifndef PHONEBOOK_CLASS_H
 # define PHONEBOOK_CLASS_H
@@ -33,12 +36,18 @@ class Phonebook
 			//Search
 			//Exit
 			//print contacts:use the start and end index to know which one to print first
-		int	getNumFriends(void) const;
+
+		Contact	Contacts[BOOK_SZ];
+
+		int		GetNumFriends(void) const;
+		void	AddFriend(void);
+		void	ShowOff(void);
+		void	FindFriend(int Idx);
 
 	private:
 
-		int	_StartIdx;
-		int	_EndIdx;
+		int	_Head;
+		int	_Tail;
 		int	_NumFriends;
 
 

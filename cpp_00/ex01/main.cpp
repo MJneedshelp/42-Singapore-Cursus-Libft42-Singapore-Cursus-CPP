@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 08:16:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 10:33:42 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ std::string	get_command(Phonebook *MyEightFriends)
 {
 	std::string	Cmd;
 
-	std::cout << MSG_DEFAULT1 << MyEightFriends->getNumFriends() << "\n";
+	std::cout << MSG_DEFAULT1 << MyEightFriends->GetNumFriends() << "\n";
 	std::cout << MSG_DEFAULT2;
 	if (std::getline(std::cin, Cmd))
 		return(Cmd);
