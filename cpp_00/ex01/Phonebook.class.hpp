@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 11:10:12 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 19:24:54 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ class Phonebook
 
 		int		GetNumFriends(void) const;
 		void	AddFriend(void);
-		void	ShowOff(void);
-		void	FindFriend(int Idx);
+		void	ShowOff(void) const;
+		void	FindFriend(int Idx) const;
 
 	private:
 

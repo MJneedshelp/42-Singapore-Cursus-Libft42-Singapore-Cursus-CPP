@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 13:56:53 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 19:33:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ Phonebook::Phonebook(void):
 	_Head(0), _Tail(0), _NumFriends(0)
 {
 	std::cout << "Creating Phonebook with 8 contact instances\n";
-	// Contact	Contacts[BOOK_SZ];
-
 	std::cout << "Initial. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
 
 	for (int i = 0; i < 6; i++)
 	{
 		AddFriend();
+		Contacts[i].SetFields(0, "Friend" + i);
 	}
 
 	std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
@@ -65,7 +64,7 @@ void	Phonebook::AddFriend(void)
 
 /* Description: Displays the contacts starting from the head to tail.
 */
-void	Phonebook::ShowOff(void)
+void	Phonebook::ShowOff(void) const
 {
 	std::cout << "Start show off" << std::endl;
 
@@ -78,7 +77,7 @@ void	Phonebook::ShowOff(void)
 
 /* Description: Accesses the contact based on the given order.
 */
-void	Phonebook::FindFriend(int Idx)
+void	Phonebook::FindFriend(int Idx) const
 {
 	int	Found;
 
@@ -87,6 +86,6 @@ void	Phonebook::FindFriend(int Idx)
 	Found = (this->_Head + Idx) % BOOK_SZ;
 	//function to display the found friend
 	std::cout << "Given index: " << Idx << " | Calculated index: " << Found << std::endl;
-
-
 }
+
+
