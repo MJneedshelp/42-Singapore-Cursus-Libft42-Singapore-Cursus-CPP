@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 13:39:19 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 13:56:53 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Phonebook::Phonebook(void):
 
 	std::cout << "Initial. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		AddFriend();
 	}
@@ -31,6 +31,7 @@ Phonebook::Phonebook(void):
 	std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
 
 	ShowOff();
+	FindFriend(1);
 
 	return;
 }
@@ -54,16 +55,7 @@ int	Phonebook::GetNumFriends(void) const
 */
 void	Phonebook::AddFriend(void)
 {
-	//Mj to come back here later. set contact at tail index
-
-	//remove this later. Use this to test printing
-	// std::ostringstream	oss;
-	// oss << this->_Tail;
-	// this.
-	// Contact::SetFields(this->_Tail, this->_Tail.)
-
-
-
+	//Mj to come back here later. Function to set contact at tail index
 	this->_Tail = (this->_Tail + 1) % BOOK_SZ;
 	if (this->_NumFriends == BOOK_SZ)
 		this->_Head = (this->_Head + 1) % BOOK_SZ;
@@ -82,5 +74,19 @@ void	Phonebook::ShowOff(void)
 		//function to display the the contact starting from the head
 		std::cout << (this->_Head + i) % BOOK_SZ << "\n";
 	}
+}
+
+/* Description: Accesses the contact based on the given order.
+*/
+void	Phonebook::FindFriend(int Idx)
+{
+	int	Found;
+
+	std::cout << "Find friend" << std::endl;
+
+	Found = (this->_Head + Idx) % BOOK_SZ;
+	//function to display the found friend
+	std::cout << "Given index: " << Idx << " | Calculated index: " << Found << std::endl;
+
 
 }
