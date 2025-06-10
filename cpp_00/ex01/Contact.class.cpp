@@ -6,22 +6,17 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/08 16:48:21 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 08:43:09 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.class.hpp"
 
-/* Description: Constructor for the Contact instance. Initialises all the
-   contact fields to NULL
+/* Description: Constructor for the Contact instance.
 */
-Contact::Contact(void):
-	fname(NULL), lname(NULL), nname(NULL),
-	phnum(NULL), ucudie(NULL)
+Contact::Contact(void)
 {
 	std::cout << "Creating Contact\n";
-	// std::cout << "First Name: " << fname << "\n";
-
 	return;
 }
 
@@ -33,3 +28,9 @@ Contact::~Contact(void)
 	return;
 }
 
+/* Description: Function to set the fields within the contact class
+*/
+void	Contact::SetFields(int Idx, std::string Val)
+{
+	this->Fields[Idx] = Val;
+}
