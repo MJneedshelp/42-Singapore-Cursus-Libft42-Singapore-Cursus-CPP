@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 11:10:14 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 13:39:19 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ Phonebook::Phonebook(void):
 
 	std::cout << "Initial. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
 
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		AddFriend();
 	}
 
 	std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
+
+	ShowOff();
 
 	return;
 }
@@ -73,10 +75,12 @@ void	Phonebook::AddFriend(void)
 */
 void	Phonebook::ShowOff(void)
 {
-	//Mj to come back here later. set contact at tail index
-	this->_Tail = (this->_Tail + 1) % BOOK_SZ;
-	if (this->_NumFriends == BOOK_SZ)
-		this->_Head = (this->_Head + 1) % BOOK_SZ;
-	else
-		this->_NumFriends++;
+	std::cout << "Start show off" << std::endl;
+
+	for (int i = 0; i < this->_NumFriends; i++)
+	{
+		//function to display the the contact starting from the head
+		std::cout << (this->_Head + i) % BOOK_SZ << "\n";
+	}
+
 }
