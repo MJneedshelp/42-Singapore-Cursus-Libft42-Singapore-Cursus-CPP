@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 10:33:42 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/10 14:39:31 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 #define	MSG_EXIT "\nGoodbye. No friends forever\n"
 
 
-
+/* Description: Function to get the input command from the user
+*/
 std::string	get_command(Phonebook *MyEightFriends)
 {
 	std::string	Cmd;
@@ -36,7 +37,8 @@ std::string	get_command(Phonebook *MyEightFriends)
 }
 
 
-
+/* Description: Function to format the output of the
+*/
 int	main(void)
 {
 	//instantiate the phonebook class
