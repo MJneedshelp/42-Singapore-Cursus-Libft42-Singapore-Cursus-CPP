@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 10:45:27 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 11:08:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ std::string	get_command(Phonebook *MyEightFriends)
 /* Description: Function to prompt the user to input the phonebook index to
    display
 */
+
 
 
 /* Description: Function to format the output of the
