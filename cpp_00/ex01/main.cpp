@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 23:00:00 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 10:45:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ std::string	get_command(Phonebook *MyEightFriends)
 		return("EXIT");
 }
 
+/* Description: Function to prompt the user to input the phonebook index to
+   display
+*/
+
 
 /* Description: Function to format the output of the
 */
@@ -52,7 +56,7 @@ int	main(void)
 		}
 		else if (Cmd == "SEARCH")
 		{
-
+			MyEightFriends.ShowOff();
 		}
 		else if (Cmd != "EXIT")
 			std::cout << MSG_WRONGCMD;

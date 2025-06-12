@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 23:44:39 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 10:43:23 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 */
 Contact::Contact(void)
 {
+	//MJ Remove later
 	std::cout << "Creating Contact\n";\
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < NO_FIELDS; i++)
 	{
-		this->SetFields(i, "123 567 8901");
+		this->SetFields(i, "field1234567890");
 	}
+
 	return;
 }
 
@@ -28,7 +30,9 @@ Contact::Contact(void)
 */
 Contact::~Contact(void)
 {
+	//MJ Remove later
 	std::cout << "Destroying Contact\n";
+
 	return;
 }
 

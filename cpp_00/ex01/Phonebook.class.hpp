@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/10 23:38:16 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 10:38:09 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <sstream>
 #include <iomanip>
 #include "Contact.class.hpp"
-
 
 #define BOOK_SZ 4
 
@@ -43,8 +42,9 @@ class Phonebook
 		int		GetNumFriends(void) const;
 		void	AddFriend(void);
 		void	ShowOff(void) const;
-		void	ShowFriendDetails(int Idx) const;
+		void	ShowFriendsDetails(int Idx) const;
 		void	FindFriend(int Idx) const;
+		void	ExposeFriend(int Idx) const;
 
 	private:
 

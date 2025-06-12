@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/11 01:12:21 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 10:43:39 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 Phonebook::Phonebook(void):
 	_Head(0), _Tail(0), _NumFriends(0)
 {
+
+	//Remove all these later
 	std::cout << "Creating Phonebook with 8 contact instances\n";
 	std::cout << "Initial. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
-
 	for (int i = 0; i < 6; i++)
 	{
 		AddFriend();
 	}
-
 	std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
-
 	ShowOff();
+	ExposeFriend(1);
 
 	return;
 }
@@ -60,7 +60,8 @@ void	Phonebook::AddFriend(void)
 		this->_NumFriends++;
 }
 
-/* Description: Displays the contacts starting from the head to tail.
+/* Description: Displays the contacts starting from the head to tail in a
+   "table"
 */
 void	Phonebook::ShowOff(void) const
 {
@@ -68,18 +69,20 @@ void	Phonebook::ShowOff(void) const
 
 	for (int i = 0; i < this->_NumFriends; i++)
 	{
-		//function to display the the contact starting from the head
 		std::cout << std::setfill (' ') << std::setw (10);
 		std::cout << i << "|";
-		ShowFriendDetails((this->_Head + i) % BOOK_SZ);
+		ShowFriendsDetails((this->_Head + i) % BOOK_SZ);
 	}
 }
 
-void	Phonebook::ShowFriendDetails(int Idx) const
+/* Description: Formats and displays a contact's first name, last name and
+   nicknames. Right align text, truncate if len > 10. Separate by "|"
+*/
+void	Phonebook::ShowFriendsDetails(int Idx) const
 {
 	std::string	Val;
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < TABLE_FIELDS; i++)
 	{
 		Val = this->Contacts[Idx].GetField(i);
 		if (Val.length() > 10)
@@ -89,10 +92,6 @@ void	Phonebook::ShowFriendDetails(int Idx) const
 	}
 	std::cout << std::endl;
 }
-
-
-
-
 
 /* Description: Accesses the contact based on the given order.
 */
@@ -107,4 +106,32 @@ void	Phonebook::FindFriend(int Idx) const
 	std::cout << "Given index: " << Idx << " | Calculated index: " << Found << std::endl;
 }
 
-
+/* Description: Displays the details of the contact. 1 field / line
+*/
+void	Phonebook::ExposeFriend(int Idx) const
+{
+	for (int i = 0; i < NO_FIELDS; i++)
+	{
+		switch (i)
+		{
+			case 0:
+				std::cout << "First Name: ";
+				break;
+			case 1:
+				std::cout << "Last Name: ";
+				break;
+			case 2:
+				std::cout << "Nickname: ";
+				break;
+			case 3:
+				std::cout << "Phone Number: ";
+				break;
+			case 4:
+				std::cout << "U.C.U.DIE: ";
+				break;
+			default:
+				break;
+		}
+		std:: cout << this->Contacts[Idx].GetField(i) << std::endl;
+	}
+}
