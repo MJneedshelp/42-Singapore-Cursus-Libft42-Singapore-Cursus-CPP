@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 10:43:39 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 14:12:40 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ Phonebook::Phonebook(void):
 		AddFriend();
 	}
 	std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
-	ShowOff();
-	ExposeFriend(1);
 
 	return;
 }
@@ -65,8 +63,6 @@ void	Phonebook::AddFriend(void)
 */
 void	Phonebook::ShowOff(void) const
 {
-	std::cout << "Start show off" << std::endl;
-
 	for (int i = 0; i < this->_NumFriends; i++)
 	{
 		std::cout << std::setfill (' ') << std::setw (10);
@@ -99,11 +95,8 @@ void	Phonebook::FindFriend(int Idx) const
 {
 	int	Found;
 
-	std::cout << "Find friend" << std::endl;
-
 	Found = (this->_Head + Idx) % BOOK_SZ;
-	//function to display the found friend
-	std::cout << "Given index: " << Idx << " | Calculated index: " << Found << std::endl;
+	this->ExposeFriend(Found);
 }
 
 /* Description: Displays the details of the contact. 1 field / line
