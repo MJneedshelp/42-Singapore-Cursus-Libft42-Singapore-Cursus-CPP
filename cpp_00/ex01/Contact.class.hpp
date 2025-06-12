@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 10:35:27 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 15:00:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ class Contact
 		~Contact(void);
 		void		SetFields(int Idx, std::string Val);
 		std::string	GetField(int Idx) const;
-
-	//get function
-	//set function
-
 
 	private:
 		std::string	Fields[5];

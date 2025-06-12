@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 14:14:26 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 16:55:01 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 #define MSG_PROMPTIDX "Which friend do you want to see: "
 #define MSG_WRONGIP "You know the second finger on your hand?"
 #define MSG_BIGIDX "I don't think you have that many friends..."
-#define	MSG_EXIT "\nGoodbye. No friends forever\n"
+#define MSG_ADDFRIEND "Enter your friend details below."
+
+#define	MSG_EXIT "\nGoodbye. No friends forever"
 
 
 /* Description: Function to get the input command from the user
@@ -83,10 +85,13 @@ int	main(void)
 		Cmd = get_command(&MyEightFriends);
 		if (Cmd == "ADD")
 		{
+			std::cout << MSG_ADDFRIEND << std::endl;
+			MyEightFriends.AddFriend();
 
 		}
 		else if (Cmd == "SEARCH")
 		{
+			//MJ to check if you want to split this part out into a separate function
 			MyEightFriends.ShowOff();
 			Idx = get_index(&MyEightFriends);
 			if (Idx == -1)
@@ -96,6 +101,6 @@ int	main(void)
 		else if (Cmd != "EXIT")
 			std::cout << MSG_WRONGCMD << std::endl;
 	}
-	std::cout << MSG_EXIT;
+	std::cout << MSG_EXIT << std::endl;
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 14:12:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 17:10:30 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ Phonebook::Phonebook(void):
 
 	//Remove all these later
 	std::cout << "Creating Phonebook with 8 contact instances\n";
-	std::cout << "Initial. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
-	for (int i = 0; i < 6; i++)
-	{
-		AddFriend();
-	}
-	std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
+	// std::cout << "Initial. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
+	// for (int i = 0; i < 6; i++)
+	// {
+	// 	AddFriend();
+	// }
+	// std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
 
 	return;
 }
@@ -48,14 +48,25 @@ int	Phonebook::GetNumFriends(void) const
    the count as more contacts are added. When the phonebook is full, move
    the head index when adding a new contact
 */
-void	Phonebook::AddFriend(void)
+int	Phonebook::AddFriend(void)
 {
-	//Mj to come back here later. Function to set contact at tail index
+	std::string	Val;
+
+
+	for (int i = 0; i < NO_FIELDS; i++)
+	{
+		Phonebook::PrintContactFields(i);
+		if (std::getline(std::cin, Val))
+			this->Contacts[this->_Tail].SetFields(i, Val);
+		else
+			return (-1);
+	}
 	this->_Tail = (this->_Tail + 1) % BOOK_SZ;
 	if (this->_NumFriends == BOOK_SZ)
 		this->_Head = (this->_Head + 1) % BOOK_SZ;
 	else
 		this->_NumFriends++;
+	return (0);
 }
 
 /* Description: Displays the contacts starting from the head to tail in a
@@ -80,6 +91,26 @@ void	Phonebook::ShowFriendsDetails(int Idx) const
 
 	for (int i = 0; i < TABLE_FIELDS; i++)
 	{
+		switch (i)
+		{
+			case 0:
+				std::cout << "Phone Number: ";
+				break;
+			case 1:
+				std::cout << "First Name: ";
+				break;
+			case 2:
+				std::cout << "Last Name: ";
+				break;
+			case 3:
+				std::cout << "Nickname: ";
+				break;
+			default:
+				break;
+		}
+
+
+
 		Val = this->Contacts[Idx].GetField(i);
 		if (Val.length() > 10)
 			Val = Val.substr(0, 8).append(".");
@@ -105,26 +136,33 @@ void	Phonebook::ExposeFriend(int Idx) const
 {
 	for (int i = 0; i < NO_FIELDS; i++)
 	{
-		switch (i)
-		{
-			case 0:
-				std::cout << "First Name: ";
-				break;
-			case 1:
-				std::cout << "Last Name: ";
-				break;
-			case 2:
-				std::cout << "Nickname: ";
-				break;
-			case 3:
-				std::cout << "Phone Number: ";
-				break;
-			case 4:
-				std::cout << "U.C.U.DIE: ";
-				break;
-			default:
-				break;
-		}
+		Phonebook::PrintContactFields(i);
 		std:: cout << this->Contacts[Idx].GetField(i) << std::endl;
+	}
+}
+
+/* Description: Switch case to print the different contact field names
+*/
+void	Phonebook::PrintContactFields(int Field)
+{
+	switch (Field)
+	{
+		case 0:
+			std::cout << "First Name: ";
+			break;
+		case 1:
+			std::cout << "Last Name: ";
+			break;
+		case 2:
+			std::cout << "Nickname: ";
+			break;
+		case 3:
+			std::cout << "Phone Number: ";
+			break;
+		case 4:
+			std::cout << "U.C.U.DIE: ";
+			break;
+		default:
+			break;
 	}
 }
