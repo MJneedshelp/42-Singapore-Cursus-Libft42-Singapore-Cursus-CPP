@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 10:38:09 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 17:03:46 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iomanip>
 #include "Contact.class.hpp"
 
-#define BOOK_SZ 4
+#define BOOK_SZ 3
 
 #ifndef PHONEBOOK_CLASS_H
 # define PHONEBOOK_CLASS_H
@@ -39,12 +39,13 @@ class Phonebook
 
 		// Contact	Contacts[BOOK_SZ];
 
-		int		GetNumFriends(void) const;
-		void	AddFriend(void);
-		void	ShowOff(void) const;
-		void	ShowFriendsDetails(int Idx) const;
-		void	FindFriend(int Idx) const;
-		void	ExposeFriend(int Idx) const;
+		int				GetNumFriends(void) const;
+		int				AddFriend(void);
+		void			ShowOff(void) const;
+		void			ShowFriendsDetails(int Idx) const;
+		void			FindFriend(int Idx) const;
+		void			ExposeFriend(int Idx) const;
+		static	void	PrintContactFields(int Field);
 
 	private:
 

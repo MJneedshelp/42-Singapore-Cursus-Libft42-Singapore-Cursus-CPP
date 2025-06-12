@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 17:10:30 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 18:08:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,6 @@
 Phonebook::Phonebook(void):
 	_Head(0), _Tail(0), _NumFriends(0)
 {
-
-	//Remove all these later
-	std::cout << "Creating Phonebook with 8 contact instances\n";
-	// std::cout << "Initial. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
-	// for (int i = 0; i < 6; i++)
-	// {
-	// 	AddFriend();
-	// }
-	// std::cout << "Later. Head: " << this->_Head << " | Tail: " << this->_Tail << " | No.: " << this->_NumFriends << "\n";
-
 	return;
 }
 
@@ -35,7 +25,6 @@ Phonebook::Phonebook(void):
 */
 Phonebook::~Phonebook(void)
 {
-	std::cout << "Destroying Phonebook\n";
 	return;
 }
 
@@ -74,6 +63,30 @@ int	Phonebook::AddFriend(void)
 */
 void	Phonebook::ShowOff(void) const
 {
+	std::string Header;
+	for (int i = 0; i < TABLE_FIELDS + 1; i++)
+	{
+		switch (i)
+		{
+			case 0:
+				Header = "Index";
+				break;
+			case 1:
+				Header = "First Name";
+				break;
+			case 2:
+				Header = "Last Name";
+				break;
+			case 3:
+				Header = "Nickname";
+				break;
+			default:
+				break;
+		}
+		std::cout << std::setfill (' ') << std::setw (10);
+		std::cout << Header << "|";
+	}
+	std::cout << std::endl;
 	for (int i = 0; i < this->_NumFriends; i++)
 	{
 		std::cout << std::setfill (' ') << std::setw (10);
@@ -91,26 +104,6 @@ void	Phonebook::ShowFriendsDetails(int Idx) const
 
 	for (int i = 0; i < TABLE_FIELDS; i++)
 	{
-		switch (i)
-		{
-			case 0:
-				std::cout << "Phone Number: ";
-				break;
-			case 1:
-				std::cout << "First Name: ";
-				break;
-			case 2:
-				std::cout << "Last Name: ";
-				break;
-			case 3:
-				std::cout << "Nickname: ";
-				break;
-			default:
-				break;
-		}
-
-
-
 		Val = this->Contacts[Idx].GetField(i);
 		if (Val.length() > 10)
 			Val = Val.substr(0, 8).append(".");
