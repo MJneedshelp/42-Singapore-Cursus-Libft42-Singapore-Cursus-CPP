@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:17:16 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 11:36:13 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 13:09:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ int	main(void)
 	if ((iss >> InputNum) && !(iss >> Leftovers))
 		std::cout << "Input: " << InputNum << std::endl;
 	else
+	{
 		std::cout << "Failed extraction" << std::endl;
+		std::cout << "Leftover: " << Leftovers << std::endl;
+
+
+	}
 
 
 

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 11:08:28 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 13:58:42 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 
 #define MSG_DEFAULT1 "Number of friends: "
 #define MSG_DEFAULT2 "Use ADD, SEARCH and EXIT: "
-#define MSG_WRONGCMD "You only have (8) friends. Don't be an idiot too\n"
+#define MSG_WRONGCMD "You only have (8) friends. Don't be an idiot too"
+#define MSG_PROMPTIDX "Which friend do you want to see: "
+#define MSG_WRONGIP "You know the second finger on your hand?"
+#define MSG_BIGIDX "I don't think you have that many friends..."
+
+
+
 #define	MSG_EXIT "\nGoodbye. No friends forever\n"
 
 
@@ -34,8 +40,35 @@ std::string	get_command(Phonebook *MyEightFriends)
 }
 
 /* Description: Function to prompt the user to input the phonebook index to
-   display
+   display. Keeps prompting until valid integer is keyed in the console.
+   Returns -1 if [ctrl + d] is received
 */
+int	get_index(Phonebook *MyEightFriends)
+{
+	std::string	Input;
+	std::string	Leftover;
+	int			Ret;
+
+	while (1)
+	{
+		std::cout << MSG_PROMPTIDX;
+		if (std::getline(std::cin, Input))
+		{
+			std::istringstream Iss(Input);
+			if ((Iss >> Ret) && !(Iss >> Leftover))
+			{
+				if (Ret >= MyEightFriends->GetNumFriends())
+					std::cout << MSG_BIGIDX << std::endl;
+				else
+					return (Ret);
+			}
+			else
+				std::cout << MSG_WRONGIP << std::endl;
+		}
+		else
+			return (-1);
+	}
+}
 
 
 
@@ -58,9 +91,15 @@ int	main(void)
 		else if (Cmd == "SEARCH")
 		{
 			MyEightFriends.ShowOff();
+
+			int	x;
+			x = get_index(&MyEightFriends);
+			if (x == -1)
+				break;
+			std::cout << "Entered index: " << x << std::endl;
 		}
 		else if (Cmd != "EXIT")
-			std::cout << MSG_WRONGCMD;
+			std::cout << MSG_WRONGCMD << std::endl;
 	}
 	std::cout << MSG_EXIT;
 	return (EXIT_SUCCESS);
