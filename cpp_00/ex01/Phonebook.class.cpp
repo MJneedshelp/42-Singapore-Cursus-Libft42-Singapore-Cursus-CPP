@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 18:08:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 18:18:17 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	Phonebook::ShowOff(void) const
 	{
 		std::cout << std::setfill (' ') << std::setw (10);
 		std::cout << i << "|";
-		ShowFriendsDetails((this->_Head + i) % BOOK_SZ);
+		this->ShowFriendsDetails((this->_Head + i) % BOOK_SZ);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 16:55:01 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/12 18:15:07 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 #define MSG_WRONGIP "You know the second finger on your hand?"
 #define MSG_BIGIDX "I don't think you have that many friends..."
 #define MSG_ADDFRIEND "Enter your friend details below."
-
 #define	MSG_EXIT "\nGoodbye. No friends forever"
 
 
@@ -91,7 +90,6 @@ int	main(void)
 		}
 		else if (Cmd == "SEARCH")
 		{
-			//MJ to check if you want to split this part out into a separate function
 			MyEightFriends.ShowOff();
 			Idx = get_index(&MyEightFriends);
 			if (Idx == -1)
