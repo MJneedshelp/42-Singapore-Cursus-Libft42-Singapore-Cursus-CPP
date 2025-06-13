@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 18:15:07 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/13 17:47:46 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.class.hpp"
-#include "Contact.class.hpp"
+#include "PhoneBookClass.hpp"
+#include "ContactClass.hpp"
 
 #define MSG_DEFAULT1 "[Phonebook] Friends you have: "
 #define MSG_DEFAULT2 "Use ADD, SEARCH and EXIT: "
@@ -19,20 +19,21 @@
 #define MSG_PROMPTIDX "Which friend do you want to see: "
 #define MSG_WRONGIP "You know the second finger on your hand?"
 #define MSG_BIGIDX "I don't think you have that many friends..."
-#define MSG_ADDFRIEND "Enter your friend details below."
+#define MSG_ADDFRIEND "Enter your friend details below. Don't leave it blank"
+#define MSG_0FRIEND "Go make some friends first..."
 #define	MSG_EXIT "\nGoodbye. No friends forever"
 
 
 /* Description: Function to get the input command from the user
 */
-std::string	get_command(Phonebook *MyEightFriends)
+std::string	getCommand(Phonebook *myEightFriends)
 {
-	std::string	Cmd;
+	std::string	cmd;
 
-	std::cout << MSG_DEFAULT1 << MyEightFriends->GetNumFriends() << "\n";
+	std::cout << MSG_DEFAULT1 << myEightFriends->getNumFriends() << "\n";
 	std::cout << MSG_DEFAULT2;
-	if (std::getline(std::cin, Cmd))
-		return(Cmd);
+	if (std::getline(std::cin, cmd))
+		return(cmd);
 	else
 		return("EXIT");
 }
@@ -41,24 +42,24 @@ std::string	get_command(Phonebook *MyEightFriends)
    display. Keeps prompting until valid integer is keyed in the console.
    Returns -1 if [ctrl + d] is received
 */
-int	get_index(Phonebook *MyEightFriends)
+int	getIndex(Phonebook *myEightFriends)
 {
-	std::string	Input;
-	std::string	Leftover;
-	int			Ret;
+	std::string	input;
+	std::string	leftover;
+	int			ret;
 
 	while (1)
 	{
 		std::cout << MSG_PROMPTIDX;
-		if (std::getline(std::cin, Input))
+		if (std::getline(std::cin, input))
 		{
-			std::istringstream Iss(Input);
-			if ((Iss >> Ret) && !(Iss >> Leftover))
+			std::istringstream Iss(input);
+			if ((Iss >> ret) && !(Iss >> leftover))
 			{
-				if (Ret >= MyEightFriends->GetNumFriends())
+				if (ret >= myEightFriends->getNumFriends())
 					std::cout << MSG_BIGIDX << std::endl;
 				else
-					return (Ret);
+					return (ret);
 			}
 			else
 				std::cout << MSG_WRONGIP << std::endl;
@@ -68,35 +69,37 @@ int	get_index(Phonebook *MyEightFriends)
 	}
 }
 
-
-
 /* Description: Function to format the output of the
 */
 int	main(void)
 {
-	//instantiate the phonebook class
-	std::string	Cmd;
-	int			Idx;
-	Phonebook	MyEightFriends;
+	std::string	cmd;
+	int			idx;
+	Phonebook	myEightFriends;
 
-	while (Cmd != "EXIT")
+	while (cmd != "EXIT")
 	{
-		Cmd = get_command(&MyEightFriends);
-		if (Cmd == "ADD")
+		cmd = getCommand(&myEightFriends);
+		if (cmd == "ADD")
 		{
 			std::cout << MSG_ADDFRIEND << std::endl;
-			MyEightFriends.AddFriend();
-
-		}
-		else if (Cmd == "SEARCH")
-		{
-			MyEightFriends.ShowOff();
-			Idx = get_index(&MyEightFriends);
-			if (Idx == -1)
+			if (myEightFriends.addFriend() == -1)
 				break;
-			MyEightFriends.FindFriend(Idx);
 		}
-		else if (Cmd != "EXIT")
+		else if (cmd == "SEARCH")
+		{
+			if (myEightFriends.getNumFriends() == 0)
+				std::cout << MSG_0FRIEND << std::endl;
+			else
+			{
+				myEightFriends.showOff();
+				idx = getIndex(&myEightFriends);
+				if (idx == -1)
+					break;
+				myEightFriends.findFriend(idx);
+			}
+		}
+		else if (cmd != "EXIT")
 			std::cout << MSG_WRONGCMD << std::endl;
 	}
 	std::cout << MSG_EXIT << std::endl;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.class.hpp                                  :+:      :+:    :+:   */
+/*   ContactClass.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 15:00:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/13 17:44:32 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 #define NO_FIELDS 5
 #define TABLE_FIELDS 3
-
-
 
 #ifndef CONTACT_CLASS_H
 # define CONTACT_CLASS_H
@@ -32,8 +30,8 @@ class Contact
 
 		Contact(void);
 		~Contact(void);
-		void		SetFields(int Idx, std::string Val);
-		std::string	GetField(int Idx) const;
+		void		setFields(int Idx, std::string Val);
+		std::string	getField(int Idx) const;
 
 	private:
 		std::string	Fields[5];

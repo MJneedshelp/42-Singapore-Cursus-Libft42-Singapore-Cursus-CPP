@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.class.hpp                                :+:      :+:    :+:   */
+/*   PhoneBookClass.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/12 18:22:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/13 17:43:37 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
-#include "Contact.class.hpp"
+#include "ContactClass.hpp"
 
 #define BOOK_SZ 3
+#define MSG_INVALIDINPUT "Don't you know your friend's name? And NO tabs!"
+
 
 #ifndef PHONEBOOK_CLASS_H
 # define PHONEBOOK_CLASS_H
@@ -28,25 +30,20 @@ class Phonebook
 		Phonebook(void);
 		~Phonebook(void);
 
-		int				GetNumFriends(void) const;
-		int				AddFriend(void);
-		void			ShowOff(void) const;
-		void			FindFriend(int Idx) const;
-		static	void	PrintContactFields(int Field);
+		int				getNumFriends(void) const;
+		int				addFriend(void);
+		void			showOff(void) const;
+		void			findFriend(int Idx) const;
+		static	void	printContactFields(int Field);
 
 	private:
 
 		Contact	Contacts[BOOK_SZ];
-		int	_Head;
-		int	_Tail;
-		int	_NumFriends;
-		void			ExposeFriend(int Idx) const;
-		void			ShowFriendsDetails(int Idx) const;
-
-
-
-
-
+		int	_head;
+		int	_tail;
+		int	_numFriends;
+		void			exposeFriend(int Idx) const;
+		void			showFriendsDetails(int Idx) const;
 };
 
 #endif
