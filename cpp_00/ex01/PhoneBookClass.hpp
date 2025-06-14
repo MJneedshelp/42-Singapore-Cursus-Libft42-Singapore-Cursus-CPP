@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBookClass.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/14 09:42:00 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/14 10:16:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PHONEBOOK_CLASS_H
+# define PHONEBOOK_CLASS_H
 
 #include <iostream>
 #include <string>
@@ -18,10 +21,6 @@
 
 #define BOOK_SZ 8
 #define MSG_INVALIDINPUT "Don't you know your friend's name? And NO tabs!"
-
-
-#ifndef PHONEBOOK_CLASS_H
-# define PHONEBOOK_CLASS_H
 
 class Phonebook
 {
