@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:07:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/13 17:44:23 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/14 13:17:26 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	isValidInput(const std::string& input)
 	ret = false;
 	if (input.length() > 0)
 	{
-		for (int i = 0; i < input.length(); ++i)
+		for (unsigned int i = 0; i < input.length(); ++i)
 		{
 			if (std::isalnum(static_cast<unsigned char>(input[i])))
 				ret = true;

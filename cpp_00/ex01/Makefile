@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 15:29:24 by mintan            #+#    #+#              #
-#    Updated: 2025/06/13 17:32:35 by mintan           ###   ########.fr        #
+#    Updated: 2025/06/14 13:13:37 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $@
 
 # Generate all the .o files from the .c files for the programme
-%.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+%.o: %.cpp
+	$(CC) -c $(CFLAGS) $(STDFLAG) $< -o $@
 
 # Clear the build files
 clean:

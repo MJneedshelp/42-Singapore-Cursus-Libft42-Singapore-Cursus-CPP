@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/14 10:44:21 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/14 13:15:50 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 #define MSG_ADDFRIEND "Enter your friend details below. Don't leave it blank"
 #define MSG_0FRIEND "Go make some friends first..."
 #define	MSG_EXIT "\nGoodbye. No friends forever"
-
 
 /* Description: Function to get the input command from the user
 */
@@ -103,5 +102,5 @@ int	main(void)
 			std::cout << MSG_WRONGCMD << std::endl;
 	}
 	std::cout << MSG_EXIT << std::endl;
-	return (EXIT_SUCCESS);
+	return (0);
 }
