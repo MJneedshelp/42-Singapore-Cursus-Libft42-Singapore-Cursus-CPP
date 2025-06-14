@@ -3,15 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   test2.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 14:14:48 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/14 14:23:52 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/14 15:08:58 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+
+
+void	byPtr(std::string *str)
+{
+	*str += " plus pointer";
+}
+
+void	byConstPtr(std::string const *str)
+{
+	std::cout << *str << std::endl;
+}
+
+void	byRef(std::string &str)
+{
+	str += " plus reference";
+}
+
+void	byConstRef(std::string const &str)
+{
+	std::cout << str << std::endl;
+}
 
 int	main(void)
 {
@@ -19,6 +40,7 @@ int	main(void)
 
 	int	*noPtr = &no;
 	int	&noRef = no;
+	std::string	str;
 
 	std::cout << "No.: " << no << " | ptr: " << *noPtr << " | ref: " << noRef << std::endl;
 	*noPtr = 21;
@@ -26,5 +48,13 @@ int	main(void)
 	noRef = 84;
 	std::cout << "No.: " << no << " | ptr: " << *noPtr << " | ref: " << noRef << std::endl;
 
+	str = "original";
+	std::cout << str << std::endl;
+	byPtr(&str);
+	std::cout << str << std::endl;
+	byConstPtr(&str);
+	byRef(str);
+	std::cout << str << std::endl;
+	byConstRef(str);
 	return (0);
 }
