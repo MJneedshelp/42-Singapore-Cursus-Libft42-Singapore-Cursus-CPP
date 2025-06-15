@@ -46,6 +46,7 @@
 		"ctime": "cpp",
 		"iomanip": "cpp",
 		"sstream": "cpp",
-		"*.tcc": "cpp"
+		"*.tcc": "cpp",
+		"fstream": "cpp"
 	}
 }
