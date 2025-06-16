@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:25:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/17 02:31:52 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/17 04:58:40 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,38 @@ std::string	generateOfilename(char *ifileName)
 }
 
 
+std::string	replaceStr(const std::string &line, const std::string &oldStr, \
+	const std::string &newStr)
+{
+	std::string	result;
+	std::string::size_type	posStrt;
+	std::string::size_type	posFound;
+	std::string::size_type	oldLen;
+
+	posStrt = 0;
+	oldLen = oldStr.length();
+	do
+	{
+		posFound = line.find(oldStr, posStrt);
+		result = result + line.substr(posStrt, posFound - posStrt);
+
+
+		if (posFound != std::string::npos)
+			result.append(newStr);
+
+
+		posStrt = posFound + oldLen;
+	} while (posFound != std::string::npos);
+	return(result);
+}
+
+
 int	main(int argc, char *argv[])
 {
 	std::ifstream	ifile;
 	std::ofstream	ofile;
 	std::string		line;
+	std::string		replacement;
 
 	if (validInArgs(argc) == false)
 		return (1);
@@ -69,37 +96,15 @@ int	main(int argc, char *argv[])
 		ofile.open(generateOfilename(argv[1]).c_str());
 		while (std::getline(ifile, line))
 		{
-			ofile << line << std::endl;
+			replacement = replaceStr(line, argv[2], argv[3]);
+			ofile << replacement << std::endl;
 		}
-
 		ifile.close();
 		ofile.close();
 	}
 	else
 	{
 		std::cerr << ERR_INVALFILE << std::endl;
-
-	}
-	// std::ifstream	infilestr("numbers");
-	// int				dst1;
-	// int				dst2;
-
-	// infilestr >> dst1 >> dst2;
-
-	// std::cout << "Dest 1: " << dst1 << " Dest 2: " << dst2 << std::endl;
-
-	// std::ofstream	ofs("outputfile");
-	// ofs << "This is sorta useful...." << std::endl;
-
-	std::string	test;
-
-	if (argc > 1)
-	{
-		for (int i = 1; i < argc; ++i)
-		{
-			test = argv[i];
-			std::cout << test << std::endl;
-		}
 	}
 	return (0);
 }
