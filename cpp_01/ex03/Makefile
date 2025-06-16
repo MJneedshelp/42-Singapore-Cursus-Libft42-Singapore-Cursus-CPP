@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 15:29:24 by mintan            #+#    #+#              #
-#    Updated: 2025/06/16 08:39:07 by mintan           ###   ########.fr        #
+#    Updated: 2025/06/16 13:03:43 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEP_FLAGS = -MMD -MP
 NAME = war
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = main Weapon HumanA
+SRC_NAMES = main Weapon HumanA HumanB
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
