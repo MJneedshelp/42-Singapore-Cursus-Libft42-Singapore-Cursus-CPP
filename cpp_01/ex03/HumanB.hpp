@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 22:19:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/16 12:56:25 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/16 13:16:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@
 #define MSG_ATK " attacks with their "
 
 /* Description: Class definition for the Human B class:
-	- The weapon is a reference because the weapon instance is initialised
-	  outside. The weapon can be created outside and then passed to a Human A
-	  instance
+	- The weapon is a pointer, initialised as NULL to signify that Human B
+	  may not always have a weapon
 */
 class HumanB
 {
@@ -36,7 +35,5 @@ class HumanB
 		std::string	_name;
 		Weapon		*_arm;
 };
-
-
 
 #endif
