@@ -6,14 +6,15 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 15:29:24 by mintan            #+#    #+#              #
-#    Updated: 2025/06/14 13:13:37 by mintan           ###   ########.fr        #
+#    Updated: 2025/06/16 08:41:40 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Compiler + compile flags
+# Compiler + compile flags + dependency flags
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
-STDFLAG = -std=c++98
+C_FLAGS = -Wall -Werror -Wextra
+STD_FLAG = -std=c++98
+DEP_FLAGS = -MMD -MP
 
 # Definitions
 NAME = myeightfriends
@@ -27,13 +28,15 @@ all: $(NAME) print_art
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $@
 
+-include $(DEP)
+
 # Generate all the .o files from the .c files for the programme
 %.o: %.cpp
-	$(CC) -c $(CFLAGS) $(STDFLAG) $< -o $@
+	$(CC) $(C_FLAGS) $(STD_FLAG) $(DEP_FLAGS) -c $< -o $@
 
 # Clear the build files
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(DEP)
 
 fclean: clean
 	rm -f $(NAME)
