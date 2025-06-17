@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:17:16 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/13 17:03:55 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/17 10:38:09 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(void)
 	std::string Test;
 	std::string Test1;
 
+	
 
 	// std::cout << "Test";
 	// std::cout << std::endl;

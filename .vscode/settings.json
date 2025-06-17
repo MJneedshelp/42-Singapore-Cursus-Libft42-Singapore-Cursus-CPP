@@ -47,6 +47,9 @@
 		"iomanip": "cpp",
 		"sstream": "cpp",
 		"*.tcc": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"optional": "cpp",
+		"ranges": "cpp",
+		"span": "cpp"
 	}
 }
