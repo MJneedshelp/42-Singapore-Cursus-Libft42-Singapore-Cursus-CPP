@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:22:57 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/18 03:12:09 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/18 04:00:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,23 @@ month.\n"
 #define	MSG_ERR "[ ERROR ]\nThis is unacceptable! I want to speak to the manager \
 now0.\n"
 #define	MSG_DEF "[ DEFAULT ]\nWhat's worse than a karen is a karen who can't \
-spell.\n"
+spell."
 
 class	Harl
 {
 	public:
 		Harl(int argc, char *argv[]);
 		~Harl(void);
-		void	complain(void) const;
+		void	setLevel(int argc, char *argv[]);
+
 
 	private:
 		void	debug(void) const;
 		void	info(void) const;
 		void	warning(void) const;
 		void	error(void) const;
-		void	setLevel(int argc, char *argv[]);
+		void	complain(void) const;
 		int		_level;
-
 };
 
 #endif

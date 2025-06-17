@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:27:17 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/18 03:34:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/18 04:00:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	Harl::complain(void) const
 			this->error();
 			// fall through
 		default:
-			std::cout << MSG_DEF <<  std::endl;
+			std::cout << MSG_DEF << std::endl;
 			break;
 	}
 }
