@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:22:57 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/17 17:13:24 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/18 02:33:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 #include <iostream>
 #include <sstream>
 
-#define	MSG_DEBUG ""
-#define	MSG_INFO ""
-#define	MSG_WARN ""
-#define	MSG_ERR ""
+#define	MSG_DEBUG "I love having extra bacon for my 7XL-double-cheese-triple \
+-pickle-specialketchup burger. I really do!"
+#define	MSG_INFO "I cannot believe adding extra bacon costs more money. You \
+didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for \
+more!"
+#define	MSG_WARN "I think I deserve to have some extra bacon for free. I’ve \
+been coming for years, whereas you started working here just last month."
+#define	MSG_ERR "This is unacceptable! I want to speak to the manager now."
 
 class	Harl
 {

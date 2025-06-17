@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:27:17 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/17 18:07:43 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/18 02:34:12 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	Harl::complain(std::string level)
 	int		lv;
 
 	lv = strToInt(level);
-	std::cout << "Int lv: " << lv << std::endl;
 	switch (lv)
 	{
 		case 0:
-			std::cout << "here" << std::endl;
 			fx = &Harl::debug;
 			break;
 		case 1:
@@ -58,7 +56,7 @@ void	Harl::complain(std::string level)
 			fx = NULL;
 			break;
 	}
-	//call the function
+	(this->*fx)();
 }
 
 void	Harl::debug(void)

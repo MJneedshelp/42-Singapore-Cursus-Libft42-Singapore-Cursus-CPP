@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:25:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/17 04:58:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/18 02:30:12 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,32 @@ bool	validInArgs(int argc)
 }
 
 /* Description: checks if the provided filepath can be read. Takes in a
-   reference to the path and the filestream. Attempts to assign the file to
-   the filestream
+   reference to the path and the filestream. Attempts to open the provided
+   path:
+	- if open is unsuccessful: return false
+	- if open is successful, try reading
+		- if reading is successful, close the file and open it again
+		- if reading causes the file to not be good -> likely that provided
+		  path is a directory
 */
 
 bool	checkFile(const char *path, std::ifstream &ifile)
 {
+	std::string	test;
 	ifile.open(path);
-	return (ifile.is_open());
+
+	if (ifile.is_open())
+	{
+		ifile >> test;
+		if (ifile.good())
+		{
+			ifile.close();
+			ifile.open(path);
+			return (true);
+		}
+		ifile.close();
+	}
+	return (false);
 }
 
 /* Description: generates the name of the replacement file and assigns it
