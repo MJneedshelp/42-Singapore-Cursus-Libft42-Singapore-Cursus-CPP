@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 04:22:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/20 04:35:08 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/20 13:16:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,27 @@ int	main(void)
 	std::cout << "no2: " << no2.getValue() << std::endl;
 	std::cout << "no3: " << no3.getValue() << std::endl;
 
+	std::cout << "********** Testing with operator overload: = **********" << std::endl;
+
 	no3 = Integer(88);
 
 	std::cout << "no1: " << no1.getValue() << std::endl;
 	std::cout << "no2: " << no2.getValue() << std::endl;
 	std::cout << "no3: " << no3.getValue() << std::endl;
+
+	std::cout << "********** Testing with operator overload: + **********" << std::endl;
+
+	no3 = no1 + no2;
+
+	std::cout << "no1: " << no1.getValue() << std::endl;
+	std::cout << "no2: " << no2.getValue() << std::endl;
+	std::cout << "no3: " << no3.getValue() << std::endl;
+
+	std::cout << "********** Testing with operator overload: << **********" << std::endl;
+
+	std::cout << "no1: " << no1 << std::endl;
+	std::cout << "no2: " << no2 << std::endl;
+	std::cout << "no3: " << no3 << std::endl;
 
 	return (0);
 }

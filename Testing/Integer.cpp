@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 03:55:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/20 04:35:58 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/20 13:12:03 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,18 @@ Integer& Integer::operator=(Integer const &rhs)
 	std::cout << "Operator:= called to assign rhs to this->_n" << std::endl;
 	this->_n = rhs.getValue();
 	return (*this);
+}
+
+Integer Integer::operator+(Integer const &rhs) const
+{
+	Integer	add(this->_n + rhs.getValue());
+
+	std::cout << "Operator:+ called add rhs" << std::endl;
+	return (add);
+}
+
+std::ostream& operator<<(std::ostream &o, Integer const &rhs)
+{
+	o << rhs.getValue();
+	return (o);
 }
