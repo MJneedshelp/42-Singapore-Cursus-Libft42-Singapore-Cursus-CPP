@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   OCF.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:35:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/22 10:10:48 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/22 14:13:31 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 class	OCF
 {
 	public:
-		OCF(void);							//Canonical - Default constructor
+		OCF(void);							//Canonical - Default constructor -> can be left in private if it is not to be used
 		OCF(int const n);
 		OCF(OCF const &source);				//Canonical - Copy constructor
 		~OCF(void);							//Canonical - Default destructor
 
-		OCF&	operator=(OCF const &rhs);	//Canonical - Default destructor
+		OCF&	operator=(OCF const &rhs);	//Canonical - Copy assignment operator
 
 		int	getVal(void) const;
 
