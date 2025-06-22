@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   OCF.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:49:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/22 10:08:15 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/22 14:01:56 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,22 @@ OCF::~OCF(void)
 	return;
 }
 
+int	OCF::getVal(void) const
+{
+	return (this->_n);
+}
+
 OCF&	OCF::operator=(OCF const &rhs)
 {
 	std::cout << "Assignment using operator:= called" << std::endl;
-	this->_n = rhs.getVal();
+	if (this != &rhs)
+		this->_n = rhs.getVal();
 	return (*this);
 }
 
-
-
-
+std::ostream&	operator<<(std::ostream &o, OCF const &inst)
+{
+	std::cout << "Output using operator:<< called" << std::endl;
+	o << inst.getVal();
+	return (o);
+}
