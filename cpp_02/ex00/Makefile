@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/06/20 03:16:01 by mintan           ###   ########.fr        #
+#    Updated: 2025/06/24 02:46:09 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ STD_FLAG = -std=c++98
 DEP_FLAGS = -MMD -MP
 
 # Target Executable
-NAME = 
+NAME = fixedpointnumber
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES =
+SRC_NAMES = main Fixed
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
@@ -31,13 +31,13 @@ all: $(NAME) print_art
 # Generate the mandatory programme by compiling the objects + track header
 # dependencies
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $@
+	$(CXX) $(OBJ) -o $@
 
 -include $(DEP)
 
 # Generate all the .o files from the .c files for the programme
 %.o: %.cpp
-	$(CC) $(C_FLAGS) $(STD_FLAG) $(DEP_FLAGS) -c $< -o $@
+	$(CXX) $(CXX_FLAGS) $(STD_FLAG) $(DEP_FLAGS) -c $< -o $@
 
 # Clear the build files
 clean:
