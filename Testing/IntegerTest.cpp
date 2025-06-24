@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 04:22:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/20 13:16:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 10:10:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ int	main(void)
 	std::cout << "no1: " << no1 << std::endl;
 	std::cout << "no2: " << no2 << std::endl;
 	std::cout << "no3: " << no3 << std::endl;
+
+	int	numFractBits = 8;
+
+	std::cout << (27 * 1 << 8) << std::endl;
+	std::cout << ((float)2.5F * (1 << 8)) << std::endl;
+
+
 
 	return (0);
 }
