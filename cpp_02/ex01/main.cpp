@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 01:57:17 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/24 11:36:50 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 14:10:37 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ int	main(void)
 	std::cout << c.getRawBits() << std::endl;
 	std::cout << d.getRawBits() << std::endl;
 
-	std::cout << a.toInt() << std::endl;
-	std::cout << b.toInt() << std::endl;
-	std::cout << c.toInt() << std::endl;
-	std::cout << d.toInt() << std::endl;
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
 
-	// std::cout << a.toFloat() << std::endl;
-	// std::cout << b.toFloat() << std::endl;
-	// std::cout << c.toFloat() << std::endl;
-	// std::cout << d.toFloat() << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
 	// std::ostream	oss;
 

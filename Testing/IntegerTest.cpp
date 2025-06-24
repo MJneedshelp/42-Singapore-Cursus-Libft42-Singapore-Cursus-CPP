@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 04:22:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/24 11:14:52 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 14:42:41 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int	main(void)
 	std::cout << (10 << 8) << std::endl;
 	std::cout << (256 >> 8) << std::endl;
 	std::cout << ((float)2.5F * (1 << 8)) << std::endl;
+
+	float	f = 256.0;
+	std::cout << "Float: " << (f * (1 >> 8) )<< std::endl;
 
 
 

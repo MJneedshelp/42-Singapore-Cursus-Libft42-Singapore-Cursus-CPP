@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 00:48:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/24 11:42:32 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 15:17:48 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,13 @@ Fixed&	Fixed::operator=(Fixed const &src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-		this->_raw = src.getRawBits();
+	{
+		//smth inside here
+		//float constructor here
+		//another = operator
+		//i suspect the instance of the float is destroyed here
+	}
+	this->_raw = src.getRawBits();
 	return (*this);
 }
 
@@ -79,10 +85,13 @@ int	Fixed::toInt(void) const
 	return (this->_raw >> Fixed::_numFractBits);
 }
 
-// float	Fixed::toFloat(void) const
-// {
-// 	return ((float)(this->_raw) >> Fixed::_numFractBits);
-// }
+/* Description: decodes the fixed point number and returns it as a float.
+   this->_raw is cast as a float first before decoding
+*/
+float	Fixed::toFloat(void) const
+{
+	return (static_cast<float>(this->_raw) / (1 << Fixed::_numFractBits));
+}
 
 /* Description: encodes the input value (int) as a fixed point number
 */
@@ -99,8 +108,8 @@ int	Fixed::_encode(float const orVal) const
 	return (roundf(orVal * (1 << Fixed::_numFractBits)));
 }
 
-
-/* Description:
+/* Description: Overloads the << operator to return the fixed point number as
+   a float
 */
 std::ostream&	operator<<(std::ostream &o, Fixed const &fixedptnum)
 {
