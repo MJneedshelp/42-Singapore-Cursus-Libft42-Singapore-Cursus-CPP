@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 00:48:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/24 15:17:48 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 23:09:50 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,7 @@ Fixed&	Fixed::operator=(Fixed const &src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-	{
-		//smth inside here
-		//float constructor here
-		//another = operator
-		//i suspect the instance of the float is destroyed here
-	}
-	this->_raw = src.getRawBits();
+		this->_raw = src.getRawBits();
 	return (*this);
 }
 
@@ -74,7 +68,6 @@ void	Fixed::setRawBits(int const raw)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_raw);
 }
 
