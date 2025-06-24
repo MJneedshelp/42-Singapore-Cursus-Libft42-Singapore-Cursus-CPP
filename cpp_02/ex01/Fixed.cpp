@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 00:48:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/24 10:22:02 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 11:42:32 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,38 @@ int	Fixed::getRawBits(void) const
 	return (this->_raw);
 }
 
+/* Description: decodes _raw (fixed point number) and returns it as an int
+*/
+int	Fixed::toInt(void) const
+{
+	return (this->_raw >> Fixed::_numFractBits);
+}
+
+// float	Fixed::toFloat(void) const
+// {
+// 	return ((float)(this->_raw) >> Fixed::_numFractBits);
+// }
+
 /* Description: encodes the input value (int) as a fixed point number
 */
-int	Fixed::_encode(int const orVal)
+int	Fixed::_encode(int const orVal) const
 {
-	return (orVal * (1 << Fixed::_numFractBits));
+	return (orVal << Fixed::_numFractBits);
 }
 
 /* Description: encodes the input value (float) as a fixed point number.
    Rounding is used to ensure the closest integer
 */
-int	Fixed::_encode(float const orVal)
+int	Fixed::_encode(float const orVal) const
 {
 	return (roundf(orVal * (1 << Fixed::_numFractBits)));
+}
+
+
+/* Description:
+*/
+std::ostream&	operator<<(std::ostream &o, Fixed const &fixedptnum)
+{
+	o << fixedptnum.toFloat();
+	return (o);
 }

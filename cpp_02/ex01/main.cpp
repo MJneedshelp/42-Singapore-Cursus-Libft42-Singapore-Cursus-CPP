@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 01:57:17 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/24 10:23:58 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 11:36:50 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Fixed.hpp"
 
 int	main(void)
@@ -27,7 +26,17 @@ int	main(void)
 	std::cout << c.getRawBits() << std::endl;
 	std::cout << d.getRawBits() << std::endl;
 
+	std::cout << a.toInt() << std::endl;
+	std::cout << b.toInt() << std::endl;
+	std::cout << c.toInt() << std::endl;
+	std::cout << d.toInt() << std::endl;
 
+	// std::cout << a.toFloat() << std::endl;
+	// std::cout << b.toFloat() << std::endl;
+	// std::cout << c.toFloat() << std::endl;
+	// std::cout << d.toFloat() << std::endl;
+
+	// std::ostream	oss;
 
 
 

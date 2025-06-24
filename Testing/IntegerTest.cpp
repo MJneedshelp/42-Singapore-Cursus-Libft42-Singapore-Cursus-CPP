@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IntegerTest.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 04:22:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/24 10:10:13 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/24 11:14:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ int	main(void)
 
 	int	numFractBits = 8;
 
-	std::cout << (27 * 1 << 8) << std::endl;
+	std::cout << (10 * 1 << 8) << std::endl;
+	std::cout << (10 << 8) << std::endl;
+	std::cout << (256 >> 8) << std::endl;
 	std::cout << ((float)2.5F * (1 << 8)) << std::endl;
+
 
 
 
