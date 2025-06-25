@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 00:48:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/25 00:11:06 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/25 13:42:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,52 @@ bool	Fixed::operator!=(Fixed const &rhs) const
 {
 	return (this->_raw != rhs.getRawBits());
 }
+
+/* Description: + operator overload for summing 2 fixed point numbers
+*/
+Fixed	Fixed::operator+(Fixed const &rhs)
+{
+	Fixed	result;
+
+	result.setRawBits(this->getRawBits() + rhs.getRawBits());
+	return (result);
+}
+
+/* Description: - operator overload for subtracting 1 fixed point number from
+   the other
+*/
+Fixed	Fixed::operator-(Fixed const &rhs)
+{
+	Fixed	result;
+
+	result.setRawBits(this->getRawBits() - rhs.getRawBits());
+	return (result);
+}
+
+/* Description: * operator overload for multiplying 2 fixed point numbers
+*/
+Fixed	Fixed::operator*(Fixed const &rhs)
+{
+	Fixed	result;
+
+	result.setRawBits((this->getRawBits() * rhs.getRawBits()) \
+	/ (1 << Fixed::_numFractBits));
+	return (result);
+}
+
+/* Description: / operator overload for dividing 2 fixed point numbers
+*/
+Fixed	Fixed::operator/(Fixed const &rhs)
+{
+	Fixed	result;
+
+	result.setRawBits((this->getRawBits() << Fixed::_numFractBits) \
+	/ rhs.getRawBits());
+	return (result);
+}
+
+
+
 
 
 
