@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:19:27 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/27 03:38:47 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/27 13:51:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define CLAPTRAP_H
 
 #include <iostream>
+
+#define DEFAULT_HP 10
+#define DEFAULT_EP 10
+#define DEFAULT_ATK 0
+#define DEFAULT_REPAIR 1
 
 class	ClapTrap
 {

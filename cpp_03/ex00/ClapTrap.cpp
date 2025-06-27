@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:23:29 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/27 03:59:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/27 13:54:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 /* Description: Default constructor that initialises an instance of ClapTrap
    with default values
 */
-ClapTrap::ClapTrap(std::string name): _name(name), _hp(10), _ep(10), _atk(0)
+ClapTrap::ClapTrap(std::string name):
+	_name(name), _hp(DEFAULT_HP), _ep(DEFAULT_EP), _atk(DEFAULT_ATK)
 {
 	std::cout << "Default constructor called";
 	std::cout << "Arise ClapTrap: " << name << " | HP: 10 | EP: 10 | ATK: 0" \
@@ -76,13 +77,26 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "ClapTrap: " << this->getName() << " receives " << amount \
 		<< "of damage! " << std::endl;
 		if (amount > this->getHP())
-			
-
-		this->_setStats(this->getEP() - 1);
+			this->_setStats(0, this->getEP());
+		else
+			this->_setStats(this->getHP() - amount, this->getEP());
 	}
 	std::cout << this << std::endl;
 }
 
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (this->getEP() == 0)
+		std::cout << "ClapTrap: " << this->getName() << " is out of energy!" \
+		<< std::endl;
+	else
+	{
+		std::cout << "ClapTrap: " << this->getName() << " repairs itself " \
+		<< std::endl;
+		this->_setStats(this->getHP() + 1, this->getEP() - 1);
+	}
+	std::cout << this << std::endl;
+}
 
 /* Getters */
 std::string	ClapTrap::getName(void) const
