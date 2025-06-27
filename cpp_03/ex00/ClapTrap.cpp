@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:23:29 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/27 13:54:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/28 00:57:55 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 ClapTrap::ClapTrap(std::string name):
 	_name(name), _hp(DEFAULT_HP), _ep(DEFAULT_EP), _atk(DEFAULT_ATK)
 {
-	std::cout << "Default constructor called";
-	std::cout << "Arise ClapTrap: " << name << " | HP: 10 | EP: 10 | ATK: 0" \
-	<< std::endl;
+	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Arise ClapTrap: " << name << " | HP: " << DEFAULT_HP << \
+	" | EP: " << DEFAULT_EP << " | Atk: " << DEFAULT_ATK << std::endl;
 	return;
 }
 
@@ -29,8 +29,9 @@ ClapTrap::ClapTrap(std::string name):
 */
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
-	std::cout << "Copy constructor called";
+	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
+	std::cout << "[Clone] " << *this << std::endl;
 	return;
 }
 
@@ -38,7 +39,8 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 */
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Default destructor called";
+	std::cout << "Default destructor called" << std::endl;
+	std::cout << this->_name << " is destroyed!" << std::endl;
 	return;
 }
 
@@ -55,47 +57,57 @@ ClapTrap&	ClapTrap::operator=(ClapTrap const &src)
 /* Public Member Functions */
 void	ClapTrap::attack(const std::string &target)
 {
-	if (this->getEP() == 0)
-		std::cout << "ClapTrap: " << this->getName() << " is out of energy!" \
+	if (this->getHP() == 0)
+		std::cout << "ClapTrap: " << this->getName() << " tries to attack but is dead already..." \
+		<<std::endl;
+	else if (this->getEP() == 0)
+		std::cout << "ClapTrap: " << this->getName() << " tries to attack but is out of energy!" \
 		<< std::endl;
 	else
 	{
 		std::cout << "ClapTrap: " << this->getName() << " attacks " << target \
-		<< "causing " << this->getAtk() << "points of damage!" << std::endl;
+		<< " causing " << this->getAtk() << " points of damage!" << std::endl;
+		if (this->getAtk() == 0)
+			std::cout << "(weak sauce..)" << std::endl;
 		this->_setStats(this->getEP() - 1);
 	}
-	std::cout << this << std::endl;
+	std::cout << *this << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->getEP() <= 0)
-		std::cout << "ClapTrap: " << this->getName() << " is dead already!" \
+	if (this->getHP() == 0)
+		std::cout << "ClapTrap: " << this->getName() << " is dead already..." \
 		<< std::endl;
 	else
 	{
 		std::cout << "ClapTrap: " << this->getName() << " receives " << amount \
-		<< "of damage! " << std::endl;
+		<< " damage! " << std::endl;
+		if (amount == 0)
+			std::cout << "(it's not very effective...)" << std::endl;
 		if (amount > this->getHP())
 			this->_setStats(0, this->getEP());
 		else
 			this->_setStats(this->getHP() - amount, this->getEP());
 	}
-	std::cout << this << std::endl;
+	std::cout << *this << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->getEP() == 0)
-		std::cout << "ClapTrap: " << this->getName() << " is out of energy!" \
+	if (this->getHP() == 0)
+		std::cout << "ClapTrap: " << this->getName() << " tries to repair itself but is dead already..." \
+		<<std::endl;
+	else if (this->getEP() == 0)
+		std::cout << "ClapTrap: " << this->getName() << " tries to repair itself but is out of energy!" \
 		<< std::endl;
 	else
 	{
 		std::cout << "ClapTrap: " << this->getName() << " repairs itself " \
 		<< std::endl;
-		this->_setStats(this->getHP() + 1, this->getEP() - 1);
+		this->_setStats(this->getHP() + amount, this->getEP() - 1);
 	}
-	std::cout << this << std::endl;
+	std::cout << *this << std::endl;
 }
 
 /* Getters */
@@ -104,17 +116,17 @@ std::string	ClapTrap::getName(void) const
 	return(this->_name);
 }
 
-int	ClapTrap::getHP(void) const
+unsigned int	ClapTrap::getHP(void) const
 {
 	return(this->_hp);
 }
 
-int	ClapTrap::getEP(void) const
+unsigned int	ClapTrap::getEP(void) const
 {
 	return(this->_ep);
 }
 
-int	ClapTrap::getAtk(void) const
+unsigned int	ClapTrap::getAtk(void) const
 {
 	return(this->_atk);
 }
@@ -125,6 +137,7 @@ void	ClapTrap::_setStats(std::string name, int hp, int ep, int atk)
 	this->_name = name;
 	this->_hp = hp;
 	this->_ep = ep;
+	this->_atk = atk;
 }
 
 void	ClapTrap::_setStats(int hp, int ep)
@@ -143,10 +156,8 @@ void	ClapTrap::_setStats(int ep)
 */
 std::ostream&	operator<<(std::ostream &o, ClapTrap const &inst)
 {
-	o << "Name: " + inst.getName();
-	o << " | HP: " + inst.getHP();
-	o << " | EP: " + inst.getEP();
-	o << " | Atk: " + inst.getAtk();
+	o << "Name: " << inst.getName() << " | HP: " << inst.getHP() << \
+	" | EP: " << inst.getEP() << " | Atk: " << inst.getAtk();
 	return (o);
 }
 

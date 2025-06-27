@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/06/27 02:18:03 by mintan           ###   ########.fr        #
+#    Updated: 2025/06/27 23:51:19 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,15 @@ DEP_FLAGS = -MMD -MP
 NAME = partpalc
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = main Fixed
+SRC_NAMES = ClapTrap main
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
 
 # Target to make using Make all
-all: $(NAME) print_art
+# all: $(NAME) print_art
+all: $(NAME)
+
 
 # Generate the mandatory programme by compiling the objects + track header
 # dependencies

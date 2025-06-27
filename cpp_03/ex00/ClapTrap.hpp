@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:19:27 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/27 13:51:25 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/28 00:49:57 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,16 @@
 
 #include <iostream>
 
-#define DEFAULT_HP 10
-#define DEFAULT_EP 10
-#define DEFAULT_ATK 0
+/* Original Values */
+// #define DEFAULT_HP 10
+// #define DEFAULT_EP 10
+// #define DEFAULT_ATK 0
+// #define DEFAULT_REPAIR 1
+
+/* Test Values */
+#define DEFAULT_HP 5
+#define DEFAULT_EP 3
+#define DEFAULT_ATK 2
 #define DEFAULT_REPAIR 1
 
 class	ClapTrap
@@ -34,16 +41,16 @@ class	ClapTrap
 		void	beRepaired(unsigned int amount);
 
 		/* Getters */
-		std::string	getName(void) const;
-		int			getHP(void) const;
-		int			getEP(void) const;
-		int			getAtk(void) const;
+		std::string		getName(void) const;
+		unsigned int	getHP(void) const;
+		unsigned int	getEP(void) const;
+		unsigned int	getAtk(void) const;
 
 	private:
-		std::string	_name;
-		int			_hp;
-		int			_ep;
-		int			_atk;
+		std::string		_name;
+		unsigned int	_hp;
+		unsigned int	_ep;
+		unsigned int	_atk;
 
 		/* Setters */
 		void	_setStats(std::string name, int hp, int ep, int atk);
