@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:23:29 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/28 14:45:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/28 14:47:35 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 /* Description: Default constructor that initialises an instance of ClapTrap
    with default values
 */
-ClapTrap::ClapTrap(std::string name):
-	_name(name), _hp(DEFAULT_HP), _ep(DEFAULT_EP), _atk(DEFAULT_ATK)
+ClapTrap::ClapTrap(std::string name, int hp, int ep, int atk):
+	_name(name), _hp(hp), _ep(ep), _atk(atk)
 {
 	std::cout << "Default constructor called" << std::endl;
-	std::cout << "Arise! " << *this <<std::endl;
+	std::cout << "Arise! " << *this << std::endl;
 	return;
 }
 
@@ -68,7 +68,7 @@ void	ClapTrap::attack(const std::string &target)
 		<< " causing " << this->getAtk() << " points of damage!" << std::endl;
 		if (this->getAtk() == 0)
 			std::cout << "(weak sauce..)" << std::endl;
-		this->_setStats(this->getEP() - DEFAULT_ENERGYCONS);
+		this->_setStats(this->getEP() - DEFAULT_CLAP_ENERGYCONS);
 	}
 	std::cout << *this << std::endl;
 }
@@ -104,7 +104,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	{
 		std::cout << "ClapTrap: " << this->getName() << " repairs itself " \
 		<< std::endl;
-		this->_setStats(this->getHP() + amount, this->getEP() - DEFAULT_ENERGYCONS);
+		this->_setStats(this->getHP() + amount, this->getEP() - DEFAULT_CLAP_ENERGYCONS);
 	}
 	std::cout << *this << std::endl;
 }

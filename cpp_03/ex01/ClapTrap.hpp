@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:19:27 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/28 14:12:58 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/28 14:44:00 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,23 @@
 #include <iostream>
 
 /* Original Values */
-// #define DEFAULT_HP 10
-// #define DEFAULT_EP 10
-// #define DEFAULT_ATK 0
-// #define DEFAULT_REPAIR 1
-// #define DEFAULT_ENERGYCONS 1
+#define DEFAULT_CLAP_HP 10
+#define DEFAULT_CLAP_EP 10
+#define DEFAULT_CLAP_ATK 0
+#define DEFAULT_CLAP_REPAIR 1
+#define DEFAULT_CLAP_ENERGYCONS 1
 
 
 /* Test Values */
-#define DEFAULT_HP 5
-#define DEFAULT_EP 3
-#define DEFAULT_ATK 2
-#define DEFAULT_REPAIR 1
-#define DEFAULT_ENERGYCONS 1
-
+// #define DEFAULT_HP 5
+// #define DEFAULT_EP 3
+// #define DEFAULT_ATK 2
+// #define DEFAULT_REPAIR 1
 
 class	ClapTrap
 {
 	public:
-		ClapTrap(std::string name);
+		ClapTrap(std::string name, int hp, int ep, int atk);
 		ClapTrap(ClapTrap const &src);
 		~ClapTrap(void);
 		ClapTrap&	operator=(ClapTrap const &src);
@@ -50,11 +48,13 @@ class	ClapTrap
 		unsigned int	getEP(void) const;
 		unsigned int	getAtk(void) const;
 
-	private:
+	protected:
 		std::string		_name;
 		unsigned int	_hp;
 		unsigned int	_ep;
 		unsigned int	_atk;
+
+	private:
 
 		/* Setters */
 		void	_setStats(std::string name, int hp, int ep, int atk);
