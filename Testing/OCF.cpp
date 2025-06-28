@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   OCF.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:49:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/22 14:01:56 by mintan           ###   ########.fr       */
+/*   Updated: 2025/06/27 03:36:53 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ OCF::OCF(OCF const &source)
 
 OCF::~OCF(void)
 {
-	std::cout << "Desctructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 	return;
 }
 
@@ -54,5 +54,6 @@ std::ostream&	operator<<(std::ostream &o, OCF const &inst)
 {
 	std::cout << "Output using operator:<< called" << std::endl;
 	o << inst.getVal();
+	o<< " test";
 	return (o);
 }
