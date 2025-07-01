@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 14:07:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/01 11:37:31 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 17:28:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 #define DEFAULT_SCAV_REPAIR 15
 #define DEFAULT_SCAV_ENERGYCONS 10
 
-class	ScavTrap: public ClapTrap
+class	ScavTrap: virtual public ClapTrap
 {
 	public:
-		ScavTrap(std::string name, int hp, int ep, int atk);
+		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const &src);
 		~ScavTrap(void);
 		ScavTrap&	operator=(ScavTrap const &src);

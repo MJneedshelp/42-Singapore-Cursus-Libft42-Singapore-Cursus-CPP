@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:23:29 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/01 11:37:28 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 17:29:12 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /* Description: Default constructor that initialises an instance of ScavTrap
    with default values
 */
-ScavTrap::ScavTrap(std::string name, int hp, int ep, int atk):
-	ClapTrap(name, hp, ep, atk),
+ScavTrap::ScavTrap(std::string name):
+	ClapTrap(name, DEFAULT_SCAV_HP, DEFAULT_SCAV_EP, DEFAULT_SCAV_ATK),
 	gateKeepMode(false)
 {
 	std::cout << "Default constructor called" << std::endl;

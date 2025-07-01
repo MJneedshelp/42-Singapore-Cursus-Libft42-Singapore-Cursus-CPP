@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/01 11:22:49 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/01 12:12:20 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,13 @@ STD_FLAG = -std=c++98
 DEP_FLAGS = -MMD -MP
 
 # Target Executable
-NAME = clappityclap
+NAME = fraggityfrag
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = ClapTrap main
+SRC_NAMES = ClapTrap ScavTrap FragTrap main
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
-
 # Target to make using Make all
 # all: $(NAME) print_art
 all: $(NAME)

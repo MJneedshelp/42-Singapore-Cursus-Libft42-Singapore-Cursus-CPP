@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+         #
+#    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/06/28 15:18:49 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/01 11:22:18 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ STD_FLAG = -std=c++98
 DEP_FLAGS = -MMD -MP
 
 # Target Executable
-NAME = scavityscav
+NAME = scavvityscav
 
 # Source, Object and Dependency (headers) files
 SRC_NAMES = ClapTrap ScavTrap main
@@ -25,9 +25,7 @@ SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
 # Target to make using Make all
-# all: $(NAME) print_art
-all: $(NAME)
-
+all: $(NAME) print_art
 
 # Generate the mandatory programme by compiling the objects + track header
 # dependencies
