@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 14:07:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/01 17:28:25 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 18:52:37 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class	ScavTrap: virtual public ClapTrap
 		void	guardGate(void);
 		bool	getMode(void) const;
 
-	private:
+	protected:
 		bool	gateKeepMode;
 };
 

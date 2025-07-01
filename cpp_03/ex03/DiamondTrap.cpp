@@ -6,51 +6,56 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:23:29 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/01 17:24:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 19:32:04 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 /* Description: Default constructor that initialises an instance of DiamondTrap
    with default values
 */
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(std::string name):
+	ClapTrap(name + "_clap_name", DEFAULT_CLAP_HP, DEFAULT_CLAP_EP, DEFAULT_CLAP_ATK),
+	ScavTrap(name), FragTrap(name), _name(name)
 {
+	this->_setStats(name, DEFAULT_FRAG_HP, DEFAULT_SCAV_EP, DEFAULT_FRAG_ATK);
 	std::cout << "Default constructor called" << std::endl;
-	std::cout << "Scavitty Scav! " << *this << std::endl;
+	std::cout << "Diamonddy Dia! " << *this << std::endl;
+	std::cout << *this << std::endl;
 	return;
 }
 
-/* Description: Copy constructor that copies an instance of ScavTrap
+/* Description: Copy constructor that copies an instance of DiamondTrap
    with default values
 */
-ScavTrap::ScavTrap(ScavTrap const &src):
-	ClapTrap(src)
+DiamondTrap::DiamondTrap(DiamondTrap const &src):
+	ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
 	std::cout << "Copy constructor called" << std::endl;
+	this->_name = src.getName();
 	*this = src;
-	std::cout << "[Copy] " << *this << std::endl;
+	std::cout << "[Replicate] " << *this << std::endl;
 	return;
 }
 
 /* Description: Default destructor
 */
-ScavTrap::~ScavTrap(void)
+DiamondTrap::~DiamondTrap(void)
 {
 	std::cout << "Default destructor called" << std::endl;
-	std::cout << this->getName() << " is scaved!" << std::endl;
+	std::cout << this->getName() << " is crystallised!" << std::endl;
 	return;
 }
 
 /* Description: Copy assignment operator
 */
-ScavTrap&	ScavTrap::operator=(ScavTrap const &src)
+DiamondTrap&	DiamondTrap::operator=(DiamondTrap const &src)
 {
 	if (this != &src)
 	{
-		this->_setStats(src.getName(), src.getHP(), src.getEP(), \
+		this->_name = src.getName();
+		this->_setStats(this->_name + "_clap_name", src.getHP(), src.getEP(), \
 		src.getAtk());
 		this->gateKeepMode = src.getMode();
 	}
@@ -58,6 +63,9 @@ ScavTrap&	ScavTrap::operator=(ScavTrap const &src)
 }
 
 /* Public Member Functions */
-
+void	DiamondTrap::attack(const std::string &target)
+{
+	ScavTrap::attack(target);
+}
 
 

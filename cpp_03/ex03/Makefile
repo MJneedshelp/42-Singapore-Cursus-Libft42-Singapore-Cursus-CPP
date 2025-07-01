@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/01 12:12:20 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/01 18:55:01 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ STD_FLAG = -std=c++98
 DEP_FLAGS = -MMD -MP
 
 # Target Executable
-NAME = fraggityfrag
+NAME = diamondust
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = ClapTrap ScavTrap FragTrap main
+SRC_NAMES = ClapTrap ScavTrap FragTrap DiamondTrap main
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
