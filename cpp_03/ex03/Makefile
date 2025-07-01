@@ -6,13 +6,13 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/01 18:55:01 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/02 00:04:32 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler + compile flags + dependency flags
 CXX = c++
-CXX_FLAGS = -Wall -Werror -Wextra
+CXX_FLAGS = -Wall -Werror -Wextra -Wshadow
 STD_FLAG = -std=c++98
 DEP_FLAGS = -MMD -MP
 

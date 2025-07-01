@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:23:29 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/01 19:32:04 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 23:55:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ DiamondTrap::DiamondTrap(std::string name):
 	ClapTrap(name + "_clap_name", DEFAULT_CLAP_HP, DEFAULT_CLAP_EP, DEFAULT_CLAP_ATK),
 	ScavTrap(name), FragTrap(name), _name(name)
 {
-	this->_setStats(name, DEFAULT_FRAG_HP, DEFAULT_SCAV_EP, DEFAULT_FRAG_ATK);
+	this->_name = name;
+	this->_hp = DEFAULT_FRAG_HP;
+	this->_ep = DEFAULT_SCAV_EP;
+	this->_atk = DEFAULT_FRAG_ATK;
 	std::cout << "Default constructor called" << std::endl;
 	std::cout << "Diamonddy Dia! " << *this << std::endl;
 	std::cout << *this << std::endl;
@@ -68,4 +71,26 @@ void	DiamondTrap::attack(const std::string &target)
 	ScavTrap::attack(target);
 }
 
+void	DiamondTrap::whoAmI(void) const
+{
+	std::cout << "Whooooo aaaaaaammmmmm I......." << std::endl;
+	std::cout << "DiamondTrap: " << this->_name << std::endl;
+	std::cout << "ClapTrap: " << this->ClapTrap::_name << std::endl;
+	std::cout << *this << std::endl;
+}
 
+std::string	DiamondTrap::getName(void) const
+{
+	return(this->_name);
+}
+
+/* Description: << operator overload to print out stats of the DiamondTrap
+   instance
+*/
+std::ostream&	operator<<(std::ostream &o, DiamondTrap const &inst)
+{
+	o << "Name: " << inst.getName() << " | HP: " << inst.getHP() << \
+	" | EP: " << inst.getEP() << " | Atk: " << inst.getAtk() << \
+	" | Gatekeep Mode: " << inst.getMode();
+	return (o);
+}
