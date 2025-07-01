@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 14:07:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/28 15:06:45 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 09:36:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,19 @@ class	ScavTrap: public ClapTrap
 {
 	public:
 		ScavTrap(std::string name, int hp, int ep, int atk);
+		ScavTrap(ScavTrap const &src);
 		~ScavTrap(void);
+		ScavTrap&	operator=(ScavTrap const &src);
 
-
+		/* Public Member Functions */
+		void	attack(const std::string &target);
+		void	guardGate(void);
+		bool	getMode(void) const;
 
 	private:
-
-
-
-
-
-
+		bool	gateKeepMode;
 };
 
 std::ostream&	operator<<(std::ostream &o, ScavTrap const &inst);
-
 
 #endif

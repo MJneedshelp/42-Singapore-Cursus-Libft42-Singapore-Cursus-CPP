@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:23:29 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/28 14:47:35 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 10:24:51 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(std::string name, int hp, int ep, int atk):
 	_name(name), _hp(hp), _ep(ep), _atk(atk)
 {
 	std::cout << "Default constructor called" << std::endl;
-	std::cout << "Arise! " << *this << std::endl;
+	std::cout << "Clappity Clap! " << *this << std::endl;
 	return;
 }
 
@@ -39,7 +39,7 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 ClapTrap::~ClapTrap(void)
 {
 	std::cout << "Default destructor called" << std::endl;
-	std::cout << this->_name << " is destroyed!" << std::endl;
+	std::cout << this->_name << " is clapped!" << std::endl;
 	return;
 }
 
@@ -64,7 +64,7 @@ void	ClapTrap::attack(const std::string &target)
 		<< std::endl;
 	else
 	{
-		std::cout << "ClapTrap: " << this->getName() << " attacks " << target \
+		std::cout << "ClapTrap: " << this->getName() << " uses Clappity Clap on " << target \
 		<< " causing " << this->getAtk() << " points of damage!" << std::endl;
 		if (this->getAtk() == 0)
 			std::cout << "(weak sauce..)" << std::endl;

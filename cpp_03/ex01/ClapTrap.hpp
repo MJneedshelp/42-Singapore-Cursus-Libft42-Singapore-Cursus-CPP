@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:19:27 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/28 14:44:00 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/01 07:59:21 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ class	ClapTrap
 		ClapTrap(std::string name, int hp, int ep, int atk);
 		ClapTrap(ClapTrap const &src);
 		~ClapTrap(void);
-		ClapTrap&	operator=(ClapTrap const &src);
+		ClapTrap&		operator=(ClapTrap const &src);
 
 		/* Public Member Functions */
-		void	attack(const std::string &target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		virtual void	attack(const std::string &target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 
 		/* Getters */
 		std::string		getName(void) const;
@@ -49,12 +49,11 @@ class	ClapTrap
 		unsigned int	getAtk(void) const;
 
 	protected:
+		/* ClapTrap attributes */
 		std::string		_name;
 		unsigned int	_hp;
 		unsigned int	_ep;
 		unsigned int	_atk;
-
-	private:
 
 		/* Setters */
 		void	_setStats(std::string name, int hp, int ep, int atk);
