@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 02:19:27 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/28 14:12:58 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/03 09:03:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 #include <iostream>
 
 /* Original Values */
-// #define DEFAULT_HP 10
-// #define DEFAULT_EP 10
-// #define DEFAULT_ATK 0
-// #define DEFAULT_REPAIR 1
-// #define DEFAULT_ENERGYCONS 1
+#define DEFAULT_HP 10
+#define DEFAULT_EP 10
+#define DEFAULT_ATK 0
+#define DEFAULT_REPAIR 1
+#define DEFAULT_ENERGYCONS 1
 
 
 /* Test Values */
-#define DEFAULT_HP 5
-#define DEFAULT_EP 3
-#define DEFAULT_ATK 2
-#define DEFAULT_REPAIR 1
-#define DEFAULT_ENERGYCONS 1
+// #define DEFAULT_HP 5
+// #define DEFAULT_EP 3
+// #define DEFAULT_ATK 2
+// #define DEFAULT_REPAIR 1
+// #define DEFAULT_ENERGYCONS 1
 
 
 class	ClapTrap

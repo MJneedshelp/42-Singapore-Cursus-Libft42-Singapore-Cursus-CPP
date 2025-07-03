@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/01 11:22:49 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/03 09:00:29 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,7 @@ OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
 
 # Target to make using Make all
-# all: $(NAME) print_art
-all: $(NAME)
-
+all: $(NAME) print_art
 
 # Generate the mandatory programme by compiling the objects + track header
 # dependencies
