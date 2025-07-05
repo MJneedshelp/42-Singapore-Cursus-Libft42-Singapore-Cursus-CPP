@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:35:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/05 15:09:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/05 16:56:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ANIMAL_H
 
 #include <iostream>
+#include <string>
 
 #define	DEF_ANIMAL_TYPE "Mew"
 

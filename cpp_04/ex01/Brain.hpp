@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:35:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/05 16:57:05 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/05 17:15:00 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	WRONGCAT_H
-# define WRONGCAT_H
+#ifndef	BRAIN_H
+# define BRAIN_H
 
 #include <iostream>
 #include <string>
-#include "WrongAnimal.hpp"
 
-#define	DEF_WRONG_CAT_TYPE "WRONG CAT"
+#define	NO_IDEAS 100
 
-class WrongCat: public WrongAnimal
+class Brain
 {
 	public:
-		WrongCat(void);
-		WrongCat(WrongCat const &src);
-		~WrongCat(void);
-		WrongCat&	operator=(WrongCat const &src);
-		void	makeSound(void) const;
+		Brain(void);
+		Brain(Brain const &src);
+		~Brain(void);
+		Brain&	operator=(Brain const &src);
+		void	setIdea(int idx, std::string thought);
+		std::string	getIdea(int idx);
 
-	protected:
-		std::string	type;
+	private:
+		std::string	ideas[NO_IDEAS];
 };
 
 #endif

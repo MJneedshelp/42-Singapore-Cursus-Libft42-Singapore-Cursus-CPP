@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:35:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/05 15:31:18 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/05 16:56:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DOG_H
 
 #include <iostream>
+#include <string>
 #include "Animal.hpp"
 
 #define	DEF_DOG_TYPE "DOG"
