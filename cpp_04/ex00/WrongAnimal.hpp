@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Animal copy.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:35:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/05 15:09:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/05 15:42:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ANIMAL_H
-# define ANIMAL_H
+#ifndef	WRONGANIMAL_H
+# define WRONGANIMAL_H
 
 #include <iostream>
 
-#define	DEF_ANIMAL_TYPE "Mew"
+#define	DEF_WRONG_ANIMAL_TYPE "Mewtwo"
 
-class Animal
+class WrongAnimal
 {
 	public:
-		Animal(void);
-		Animal(Animal const &src);
-		virtual	~Animal(void);
-		Animal&	operator=(Animal const &src);
+		WrongAnimal(void);
+		WrongAnimal(WrongAnimal const &src);
+		virtual	~WrongAnimal(void);
+		WrongAnimal&	operator=(WrongAnimal const &src);
 		std::string		getType(void) const;
-		virtual	void	makeSound(void) const;
+		void	makeSound(void) const;
 
 	protected:
 		std::string	type;

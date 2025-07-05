@@ -1,55 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:40:22 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/05 15:15:29 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/05 15:34:23 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+#include "Dog.hpp"
+
 
 /*Description: Constructors and Destructors
 */
-Animal::Animal(void): type(DEF_ANIMAL_TYPE)
+Dog::Dog(void):
+	Animal(), type(DEF_DOG_TYPE)
 {
-	std::cout << "[Default Animal Constructor] And on the 6th day, animals were created. Mew mew mew!" << std::endl;
+	std::cout << "[Default Dog Constructor] Run jump run!" << std::endl;
 	return;
 }
 
-Animal::Animal(Animal const &src)
+Dog::Dog(Dog const &src):
+	Animal()
 {
-	std::cout << "[Copy Animal Constructor] You were created by humans to obey humans!!" << std::endl;
+	std::cout << "[Copy Dog Constructor] Woah who's this handsome dog?" << std::endl;
 	*this = src;
 	return;
 }
 
-Animal::~Animal(void)
+Dog::~Dog(void)
 {
-	std::cout << "[Default Animal Destructor] And all the animals were wiped out in the flood..." << std::endl;
+	std::cout << "[Default Dog Destructor] Woof woof...." << std::endl;
 	return;
 }
 
 
 /* Description: Copy assignment operator
 */
-Animal&	Animal::operator=(Animal const &src)
+Dog&	Dog::operator=(Dog const &src)
 {
 	if (this != &src)
 		this->type = src.type;
 	return (*this);
 }
 
-std::string	Animal::getType(void) const
+void	Dog::makeSound(void) const
 {
-	return (this->type);
-}
-
-void	Animal::makeSound(void) const
-{
+	std::cout << "Woof! Woof!" << std::endl;
 	return;
 }
 
