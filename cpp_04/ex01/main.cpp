@@ -6,13 +6,15 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 08:15:08 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/06 20:41:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/06 21:25:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+
+#define	NO_ANIMALS	5
 
 int	main(void)
 {
@@ -81,8 +83,34 @@ int	main(void)
 	std::cout << "[Dog 3 Brain Memory address]: " << d3.getBrainAddr() << std::endl;
 	std::cout << "[Dog 3, idea 24]: " << d3.woof(24) << std::endl;
 
+	std::cout << "\n================Ex01: It's raining cats and dogs================" << std::endl;
 
+	Animal	*zoo[NO_ANIMALS];
 
+	for (int i = 0; i < NO_ANIMALS; ++i)
+	{
+		std::cout << "Populating zoo: " << i << std::endl;
+		if (i < NO_ANIMALS / 2)
+			zoo[i] = new Cat();
+		else
+			zoo[i] = new Dog();
+	}
+
+	std::cout << "\n================Ex01: It's getting noisy here...================" << std::endl;
+
+	for (int i = 0; i < NO_ANIMALS; ++i)
+	{
+		std::cout << "1, 2, 3, Go: " << i << std::endl;
+		zoo[i]->makeSound();
+	}
+
+	std::cout << "\n================Ex01: Raining Destruction================" << std::endl;
+
+	for (int i = 0; i < NO_ANIMALS; ++i)
+	{
+		std::cout << "Depopulating zoo: " << i << std::endl;
+		delete zoo[i];
+	}
 
 	std::cout << "\n=============Test Destructors=============" << std::endl;
 	return (0);
