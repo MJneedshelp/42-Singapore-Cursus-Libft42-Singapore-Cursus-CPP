@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:40:22 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/05 17:10:51 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/06 08:14:35 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,17 @@ Brain&	Brain::operator=(Brain const &src)
 	}
 	return (*this);
 }
+
+/* Public Functions - Testing */
+
+void	Brain::setIdea(int idx, std::string thought)
+{
+	this->ideas[idx] = thought;
+}
+
+std::string	Brain::getIdea(int idx) const
+{
+	return (this->ideas[idx]);
+}
+
 
