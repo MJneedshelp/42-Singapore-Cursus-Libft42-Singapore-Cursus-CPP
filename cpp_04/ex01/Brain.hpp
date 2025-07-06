@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:35:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/06 08:22:45 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/06 18:01:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Brain
 		Brain(void);
 		Brain(Brain const &src);
 		~Brain(void);
-		Brain&	operator=(Brain const &src);
-		void	setIdea(int idx, std::string thought);
+		Brain&		operator=(Brain const &src);
+		void		setIdea(int idx, std::string thought);
 		std::string	getIdea(int idx) const;
 
 	private:
