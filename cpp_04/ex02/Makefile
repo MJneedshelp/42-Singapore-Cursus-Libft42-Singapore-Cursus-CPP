@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/08 06:17:38 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/08 06:17:49 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEP_FLAGS = -MMD -MP
 NAME = treeoflife
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = main Animal Cat Dog Brain
+SRC_NAMES = main AAnimal Cat Dog Brain
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
