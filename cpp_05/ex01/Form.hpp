@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:23:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/10 18:36:24 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@
 class	Form
 {
 	public:
-		Form(int gradeSign, int gradeExe);
+		Form(std::string name, int gradeSign, int gradeExe);
 		Form(Form const &src);
 		~Form(void);
-		Form&	operator=(Form const &src);
 
 		/* Getters and setters */
 		std::string	getName(void) const;
@@ -34,8 +33,6 @@ class	Form
 		int			getGradeSign(void) const;
 		int			getGradeExe(void) const;
 		void		beSigned(Bureaucrat const &drone);
-
-
 
 
 		/* Exceptions */
@@ -56,6 +53,8 @@ class	Form
 		const int			_gradeSign;
 		const int			_gradeExe;
 		void				_checkGrade(int grade) const;
+		/* Operator= is set as private to follow OCF. Not used as all members are const */
+		Form&	operator=(Form const &src);
 
 };
 

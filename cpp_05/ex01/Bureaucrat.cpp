@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:19:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:27:06 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/10 18:25:00 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	Bureaucrat::demote(void)
 	_checkGrade(this->_grade);
 }
 
+/* Exceptions */
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return("Grade cannot be higher than 1");
