@@ -6,109 +6,102 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:31:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 01:23:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
-	std::cout << "\n==========Basic OCF Tests==========" << std::endl;
+	std::cout << "\n==========Basic Form Tests==========" << std::endl;
 
-	Bureaucrat	b1("Mark S.", 2);
-	Bureaucrat	b2(b1);
-	Bureaucrat	b3("Helly R.", 150);
+	Form	f1("B17", 42, 24);
+	Form	f2(f1);
 
-	std::cout << "[Memory Address b1]: " << &b1 << std::endl;
-	std::cout << "[Memory Address b2]: " << &b2 << std::endl;
-	std::cout << "b1: " << b1 << std::endl;
-	std::cout << "b2: " << b2 << std::endl;
-	std::cout << "b3: " << b3 << std::endl;
-
-	std::cout << "[Promote b1]" << std::endl;
-	b1.promote();
-	std::cout << "b1: " << b1 << std::endl;
-
-	std::cout << "[Demote b1]" << std::endl;
-	b1.demote();
-	std::cout << "b1: " << b1 << std::endl;
+	std::cout << "[Memory Address f1]: " << &f1 << std::endl;
+	std::cout << "[Memory Address f2]: " << &f2 << std::endl;
+	std::cout << "f1: " << f1 << std::endl;
+	std::cout << "f2: " << f2 << std::endl;
 
 	std::cout << "\n==========Exception Test 1: Constructor - GradeTooHigh==========" << std::endl;
 	try
 	{
-		Bureaucrat	b4("Irving B.", 0);
+		Form	f3("G17", 0, 24);
 	}
-	catch(const Bureaucrat::GradeTooHighException &e)
+	catch(const Form::GradeTooHighException &e)
 	{
-		std::cout << "Instantiating with grade(0): " << e.what() << std::endl;
-		std::cout << "==========Exception Test 1: Success==========" << std::endl;
+		std::cout << "Instantiating with gradeSign(0): " << e.what() << std::endl;
+		std::cout << "==========Exception Test 1a: Success==========" << std::endl;
+	}
+	try
+	{
+		Form	f4("H55", 42, 0);
+	}
+	catch(const Form::GradeTooHighException &e)
+	{
+		std::cout << "Instantiating with gradeExe(0): " << e.what() << std::endl;
+		std::cout << "==========Exception Test 1b: Success==========" << std::endl;
 	}
 
 	std::cout << "\n==========Exception Test 2: Constructor - GradeTooLow==========" << std::endl;
 	try
 	{
-		Bureaucrat	b5("Dylan G.", 151);
+		Form	f5("Consent", 151, 24);
 	}
-	catch(const Bureaucrat::GradeTooLowException &e)
+	catch(const Form::GradeTooLowException &e)
 	{
-		std::cout << "Instantiating with grade(151): " << e.what() << std::endl;
-		std::cout << "==========Exception Test 2: Success==========" << std::endl;
+		std::cout << "Instantiating with gradeSign(151): " << e.what() << std::endl;
+		std::cout << "==========Exception Test 2a: Success==========" << std::endl;
 	}
-
-	std::cout << "\n==========Exception Test 3: Promotion==========" << std::endl;
 	try
 	{
-		Bureaucrat	b6("Milchick", 1);
-		std::cout << "b6: " << b6 << std::endl;
-		b6.promote();
+		Form	f6("Consent", 42, 151);
 	}
-	catch(const Bureaucrat::GradeTooHighException &e)
+	catch(const Form::GradeTooLowException &e)
 	{
-		std::cout << "Promoting b6 with grade(1): " << e.what() << std::endl;
-		std::cout << "==========Exception Test 3: Success==========" << std::endl;
+		std::cout << "Instantiating with gradeExe(151): " << e.what() << std::endl;
+		std::cout << "==========Exception Test 2b: Success==========" << std::endl;
 	}
 
-	std::cout << "\n==========Exception Test 4: Demotion==========" << std::endl;
+	std::cout << "\n==========Test 3: Signature (Form)==========" << std::endl;
+	Form		f7("Resignation", 42, 24);
+	Bureaucrat	b1("Mark S.", 42);
+
+	std::cout << "f7: " << f7 << std::endl;
+	std::cout << "b1: " << b1 << " Sign f7" << std::endl;
+	f7.beSigned(b1);
+	std::cout << "f7: " << f7 << std::endl;
+	std::cout << "==========Test 3a: Success==========" << std::endl;
+
+	Form		f8("Family Outing", 42, 24);
+	Bureaucrat	b2("Helly R.", 43);
+
+	std::cout << "f8: " << f8 << std::endl;
+	std::cout << "b2: " << b2 << " Sign f8" << std::endl;
 	try
 	{
-		Bureaucrat	b7("Burt G.", 150);
-		std::cout << "b7: " << b7 << std::endl;
-		b7.demote();
+		f8.beSigned(b2);
 	}
-	catch(const Bureaucrat::GradeTooLowException &e)
+	catch(const Form::GradeTooLowException &e)
 	{
-		std::cout << "Demoting b7 with grade(150): " << e.what() << std::endl;
-		std::cout << "==========Exception Test 4: Success==========" << std::endl;
+		std::cerr << e.what() << '\n';
+		std::cout << "f8: " << f8 << std::endl;
+		std::cout << "==========Test 3b: Success==========" << std::endl;
 	}
 
-	std::cout << "\n==========Exception Test 5: Memory Allocation==========" << std::endl;
-	Bureaucrat	*b8 = NULL;
-	try
-	{
-		b8 = new Bureaucrat("Miss Cobel", 150);
-		std::cout << "b8: " << *b8 << std::endl;
-		b8->demote();
-	}
-	catch(const Bureaucrat::GradeTooLowException &e)
-	{
-		delete(b8);
-		std::cout << "Demoting b8 with grade(150): " << e.what() << std::endl;
-		std::cout << "==========Exception Test 5: Success==========" << std::endl;
-	}
+	std::cout << "\n==========Test 4: Signature (Bureaucrat)==========" << std::endl;
+	Bureaucrat	b3("Irving B.", 2);
+	Form		f9("B150", 150, 150);
+	Form		f10("C1", 1, 1);
 
-	std::cout << "\n==========Exception Test 6: General==========" << std::endl;
-	try
-	{
-		Bureaucrat	b9("Eustice", 1);
-		std::cout << "b9: " << b9 << std::endl;
-		b9.promote();
-	}
-	catch(const std::exception &e)
-	{
-		std::cout << "Promoting b9 with grade(1): " << e.what() << std::endl;
-		std::cout << "==========Exception Test 6: Success==========" << std::endl;
-	}
+	std::cout << "b3: " << b3 << std::endl;
+	std::cout << "f9: " << f9 << std::endl;
+	std::cout << "f10: " << f10 << std::endl;
+	b3.signForm(f9);
+	b3.signForm(f9);
+	b3.signForm(f10);
 
 	std::cout << "\n==========Destructor Test==========" << std::endl;
 

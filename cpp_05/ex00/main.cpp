@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:31:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/10 23:05:05 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	main(void)
 	std::cout << "b1: " << b1 << std::endl;
 	std::cout << "b2: " << b2 << std::endl;
 	std::cout << "b3: " << b3 << std::endl;
+
+	std::cout << "====Assign b1 to b3: Copies Grade only====" << std::endl;
+	b3 = b1;
+	std::cout << "b3: " << b3 << std::endl;
+
 
 	std::cout << "[Promote b1]" << std::endl;
 	b1.promote();

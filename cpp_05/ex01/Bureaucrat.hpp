@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:26:30 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 01:10:24 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
+
+/* Forward declaration */
+class	Form;
 
 class	Bureaucrat
 {
@@ -33,6 +36,9 @@ class	Bureaucrat
 		int			getGrade(void) const;
 		void		promote(void);
 		void		demote(void);
+
+		/* Member function */
+		void		signForm(Form &form) const;
 
 		/* Exceptions */
 		class	GradeTooHighException: public std::exception
@@ -50,7 +56,6 @@ class	Bureaucrat
 		const std::string	_name;
 		int					_grade;
 		void				_checkGrade(int grade) const;
-
 };
 
 #endif
