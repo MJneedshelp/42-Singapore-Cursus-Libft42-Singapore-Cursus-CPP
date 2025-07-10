@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:26:30 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/10 17:23:40 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_H
-# define BUREAUCRAT_H
+#ifndef FORM_H
+# define FORM_H
 
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include "Bureaucrat.hpp"
 
-#define MAX_GRADE 1
-#define MIN_GRADE 150
+#define FORM_NAME "17B"
 
-class	Bureaucrat
+class	Form
 {
 	public:
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(Bureaucrat const &src);
-		~Bureaucrat(void);
-		Bureaucrat&	operator=(Bureaucrat const &src);
+		Form(int gradeSign, int gradeExe);
+		Form(Form const &src);
+		~Form(void);
+		Form&	operator=(Form const &src);
 
 		/* Getters and setters */
 		std::string	getName(void) const;
-		int			getGrade(void) const;
-		void		promote(void);
-		void		demote(void);
+		bool		getSigned(void) const;
+		int			getGradeSign(void) const;
+		int			getGradeExe(void) const;
+		void		beSigned(Bureaucrat const &drone);
+
+
+
 
 		/* Exceptions */
 		class	GradeTooHighException: public std::exception
@@ -48,11 +52,13 @@ class	Bureaucrat
 
 	private:
 		const std::string	_name;
-		int					_grade;
+		bool				_signed;
+		const int			_gradeSign;
+		const int			_gradeExe;
 		void				_checkGrade(int grade) const;
 
 };
 
 #endif
 
-std::ostream& operator<<(std::ostream&, Bureaucrat const &inst);
+std::ostream& operator<<(std::ostream&, Form const &inst);
