@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 12:31:43 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 16:28:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,24 @@ class	AForm
 			public:
 				const char*	what() const throw();
 		};
+		class	GradeExeException: public std::exception
+		{
+			public:
+				const char*	what() const throw();
+		};
+		class	SignExeException: public std::exception
+		{
+			public:
+				const char*	what() const throw();
+		};
 
 		/* Member Functions */
 		virtual	void	execute(Bureaucrat const &executor) const = 0;
+
+	protected:
+		void	checkExeGrade(Bureaucrat const &executor) const;
+		void	checkExeSign(void) const;
+
 
 	private:
 		const std::string	_name;
@@ -56,7 +71,6 @@ class	AForm
 
 		/* Operator= is set as private to follow OCF. Not used as all members are const */
 		AForm&	operator=(AForm const &inst);
-
 };
 
 #endif

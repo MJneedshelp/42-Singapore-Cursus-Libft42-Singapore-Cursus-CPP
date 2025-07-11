@@ -6,15 +6,14 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:32 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 13:29:45 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 16:23:47 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
-
-ShrubberyCreationForm::ShrubberyCreationForm(std::string &target):
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target):
 	AForm(SCF_NAME, SCF_SIGN_GRADE, SCF_EXE_GRADE),	_target(target)
 {
 	return;
@@ -28,10 +27,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 /* Description: function to create a file with trees inside */
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-
+	this->checkExeSign();
+	this->checkExeGrade(executor);
+	this->_transplantTree();
 }
-
-
 
 /* Helper functions */
 void	ShrubberyCreationForm::_brushBush(std::ofstream &file)

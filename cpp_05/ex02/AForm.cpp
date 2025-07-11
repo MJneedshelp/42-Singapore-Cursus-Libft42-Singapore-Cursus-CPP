@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:20:47 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 12:05:21 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 16:28:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,34 @@ const char*	AForm::GradeTooLowException::what() const throw()
 	return("[Construction]: Grade cannot be lower than 150 | [Signing]: Bureaucrat's level is too low to sign");
 }
 
+const char*	AForm::GradeExeException::what() const throw()
+{
+	return("[Grade too low to execute] Your boss' approval is required");
+}
+
+const char*	AForm::SignExeException::what() const throw()
+{
+	return("[Signature required to execute] Call yourself a bureaucrat. The signature is basic!");
+}
+
 void	AForm::_checkGrade(int grade) const
 {
 	if (grade < MAX_GRADE)
 		throw(GradeTooHighException());
 	if (grade > MIN_GRADE)
 		throw(GradeTooLowException());
+}
+
+void	AForm::checkExeGrade(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() > this->_gradeExe)
+		throw(GradeExeException());
+}
+
+void	AForm::checkExeSign(void) const
+{
+	if (!this->getSigned())
+		throw(SignExeException());
 }
 
 /* Operator overload << */

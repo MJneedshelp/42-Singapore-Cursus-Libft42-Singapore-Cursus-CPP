@@ -6,16 +6,24 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 01:23:43 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 16:27:17 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
 
 int	main(void)
 {
-	std::cout << "\n==========Basic Form Tests==========" << std::endl;
+	std::cout << "\n=======Basic ShrubberyCreationForm Tests=======" << std::endl;
+
+	AForm	*f1 = new ShrubberyCreationForm("YourHead");
+
+
+
+
 
 	Form	f1("B17", 42, 24);
 	Form	f2(f1);

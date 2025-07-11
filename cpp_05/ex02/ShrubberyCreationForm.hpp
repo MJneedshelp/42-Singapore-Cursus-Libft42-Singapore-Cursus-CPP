@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 13:28:07 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 16:19:57 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@
 #define SCF_SIGN_GRADE 145
 #define SCF_EXE_GRADE 137
 
-
 class ShrubberyCreationForm: public AForm
 {
 	public:
-		ShrubberyCreationForm(std::string &target);
+		ShrubberyCreationForm(std::string const &target);
 		~ShrubberyCreationForm(void);
 
 		/* Member Functions */
@@ -38,7 +37,6 @@ class ShrubberyCreationForm: public AForm
 		   not be copied */
 		ShrubberyCreationForm(ShrubberyCreationForm const &src);
 		ShrubberyCreationForm& operator=(ShrubberyCreationForm const &inst);
-
 };
 
 #endif
