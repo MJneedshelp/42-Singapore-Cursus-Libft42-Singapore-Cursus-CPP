@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 12:49:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 13:28:07 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SHRUBBERYCREATIONFORM_H
 
 #include "AForm.hpp"
+#include <fstream>
 
 #define SCF_NAME "BREEDBUSH"
 #define SCF_SIGN_GRADE 145
@@ -31,8 +32,8 @@ class ShrubberyCreationForm: public AForm
 
 	private:
 		std::string	_target;
-		void		_brushBush(void) const;
-
+		static void	_brushBush(std::ofstream &file);
+		void		_transplantTree(void) const;
 		/* Unused OCF class members - No use case since signatures should
 		   not be copied */
 		ShrubberyCreationForm(ShrubberyCreationForm const &src);
