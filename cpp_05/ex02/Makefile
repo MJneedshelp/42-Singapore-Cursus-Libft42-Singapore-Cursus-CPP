@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/10 23:10:20 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/11 16:45:17 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEP_FLAGS = -MMD -MP
 NAME = lumon
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = main Bureaucrat Form
+SRC_NAMES = main Bureaucrat AForm ShrubberyCreationForm
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)

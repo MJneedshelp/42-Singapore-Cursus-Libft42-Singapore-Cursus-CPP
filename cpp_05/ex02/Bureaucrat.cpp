@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:19:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 01:25:33 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 16:44:00 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	Bureaucrat::demote(void)
 	_checkGrade(this->_grade);
 }
 
-void	Bureaucrat::signForm(Form &form) const
+void	Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
