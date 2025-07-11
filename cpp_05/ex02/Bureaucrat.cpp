@@ -6,12 +6,12 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:19:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 16:44:00 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 17:07:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /* Constructors and Destructors */
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
@@ -71,7 +71,7 @@ void	Bureaucrat::signForm(AForm &form) const
 		form.beSigned(*this);
 		std::cout << *this << " signed " << form << std::endl;
 	}
-	catch(Form::GradeTooLowException &e)
+	catch(AForm::GradeTooLowException &e)
 	{
 		std::cout << *this << " could not sign the form: " << form << \
 		" | Reason: " << e.what() << std::endl;

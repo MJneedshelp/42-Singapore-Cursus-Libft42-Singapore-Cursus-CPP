@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 16:19:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 17:12:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "AForm.hpp"
 #include <fstream>
+#include <string>
 
 #define SCF_NAME "BREEDBUSH"
 #define SCF_SIGN_GRADE 145

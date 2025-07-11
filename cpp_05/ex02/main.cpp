@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 16:44:55 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 17:37:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,32 @@
 
 int	main(void)
 {
-	std::cout << "\n=======Basic ShrubberyCreationForm Tests=======" << std::endl;
+	std::cout << "\n=======01. Basic ShrubberyCreationForm Tests=======" << std::endl;
 
-	ShrubberyCreationForm	f1("YourHead");
 	Bureaucrat				b1("Jim", 137);
+	ShrubberyCreationForm	f1("YourHead");
+	ShrubberyCreationForm	f2("HisHead");
 
-	std::cout << "f1: " << f1 << std::endl;
 	std::cout << "b1: " << b1 << std::endl;
+	std::cout << "f1: " << f1 << std::endl;
+	std::cout << "f2: " << f2 << std::endl;
+
 	b1.signForm(f1);
 	std::cout << "f1: " << f1 << std::endl;
+	f1.execute(b1);
+	std::cout << "=======01a. ShrubberyCreationForm Executed=======" << std::endl;
+
+	try
+	{
+		f2.execute(b1);
+	}
+	catch(const AForm::SignExeException &e)
+	{
+		std::cerr << e.what() << '\n';
+		std::cout << "=======01b. ShrubberyCreationForm Throw Signature=======" << std::endl;
+	}
+
+
 
 
 

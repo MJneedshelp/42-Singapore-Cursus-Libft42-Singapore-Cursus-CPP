@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:32 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 16:23:47 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/11 17:16:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	ShrubberyCreationForm::_brushBush(std::ofstream &file)
 
 void	ShrubberyCreationForm::_transplantTree(void) const
 {
-	std::ofstream	file(this->_target + "_shrubbery");
+	std::string		fileName = this->_target + "_shrubbery";
+	std::ofstream	file(fileName.c_str());
 
 	this->_brushBush(file);
 	file.close();
