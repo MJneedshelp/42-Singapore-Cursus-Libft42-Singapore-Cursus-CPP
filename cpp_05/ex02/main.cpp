@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 17:37:28 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 13:32:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ int	main(void)
 
 	Bureaucrat				b1("Jim", 137);
 	ShrubberyCreationForm	f1("YourHead");
-	ShrubberyCreationForm	f2("HisHead");
 
 	std::cout << "b1: " << b1 << std::endl;
 	std::cout << "f1: " << f1 << std::endl;
-	std::cout << "f2: " << f2 << std::endl;
 
+	std::cout << "\n=======01a. ShrubberyCreationForm - Execution=======" << std::endl;
 	b1.signForm(f1);
 	std::cout << "f1: " << f1 << std::endl;
 	f1.execute(b1);
-	std::cout << "=======01a. ShrubberyCreationForm Executed=======" << std::endl;
 
+	std::cout << "\n=======01b. ShrubberyCreationForm - Throw Signature=======" << std::endl;
+	ShrubberyCreationForm	f2("HisHead");
+	std::cout << "f2: " << f2 << std::endl;
 	try
 	{
 		f2.execute(b1);
@@ -39,8 +40,28 @@ int	main(void)
 	catch(const AForm::SignExeException &e)
 	{
 		std::cerr << e.what() << '\n';
-		std::cout << "=======01b. ShrubberyCreationForm Throw Signature=======" << std::endl;
 	}
+
+	std::cout << "\n=======01c. ShrubberyCreationForm - Throw Exe Grade=======" << std::endl;
+	Bureaucrat				b2("Dwight", 145);
+	ShrubberyCreationForm	f3("TheirHead");
+
+	std::cout << "b2: " << b2 << std::endl;
+	std::cout << "f3: " << f3 << std::endl;
+	b2.signForm(f3);
+	std::cout << "f3: " << f3 << std::endl;
+	try
+	{
+		f3.execute(b2);	
+	}
+	catch(const AForm::GradeExeException &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+
+
+
 
 
 

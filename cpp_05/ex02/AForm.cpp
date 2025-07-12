@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:20:47 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 16:28:33 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 13:32:46 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	AForm::checkExeSign(void) const
 std::ostream& operator<<(std::ostream &o, AForm const &inst)
 {
 	o << std::boolalpha << "AForm: " << inst.getName() << " | Signed?: " << \
-	inst.getSigned() << " | Grade to Sign:  " << inst.getGradeSign() << \
+	inst.getSigned() << " | Grade to Sign: " << inst.getGradeSign() << \
 	" | Grade to Execute: " << inst.getGradeExe();
 	return (o);
 }
