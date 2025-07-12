@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 14:49:39 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 16:57:15 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
 
 
 
@@ -69,24 +71,24 @@ int	main(void)
 	std::cout << "b3: " << b3 << std::endl;
 	std::cout << "f4: " << f4 << std::endl;
 
-	std::cout << "\n=======01a. RobotomyRequestForm - Execution=======" << std::endl;
+	std::cout << "\n=======02a. RobotomyRequestForm - Execution=======" << std::endl;
 	b3.signForm(f4);
 	std::cout << "f4: " << f4 << std::endl;
 	f4.execute(b3);
 
-	std::cout << "\n=======01b. RobotomyRequestForm - Throw Signature=======" << std::endl;
+	std::cout << "\n=======02b. RobotomyRequestForm - Throw Signature=======" << std::endl;
 	RobotomyRequestForm		f5("Angela");
-	std::cout << "f2: " << f2 << std::endl;
+	std::cout << "f5: " << f5 << std::endl;
 	try
 	{
-		f2.execute(b3);
+		f5.execute(b3);
 	}
 	catch(const AForm::SignExeException &e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << "\n=======01c. RobotomyRequestForm - Throw Exe Grade=======" << std::endl;
+	std::cout << "\n=======02c. RobotomyRequestForm - Throw Exe Grade=======" << std::endl;
 	Bureaucrat				b4("Andy", 72);
 	RobotomyRequestForm		f6("Toby");
 
@@ -103,8 +105,47 @@ int	main(void)
 		std::cerr << e.what() << '\n';
 	}
 
+	std::cout << "\n=======03. Basic PresidentialForm Tests=======" << std::endl;
 
+	Bureaucrat				b5("Darryl", 1);
+	PresidentialPardonForm	f7("Creed");
 
+	std::cout << "b5: " << b5 << std::endl;
+	std::cout << "f7: " << f7 << std::endl;
+
+	std::cout << "\n=======03a. PresidentialPardonForm - Execution=======" << std::endl;
+	b5.signForm(f7);
+	std::cout << "f7: " << f7 << std::endl;
+	f7.execute(b5);
+
+	std::cout << "\n=======03b. PresidentialPardonForm - Throw Signature=======" << std::endl;
+	PresidentialPardonForm	f8("Gabe");
+	std::cout << "f8: " << f8 << std::endl;
+	try
+	{
+		f8.execute(b5);
+	}
+	catch(const AForm::SignExeException &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "\n=======03c. PresidentialPardonForm - Throw Exe Grade=======" << std::endl;
+	Bureaucrat				b6("Jan", 24);
+	PresidentialPardonForm	f9("Kevin");
+
+	std::cout << "b6: " << b6 << std::endl;
+	std::cout << "f9: " << f9 << std::endl;
+	b6.signForm(f9);
+	std::cout << "f9: " << f9 << std::endl;
+	try
+	{
+		f9.execute(b6);
+	}
+	catch(const AForm::GradeExeException &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
 
 

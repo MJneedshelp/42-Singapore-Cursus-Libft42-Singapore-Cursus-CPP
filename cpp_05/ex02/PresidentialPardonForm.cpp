@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:32 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 16:41:36 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 16:59:36 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 /* Helper functions */
 void	PresidentialPardonForm::_presidentialPardon(void) const
 {
-	std::cout << "[PLife is wasted on the living.] You are free: " << \
+	std::cout << "[Life is wasted on the living] You are free: " << \
 	this->_target << std::endl;
 }
