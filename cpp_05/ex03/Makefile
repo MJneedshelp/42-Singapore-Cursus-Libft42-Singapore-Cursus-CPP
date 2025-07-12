@@ -1,0 +1,64 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
+#    Updated: 2025/07/12 16:58:16 by mintan           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Compiler + compile flags + dependency flags
+CXX = c++
+CXX_FLAGS = -Wall -Werror -Wextra
+STD_FLAG = -std=c++98
+DEP_FLAGS = -MMD -MP
+
+# Target Executable
+NAME = lumon
+
+# Source, Object and Dependency (headers) files
+SRC_NAMES = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm \
+			PresidentialPardonForm
+SRCS = $(addsuffix .cpp, $(SRC_NAMES))
+OBJ = $(SRCS:.cpp=.o)
+DEP = $(OBJ:.o=.d)
+
+# Target to make using Make all
+all: $(NAME) print_art
+
+# Generate the mandatory programme by compiling the objects + track header
+# dependencies
+$(NAME): $(OBJ)
+	$(CXX) $(OBJ) -o $@
+
+-include $(DEP)
+
+# Generate all the .o files from the .c files for the programme
+%.o: %.cpp
+	$(CXX) $(CXX_FLAGS) $(STD_FLAG) $(DEP_FLAGS) -c $< -o $@
+
+# Clear the build files
+clean:
+	rm -f $(OBJ) $(DEP)
+
+fclean: clean
+	rm -f $(NAME)
+
+# Rule to rebuild the target
+re:	fclean all
+
+# Phony targets
+.PHONY: all clean re fclean
+
+print_art:
+	@echo " ad88888ba                                                                                                     "
+	@echo "d8\"     \"8b                                                                                                    "
+	@echo "Y8,                                                                                                            "
+	@echo "\`Y8aaaaa,     ,adPPYba,  8b       d8   ,adPPYba,  8b,dPPYba,  ,adPPYYba,  8b,dPPYba,    ,adPPYba,   ,adPPYba,  "
+	@echo "  \`\"\"\"\"\"8b,  a8P_____88  \`8b     d8'  a8P_____88  88P'   \"Y8  \"\"     \`Y8  88P'   \`\"8a  a8\"     \"\"  a8P_____88  "
+	@echo "        \`8b  8PP\"\"\"\"\"\"\"   \`8b   d8'   8PP\"\"\"\"\"\"\"  88          ,adPPPPP88  88       88  8b          8PP\"\"\"\"\"\"\" "
+	@echo "Y8a     a8P  \"8b,   ,aa    \`8b,d8'    \"8b,   ,aa  88          88,    ,88  88       88  \"8a,   ,aa  \"8b,   ,aa  "
+	@echo " \"Y88888P\"    \`\"Ybbd8\"'      \"8\"       \`\"Ybbd8\"'  88          \`\"8bbdP\"Y8  88       88   \`\"Ybbd8\"'   \`\"Ybbd8\"' "
