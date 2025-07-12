@@ -6,13 +6,15 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 13:32:11 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 14:49:39 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 
 
 int	main(void)
@@ -43,7 +45,7 @@ int	main(void)
 	}
 
 	std::cout << "\n=======01c. ShrubberyCreationForm - Throw Exe Grade=======" << std::endl;
-	Bureaucrat				b2("Dwight", 145);
+	Bureaucrat				b2("Pam", 145);
 	ShrubberyCreationForm	f3("TheirHead");
 
 	std::cout << "b2: " << b2 << std::endl;
@@ -52,7 +54,49 @@ int	main(void)
 	std::cout << "f3: " << f3 << std::endl;
 	try
 	{
-		f3.execute(b2);	
+		f3.execute(b2);
+	}
+	catch(const AForm::GradeExeException &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "\n=======02. Basic RobotomyRequestForm Tests=======" << std::endl;
+
+	Bureaucrat				b3("Michael", 45);
+	RobotomyRequestForm		f4("Dwight");
+
+	std::cout << "b3: " << b3 << std::endl;
+	std::cout << "f4: " << f4 << std::endl;
+
+	std::cout << "\n=======01a. RobotomyRequestForm - Execution=======" << std::endl;
+	b3.signForm(f4);
+	std::cout << "f4: " << f4 << std::endl;
+	f4.execute(b3);
+
+	std::cout << "\n=======01b. RobotomyRequestForm - Throw Signature=======" << std::endl;
+	RobotomyRequestForm		f5("Angela");
+	std::cout << "f2: " << f2 << std::endl;
+	try
+	{
+		f2.execute(b3);
+	}
+	catch(const AForm::SignExeException &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "\n=======01c. RobotomyRequestForm - Throw Exe Grade=======" << std::endl;
+	Bureaucrat				b4("Andy", 72);
+	RobotomyRequestForm		f6("Toby");
+
+	std::cout << "b4: " << b4 << std::endl;
+	std::cout << "f6: " << f6 << std::endl;
+	b4.signForm(f6);
+	std::cout << "f6: " << f6 << std::endl;
+	try
+	{
+		f6.execute(b4);
 	}
 	catch(const AForm::GradeExeException &e)
 	{

@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 14:17:30 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 16:39:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	SHRUBBERYCREATIONFORM_H
-# define SHRUBBERYCREATIONFORM_H
+#ifndef	PRESIDENTIALPARDONFORM
+# define PRESIDENTIALPARDONFORM
 
 #include "AForm.hpp"
 #include <fstream>
 #include <string>
+#include <bits/stdc++.h>
 
-#define SCF_NAME "BREEDBUSH"
-#define SCF_SIGN_GRADE 145
-#define SCF_EXE_GRADE 137
+#define PPF_NAME "Cronyism101"
+#define PPF_SIGN_GRADE 25
+#define PPF_EXE_GRADE 5
 
-class ShrubberyCreationForm: public AForm
+class PresidentialPardonForm: public AForm
 {
 	public:
-		ShrubberyCreationForm(std::string const &target);
-		~ShrubberyCreationForm(void);
+		PresidentialPardonForm(std::string const &target);
+		~PresidentialPardonForm(void);
 
 		/* Member Functions */
 		void	execute(Bureaucrat const &executor) const;
 
 	private:
 		std::string	_target;
-		static void	_brushBush(std::ofstream &file);
-		void		_transplantTree(void) const;
-		
+		void		_presidentialPardon(void) const;
+
 		/* Unused OCF class members - No use case since signatures should
 		   not be copied */
-		ShrubberyCreationForm(ShrubberyCreationForm const &src);
-		ShrubberyCreationForm& operator=(ShrubberyCreationForm const &inst);
+		PresidentialPardonForm(PresidentialPardonForm const &src);
+		PresidentialPardonForm& operator=(PresidentialPardonForm const &inst);
 };
 
 #endif
