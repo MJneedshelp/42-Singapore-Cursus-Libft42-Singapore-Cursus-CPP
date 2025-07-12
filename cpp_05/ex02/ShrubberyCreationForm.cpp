@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:32 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 17:16:25 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 17:27:34 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ void	ShrubberyCreationForm::_transplantTree(void) const
 	this->_brushBush(file);
 	file.close();
 }
-

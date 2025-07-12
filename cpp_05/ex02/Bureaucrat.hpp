@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 16:43:51 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 17:03:23 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ class	Bureaucrat
 
 		/* Member function */
 		void		signForm(AForm &form) const;
+		void		executeForm(AForm &form) const;
+
 
 		/* Exceptions */
 		class	GradeTooHighException: public std::exception

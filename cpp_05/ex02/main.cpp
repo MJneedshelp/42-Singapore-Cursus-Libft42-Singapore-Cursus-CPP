@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:18:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 16:57:15 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/12 17:32:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,7 @@ int	main(void)
 	std::cout << "\n=======01b. ShrubberyCreationForm - Throw Signature=======" << std::endl;
 	ShrubberyCreationForm	f2("HisHead");
 	std::cout << "f2: " << f2 << std::endl;
-	try
-	{
-		f2.execute(b1);
-	}
-	catch(const AForm::SignExeException &e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	b1.executeForm(f2);
 
 	std::cout << "\n=======01c. ShrubberyCreationForm - Throw Exe Grade=======" << std::endl;
 	Bureaucrat				b2("Pam", 145);
@@ -54,14 +47,7 @@ int	main(void)
 	std::cout << "f3: " << f3 << std::endl;
 	b2.signForm(f3);
 	std::cout << "f3: " << f3 << std::endl;
-	try
-	{
-		f3.execute(b2);
-	}
-	catch(const AForm::GradeExeException &e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	b2.executeForm(f3);
 
 	std::cout << "\n=======02. Basic RobotomyRequestForm Tests=======" << std::endl;
 
@@ -79,14 +65,7 @@ int	main(void)
 	std::cout << "\n=======02b. RobotomyRequestForm - Throw Signature=======" << std::endl;
 	RobotomyRequestForm		f5("Angela");
 	std::cout << "f5: " << f5 << std::endl;
-	try
-	{
-		f5.execute(b3);
-	}
-	catch(const AForm::SignExeException &e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	b3.executeForm(f5);
 
 	std::cout << "\n=======02c. RobotomyRequestForm - Throw Exe Grade=======" << std::endl;
 	Bureaucrat				b4("Andy", 72);
@@ -96,14 +75,7 @@ int	main(void)
 	std::cout << "f6: " << f6 << std::endl;
 	b4.signForm(f6);
 	std::cout << "f6: " << f6 << std::endl;
-	try
-	{
-		f6.execute(b4);
-	}
-	catch(const AForm::GradeExeException &e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	b4.executeForm(f6);
 
 	std::cout << "\n=======03. Basic PresidentialForm Tests=======" << std::endl;
 
@@ -121,14 +93,7 @@ int	main(void)
 	std::cout << "\n=======03b. PresidentialPardonForm - Throw Signature=======" << std::endl;
 	PresidentialPardonForm	f8("Gabe");
 	std::cout << "f8: " << f8 << std::endl;
-	try
-	{
-		f8.execute(b5);
-	}
-	catch(const AForm::SignExeException &e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	b5.executeForm(f8);
 
 	std::cout << "\n=======03c. PresidentialPardonForm - Throw Exe Grade=======" << std::endl;
 	Bureaucrat				b6("Jan", 24);
@@ -138,108 +103,7 @@ int	main(void)
 	std::cout << "f9: " << f9 << std::endl;
 	b6.signForm(f9);
 	std::cout << "f9: " << f9 << std::endl;
-	try
-	{
-		f9.execute(b6);
-	}
-	catch(const AForm::GradeExeException &e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-
-
-
-
-
-
-
-
-	// Form	f1("B17", 42, 24);
-	// Form	f2(f1);
-
-	// std::cout << "[Memory Address f1]: " << &f1 << std::endl;
-	// std::cout << "[Memory Address f2]: " << &f2 << std::endl;
-	// std::cout << "f1: " << f1 << std::endl;
-	// std::cout << "f2: " << f2 << std::endl;
-
-	// std::cout << "\n==========Exception Test 1: Constructor - GradeTooHigh==========" << std::endl;
-	// try
-	// {
-	// 	Form	f3("G17", 0, 24);
-	// }
-	// catch(const Form::GradeTooHighException &e)
-	// {
-	// 	std::cout << "Instantiating with gradeSign(0): " << e.what() << std::endl;
-	// 	std::cout << "==========Exception Test 1a: Success==========" << std::endl;
-	// }
-	// try
-	// {
-	// 	Form	f4("H55", 42, 0);
-	// }
-	// catch(const Form::GradeTooHighException &e)
-	// {
-	// 	std::cout << "Instantiating with gradeExe(0): " << e.what() << std::endl;
-	// 	std::cout << "==========Exception Test 1b: Success==========" << std::endl;
-	// }
-
-	// std::cout << "\n==========Exception Test 2: Constructor - GradeTooLow==========" << std::endl;
-	// try
-	// {
-	// 	Form	f5("Consent", 151, 24);
-	// }
-	// catch(const Form::GradeTooLowException &e)
-	// {
-	// 	std::cout << "Instantiating with gradeSign(151): " << e.what() << std::endl;
-	// 	std::cout << "==========Exception Test 2a: Success==========" << std::endl;
-	// }
-	// try
-	// {
-	// 	Form	f6("Consent", 42, 151);
-	// }
-	// catch(const Form::GradeTooLowException &e)
-	// {
-	// 	std::cout << "Instantiating with gradeExe(151): " << e.what() << std::endl;
-	// 	std::cout << "==========Exception Test 2b: Success==========" << std::endl;
-	// }
-
-	// std::cout << "\n==========Test 3: Signature (Form)==========" << std::endl;
-	// Form		f7("Resignation", 42, 24);
-	// Bureaucrat	b1("Mark S.", 42);
-
-	// std::cout << "f7: " << f7 << std::endl;
-	// std::cout << "b1: " << b1 << " Sign f7" << std::endl;
-	// f7.beSigned(b1);
-	// std::cout << "f7: " << f7 << std::endl;
-	// std::cout << "==========Test 3a: Success==========" << std::endl;
-
-	// Form		f8("Family Outing", 42, 24);
-	// Bureaucrat	b2("Helly R.", 43);
-
-	// std::cout << "f8: " << f8 << std::endl;
-	// std::cout << "b2: " << b2 << " Sign f8" << std::endl;
-	// try
-	// {
-	// 	f8.beSigned(b2);
-	// }
-	// catch(const Form::GradeTooLowException &e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// 	std::cout << "f8: " << f8 << std::endl;
-	// 	std::cout << "==========Test 3b: Success==========" << std::endl;
-	// }
-
-	// std::cout << "\n==========Test 4: Signature (Bureaucrat)==========" << std::endl;
-	// Bureaucrat	b3("Irving B.", 2);
-	// Form		f9("B150", 150, 150);
-	// Form		f10("C1", 1, 1);
-
-	// std::cout << "b3: " << b3 << std::endl;
-	// std::cout << "f9: " << f9 << std::endl;
-	// std::cout << "f10: " << f10 << std::endl;
-	// b3.signForm(f9);
-	// b3.signForm(f9);
-	// b3.signForm(f10);
+	b6.executeForm(f9);
 
 	std::cout << "\n==========Destructor Test==========" << std::endl;
 
