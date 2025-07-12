@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+         #
+#    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/12 16:58:16 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/12 19:32:40 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME = lumon
 
 # Source, Object and Dependency (headers) files
 SRC_NAMES = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm \
-			PresidentialPardonForm
+			PresidentialPardonForm Intern
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
