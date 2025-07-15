@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:17:16 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/17 10:38:09 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 12:28:35 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ int	main(void)
 	std::string Test;
 	std::string Test1;
 
-	
+	int		i = 5;
+	int		j = i / 2;
+
+	std::cout << j << std::endl;
+
+
 
 	// std::cout << "Test";
 	// std::cout << std::endl;
