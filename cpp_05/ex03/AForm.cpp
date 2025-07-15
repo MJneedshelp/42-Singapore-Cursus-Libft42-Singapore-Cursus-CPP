@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:20:47 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 13:32:46 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 12:20:50 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	AForm::beSigned(Bureaucrat const &drone)
 	if (drone.getGrade() > this->getGradeSign())
 		throw (AForm::GradeTooLowException());
 	if (this->_signed)
-		std::cout << "Multiple signatures? I love red tap!" << std::endl;
+		std::cout << "Multiple signatures? I love red tape!" << std::endl;
 	else
 		this->_signed = true;
 }

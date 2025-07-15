@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:19:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 17:16:32 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 12:19:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,20 @@ int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::promote(void)
 {
+	int	postGrade;
+
+	postGrade = this->_grade - 1;
+	_checkGrade(postGrade);
 	this->_grade--;
-	_checkGrade(this->_grade);
 }
 
 void	Bureaucrat::demote(void)
 {
+	int	postGrade;
+
+	postGrade = this->_grade + 1;
+	_checkGrade(postGrade);
 	this->_grade++;
-	_checkGrade(this->_grade);
 }
 
 void	Bureaucrat::signForm(AForm &form) const

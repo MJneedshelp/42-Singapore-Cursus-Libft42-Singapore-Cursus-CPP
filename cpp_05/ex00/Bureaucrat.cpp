@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:19:56 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:27:06 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 12:21:03 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,20 @@ int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::promote(void)
 {
+	int	postGrade;
+
+	postGrade = this->_grade - 1;
+	_checkGrade(postGrade);
 	this->_grade--;
-	_checkGrade(this->_grade);
 }
 
 void	Bureaucrat::demote(void)
 {
+	int	postGrade;
+
+	postGrade = this->_grade + 1;
+	_checkGrade(postGrade);
 	this->_grade++;
-	_checkGrade(this->_grade);
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()

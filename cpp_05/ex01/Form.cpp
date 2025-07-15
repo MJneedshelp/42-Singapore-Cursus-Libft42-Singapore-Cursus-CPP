@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:20:47 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 01:21:54 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 12:20:37 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Form::beSigned(Bureaucrat const &drone)
 	if (drone.getGrade() > this->getGradeSign())
 		throw (Form::GradeTooLowException());
 	if (this->_signed)
-		std::cout << "Multiple signatures? I love red tap!" << std::endl;
+		std::cout << "Multiple signatures? I love red tape!" << std::endl;
 	else
 		this->_signed = true;
 }
