@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 16:28:11 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:23:07 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ class	AForm
 		const int			_gradeExe;
 		void				_checkGrade(int grade) const;
 
+		/* Unused OCF class members*/
+		AForm(void);
 		/* Operator= is set as private to follow OCF. Not used as all members are const */
 		AForm&	operator=(AForm const &inst);
 };

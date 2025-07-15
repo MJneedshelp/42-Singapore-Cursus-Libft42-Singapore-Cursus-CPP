@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/10 17:26:30 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:16:34 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ class	Bureaucrat
 		const std::string	_name;
 		int					_grade;
 		void				_checkGrade(int grade) const;
-
+		/* Unused OCF class members - Bureacrats to always have a name and grade */
+		Bureaucrat(void);
 };
 
 #endif

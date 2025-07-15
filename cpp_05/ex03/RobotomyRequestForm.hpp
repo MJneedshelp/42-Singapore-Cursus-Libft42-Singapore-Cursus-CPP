@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 14:27:23 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:24:57 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class RobotomyRequestForm: public AForm
 
 		/* Unused OCF class members - No use case since signatures should
 		   not be copied */
+		RobotomyRequestForm(void);
 		RobotomyRequestForm(RobotomyRequestForm const &src);
 		RobotomyRequestForm& operator=(RobotomyRequestForm const &inst);
 };

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/15 09:40:02 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:18:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ class	Form
 		const int			_gradeSign;
 		const int			_gradeExe;
 		void				_checkGrade(int grade) const;
+		/* Unused OCF class members*/
+		Form(void);
 		/* Operator= is set as private to follow OCF. Not used as all members are const */
 		Form&	operator=(Form const &inst);
 };

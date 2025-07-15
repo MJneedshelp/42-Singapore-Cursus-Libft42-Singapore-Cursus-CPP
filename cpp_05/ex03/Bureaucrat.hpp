@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 17:03:23 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:23:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ class	Bureaucrat
 		const std::string	_name;
 		int					_grade;
 		void				_checkGrade(int grade) const;
+		/* Unused OCF class members - Bureacrats to always have a name and grade */
+		Bureaucrat(void);
 };
 
 #endif

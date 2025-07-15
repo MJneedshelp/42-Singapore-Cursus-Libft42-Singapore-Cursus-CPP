@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 17:01:34 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 16:24:34 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class PresidentialPardonForm: public AForm
 
 		/* Unused OCF class members - No use case since signatures should
 		   not be copied */
+		PresidentialPardonForm(void);
 		PresidentialPardonForm(PresidentialPardonForm const &src);
 		PresidentialPardonForm& operator=(PresidentialPardonForm const &inst);
 };
