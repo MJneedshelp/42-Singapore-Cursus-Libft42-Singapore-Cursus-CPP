@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:12:20 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/11 00:59:39 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/15 09:40:02 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ class	Form
 		void				_checkGrade(int grade) const;
 		/* Operator= is set as private to follow OCF. Not used as all members are const */
 		Form&	operator=(Form const &inst);
-
 };
 
 #endif
