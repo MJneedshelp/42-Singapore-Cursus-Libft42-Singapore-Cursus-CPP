@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:19:32 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/12 14:43:12 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/18 20:20:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	RobotomyRequestForm::_robotomise(void) const
 	srand(time(0));
 	randVal = rand();
 	std::cout << "Zhhiiiiiing! Clack! Clock!" << std::endl;
-	if (randVal < RAND_MAX / 2)
+	if (randVal <= RAND_MAX / 2)
 		std::cout << "[Pneumatic hissing] YOU ARE NOW A ROBOT: " << \
 		this->_target << std::endl;
 	else
