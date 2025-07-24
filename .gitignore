@@ -9,3 +9,4 @@ Testing/UND.out
 Testing/reinterpret.out
 Testing/castoperatortest.out
 Testing/constcast.out
+Testing/explicit.out
