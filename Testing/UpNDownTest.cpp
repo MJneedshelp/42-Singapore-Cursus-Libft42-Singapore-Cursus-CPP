@@ -6,13 +6,15 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 20:30:10 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/22 15:00:35 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:02:42 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <typeinfo>
+#include <stdexcept>
 
-class Parent				{};
+class Parent				{public: virtual ~Parent(void){}};
 class Child1: public Parent	{};
 class Child2: public Parent	{};
 
@@ -36,14 +38,41 @@ int	main(void)
 	std::cout << "Memory address of *d: " << d << std::endl;
 	std::cout << "Memory address of *f: " << f << std::endl;
 
-	Child1	aa;					//Reference value
+	//Static Cast test
+	Child1	aa;									//Reference value
 
 	Parent	*bb = &aa;							//Implicit upcast			-> ok
 	// Child1	*cc = bb;						//Implicit downcast			-> nok
 	Child2	*dd = static_cast<Child2*>(bb);		//Explicit downcast			-> ok (but this is going from Child1 -> Parent -> Child2)
-	Orphan	*ee = static_cast<Orphan*>(&aa);	//Explicit conversion		-> nok (you can try compiling but it does not work)
+	// Orphan	*ee = static_cast<Orphan*>(&aa);	//Explicit conversion		-> nok (you can try compiling but it does not work)
 
 
+	//Dynamic Cast test
+	Child1	qq;									//Reference value
+	Parent	*ww = &qq;							//Implicit upcast
+
+	//Explicit downcast: child1 -> parent -> child1
+	Child1	*ee = dynamic_cast<Child1*>(ww);
+	if (ee == NULL)
+	{
+		std::cout << "Conversion failed" << std::endl;
+	}
+	else
+	{
+		std::cout << "Conversion success" << std::endl;
+	}
+
+	//Explicit downcast: child1 -> parent -> child2
+	try
+	{
+		Child2	&rr = dynamic_cast<Child2&>(*ww);
+		std::cout << "Dynamic cast succeeded" << std::endl;
+	}
+	catch(const std::bad_cast &bc)
+	{
+		std::cout << "Dynamic cast failed at runtime" << bc.what() << std::endl;
+		return (0);
+	}
 
 	return (0);
 }
