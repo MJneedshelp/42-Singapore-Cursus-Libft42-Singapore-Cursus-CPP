@@ -7,3 +7,5 @@ cpp_05/ex03/Kelly_shrubbery
 Testing/UND.out
 
 Testing/reinterpret.out
+Testing/castoperatortest.out
+Testing/constcast.out
