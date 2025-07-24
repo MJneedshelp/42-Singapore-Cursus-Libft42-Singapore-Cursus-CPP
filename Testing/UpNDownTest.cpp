@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 20:30:10 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/24 12:02:42 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/24 14:59:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(void)
 		std::cout << "Conversion success" << std::endl;
 	}
 
-	//Explicit downcast: child1 -> parent -> child2
+	//Explicit downcast: child1 -> parent -> child2 | Not possible
 	try
 	{
 		Child2	&rr = dynamic_cast<Child2&>(*ww);
