@@ -10,3 +10,4 @@ Testing/reinterpret.out
 Testing/castoperatortest.out
 Testing/constcast.out
 Testing/explicit.out
+Testing/stringparsetest.out
