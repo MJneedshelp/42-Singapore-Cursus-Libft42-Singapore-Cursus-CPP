@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 10:01:59 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/26 10:27:42 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/26 13:00:03 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,44 @@ void	checkArgs(int argc)
 
 int	main(int argc, char *argv[])
 {
-	checkArgs(argc);
+	{
+		std::string	input;
 
-	std::string	input = static_cast<std::string>(argv[1]);
-	std::cout << input << std::endl;
+		checkArgs(argc);
+		input = argv[1];
+		ScalarConverter::convert(input);
+	}
+	{
+		std::string	input;
+
+		std::cout << "\n=========== Tests: 4 ===========" << std::endl;
+		input = "4";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: q ===========" << std::endl;
+		input = "q";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: \\b ===========" << std::endl;
+		input = "\b";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: 2147483647 ===========" << std::endl;
+		input = "2147483647";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: -2147483648 ===========" << std::endl;
+		input = "-2147483648";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: 2147483649 ===========" << std::endl;
+		input = "2147483649";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: -2147483649 ===========" << std::endl;
+		input = "-2147483649";
+		ScalarConverter::convert(input);
+	}
 
 	return (0);
 }
