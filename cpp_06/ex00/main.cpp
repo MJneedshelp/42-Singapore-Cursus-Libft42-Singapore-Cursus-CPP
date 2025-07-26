@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 10:01:59 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/26 13:00:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/26 16:36:47 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,30 @@ int	main(int argc, char *argv[])
 
 		std::cout << "\n=========== Tests: -2147483649 ===========" << std::endl;
 		input = "-2147483649";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: INFF ===========" << std::endl;
+		input = "INFF";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: +INFF ===========" << std::endl;
+		input = "+INFF";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: -INFF ===========" << std::endl;
+		input = "-INFF";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: inff ===========" << std::endl;
+		input = "inff";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: +inff ===========" << std::endl;
+		input = "+inff";
+		ScalarConverter::convert(input);
+
+		std::cout << "\n=========== Tests: -inff ===========" << std::endl;
+		input = "-inff";
 		ScalarConverter::convert(input);
 	}
 

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:57:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/26 09:59:17 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/26 16:39:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,23 @@ int	main(void)
 	{
 		iOutput = std::atoi(input.c_str());
 		std::cout << iOutput << std::endl;
-		// dOutput = std::strtod(input.c_str(), NULL);
-		dOutput = static_cast<double>(iOutput);
-		std::cout << dOutput << std::endl;
-		fOutput = std::strtof(input.c_str(), NULL);
-		std::cout << fOutput << std::endl;
-
 	}
 	else
 		std::cout << "Invalid" << std::endl;
+
+	fOutput = std::strtof("inff", NULL);
+	std::cout << fOutput << std::endl;
+
+	fOutput = std::strtof(".42f", NULL);
+	std::cout << fOutput << std::endl;
+
+	fOutput = std::strtof("+INFF", NULL);
+	std::cout << fOutput << std::endl;
+
+	fOutput = std::strtof("-INFF", NULL);
+	std::cout << fOutput << std::endl;
+
+
 
 	return (0);
 }
