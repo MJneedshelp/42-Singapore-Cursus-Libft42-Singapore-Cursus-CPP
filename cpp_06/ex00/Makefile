@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/07/25 22:39:23 by mintan           ###   ########.fr        #
+#    Updated: 2025/07/26 10:27:05 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,11 +53,9 @@ re:	fclean all
 .PHONY: all clean re fclean
 
 print_art:
-	@echo " ad88888ba                                                                                                     "
-	@echo "d8\"     \"8b                                                                                                    "
-	@echo "Y8,                                                                                                            "
-	@echo "\`Y8aaaaa,     ,adPPYba,  8b       d8   ,adPPYba,  8b,dPPYba,  ,adPPYYba,  8b,dPPYba,    ,adPPYba,   ,adPPYba,  "
-	@echo "  \`\"\"\"\"\"8b,  a8P_____88  \`8b     d8'  a8P_____88  88P'   \"Y8  \"\"     \`Y8  88P'   \`\"8a  a8\"     \"\"  a8P_____88  "
-	@echo "        \`8b  8PP\"\"\"\"\"\"\"   \`8b   d8'   8PP\"\"\"\"\"\"\"  88          ,adPPPPP88  88       88  8b          8PP\"\"\"\"\"\"\" "
-	@echo "Y8a     a8P  \"8b,   ,aa    \`8b,d8'    \"8b,   ,aa  88          88,    ,88  88       88  \"8a,   ,aa  \"8b,   ,aa  "
-	@echo " \"Y88888P\"    \`\"Ybbd8\"'      \"8\"       \`\"Ybbd8\"'  88          \`\"8bbdP\"Y8  88       88   \`\"Ybbd8\"'   \`\"Ybbd8\"' "
+	@echo "     _=_      |      .-.     "
+	@echo "   q(-_-)p    |    __| |__   "
+	@echo "   ,<___/\\    |   [__   __]  "
+	@echo "  (<_\`. _/)   |      | |     "
+	@echo " (_\\\\_\\\\_|_/_)  |      | |     "
+	@echo "   _______    |      '-'     "

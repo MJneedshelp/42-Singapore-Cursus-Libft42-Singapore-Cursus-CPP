@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:42 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/26 00:03:55 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/26 10:02:15 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <string>
 #include <cctype>
 #include <iostream>
+#include <limits.h>
+#include <cstdlib>
 
 class ScalarConverter
 {
