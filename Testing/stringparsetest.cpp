@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:57:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/27 10:54:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/27 14:58:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,41 +41,98 @@ int	main(void)
 	float		fOutput;
 
 
-	std::cout << "Int: ";
-	if (isInt(input))
-	{
-		iOutput = std::atoi(input.c_str());
-		std::cout << iOutput << std::endl;
-	}
-	else
-		std::cout << "Invalid" << std::endl;
+	// std::cout << "Int: ";
+	// if (isInt(input))
+	// {
+	// 	iOutput = std::atoi(input.c_str());
+	// 	std::cout << iOutput << std::endl;
+	// }
+	// else
+	// 	std::cout << "Invalid" << std::endl;
 
-	fOutput = std::strtof("inff", NULL);
+	fOutput = std::strtof("9007199254740992", NULL);
 	std::cout << fOutput << std::endl;
 
-	fOutput = std::strtof(".42f", NULL);
+	fOutput = std::strtof("-9007199254740992", NULL);
 	std::cout << fOutput << std::endl;
 
-	fOutput = std::strtof(".42F", NULL);
+	// fOutput = std::strtof("inff", NULL);
+	// std::cout << fOutput << std::endl;
+
+	// fOutput = std::strtof(".42f", NULL);
+	// std::cout << fOutput << std::endl;
+
+	// fOutput = std::strtof(".42F", NULL);
+	// std::cout << fOutput << std::endl;
+
+	// fOutput = std::strtof("42.", NULL);
+	// std::cout << fOutput << std::endl;
+
+	// fOutput = std::strtof("42.f", NULL);
+	// std::cout << fOutput << std::endl;
+
+	// fOutput = std::strtof("4F2", NULL);
+	// std::cout << fOutput << std::endl;
+
+
+	// fOutput = std::strtof("+INFF", NULL);
+	// std::cout << fOutput << std::endl;
+
+	// fOutput = std::strtof("-INFF", NULL);
+	// std::cout << fOutput << std::endl;
+
+	// dOutput = std::strtod("+INF", NULL);
+	// std::cout << dOutput << std::endl;
+
+	// dOutput = std::strtod("-INF", NULL);
+	// std::cout << dOutput << std::endl;
+
+	// dOutput = std::strtod("INF", NULL);
+	// std::cout << dOutput << std::endl;
+
+	// dOutput = std::strtod("+inf", NULL);
+	// std::cout << dOutput << std::endl;
+
+	// dOutput = std::strtod("-inf", NULL);
+	// std::cout << dOutput << std::endl;
+
+	// dOutput = std::strtod("inf", NULL);
+	// std::cout << dOutput << std::endl;
+
+	dOutput = std::strtod("nan", NULL);
+	std::cout << dOutput << std::endl;
+
+	dOutput = std::strtod("NAN", NULL);
+	std::cout << dOutput << std::endl;
+
+	fOutput = std::strtof("nanf", NULL);
 	std::cout << fOutput << std::endl;
 
-	fOutput = std::strtof("42.", NULL);
-	std::cout << fOutput << std::endl;
-
-	fOutput = std::strtof("42.f", NULL);
-	std::cout << fOutput << std::endl;
-
-	fOutput = std::strtof("4F2", NULL);
+	fOutput = std::strtof("NANF", NULL);
 	std::cout << fOutput << std::endl;
 
 
-	fOutput = std::strtof("+INFF", NULL);
-	std::cout << fOutput << std::endl;
 
-	fOutput = std::strtof("-INFF", NULL);
-	std::cout << fOutput << std::endl;
+
+
 
 
 
 	return (0);
 }
+
+
+
+// void	ScalarConverter::_printDbl(const std::string &input)
+// {
+// 	double	outputDbl;
+
+// 	std::cout << "Flt: ";
+// 	if (_isInt(input) || _isFloatPLiteral(input) || _isFlt(input))
+// 	{
+// 		outputFlt = std::strtof(input.c_str(), NULL);
+// 		std::cout << outputFlt << std::endl;
+// 	}
+// 	else
+// 		std::cout << ERR_INCONVERTIBLE << std::endl;
+// }
