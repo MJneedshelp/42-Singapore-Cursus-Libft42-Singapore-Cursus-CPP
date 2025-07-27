@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/26 16:35:28 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/27 11:20:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,38 @@ bool	ScalarConverter::_isFloatPLiteral(const std::string &input)
 	return (false);
 }
 
+bool	ScalarConverter::_isFlt(const std::string &input)
+{
+	int		numDots;
+	char	c;
+
+	numDots = 0;
+	for (unsigned int i = 0; i < input.length(); ++i)
+	{
+		c = static_cast<char>(input[i]);
+		if (i == 0 && c == '-')
+			continue;
+		if (!std::isdigit(c))
+		{
+			if (c == '.')
+				++numDots;
+			else if ((c == 'f' || c == 'F') && i == input.length() - 1)
+				continue;
+			else
+				return (false);
+		}
+	}
+	if (numDots > 1)
+		return (false);
+	return(true);
+}
+
 void	ScalarConverter::_printFlt(const std::string &input)
 {
 	double	outputFlt;
 
 	std::cout << "Flt: ";
-	if (_isInt(input) || _isFloatPLiteral(input))	//add the conditions here
+	if (_isInt(input) || _isFloatPLiteral(input) || _isFlt(input))
 	{
 		outputFlt = std::strtof(input.c_str(), NULL);
 		std::cout << outputFlt << std::endl;

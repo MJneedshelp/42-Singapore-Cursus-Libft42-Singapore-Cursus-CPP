@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:42 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/26 16:29:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/27 10:48:14 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,14 @@ class ScalarConverter
 
 		/* Helper functions */
 		static	void		_printChr(const std::string &input);
+
 		static	bool		_isInt(const std::string &input);
 		static	void		_printInt(const std::string &input);
+
 		static	std::string	_strToUpper(const std::string &input);
 		static	bool		_isFloatPLiteral(const std::string &input);
+		static	bool		_isFlt(const std::string &input);
+
 		static	void		_printFlt(const std::string &input);
 
 };

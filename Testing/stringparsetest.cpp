@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:57:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/26 16:39:33 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/27 10:54:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,19 @@ int	main(void)
 
 	fOutput = std::strtof(".42f", NULL);
 	std::cout << fOutput << std::endl;
+
+	fOutput = std::strtof(".42F", NULL);
+	std::cout << fOutput << std::endl;
+
+	fOutput = std::strtof("42.", NULL);
+	std::cout << fOutput << std::endl;
+
+	fOutput = std::strtof("42.f", NULL);
+	std::cout << fOutput << std::endl;
+
+	fOutput = std::strtof("4F2", NULL);
+	std::cout << fOutput << std::endl;
+
 
 	fOutput = std::strtof("+INFF", NULL);
 	std::cout << fOutput << std::endl;
