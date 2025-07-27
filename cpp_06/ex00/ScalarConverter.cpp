@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/27 15:00:36 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/27 15:09:08 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	ScalarConverter::_printFloat(const std::string &input)
 	if (_isInt(input) || _isFloatPLiteral(input) || _isFloat(input))
 	{
 		outputFlt = std::strtof(input.c_str(), NULL);
-		if (_withinFloatLimits(input))
+		if (_withinFloatLimits(input) && !_hasPeriod(input))
 		{
 			std::cout << std::fixed << std::setprecision(1) << outputFlt << "f" << std::endl;
 			std::cout.unsetf(std::ios::fixed);
@@ -161,7 +161,7 @@ void	ScalarConverter::_printDouble(const std::string &input)
 	if (_isInt(input) || _isDoublePLiteral(input) || _isFloat(input))
 	{
 		outputDbl = std::strtod(input.c_str(), NULL);
-		if (_withinDoubleLimits(input))
+		if (_withinDoubleLimits(input) && !_hasPeriod(input))
 		{
 			std::cout << std::fixed << std::setprecision(1) << outputDbl << std::endl;
 			std::cout.unsetf(std::ios::fixed);
@@ -216,6 +216,18 @@ std::string	ScalarConverter::_strToUpper(const std::string &input)
 	return (strUpper);
 }
 
+bool	ScalarConverter::_hasPeriod(const std::string &input)
+{
+	char	c;
+
+	for (unsigned int i = 0; i < input.length(); ++i)
+	{
+		c = static_cast<char>(input[i]);
+		if (c == '.')
+			return(true);
+	}
+	return(false);
+}
 
 void	ScalarConverter::convert(const std::string &input)
 {

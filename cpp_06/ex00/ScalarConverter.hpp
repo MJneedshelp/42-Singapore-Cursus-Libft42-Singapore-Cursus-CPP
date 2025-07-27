@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:42 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/27 15:05:33 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/27 15:11:29 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,5 @@ class ScalarConverter
 		static	bool		_withinDoubleLimits(const std::string &input);
 		static	bool		_hasPeriod(const std::string &input);
 		static	std::string	_strToUpper(const std::string &input);
-
-
-
 };
 #endif
