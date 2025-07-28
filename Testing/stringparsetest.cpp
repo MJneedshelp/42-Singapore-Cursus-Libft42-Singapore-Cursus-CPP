@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:57:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/27 14:58:49 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 01:18:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(void)
 	int			iOutput;
 	double		dOutput;
 	float		fOutput;
+
 
 
 	// std::cout << "Int: ";
@@ -111,6 +112,13 @@ int	main(void)
 	fOutput = std::strtof("NANF", NULL);
 	std::cout << fOutput << std::endl;
 
+
+
+	float		f = 42.0f;
+	char		c = static_cast<char>(f);
+
+	std::cout << "Float: " << f << std::endl;
+	std::cout << "Char: " << c << std::endl;
 
 
 
