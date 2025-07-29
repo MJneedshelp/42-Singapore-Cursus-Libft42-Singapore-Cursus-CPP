@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 18:13:08 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/30 02:54:02 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ void	ScalarConverter::_castFromChar(const std::string &input)
 	iInput = static_cast<int>(cInput);
 	fInput = static_cast<float>(cInput);
 	dInput = static_cast<double>(cInput);
-	_printFormatter(&cInput, &iInput, &fInput, &dInput);
+	_printFormatter(input, &cInput, &iInput, &fInput, &dInput);
 }
 
 void	ScalarConverter::_castFromInt(const std::string &input)
@@ -185,9 +185,9 @@ void	ScalarConverter::_castFromInt(const std::string &input)
 	fInput = static_cast<float>(iInput);
 	dInput = static_cast<double>(iInput);
 	if (iInput >= 0 && iInput <= 127)
-		_printFormatter(&cInput, &iInput, &fInput, &dInput);
+		_printFormatter(input, &cInput, &iInput, &fInput, &dInput);
 	else
-		_printFormatter(NULL, &iInput, &fInput, &dInput);
+		_printFormatter(input, NULL, &iInput, &fInput, &dInput);
 }
 
 void	ScalarConverter::_castFromFloat(const std::string &input)
@@ -201,18 +201,60 @@ void	ScalarConverter::_castFromFloat(const std::string &input)
 	iInput = static_cast<int>(fInput);
 	cInput = static_cast<char>(fInput);
 	dInput = static_cast<double>(fInput);
-	if (!_withinFloatLimits(fInput))
-		_printFormatter(&cInput, NULL, &fInput, &dInput);
-	_printFormatter(&cInput, &iInput, &fInput, &dInput);
-
+	if (!_withinFloatLimits(input) || std::isnan(dInput))
+		_printFormatter(input, &cInput, NULL, &fInput, &dInput);
+	else
+		_printFormatter(input, &cInput, &iInput, &fInput, &dInput);
 }
 
+void	ScalarConverter::_castFromDouble(const std::string &input)
+{
+	char	cInput;
+	int		iInput;
+	float	fInput;
+	double	dInput;
 
-
+	dInput = std::strtod(input.c_str(), NULL);
+	cInput = static_cast<char>(dInput);
+	iInput = static_cast<int>(dInput);
+	fInput = static_cast<float>(dInput);
+	if (!_withinIntLimits(input) || std::isnan(dInput) || std::isinf(dInput))
+		_printFormatter(input, &cInput, NULL, &fInput, &dInput);
+	else
+		_printFormatter(input, &cInput, &iInput, &fInput, &dInput);
+}
 
 /* Helper functions - Printing */
 
-void	ScalarConverter::_printFormatter(char *cInput, int *iInput, float *fInput, double *dInput)
+bool	ScalarConverter::_withinFloatLimits(const std::string &input)
+{
+	double	inputDouble;
+
+	inputDouble = std::strtod(input.c_str(), NULL);
+	if (inputDouble > pow(2, 24) || inputDouble < -1 * pow(2, 24))
+		return (false);
+	return(true);
+}
+
+bool	ScalarConverter::_withinDoubleLimits(const std::string &input)
+{
+	long double	inputLD;
+
+	inputLD = std::atoll(input.c_str());
+	if (inputLD > pow(2, 53) || inputLD < -1 * pow(2, 53))
+		return (false);
+	return(true);
+}
+
+void	ScalarConverter::_printNegative(void)
+{
+	std::cout << "Char: " << ERR_INCONVERTIBLE << std::endl;
+	std::cout << "Int: " << ERR_INCONVERTIBLE << std::endl;
+	std::cout << "Float: " << ERR_INCONVERTIBLE << std::endl;
+	std::cout << "Double: " << ERR_INCONVERTIBLE << std::endl;
+}
+
+void	ScalarConverter::_printFormatter(std::string input, char *cInput, int *iInput, float *fInput, double *dInput)
 {
 	std::cout << "Char: ";
 	if (cInput == NULL)
@@ -233,7 +275,7 @@ void	ScalarConverter::_printFormatter(char *cInput, int *iInput, float *fInput, 
 		std::cout << ERR_INCONVERTIBLE << std::endl;
 	else
 	{
-		if (_withinFloatLimits(*fInput))
+		if (_withinFloatLimits(input))
 		{
 			std::cout << std::fixed << std::setprecision(1) << *fInput << "f" << std::endl;
 			std::cout.unsetf(std::ios::fixed);
@@ -248,7 +290,7 @@ void	ScalarConverter::_printFormatter(char *cInput, int *iInput, float *fInput, 
 		std::cout << ERR_INCONVERTIBLE << std::endl;
 	else
 	{
-		if (_withinDoubleLimits(*dInput))
+		if (_withinDoubleLimits(input))
 		{
 			std::cout << std::fixed << std::setprecision(1) << *dInput << std::endl;
 			std::cout.unsetf(std::ios::fixed);
@@ -259,38 +301,10 @@ void	ScalarConverter::_printFormatter(char *cInput, int *iInput, float *fInput, 
 	}
 }
 
-//use back the old limits check
-
-bool	ScalarConverter::_withinFloatLimits(const float fInput)
-{
-	if (fInput > pow(2, 24) || fInput < -1 * pow(2, 24))
-		return (false);
-	return(true);
-}
-
-//use back the old limits check
-
-bool	ScalarConverter::_withinDoubleLimits(const double dInput)
-{
-	if (dInput > pow(2, 53) || dInput < -1 * pow(2, 53))
-		return (false);
-	return(true);
-}
-
-
-
-
-
-
-
-
-
+/* Static convert function */
 void	ScalarConverter::convert(const std::string &input)
 {
 	const	int	type = _determineType(input);
-
-	std::cout << "Type: " << type << std::endl;
-
 	switch (type)
 	{
 		case CHAR:
@@ -310,14 +324,13 @@ void	ScalarConverter::convert(const std::string &input)
 		}
 		case DOUBLE:
 		{
-
+			_castFromDouble(input);
 			break;
 		}
-
-
-
-
 		default:
+		{
+			_printNegative();
 			break;
+		}
 	}
 }

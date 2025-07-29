@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:42 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 16:21:09 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/30 02:53:17 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 #define ERR_INCONVERTIBLE "Conversion failed"
 #define ERR_DISPLAYABLE "Non displayable"
-
 
 enum	e_Type
 {
@@ -71,19 +70,12 @@ class ScalarConverter
 		static	void		_castFromChar(const std::string &input);
 		static	void		_castFromInt(const std::string &input);
 		static	void		_castFromFloat(const std::string &input);
-
-
-
+		static	void		_castFromDouble(const std::string &input);
 
 		/* Helper functions - Printing */
-		static	bool		_withinFloatLimits(const float fInput);
-		static	bool		_withinDoubleLimits(const double dInput);
-		static	void		_printFormatter(char *cInput, int *iInput, float *fInput, double *dInput);
-
-
-
-
-
-
+		static	bool		_withinFloatLimits(const std::string &input);
+		static	bool		_withinDoubleLimits(const std::string &input);
+		static	void		_printNegative(void);
+		static	void		_printFormatter(std::string input, char *cInput, int *iInput, float *fInput, double *dInput);
 };
 #endif
