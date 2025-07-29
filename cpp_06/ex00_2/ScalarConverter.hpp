@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:42 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 08:54:07 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:08:30 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #include <cmath>
 
 #define ERR_INCONVERTIBLE "Conversion failed"
+#define ERR_DISPLAYABLE "Non displayable"
+
 
 enum	e_Type
 {
@@ -46,28 +48,34 @@ class ScalarConverter
 		ScalarConverter&	operator=(const ScalarConverter &rhs);
 
 		/* Helper functions - Determine Char */
-		static	bool	_isChar(const std::string &input);
+		static	bool		_isChar(const std::string &input);
 
 		/* Helper functions - Determine Int */
-		static	bool	_isWholeNum(const std::string &input);
-		static	bool	_withinIntLimits(const std::string &input);
-		static	bool	_isInt(const std::string &input);
+		static	bool		_isWholeNum(const std::string &input);
+		static	bool		_withinIntLimits(const std::string &input);
+		static	bool		_isInt(const std::string &input);
 
 		/* Helper functions - Determine Double */
-		static	bool	_isDoublePLiteral(const std::string &input);
-		static	bool	_isDouble(const std::string &input);
+		static	bool		_isDoublePLiteral(const std::string &input);
+		static	bool		_isDouble(const std::string &input);
 
 		/* Helper functions - Determine Float */
-		static	bool	_isFloatPLiteral(const std::string &input);
-		static	bool	_isFloat(const std::string &input);
+		static	bool		_isFloatPLiteral(const std::string &input);
+		static	bool		_isFloat(const std::string &input);
 
-		/* Helper functions - General */
+		/* Helper functions - Determine Type */
 		static	std::string	_strToUpper(const std::string &input);
+		static	int			_determineType(const std::string &input);
+
+		/* Helper functions - Casting */
+		static	void		_castFromChar(const std::string &input);
 
 
+		/* Helper functions - Printing */
+		static	bool		_withinFloatLimits(const float fInput);
+		static	bool		_withinDoubleLimits(const double dInput);
+		static	void		_printFormatter(char *cInput, int *iInput, float *fInput, double *dInput);
 
-
-		static	int		_determineType(const std::string &input);
 
 
 
