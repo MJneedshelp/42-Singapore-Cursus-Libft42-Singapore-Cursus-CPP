@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 17:52:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 18:13:08 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,12 +259,16 @@ void	ScalarConverter::_printFormatter(char *cInput, int *iInput, float *fInput, 
 	}
 }
 
+//use back the old limits check
+
 bool	ScalarConverter::_withinFloatLimits(const float fInput)
 {
 	if (fInput > pow(2, 24) || fInput < -1 * pow(2, 24))
 		return (false);
 	return(true);
 }
+
+//use back the old limits check
 
 bool	ScalarConverter::_withinDoubleLimits(const double dInput)
 {
