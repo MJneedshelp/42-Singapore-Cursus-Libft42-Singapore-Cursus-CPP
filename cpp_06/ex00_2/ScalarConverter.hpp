@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:42 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 10:08:30 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 11:24:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ class ScalarConverter
 
 		/* Helper functions - Casting */
 		static	void		_castFromChar(const std::string &input);
+		static	void		_castFromInt(const std::string &input);
+
 
 
 		/* Helper functions - Printing */

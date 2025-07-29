@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 10:09:53 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 11:26:29 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,22 @@ void	ScalarConverter::_castFromChar(const std::string &input)
 
 	cInput = static_cast<char>(input[0]);
 	iInput = static_cast<int>(cInput);
+	fInput = static_cast<float>(cInput);
+	dInput = static_cast<double>(cInput);
+	_printFormatter(&cInput, &iInput, &fInput, &dInput);
+}
+
+void	ScalarConverter::_castFromInt(const std::string &input)
+{
+	char	cInput;
+	int		iInput;
+	float	fInput;
+	double	dInput;
+
+	iInput = std::atoi(input.c_str())
+
+
+
 	fInput = static_cast<float>(cInput);
 	dInput = static_cast<double>(cInput);
 	_printFormatter(&cInput, &iInput, &fInput, &dInput);
