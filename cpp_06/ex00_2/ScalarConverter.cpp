@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 14:51:49 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 17:52:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,23 @@ void	ScalarConverter::_castFromInt(const std::string &input)
 		_printFormatter(NULL, &iInput, &fInput, &dInput);
 }
 
+void	ScalarConverter::_castFromFloat(const std::string &input)
+{
+	char	cInput;
+	int		iInput;
+	float	fInput;
+	double	dInput;
+
+	fInput = std::strtof(input.c_str(), NULL);
+	iInput = static_cast<int>(fInput);
+	cInput = static_cast<char>(fInput);
+	dInput = static_cast<double>(fInput);
+	if (!_withinFloatLimits(fInput))
+		_printFormatter(&cInput, NULL, &fInput, &dInput);
+	_printFormatter(&cInput, &iInput, &fInput, &dInput);
+
+}
+
 
 
 
@@ -242,7 +259,6 @@ void	ScalarConverter::_printFormatter(char *cInput, int *iInput, float *fInput, 
 	}
 }
 
-
 bool	ScalarConverter::_withinFloatLimits(const float fInput)
 {
 	if (fInput > pow(2, 24) || fInput < -1 * pow(2, 24))
@@ -285,7 +301,7 @@ void	ScalarConverter::convert(const std::string &input)
 		}
 		case FLOAT:
 		{
-
+			_castFromFloat(input);
 			break;
 		}
 		case DOUBLE:

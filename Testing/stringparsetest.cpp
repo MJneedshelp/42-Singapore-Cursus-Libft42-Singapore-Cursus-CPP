@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:57:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 14:48:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 17:25:05 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,16 +123,26 @@ int	main(void)
 	// std::cout << "Float: " << f << std::endl;
 	// std::cout << "Double: " << d << std::endl;
 
-	int			i = 0;
-	char		c = static_cast<char>(i);
-	float		f = static_cast<float>(i);
-	double		d = static_cast<double>(i);
+	// int			i = 0;
+	// char		c = static_cast<char>(i);
+	// float		f = static_cast<float>(i);
+	// double		d = static_cast<double>(i);
+
+	// std::cout << "Char: " << c << std::endl;
+	// std::cout << "Int: " << i << std::endl;
+	// std::cout << "Float: " << f << std::endl;
+	// std::cout << "Double: " << d << std::endl;
+
+	float		f = 500.0f;
+
+	int			i = static_cast<int>(f);
+	char		c = static_cast<char>(f);
+	double		d = static_cast<double>(f);
 
 	std::cout << "Char: " << c << std::endl;
 	std::cout << "Int: " << i << std::endl;
 	std::cout << "Float: " << f << std::endl;
 	std::cout << "Double: " << d << std::endl;
-
 
 
 
