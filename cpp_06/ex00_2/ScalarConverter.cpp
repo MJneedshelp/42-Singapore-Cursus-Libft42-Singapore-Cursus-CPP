@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 22:40:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 11:26:29 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 14:51:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,13 +180,14 @@ void	ScalarConverter::_castFromInt(const std::string &input)
 	float	fInput;
 	double	dInput;
 
-	iInput = std::atoi(input.c_str())
-
-
-
-	fInput = static_cast<float>(cInput);
-	dInput = static_cast<double>(cInput);
-	_printFormatter(&cInput, &iInput, &fInput, &dInput);
+	iInput = std::atoi(input.c_str());
+	cInput = static_cast<char>(iInput);
+	fInput = static_cast<float>(iInput);
+	dInput = static_cast<double>(iInput);
+	if (iInput >= 0 && iInput <= 127)
+		_printFormatter(&cInput, &iInput, &fInput, &dInput);
+	else
+		_printFormatter(NULL, &iInput, &fInput, &dInput);
 }
 
 
@@ -279,7 +280,7 @@ void	ScalarConverter::convert(const std::string &input)
 		}
 		case INT:
 		{
-
+			_castFromInt(input);
 			break;
 		}
 		case FLOAT:

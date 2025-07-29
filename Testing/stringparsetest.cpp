@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:57:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/29 09:32:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/29 14:48:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,20 @@ int	main(void)
 	std::cout << fOutput << std::endl;
 
 
-	char		c = 'r';
-	int			i = static_cast<int>(c);
-	float		f = static_cast<float>(c);
-	double		d = static_cast<double>(c);
+	// char		c = 'r';
+	// int			i = static_cast<int>(c);
+	// float		f = static_cast<float>(c);
+	// double		d = static_cast<double>(c);
+
+	// std::cout << "Char: " << c << std::endl;
+	// std::cout << "Int: " << i << std::endl;
+	// std::cout << "Float: " << f << std::endl;
+	// std::cout << "Double: " << d << std::endl;
+
+	int			i = 0;
+	char		c = static_cast<char>(i);
+	float		f = static_cast<float>(i);
+	double		d = static_cast<double>(i);
 
 	std::cout << "Char: " << c << std::endl;
 	std::cout << "Int: " << i << std::endl;
