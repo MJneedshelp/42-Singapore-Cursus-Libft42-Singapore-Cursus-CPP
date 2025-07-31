@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:26:28 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/31 13:43:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/31 14:38:50 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class B: public Base
 {
 	public:
-		B(void);
-		~B(void);
+		B();
+		~B();
 };
 #endif

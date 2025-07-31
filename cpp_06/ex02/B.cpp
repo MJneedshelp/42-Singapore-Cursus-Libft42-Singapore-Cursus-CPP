@@ -6,10 +6,11 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 13:43:17 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/31 13:45:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/31 14:30:46 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Base.hpp"
 #include "B.hpp"
 
 B::B(void)

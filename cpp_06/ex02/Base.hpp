@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:26:28 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/31 13:38:05 by mintan           ###   ########.fr       */
+/*   Updated: 2025/07/31 14:36:24 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 class Base
 {
 	public:
-		virtual	~Base(void);
+		virtual	~Base(void){};
 };
 #endif
+
+// class A: public Base {};
+// class B: public Base {};
+// class C: public Base {};
