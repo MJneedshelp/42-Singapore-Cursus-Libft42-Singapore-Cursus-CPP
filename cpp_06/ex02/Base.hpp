@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 12:26:28 by mintan            #+#    #+#             */
-/*   Updated: 2025/07/31 14:36:24 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/02 13:38:44 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,3 @@ class Base
 		virtual	~Base(void){};
 };
 #endif
-
-// class A: public Base {};
-// class B: public Base {};
-// class C: public Base {};
