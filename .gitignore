@@ -11,3 +11,5 @@ Testing/castoperatortest.out
 Testing/constcast.out
 Testing/explicit.out
 Testing/stringparsetest.out
+cpp_07/tests/templatetest.out
+*.out
