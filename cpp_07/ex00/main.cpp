@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:16:42 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/06 14:09:00 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/06 23:39:15 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(void)
 
 		//Declaration
 		std::cout << "Before swap: x = " << x << " | y: " << y << std::endl;
-		swap(&x, &y);
+		swap(x, y);
 		std::cout << "After swap: x = " << x << " | y: " << y << std::endl;
 
 		//Explicit instantiation of template
@@ -49,7 +49,7 @@ int	main(void)
 
 		//Declaration
 		std::cout << "Before swap: x = " << x << " | y: " << y << std::endl;
-		swap(&x, &y);
+		swap(x, y);
 		std::cout << "After swap: x = " << x << " | y: " << y << std::endl;
 
 		//Explicit instantiation of template
@@ -70,7 +70,7 @@ int	main(void)
 
 		//Declaration
 		std::cout << "Before swap: x = " << x << " | y: " << y << std::endl;
-		swap(&x, &y);
+		swap(x, y);
 		std::cout << "After swap: x = " << x << " | y: " << y << std::endl;
 
 		//Explicit instantiation of template
@@ -90,7 +90,7 @@ int	main(void)
 
 		//Declaration
 		std::cout << "Before swap: x = " << x << " | y: " << y << std::endl;
-		::swap(&x, &y);
+		::swap(x, y);
 		std::cout << "After swap: x = " << x << " | y: " << y << std::endl;
 
 		//Explicit instantiation of template
@@ -110,7 +110,7 @@ int	main(void)
 
 		//Declaration
 		std::cout << "Before swap: x = " << x << " | y: " << y << std::endl;
-		::swap(&x, &y);
+		::swap(x, y);
 		std::cout << "After swap: x = " << x << " | y: " << y << std::endl;
 
 		//Explicit instantiation of template

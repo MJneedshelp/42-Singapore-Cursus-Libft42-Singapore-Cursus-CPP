@@ -6,20 +6,20 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:19:46 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/06 14:02:52 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/06 23:32:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 template<typename T>
-void	swap(T *x, T *y)
+void	swap(T &x, T &y)
 {
 	T	temp;
 
-	temp = *x;
-	*x = *y;
-	*y = temp;
+	temp = x;
+	x = y;
+	y = temp;
 }
 
 template<typename T>
