@@ -6,14 +6,31 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:19:46 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/06 13:34:46 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/06 14:02:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-template<typename T>
+#include <iostream>
 
+template<typename T>
+void	swap(T *x, T *y)
+{
+	T	temp;
+
+	temp = *x;
+	*x = *y;
+	*y = temp;
+}
+
+template<typename T>
 T const&	min(const T &x, const T &y)
 {
-	return (x >= y ? y : x);
+	return (x > y ? y : x);
+}
+
+template<typename T>
+T const&	max(const T &x, const T &y)
+{
+	return (x >= y ? x : y);
 }
 
