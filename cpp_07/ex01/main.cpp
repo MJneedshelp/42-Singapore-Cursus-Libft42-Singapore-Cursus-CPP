@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 23:47:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/07 01:06:41 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/07 01:33:26 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(void)
 {
-	// std::cout << "Test" << std::endl;
+	int	arr[] = {0, 1, 2, 3};
 
-	::test("help");
+	::iter(arr, 4, printT<int>);
 
 	return (0);
 }
