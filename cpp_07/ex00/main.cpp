@@ -1,53 +1,95 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/06 13:16:42 by mintan            #+#    #+#             */
+/*   Updated: 2025/08/06 13:34:55 by mintan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-#include <Array.hpp>
+#include <string>
+#include "whatever.hpp"
 
-#define MAX_VAL 750
-int main(int, char**)
+int	main(void)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+	std::cout << "========== Test: int ==========" << std::endl;
+	{
+		int	x = -42;
+		int	y = 24;
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+		//Declaration
+		std::cout << "x = " << x << " | y: " << y << std::endl;;
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+		//Explicit instantiation of template
+		std::cout << "min (x, y): " << ::min<int>(x, y) << std::endl;
+
+		//Implicit instantiation of template
+		std::cout << "min (x, y): " << ::min(x, y) << std::endl;
+
+	}
+
+	std::cout << "\n========== Test: float ==========" << std::endl;
+	{
+		float	x = 42.0f;
+		float	y = -24.0f;
+
+		//Declaration
+		std::cout << "x = " << x << " | y: " << y << std::endl;;
+
+		//Explicit instantiation of template
+		std::cout << "min (x, y): " << ::min<float>(x, y) << std::endl;
+
+		//Implicit instantiation of template
+		std::cout << "min (x, y): " << ::min(x, y) << std::endl;
+
+	}
+
+	std::cout << "\n========== Test: string ==========" << std::endl;
+	{
+		std::string	x = "whut";
+		std::string	y = "eva";
+
+		//Declaration
+		std::cout << "x = " << x << " | y: " << y << std::endl;;
+
+		//Explicit instantiation of template
+		std::cout << "min (x, y): " << ::min<std::string>(x, y) << std::endl;
+
+		//Implicit instantiation of template
+		std::cout << "min (x, y): " << ::min(x, y) << std::endl;
+
+	}
+
+	// std::cout << "\n========== Test: char ==========" << std::endl;
+	// {
+	// 	char	x = 'c';
+	// 	char	y = 'd';
+
+	// 	//Explicit instantiation of template
+	// 	std::cout << "Max of x: " << x << " and y: " << y << " is ";
+	// 	std::cout << min<char>(x, y) << std::endl;
+
+	// 	//Implicit instantiation of template
+	// 	std::cout << "Max of x: " << x << " and y: " << y << " is ";
+	// 	std::cout << min(x, y) << std::endl;
+	// }
+
+	// std::cout << "\n========== Test: function ==========" << std::endl;
+	// {
+	// 	int	x = 99;
+	// 	int	y = -5;
+	// 	int	ret;
+
+	// 	ret = min<int>(genericFx(x), genericFx(y));
+
+	// 	//Explicit instantiation of template
+	// 	std::cout << "Max of x: " << x << " and y: " << y << " is ";
+	// 	std::cout << ret << std::endl;
+	// }
+
+	return (0);
 }
