@@ -6,21 +6,21 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 00:54:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/07 10:52:02 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/07 18:13:59 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template<typename T, typename F>
-void	iter(T *array, int arrLen, F fx)
+void	iter(T *array, unsigned int  arrLen, F fx)
 {
-	for (int i = 0; i < arrLen; ++i)
+	for (unsigned int i = 0; i < arrLen; ++i)
 		fx(array[i]);
 }
 
 template<typename T, typename F>
-void	iter(T const *array, int arrLen, F fx)
+void	iter(T const *array, unsigned int arrLen, F fx)
 {
-	for (int i = 0; i < arrLen; ++i)
+	for (unsigned int i = 0; i < arrLen; ++i)
 		fx(array[i]);
 }
 
@@ -35,4 +35,3 @@ void	doubleT(T &thing)
 {
 	thing = thing * 2;
 }
-
