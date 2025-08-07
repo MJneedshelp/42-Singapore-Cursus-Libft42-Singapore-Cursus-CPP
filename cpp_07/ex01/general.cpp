@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.tpp                                           :+:      :+:    :+:   */
+/*   general.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 00:54:00 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/07 10:52:02 by mintan           ###   ########.fr       */
+/*   Created: 2025/08/07 10:54:15 by mintan            #+#    #+#             */
+/*   Updated: 2025/08/07 12:05:47 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-template<typename T, typename F>
-void	iter(T *array, int arrLen, F fx)
+#include "general.hpp"
+
+void	underscoreStr(std::string&str)
 {
-	for (int i = 0; i < arrLen; ++i)
-		fx(array[i]);
+	str = str + "_";
 }
 
-template<typename T, typename F>
-void	iter(T const *array, int arrLen, F fx)
+void	incrementFloat(float &val)
 {
-	for (int i = 0; i < arrLen; ++i)
-		fx(array[i]);
+	++val;
 }
-
-template<typename T>
-void	printT(T const &thing)
-{
-	std::cout << thing << std::endl;
-}
-
-template<typename T>
-void	doubleT(T &thing)
-{
-	thing = thing * 2;
-}
-

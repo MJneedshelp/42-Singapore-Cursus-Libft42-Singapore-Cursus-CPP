@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
+#    By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/08/06 23:51:45 by mintan           ###   ########.fr        #
+#    Updated: 2025/08/07 10:59:54 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEP_FLAGS = -MMD -MP
 NAME = iter
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = main
+SRC_NAMES = main general
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
@@ -64,7 +64,3 @@ print_art:
 	@echo "       \`-=#\$$%&%$\#=-'"
 	@echo "          | ;  :|"
 	@echo " _____.,-#%&\$\@%#&#~,._____"
-
-
-
-
