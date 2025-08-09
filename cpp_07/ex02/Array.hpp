@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 09:08:16 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 10:35:53 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Array
 
 
 	private:
-		unsigned int	_arrSz
+		unsigned int	_arrSz;
 
 
 
