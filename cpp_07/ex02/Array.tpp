@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 19:10:05 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 19:24:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ T&	Array<T>::operator[](unsigned int idx)
 
 /* Setter */
 template<typename T>
-void	Array<T>::setArr(unsigned int idx, T &elem)
+void	Array<T>::setArr(unsigned int idx, T elem)
 {
 	this->_array[idx] = elem;
 }

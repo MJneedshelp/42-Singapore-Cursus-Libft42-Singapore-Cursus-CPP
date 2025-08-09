@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 19:10:18 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 19:24:40 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,20 @@ class Array
 		~Array(void);
 
 		/* Setter */
-		void	setArr(unsigned int	idx, T &elem);
+		void	setArr(unsigned int	idx, T elem);
+
+
+		const unsigned int	_arrSz;
+
 
 	private:
 		T					*_array;
-		const unsigned int	_arrSz;
+		// const unsigned int	_arrSz;
 
 };
+
+// template<typename T>
+// std::ostream&	operator<<(std::ostream &o, Array<T> const &inst);
 
 #include "Array.tpp"
 #endif
