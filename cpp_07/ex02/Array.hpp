@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 21:16:35 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 21:47:55 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ class Array
 	public:
 		Array(void);
 		Array(unsigned int n);
-		//Array(Array const &src);					//copy constructor
-		Array&	operator=(Array const &src);		//assignment operator
+		Array(Array &src);					//copy constructor
 		T&		operator[](unsigned int	idx);		//subscript operator
 		~Array(void);
 
@@ -35,14 +34,22 @@ class Array
 		void	setArr(unsigned int	idx, T elem);
 
 
-		unsigned int		getArrSz(void);
-		std::string			getType(void);
+		unsigned int	getArrSz(void);
+		std::string		getType(void);
 
 
 
 	private:
-		T					*_array;
-		const unsigned int	_arrSz;
+		T				*_array;
+		unsigned int	_arrSz;
+
+		/* set as private to prevent direct usage -> may cause mem leaks
+		   if the original object already has memory allocated and this is used
+		   as an assignment
+		*/
+
+		Array&			operator=(Array &src);
+
 
 };
 

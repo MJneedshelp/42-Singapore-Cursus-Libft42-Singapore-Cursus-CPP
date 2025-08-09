@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 21:17:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 21:53:19 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,28 @@ Array<T>::Array(unsigned int n): _arrSz(n)
 	this->_array = new T[n];
 }
 
-
+/* Copy Constructor */
+template<typename T>
+Array<T>::Array(Array &src): _arrSz(src.getArrSz())
+{
+	std::cout << "Copy constructor" << std::endl;
+	this->_array = new T[(src.getArrSz())];
+	*this = src;
+}
 
 
 /* Assignment Operator Constructor */
+template<typename T>
+Array<T>&	Array<T>::operator=(Array<T> &src)
+{
+	if (this != &src)
+	{
+		this->_arrSz = src.getArrSz();
+		for (unsigned int i = 0; i < this->_arrSz; ++i)
+			this->setArr(i, src[i]);
+	}
+	return (*this);
+}
 
 
 /* Default Destructor */
