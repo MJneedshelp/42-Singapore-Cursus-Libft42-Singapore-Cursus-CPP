@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/08/08 13:46:02 by mintan           ###   ########.fr        #
+#    Updated: 2025/08/09 08:20:38 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,10 +53,10 @@ re:	fclean all
 .PHONY: all clean re fclean
 
 print_art:
-	@echo "        .""
-	@echo "      \ | /""
-	@echo "    '-.;;;.-'""
-	@echo "   -==;;;;;==-""
-	@echo "    .-';;;'-.""
-	@echo "      / | \""
-	@echo "        '""
+	@echo "        ."
+	@echo "      \\ | /"
+	@echo "    '-.;;;.-'"
+	@echo "   -==;;;;;==-"
+	@echo "    .-';;;'-. "
+	@echo "      / | \\"
+	@echo "        '"
