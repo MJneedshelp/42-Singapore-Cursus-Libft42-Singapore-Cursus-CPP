@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:21 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 19:28:06 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 20:47:44 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,20 @@
 
 int	main(void)
 {
-	// Array<int>	a1;
-	Array<int>	a2(5);
-	// int			arr3[5] = {1, 2, 3, 4, 5};
+	//MJ probably add a case here to test for default constructor
 
-
-	// std::cout << "Memory Address of a1: " << a1._array << " | size: "
-	// << sizeof(*(a1._array)) << std::endl;
-
-	// std::cout << "Memory Address of a2: " << a2._array << " | size: "
-	// << sizeof(*(a2._array)) << std::endl;
-
-	// std::cout << "Memory Address of a3: " << arr3 << " | size: "
-	// << sizeof(arr3) << std::endl;
-
-	for (unsigned int i = 0; i < a2._arrSz; ++i)
 	{
-		a2.setArr(i, i + 1);
-	}
+		std::cout << "============ Int Array ============" << std::endl;
+		Array<int>	arr(5);
 
-	for (unsigned int i = 0; i < a2._arrSz; ++i)
-	{
-		std::cout << a2[i] << std::endl;
+		for (unsigned int i = 0; i < arr.getArrSz(); ++i)
+			arr.setArr(i, i + 1);
+		std::cout << arr << std::endl;
+
+		
+
+
+
 	}
 
 
