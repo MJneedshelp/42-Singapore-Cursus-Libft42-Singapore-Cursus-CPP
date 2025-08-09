@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 08:25:52 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 09:08:16 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ class Array
 {
 	public:
 		Array(void);
+		Array(unsigned int n);
 		~Array(void);
 
 		T* array;
 
 
 	private:
+		unsigned int	_arrSz
 
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:52:24 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/07 12:06:29 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 10:13:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 /* General functions - specific type */
 void	underscoreStr(std::string &str);
 void	incrementFloat(float &val);
+void	incrementChar(char	&chr);
 
 #endif

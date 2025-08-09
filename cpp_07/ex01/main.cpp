@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 23:47:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/07 12:07:06 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 10:14:59 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ int	main(void)
 		std::cout << "========= After _ ========= " << std::endl;
 		::iter(arrStr, 5, ::underscoreStr);
 		::iter(arrStr, 5, ::printT<std::string>);
+
+		std::cout << "\n============ Char ============ " << std::endl;
+		char	arrChar[5];
+
+		arrChar[0] = 'a';
+		arrChar[1] = 'b';
+		arrChar[2] = 'c';
+		arrChar[3] = 'd';
+		arrChar[4] = 'e';
+		std::cout << "========= Before incrementing ========= " << std::endl;
+		::iter(arrChar, 5, ::printT<char>);
+		std::cout << "========= After incrementing ========= " << std::endl;
+		::iter(arrChar, 5, ::incrementChar);
+		::iter(arrChar, 5, ::printT<char>);
 
 		std::cout << "\n============ float ============ " << std::endl;
 		float		arrFloat[] = {0.0f, 1.0f, 2.0f, 3.0f, 4.0f};
