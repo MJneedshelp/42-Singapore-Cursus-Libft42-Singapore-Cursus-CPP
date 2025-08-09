@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 20:45:59 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 21:17:03 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ Array<T>::~Array(void)
 template<typename T>
 T&	Array<T>::operator[](unsigned int idx)
 {
-	return (this->_array[idx]);		//to try catch
+	if (idx >= this->getArrSz())
+		throw (std::exception());
+	return (this->_array[idx]);
 }
 
 template<typename T>

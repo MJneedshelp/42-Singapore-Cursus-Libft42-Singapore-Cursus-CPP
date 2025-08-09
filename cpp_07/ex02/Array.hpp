@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 20:48:29 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/09 21:16:35 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <iostream>
 #include <typeinfo>
 #include <stdexcept>
+
+#define ERR_OOB "Error: index provided is out-of-bounds"
+
 
 template<typename T>
 class Array
