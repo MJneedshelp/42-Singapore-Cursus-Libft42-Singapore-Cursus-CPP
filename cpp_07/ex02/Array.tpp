@@ -6,14 +6,9 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 15:21:21 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 15:27:57 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//disable all these later since it will be read from the header
-#include <iostream>
-#include <typeinfo>
-#include "Array.hpp"
 
 /* Default Constructor */
 template<typename T>

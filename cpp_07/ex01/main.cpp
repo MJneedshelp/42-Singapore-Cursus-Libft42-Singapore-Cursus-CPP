@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 23:47:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 10:14:59 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 15:31:06 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,5 @@ int	main(void)
 
 		::iter(arr, 5, ::printT<int>);
 	}
-
-
-
-
 	return (0);
 }
