@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:21 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 21:56:25 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 07:54:40 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int	main(void)
 
 	{
 		std::cout << "============ Int Array ============" << std::endl;
-		Array<int>	arr(5);
 
 		std::cout << "============ Test 1: Original Int Array ============" << std::endl;
-		for (unsigned int i = 0; i < arr.getArrSz(); ++i)
+		Array<int>	arr(5);
+		
+		for (unsigned int i = 0; i < arr.size(); ++i)
 			arr.setArr(i, i + 1);
 		std::cout << arr << std::endl;
 

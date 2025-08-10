@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 21:53:19 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 07:53:41 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ Array<T>::Array(unsigned int n): _arrSz(n)
 
 /* Copy Constructor */
 template<typename T>
-Array<T>::Array(Array &src): _arrSz(src.getArrSz())
+Array<T>::Array(Array &src): _arrSz(src.size())
 {
 	std::cout << "Copy constructor" << std::endl;
-	this->_array = new T[(src.getArrSz())];
+	this->_array = new T[(src.size())];
 	*this = src;
 }
 
@@ -47,7 +47,7 @@ Array<T>&	Array<T>::operator=(Array<T> &src)
 {
 	if (this != &src)
 	{
-		this->_arrSz = src.getArrSz();
+		this->_arrSz = src.size();
 		for (unsigned int i = 0; i < this->_arrSz; ++i)
 			this->setArr(i, src[i]);
 	}
@@ -71,13 +71,13 @@ Array<T>::~Array(void)
 template<typename T>
 T&	Array<T>::operator[](unsigned int idx)
 {
-	if (idx >= this->getArrSz())
+	if (idx >= this->size())
 		throw (std::exception());
 	return (this->_array[idx]);
 }
 
 template<typename T>
-unsigned int	Array<T>::getArrSz(void)
+unsigned int	Array<T>::size(void)
 {
 	return (this->_arrSz);
 }
@@ -99,9 +99,9 @@ void	Array<T>::setArr(unsigned int idx, T elem)
 template<typename T>
 std::ostream&	operator<<(std::ostream &o, Array<T> &inst)
 {
-	o << "==== Array Type: " << inst.getType() << " | Size: " << inst.getArrSz() << " ====" << std::endl;
+	o << "==== Array Type: " << inst.getType() << " | Size: " << inst.size() << " ====" << std::endl;
 	o << "==== Contents ====" << std::endl;
-	for (unsigned int i = 0; i < inst.getArrSz(); ++i)
+	for (unsigned int i = 0; i < inst.size(); ++i)
 	{
 		o << "index: " << i << " | content: " << inst[i] << std::endl;
 	}

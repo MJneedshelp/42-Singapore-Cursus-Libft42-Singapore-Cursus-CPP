@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/09 21:47:55 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 07:53:07 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Array
 		void	setArr(unsigned int	idx, T elem);
 
 
-		unsigned int	getArrSz(void);
+		unsigned int	size(void);
 		std::string		getType(void);
 
 
