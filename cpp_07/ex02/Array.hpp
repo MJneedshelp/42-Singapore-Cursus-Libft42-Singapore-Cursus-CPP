@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 07:53:07 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 14:37:26 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ class Array
 	public:
 		Array(void);
 		Array(unsigned int n);
-		Array(Array &src);					//copy constructor
-		T&		operator[](unsigned int	idx);		//subscript operator
+		Array(Array &src);							//copy constructor
 		~Array(void);
 
 		/* Setter */
-		void	setArr(unsigned int	idx, T elem);
+		void			setArr(unsigned int	idx, T elem);
 
-
+		/* Getters */
+		T&				operator[](unsigned int	idx);
 		unsigned int	size(void);
 		std::string		getType(void);
 
@@ -46,8 +46,7 @@ class Array
 		/* set as private to prevent direct usage -> may cause mem leaks
 		   if the original object already has memory allocated and this is used
 		   as an assignment
-		*/
-
+		   */
 		Array&			operator=(Array &src);
 
 

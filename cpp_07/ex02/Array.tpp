@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 07:53:41 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 14:28:51 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ std::string	Array<T>::getType(void)
 template<typename T>
 void	Array<T>::setArr(unsigned int idx, T elem)
 {
+	if (idx >= this->size())
+		throw (std::exception());
 	this->_array[idx] = elem;
 }
 
