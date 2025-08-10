@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:21 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 15:11:03 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 15:23:57 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(void)
 			}
 		}
 		std::cout << arr << std::endl;
+
 		std::cout << "============ Test 2: Copy Int Array ============" << std::endl;
 		Array<int>	arrCpy(arr);
 		std::cout << arrCpy << std::endl;
@@ -57,7 +58,8 @@ int	main(void)
 		{
 			std::cout << ERR_OOB << std::endl;
 		}
-		std::cout << "============ Test 5: [] Operator  ============" << std::endl;
+
+		std::cout << "\n============ Test 5: [] Operator  ============" << std::endl;
 		std::cout << "arr[0]: " << arr[0] << std::endl;
 	}
 
@@ -103,7 +105,8 @@ int	main(void)
 		{
 			std::cout << ERR_OOB << std::endl;
 		}
-		std::cout << "============ Test 5: [] Operator  ============" << std::endl;
+
+		std::cout << "\n============ Test 5: [] Operator  ============" << std::endl;
 		std::cout << "arr[0]: " << arr[0] << std::endl;
 	}
 
@@ -131,6 +134,7 @@ int	main(void)
 			std::cout << ERR_OOB << std::endl;
 		}
 		std::cout << arr << std::endl;
+
 		std::cout << "============ Test 2: Copy String Array ============" << std::endl;
 		Array<std::string>	arrCpy(arr);
 		std::cout << arrCpy << std::endl;
@@ -150,11 +154,9 @@ int	main(void)
 		{
 			std::cout << ERR_OOB << std::endl;
 		}
-		std::cout << "============ Test 5: [] Operator  ============" << std::endl;
+
+		std::cout << "\n============ Test 5: [] Operator  ============" << std::endl;
 		std::cout << "arrCpy[0]: " << arrCpy[0] << std::endl;
 	}
-
-
-
 	return (0);
 }

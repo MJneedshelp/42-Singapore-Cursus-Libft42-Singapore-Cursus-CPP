@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 14:37:26 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 15:20:55 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,14 @@ class Array
 		unsigned int	size(void);
 		std::string		getType(void);
 
-
-
 	private:
 		T				*_array;
 		unsigned int	_arrSz;
-
 		/* set as private to prevent direct usage -> may cause mem leaks
 		   if the original object already has memory allocated and this is used
 		   as an assignment
 		   */
 		Array&			operator=(Array &src);
-
-
 };
 
 template<typename T>

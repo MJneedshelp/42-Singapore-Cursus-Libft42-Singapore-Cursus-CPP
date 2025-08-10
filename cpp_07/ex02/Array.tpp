@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 15:11:56 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 15:21:21 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ Array<T>::Array(Array &src): _arrSz(src.size())
 	*this = src;
 }
 
-
 /* Assignment Operator Constructor */
 template<typename T>
 Array<T>&	Array<T>::operator=(Array<T> &src)
@@ -54,7 +53,6 @@ Array<T>&	Array<T>::operator=(Array<T> &src)
 	return (*this);
 }
 
-
 /* Default Destructor */
 template<typename T>
 Array<T>::~Array(void)
@@ -62,10 +60,6 @@ Array<T>::~Array(void)
 	std::cout << "Default destructor" << std::endl;
 	delete [](this->_array);
 }
-
-
-
-
 
 /* Getters */
 template<typename T>
