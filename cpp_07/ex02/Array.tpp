@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 14:28:51 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/10 15:11:56 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ template<typename T>
 Array<T>::Array(unsigned int n): _arrSz(n)
 {
 	std::cout << "Parametric constructor" << std::endl;
-	this->_array = new T[n];
+	this->_array = new T[n]();
 }
 
 /* Copy Constructor */
