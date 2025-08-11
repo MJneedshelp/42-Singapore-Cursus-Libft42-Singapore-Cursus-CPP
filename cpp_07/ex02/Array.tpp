@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/11 13:13:45 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/12 02:03:07 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,14 @@ Array<T>&	Array<T>::operator=(Array<T> const &src)
 {
 	if (this != &src)
 	{
-		this->_arrSz = src.size();
+		//clear current instance's members and reallocate
+		//maybe don't need to delete if it's the same size. delete and reallocate if different size
+		if (this->_arrSz != src.size())
+		{
+			this->_arrSz = src.size();
+			delete [](this->_array);
+			this->_array = new T[src.size()]();
+		}
 		for (unsigned int i = 0; i < this->_arrSz; ++i)
 			(*this)[i] = src[i];
 	}

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/11 13:24:19 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/12 02:47:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Array
 	public:
 		Array(void);
 		Array(unsigned int n);
-		Array(Array const &src);							//copy constructor
+		Array(Array const &src);
 		~Array(void);
 
 		/* Operator Overloads */
@@ -40,11 +40,6 @@ class Array
 	private:
 		T				*_array;
 		unsigned int	_arrSz;
-		/* set as private to prevent direct usage -> may cause mem leaks
-		   if the original object already has memory allocated and this is used
-		   as an assignment
-		   */
-		Array&			operator=(Array const &src);
 };
 
 template<typename T>
