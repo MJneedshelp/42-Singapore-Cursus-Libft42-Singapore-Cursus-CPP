@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:21 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 15:23:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/11 12:50:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	main(void)
 		{
 			try
 			{
-				arr.setArr(i, i + 1);
+				// arr.setArr(i, i + 1);
+				arr[i] = i + 1;
 			}
 			catch(std::exception &e)
 			{
@@ -44,7 +45,7 @@ int	main(void)
 		std::cout << arrCpy << std::endl;
 
 		std::cout << "============ Test 3: Modify Int Array ============" << std::endl;
-		arr.setArr(0, 42);
+		arr[0] = 42;
 		std::cout << "======== Test 3a: Original Int Array ========" << std::endl;
 		std::cout << arr << std::endl;
 		std::cout << "======== Test 3b: Copy Int Array ========" << std::endl;
@@ -76,10 +77,10 @@ int	main(void)
 
 		try
 		{
-			arr.setArr(0, 'c');
-			arr.setArr(1, 'h');
-			arr.setArr(2, 'a');
-			arr.setArr(3, 'r');
+			arr[0] = 'c';
+			arr[1] = 'h';
+			arr[2] = 'a';
+			arr[3] = 'r';
 		}
 		catch(std::exception &e)
 		{
@@ -91,7 +92,7 @@ int	main(void)
 		std::cout << arrCpy << std::endl;
 
 		std::cout << "============ Test 3: Modify Int Array ============" << std::endl;
-		arr.setArr(0, 'x');
+		arr[0] = 'x';
 		std::cout << "======== Test 3a: Original Int Array ========" << std::endl;
 		std::cout << arr << std::endl;
 		std::cout << "======== Test 3b: Copy Int Array ========" << std::endl;
@@ -123,11 +124,11 @@ int	main(void)
 
 		try
 		{
-			arr.setArr(0, "zero");
-			arr.setArr(1, "one");
-			arr.setArr(2, "two");
-			arr.setArr(3, "three");
-			arr.setArr(4, "four");
+			arr[0] = "zero";
+			arr[1] = "one";
+			arr[2] = "two";
+			arr[3] = "three";
+			arr[4] = "four";
 		}
 		catch(std::exception &e)
 		{
@@ -140,7 +141,7 @@ int	main(void)
 		std::cout << arrCpy << std::endl;
 
 		std::cout << "============ Test 3: Modify String Array ============" << std::endl;
-		arrCpy.setArr(0, "infinity");
+		arrCpy[0] = "infinity";
 		std::cout << "======== Test 3a: Original String Array ========" << std::endl;
 		std::cout << arr << std::endl;
 		std::cout << "======== Test 3b: Copy String Array ========" << std::endl;

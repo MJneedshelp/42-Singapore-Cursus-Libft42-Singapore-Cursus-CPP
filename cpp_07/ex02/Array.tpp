@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 15:27:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/11 13:13:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ template<typename T>
 Array<T>::Array(void): _arrSz(0)
 {
 	std::cout << "Default constructor" << std::endl;
-	this->_array = new T[0];
+	this->_array = NULL;
 }
 
 /* Parametric Constructor */
@@ -28,7 +28,7 @@ Array<T>::Array(unsigned int n): _arrSz(n)
 
 /* Copy Constructor */
 template<typename T>
-Array<T>::Array(Array &src): _arrSz(src.size())
+Array<T>::Array(Array const &src): _arrSz(src.size())
 {
 	std::cout << "Copy constructor" << std::endl;
 	this->_array = new T[(src.size())];
@@ -37,13 +37,13 @@ Array<T>::Array(Array &src): _arrSz(src.size())
 
 /* Assignment Operator Constructor */
 template<typename T>
-Array<T>&	Array<T>::operator=(Array<T> &src)
+Array<T>&	Array<T>::operator=(Array<T> const &src)
 {
 	if (this != &src)
 	{
 		this->_arrSz = src.size();
 		for (unsigned int i = 0; i < this->_arrSz; ++i)
-			this->setArr(i, src[i]);
+			(*this)[i] = src[i];
 	}
 	return (*this);
 }
@@ -56,7 +56,15 @@ Array<T>::~Array(void)
 	delete [](this->_array);
 }
 
-/* Getters */
+/* [] Operator */
+template<typename T>
+T&	Array<T>::operator[](unsigned int idx)	const
+{
+	if (idx >= this->size())
+		throw (std::exception());
+	return (this->_array[idx]);
+}
+
 template<typename T>
 T&	Array<T>::operator[](unsigned int idx)
 {
@@ -65,30 +73,22 @@ T&	Array<T>::operator[](unsigned int idx)
 	return (this->_array[idx]);
 }
 
+/* Getters */
 template<typename T>
-unsigned int	Array<T>::size(void)
+unsigned int	Array<T>::size(void)	const
 {
 	return (this->_arrSz);
 }
 
 template<typename T>
-std::string	Array<T>::getType(void)
+std::string	Array<T>::getType(void)	const
 {
 	return (typeid(T).name());
 }
 
-/* Setter */
-template<typename T>
-void	Array<T>::setArr(unsigned int idx, T elem)
-{
-	if (idx >= this->size())
-		throw (std::exception());
-	this->_array[idx] = elem;
-}
-
 /* << Operator */
 template<typename T>
-std::ostream&	operator<<(std::ostream &o, Array<T> &inst)
+std::ostream&	operator<<(std::ostream &o, Array<T> const &inst)
 {
 	o << "==== Array Type: " << inst.getType() << " | Size: " << inst.size() << " ====" << std::endl;
 	o << "==== Contents ====" << std::endl;

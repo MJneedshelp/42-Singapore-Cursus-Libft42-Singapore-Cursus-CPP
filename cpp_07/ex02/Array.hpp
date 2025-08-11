@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/10 15:20:55 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/11 13:24:19 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@
 
 #define ERR_OOB "Error: index provided is out-of-bounds"
 
-
 template<typename T>
 class Array
 {
 	public:
 		Array(void);
 		Array(unsigned int n);
-		Array(Array &src);							//copy constructor
+		Array(Array const &src);							//copy constructor
 		~Array(void);
 
-		/* Setter */
-		void			setArr(unsigned int	idx, T elem);
+		/* Operator Overloads */
+		T&				operator[](unsigned int	idx)	const;
+		T&				operator[](unsigned int	idx);
+		Array&			operator=(Array const &src);
 
 		/* Getters */
-		T&				operator[](unsigned int	idx);
-		unsigned int	size(void);
-		std::string		getType(void);
+		unsigned int	size(void)						const;
+		std::string		getType(void)					const;
 
 	private:
 		T				*_array;
@@ -44,11 +44,11 @@ class Array
 		   if the original object already has memory allocated and this is used
 		   as an assignment
 		   */
-		Array&			operator=(Array &src);
+		Array&			operator=(Array const &src);
 };
 
 template<typename T>
-std::ostream&	operator<<(std::ostream &o, Array<T> &inst);
+std::ostream&	operator<<(std::ostream &o, Array<T> const &inst);
 
 #include "Array.tpp"
 #endif
