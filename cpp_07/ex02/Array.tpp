@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:34:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/12 02:03:07 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/12 03:14:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ Array<T>&	Array<T>::operator=(Array<T> const &src)
 {
 	if (this != &src)
 	{
-		//clear current instance's members and reallocate
-		//maybe don't need to delete if it's the same size. delete and reallocate if different size
 		if (this->_arrSz != src.size())
 		{
 			this->_arrSz = src.size();
@@ -65,7 +63,7 @@ Array<T>::~Array(void)
 
 /* [] Operator */
 template<typename T>
-T&	Array<T>::operator[](unsigned int idx)	const
+T const&	Array<T>::operator[](unsigned int idx)	const
 {
 	if (idx >= this->size())
 		throw (std::exception());

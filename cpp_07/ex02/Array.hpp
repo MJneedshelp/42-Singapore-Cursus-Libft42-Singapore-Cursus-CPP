@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:49:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/12 02:47:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/12 03:13:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Array
 		~Array(void);
 
 		/* Operator Overloads */
-		T&				operator[](unsigned int	idx)	const;
+		T const&		operator[](unsigned int	idx)	const;
 		T&				operator[](unsigned int	idx);
 		Array&			operator=(Array const &src);
 
