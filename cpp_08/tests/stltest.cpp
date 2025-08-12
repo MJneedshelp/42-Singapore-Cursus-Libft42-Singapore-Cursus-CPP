@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:10:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/12 10:43:45 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/12 10:45:39 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ int	main(void)
 		listInt.push_back(0);
 		listInt.push_back(55);
 		listInt.push_back(99);
+		listInt.push_back(155);
 
-		itInt = listInt.begin();
-		std::cout << *(++itInt) << std::endl;
-		std::cout << *(--itIntEnd) << std::endl;
-
-
-
+		for (itInt = listInt.begin(); itInt != itIntEnd; ++itInt)
+			std::cout << *itInt << std::endl;
 	}
 
 
