@@ -6,14 +6,16 @@
 /*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:10:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/12 10:57:51 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/12 12:00:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 #include <list>
+#include <vector>
 #include <algorithm>
-
+#include <stdexcept>
 
 void	prInt(int i)
 {
@@ -24,6 +26,7 @@ void	prInt(int i)
 int	main(void)
 {
 	{
+		std::cout << "============= Basic List Test =============" << std::endl;
 		std::list<int>					listInt;
 		std::list<int>::const_iterator	itInt;
 		std::list<int>::const_iterator	itIntEnd;
@@ -38,8 +41,33 @@ int	main(void)
 		for (itInt = listInt.begin(); itInt != itIntEnd; ++itInt)
 			std::cout << *itInt << std::endl;
 
-		std::cout << "\n============= Using for_each =============" << std::endl;
+		std::cout << "============= Using for_each =============" << std::endl;
 		for_each(listInt.begin(), listInt.end(), prInt);
+	}
+	{
+		std::cout << "\n============= Basic Vector Test =============" << std::endl;
+		std::vector<std::string>				fruits = {{"apple", "orange", "pear", "grapes"}};
+
+		/* Only available in c++11
+		for (std::string fruit : fruits)
+			std::cout << fruit << std::endl;
+			*/
+		std::cout << "============= Accessing elements front() / back() =============" << std::endl;
+		std::cout << "Front: " << fruits.front() << " | Back: " << fruits.back() << std::endl;
+		std::cout << "============= Accessing elements using [] =============" << std::endl;
+		std::cout << fruits[1] << std::endl;
+		std::cout << "============= Accessing elements using at() =============" << std::endl;
+		try
+		{
+			std::cout << fruits.at(3) << std::endl;
+		}
+		catch(const std::out_of_range& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+
+
 	}
 	return (0);
 }
