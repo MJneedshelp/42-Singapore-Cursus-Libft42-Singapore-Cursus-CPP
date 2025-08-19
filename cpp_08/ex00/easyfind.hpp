@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:39:21 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/12 14:51:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/18 13:46:19 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 template<typename T>	//T is a container: Array / Vector / List
 //return type is some sort of iterator?
-unsigned int	easyfind(T const &haystack, int needle);
+typename T::const_iterator	easyfind(T const &haystack, int needle);
 
 
 
