@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stltest.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@stuident.42singapore.sg>    +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:10:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/12 12:00:49 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/20 00:38:45 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ int	main(void)
 		std::list<int>					listInt;
 		std::list<int>::const_iterator	itInt;
 		std::list<int>::const_iterator	itIntEnd;
+		std::list<int>::const_iterator	itFind;
 
 		itIntEnd = listInt.end();
 		listInt.push_back(0);
 		listInt.push_back(55);
 		listInt.push_back(99);
 		listInt.push_back(155);
+		listInt.push_back(55);
+
 
 		std::cout << "============= Using const iterator =============" << std::endl;
 		for (itInt = listInt.begin(); itInt != itIntEnd; ++itInt)
@@ -43,31 +46,40 @@ int	main(void)
 
 		std::cout << "============= Using for_each =============" << std::endl;
 		for_each(listInt.begin(), listInt.end(), prInt);
+
+		std::cout << "============= Using std::find -> success =============" << std::endl;
+		itFind = std::find(listInt.begin(), listInt.end(), 55);
+		std::cout << *itFind << std::endl;
+
+		std::cout << "============= Using std::find -> fail =============" << std::endl;
+		itFind = std::find(listInt.begin(), listInt.end(), 42);
+		if (itFind == itIntEnd)
+			std::cout << "Unable to find the value 42" << std::endl;
 	}
-	{
-		std::cout << "\n============= Basic Vector Test =============" << std::endl;
-		std::vector<std::string>				fruits = {{"apple", "orange", "pear", "grapes"}};
+	// {
+	// 	std::cout << "\n============= Basic Vector Test =============" << std::endl;
+	// 	std::vector<std::string>				fruits = {{"apple", "orange", "pear", "grapes"}};
 
-		/* Only available in c++11
-		for (std::string fruit : fruits)
-			std::cout << fruit << std::endl;
-			*/
-		std::cout << "============= Accessing elements front() / back() =============" << std::endl;
-		std::cout << "Front: " << fruits.front() << " | Back: " << fruits.back() << std::endl;
-		std::cout << "============= Accessing elements using [] =============" << std::endl;
-		std::cout << fruits[1] << std::endl;
-		std::cout << "============= Accessing elements using at() =============" << std::endl;
-		try
-		{
-			std::cout << fruits.at(3) << std::endl;
-		}
-		catch(const std::out_of_range& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
+	// 	/* Only available in c++11
+	// 	for (std::string fruit : fruits)
+	// 		std::cout << fruit << std::endl;
+	// 		*/
+	// 	std::cout << "============= Accessing elements front() / back() =============" << std::endl;
+	// 	std::cout << "Front: " << fruits.front() << " | Back: " << fruits.back() << std::endl;
+	// 	std::cout << "============= Accessing elements using [] =============" << std::endl;
+	// 	std::cout << fruits[1] << std::endl;
+	// 	std::cout << "============= Accessing elements using at() =============" << std::endl;
+	// 	try
+	// 	{
+	// 		std::cout << fruits.at(3) << std::endl;
+	// 	}
+	// 	catch(const std::out_of_range& e)
+	// 	{
+	// 		std::cerr << e.what() << '\n';
+	// 	}
 
 
 
-	}
+	// }
 	return (0);
 }
