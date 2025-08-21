@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 00:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/21 11:14:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/21 15:42:02 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,32 @@ int	main(void)
 	try
 	{
 		itVecChar = ::easyfind(vecChar, 'm');
+	}
+	catch(int valNotFound)
+	{
+		std::cerr << "Element not found: " << valNotFound << std::endl;
+	}
+
+	std::cout << "\n============= 6. Int Deque =============" << std::endl;
+	std::deque<int>						dqInt(5);
+	std::deque<int>::const_iterator		itDqInt;
+
+	for (int i = 0; i < 5; ++i)
+		dqInt[i] = i * 2;
+	dqInt.push_back(0);
+	
+	std::cout << "========== 6a. Print Int Deque ==========" << std::endl;
+	for (itDqInt = dqInt.begin(); itDqInt != dqInt.end(); ++itDqInt)
+		std::cout << "Iterator address: " << &(*itDqInt) << " | value " << *itDqInt << std::endl;
+	
+	std::cout << "========== 6b. Easyfound: 0 ==========" << std::endl;
+	itDqInt = ::easyfind(dqInt, 0);
+	std::cout << "Iterator address: " << &(*itDqInt) << " | value " << *itDqInt << std::endl;
+
+	std::cout << "========== 6c. Easyflop: 42 ==========" << std::endl;
+	try
+	{
+		itDqInt = ::easyfind(dqInt, 42);
 	}
 	catch(int valNotFound)
 	{
