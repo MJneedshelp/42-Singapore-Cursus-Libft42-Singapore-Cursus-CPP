@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:43:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/20 02:02:16 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/21 09:30:24 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,3 @@ typename T::const_iterator	easyfind(T const &haystack, int const needle)
 		throw(needle);
 	return (itFind);
 }
-
-// const char*	ValNotFound::what() const throw()
-// {
-// 	return("Grade cannot be higher than 1");
-// }
