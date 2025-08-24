@@ -6,13 +6,9 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:43:35 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 10:57:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 11:22:24 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-
-
 
 template<typename T>
 typename T::const_iterator	easyfind(T const &haystack, int const needle)
