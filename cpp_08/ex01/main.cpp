@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 09:58:53 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 19:29:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 19:36:15 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,26 @@ int	main(void)
 		try
 		{
 			spOne.addNumber(-42);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+
+		std::cout << "===== Test 1c: shortest span of 1 =====" << std::endl;
+		try
+		{
+			std::cout << "Shortest span: " << spOne.shortestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+
+		std::cout << "===== Test 1d: longest span of 1 =====" << std::endl;
+		try
+		{
+			std::cout << "Longest span: " << spOne.longestSpan() << std::endl;
 		}
 		catch(const std::exception& e)
 		{
