@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:10:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/20 00:38:45 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/25 01:08:32 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <iterator>
 #include <algorithm>
 #include <stdexcept>
 
@@ -28,6 +29,7 @@ int	main(void)
 	{
 		std::cout << "============= Basic List Test =============" << std::endl;
 		std::list<int>					listInt;
+		std::list<int>					listIntCpy(50);
 		std::list<int>::const_iterator	itInt;
 		std::list<int>::const_iterator	itIntEnd;
 		std::list<int>::const_iterator	itFind;
@@ -39,6 +41,11 @@ int	main(void)
 		listInt.push_back(155);
 		listInt.push_back(55);
 
+		listIntCpy = listInt;
+
+		listInt.push_back(42);
+
+
 
 		std::cout << "============= Using const iterator =============" << std::endl;
 		for (itInt = listInt.begin(); itInt != itIntEnd; ++itInt)
@@ -46,6 +53,10 @@ int	main(void)
 
 		std::cout << "============= Using for_each =============" << std::endl;
 		for_each(listInt.begin(), listInt.end(), prInt);
+
+		std::cout << "============= Check copy list =============" << std::endl;
+		for (itInt = listIntCpy.begin(); itInt != listIntCpy.end(); ++itInt)
+			std::cout << *itInt << std::endl;
 
 		std::cout << "============= Using std::find -> success =============" << std::endl;
 		itFind = std::find(listInt.begin(), listInt.end(), 55);

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 09:58:53 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 19:40:05 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/25 01:39:29 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,91 @@ int	main(void)
 		spDup.addNumber(42);
 		std::cout << spDup << std::endl;
 	}
+	{
+		std::cout << "\n========== Test 4: Add range (max size: 10)==========" << std::endl;
+		Span	spRng(10);
 
-	//test span with at least 10,000 numbers
-	//try with more numbers, might be testing for speed, so better only sort
-	//once at the end for add range
+		for (int i = 0; i < 3; ++i)
+			spRng.addNumber(i);
+		std::cout << spRng << std::endl;
 
+		std::cout << "===== Test 4a: Add int vector range =====" << std::endl;
+		std::vector<int>	rngVec(3, 42);
+
+		spRng.addRange(rngVec.begin(), rngVec.end());
+		std::cout << spRng << std::endl;
+
+		std::cout << "===== Test 4b: Add int list range =====" << std::endl;
+		std::list<int>	rngList(3, -24);
+
+		spRng.addRange(rngList.begin(), rngList.end());
+		std::cout << spRng << std::endl;
+
+		std::cout << "===== Test 4c: Add int deque range (exceed) =====" << std::endl;
+		std::deque<int>	rngDq(3, 99);
+
+		try
+		{
+			spRng.addRange(rngDq.begin(), rngDq.end());
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		std::cout << spRng << std::endl;
+	}
+	{
+		std::cout << "\n========== Test 5: OCF  ==========" << std::endl;
+		Span				spOr(10);
+		Span				spCpyAss(42);
+		std::vector<int>	rngVec(3, 42);
+
+		for (int i = 0; i < 8; ++i)
+			spOr.addNumber(i * 3);
+		std::cout << spOr << std::endl;
+
+		std::cout << "===== Test 5a: Copy assignment operator (contents) =====" << std::endl;
+		spCpyAss = spOr;
+		spOr.addNumber(-42);
+		std::cout << "Original: " << spOr << std::endl;
+		std::cout << "Copy assigned: " << spCpyAss << std::endl;
+
+		std::cout << "===== Test 5b: Copy assignment operator (size) =====" << std::endl;
+		try
+		{
+			spCpyAss.addRange(rngVec.begin(), rngVec.end());
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+
+		std::cout << "===== Test 5c: Copy constructor (contents) =====" << std::endl;
+		Span				spCpy(spOr);
+
+		spOr.addNumber(-24);
+		std::cout << "Original: " << spOr << std::endl;
+		std::cout << "Copy constructed: " << spCpy << std::endl;
+
+		std::cout << "===== Test 5d: Copy constructor (size) =====" << std::endl;
+		try
+		{
+			spCpy.addRange(rngVec.begin(), rngVec.end());
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << "\n========== Test 6: Big ass span ==========" << std::endl;
+		Span				spBass(20000);
+		std::vector<int>	vecBass(20000);
+
+		for (int i = 0; i < 20000; ++i)
+			vecBass[i] = i * 2;
+		spBass.addRange(vecBass.begin(), vecBass.end());
+		std::cout << spBass << std::endl;
+	}
 	return(0);
 }

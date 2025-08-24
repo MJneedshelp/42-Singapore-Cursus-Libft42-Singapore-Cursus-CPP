@@ -6,13 +6,13 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 17:29:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 19:28:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/25 01:45:31 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-/*Constructors and Destructors*/
+/* OCF */
 Span::Span(unsigned int N):
 	maxSize(N), _intVec(), _fill(0)
 {
@@ -23,6 +23,27 @@ Span::Span(unsigned int N):
 	oss << N;
 	this->_maxSizeStr = oss.str();
 	return;
+}
+
+Span::Span(Span const &src)
+{
+	if (this != &src)
+		*this = src;
+}
+
+Span&	Span::operator=(Span const &src)
+{
+	std::ostringstream	oss;
+
+	if (this != &src)
+	{
+		this->maxSize = src.maxSize;
+		this->setFill(src.getFill());
+		oss << src.maxSize;
+		this->_maxSizeStr = oss.str();
+		this->_intVec = src._intVec;
+	}
+	return (*this);
 }
 
 Span::~Span(void)
@@ -38,6 +59,11 @@ void	Span::addNumber(int val)
 	this->_intVec.push_back(val);
 	++(this->_fill);
 	std::sort(this->_intVec.begin(), this->_intVec.end());
+}
+
+void	Span::setFill(unsigned int fill)
+{
+	this->_fill = fill;
 }
 
 /* Getters */
@@ -80,12 +106,6 @@ int	Span::longestSpan(void)	const
 	min = *(std::min_element(this->_intVec.begin(), this->_intVec.end()));
 	return (max - min);
 }
-
-
-
-
-
-
 
 /* Operator Overloads */
 std::ostream&	operator<<(std::ostream &o, Span const &inst)
