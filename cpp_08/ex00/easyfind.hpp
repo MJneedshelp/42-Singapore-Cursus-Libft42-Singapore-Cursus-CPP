@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:39:21 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/21 15:20:12 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 10:55:12 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include <deque>
 #include <algorithm>
 #include <iostream>
-#include <stdexcept>
+#include <sstream>
+#include <exception>
 
 template<typename T>
 typename T::const_iterator	easyfind(T const &haystack, int const needle);

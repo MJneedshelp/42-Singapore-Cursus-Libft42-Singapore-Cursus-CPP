@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 17:29:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 10:35:02 by mintan           ###   ########.fr       */
+/*   Created: 2025/08/24 09:58:53 by mintan            #+#    #+#             */
+/*   Updated: 2025/08/24 10:02:44 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span(unsigned int maxSize):
-	_intList(), _maxSize(maxSize), _max(-1), _min(-1), _fill(0)
+int	main(void)
 {
-	std::cout << "creating int list" << std::endl;
-	if(maxSize == 0)
-		std::cerr << ERR_TOOSMALL << std::endl;
-	//throw an exception here
-	return;
-}
+	Span	span0(0);
+	Span	span1(5);
 
-Span::~Span(void)
-{
-	std::cout << "Destroying int list" << std::endl;
-	return;
+	return(0);
 }

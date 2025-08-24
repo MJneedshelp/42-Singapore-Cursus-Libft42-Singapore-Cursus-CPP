@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 00:49:30 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/21 15:42:02 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 10:58:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	main(void)
 	{
 		itInt = ::easyfind(listInt, -42);
 	}
-	catch(int valNotFound)
+	catch(const std::exception &e)
 	{
-		std::cerr << "Element not found: " << valNotFound << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n============= 2. Char List =============" << std::endl;
@@ -66,9 +66,9 @@ int	main(void)
 	{
 		itChar = ::easyfind(listChar, 'k');
 	}
-	catch(int valNotFound)
+	catch(const std::exception &e)
 	{
-		std::cerr << "Element not found: " << valNotFound << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n============= 3. Float List =============" << std::endl;
@@ -86,18 +86,18 @@ int	main(void)
 	for (itFloat = listFloat.begin(); itFloat != listFloat.end(); ++itFloat)
 			std::cout << "Iterator address: " << &(*itFloat) << " | value " << *itFloat << std::endl;
 
-	std::cout << "========== 2b. Easyfound: 42 ==========" << std::endl;
+	std::cout << "========== 3b. Easyfound: 42 ==========" << std::endl;
 	itFloat = ::easyfind(listFloat, 42);
 	std::cout << "Iterator address: " << &(*itFloat) << " | value " << *itFloat << std::endl;
 
-	std::cout << "========== 2c. Easyflop: 100 ==========" << std::endl;
+	std::cout << "========== 3c. Easyflop: 100 ==========" << std::endl;
 	try
 	{
 		itFloat = ::easyfind(listFloat, 100);
 	}
-	catch(int valNotFound)
+	catch(const std::exception &e)
 	{
-		std::cerr << "Element not found: " << valNotFound << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n============= 4. Int Vector =============" << std::endl;
@@ -107,11 +107,11 @@ int	main(void)
 	for (int i = 0; i < 10; ++i)
 		vecInt[i] = i;
 	vecInt.push_back(9);
-	
+
 	std::cout << "========== 4a. Print Int Vector ==========" << std::endl;
 	for (itVecInt = vecInt.begin(); itVecInt != vecInt.end(); ++itVecInt)
 		std::cout << "Iterator address: " << &(*itVecInt) << " | value " << *itVecInt << std::endl;
-	
+
 	std::cout << "========== 4b. Easyfound: 9 ==========" << std::endl;
 	itVecInt = ::easyfind(vecInt, 9);
 	std::cout << "Iterator address: " << &(*itVecInt) << " | value " << *itVecInt << std::endl;
@@ -121,9 +121,9 @@ int	main(void)
 	{
 		itVecInt = ::easyfind(vecInt, 100);
 	}
-	catch(int valNotFound)
+	catch(const std::exception &e)
 	{
-		std::cerr << "Element not found: " << valNotFound << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n============= 5. Char Vector =============" << std::endl;
@@ -133,11 +133,11 @@ int	main(void)
 	for (int i = 0; i < 10; ++i)
 		vecChar[i] = i + 97;
 	vecChar.push_back('e');
-	
+
 	std::cout << "========== 5a. Print Char Vector ==========" << std::endl;
 	for (itVecChar = vecChar.begin(); itVecChar != vecChar.end(); ++itVecChar)
 		std::cout << "Iterator address: " << static_cast<const void*>(&(*itVecChar)) << " | value " << *itVecChar << std::endl;
-	
+
 	std::cout << "========== 5b. Easyfound: e ==========" << std::endl;
 	itVecChar = ::easyfind(vecChar, 'e');
 	std::cout << "Iterator address: " << static_cast<const void*>(&(*itVecChar)) << " | value " << *itVecChar << std::endl;
@@ -147,9 +147,9 @@ int	main(void)
 	{
 		itVecChar = ::easyfind(vecChar, 'm');
 	}
-	catch(int valNotFound)
+	catch(const std::exception &e)
 	{
-		std::cerr << "Element not found: " << valNotFound << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n============= 6. Int Deque =============" << std::endl;
@@ -159,11 +159,11 @@ int	main(void)
 	for (int i = 0; i < 5; ++i)
 		dqInt[i] = i * 2;
 	dqInt.push_back(0);
-	
+
 	std::cout << "========== 6a. Print Int Deque ==========" << std::endl;
 	for (itDqInt = dqInt.begin(); itDqInt != dqInt.end(); ++itDqInt)
 		std::cout << "Iterator address: " << &(*itDqInt) << " | value " << *itDqInt << std::endl;
-	
+
 	std::cout << "========== 6b. Easyfound: 0 ==========" << std::endl;
 	itDqInt = ::easyfind(dqInt, 0);
 	std::cout << "Iterator address: " << &(*itDqInt) << " | value " << *itDqInt << std::endl;
@@ -173,9 +173,9 @@ int	main(void)
 	{
 		itDqInt = ::easyfind(dqInt, 42);
 	}
-	catch(int valNotFound)
+	catch(const std::exception &e)
 	{
-		std::cerr << "Element not found: " << valNotFound << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	return (0);
 }
