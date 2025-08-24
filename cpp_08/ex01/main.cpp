@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 09:58:53 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 13:22:55 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 19:29:10 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,63 @@
 
 int	main(void)
 {
-	Span	span1(3);
+	{
+		std::cout << "========== Test 0: assigned size is 0 ==========" << std::endl;
+		try
+		{
+			Span	spZero(0);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << "\n========== Test 1: assigned size is 1 ==========" << std::endl;
+		Span	spOne(1);
 
-	span1.addNumber(42);
+		std::cout << "===== Test 1a: add number (within size)=====" << std::endl;
+		spOne.addNumber(42);
+		std::cout << spOne << std::endl;
 
-	std::cout << span1 << std::endl;
+		std::cout << "===== Test 1b: add number (beyond size) =====" << std::endl;
+		try
+		{
+			spOne.addNumber(-42);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << "\n========== Test 2: check spans ==========" << std::endl;
+		Span	spTen(10);
 
-	span1.addNumber(-5);
-	std::cout << span1 << std::endl;
+		spTen.addNumber(6);
+		spTen.addNumber(3);
+		spTen.addNumber(17);
+		spTen.addNumber(9);
+		spTen.addNumber(11);
+		std::cout << spTen << std::endl;
 
+		std::cout << "===== Test 2a: shortest span =====" << std::endl;
+		std::cout << "Shortest span: " << spTen.shortestSpan() << std::endl;
 
-	span1.addNumber(0);
-	std::cout << span1 << std::endl;
+		std::cout << "===== Test 2b: longest span =====" << std::endl;
+		std::cout << "Longest span: " << spTen.longestSpan() << std::endl;
+	}
+	{
+		std::cout << "\n========== Test 3: duplicate / -ve val ==========" << std::endl;
+		Span	spDup(10);
 
-	// span1.shortestSpan();
-	std::cout << span1 << std::endl;
-
-	span1.addNumber(99);
-
+		spDup.addNumber(-5);
+		spDup.addNumber(3);
+		spDup.addNumber(-5);
+		spDup.addNumber(0);
+		spDup.addNumber(42);
+		std::cout << spDup << std::endl;
+	}
 
 	return(0);
 }

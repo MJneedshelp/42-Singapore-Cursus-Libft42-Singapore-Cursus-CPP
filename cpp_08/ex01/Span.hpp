@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:59:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 13:14:42 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 19:17:53 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,12 @@
 
 class Span
 {
-    public:
-        Span(unsigned int N);
-        ~Span();
+	public:
+		Span(unsigned int N);
+		~Span();
 		const unsigned int	maxSize;
-        void    addNumber(int val);				//check if the max number is reached
-		//Add an exception here later for the case where the number assigned is to small
-
-
-		int					shortestSpan(void);
+		void				addNumber(int val);
+		int					shortestSpan(void)	const;
 		int					longestSpan(void)	const;
 
 		/* Getters */
@@ -46,11 +43,11 @@ class Span
 
 
 	private:
-		Span();												//private
-		Span(Span const &src);								//Copy constructor
-		Span&				operator=(Span const &src);			//Copy assignment operator
+		Span();
+		Span(Span const &src);
+		Span&				operator=(Span const &src);
 		std::vector<int>	_intVec;
-		unsigned int		_fill;                              //initialise as 0, used to track which spaces are filled. Increment with add number / add range
+		unsigned int		_fill;
 		std::string			_maxSizeStr;
 };
 

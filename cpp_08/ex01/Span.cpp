@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 17:29:54 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 13:28:28 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 19:28:10 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 /*Constructors and Destructors*/
 Span::Span(unsigned int N):
-	maxSize(N), _intVec(N, 0), _fill(0)
+	maxSize(N), _intVec(), _fill(0)
 {
 	std::ostringstream	oss;
 
 	if(N == 0)
-		std::cerr << ERR_NOSIZE << std::endl;
-	//throw an exception here
+		throw (std::runtime_error(ERR_NOSIZE));
 	oss << N;
 	this->_maxSizeStr = oss.str();
 	return;
@@ -36,13 +35,10 @@ void	Span::addNumber(int val)
 {
 	if (this->_fill == this->maxSize)
 		throw (std::runtime_error(ERR_FILLED + this->_maxSizeStr));
-	this->_intVec[this->_fill] = (val);
+	this->_intVec.push_back(val);
 	++(this->_fill);
+	std::sort(this->_intVec.begin(), this->_intVec.end());
 }
-
-
-
-
 
 /* Getters */
 unsigned int	Span::getFill(void)	const
@@ -55,24 +51,23 @@ int	Span::getVectPos(unsigned int idx)	const
 	return (this->_intVec[idx]);
 }
 
-int	Span::shortestSpan(void)
+int	Span::shortestSpan(void)	const
 {
-	int									shortestSpan;
+	unsigned int						shortestSpan;
+	unsigned int						temp;
 	std::vector<int>::const_iterator	itVec;
 
-	shortestSpan = 0;
 	if (this->_fill <= 1)
 		throw(std::runtime_error(ERR_SPAN));
-	std::sort(this->_intVec.begin(), this->_intVec.end());
-	for (itVec = this->_intVec.begin(), itVec != this->_intVec.end(); ++itVec)
+	shortestSpan = *(this->_intVec.begin() + 1) - *(this->_intVec.begin());
+	for (itVec = this->_intVec.begin(); itVec != (this->_intVec.end() - 1); ++itVec)
 	{
-
+		temp = *(itVec + 1) - *(itVec);
+		if (temp < shortestSpan)
+			shortestSpan = temp;
 	}
-
-	return (0);
-
+	return (shortestSpan);
 }
-
 
 int	Span::longestSpan(void)	const
 {
@@ -97,14 +92,12 @@ std::ostream&	operator<<(std::ostream &o, Span const &inst)
 {
 	if (inst.getFill() > 1)
 	{
-		// o << "Shortest Span: " << inst.shortestSpan();
+		o << "Shortest Span: " << inst.shortestSpan();
 		o << " | Longest Span: " << inst.longestSpan() << std::endl;
 	}
 	o << "==== Contents ====" << std::endl;
 	for (unsigned int i = 0; i < inst.getFill(); ++i)
 		o << inst.getVectPos(i) << " ";
-	o << std::endl;
-
 	return (o);
 }
 
