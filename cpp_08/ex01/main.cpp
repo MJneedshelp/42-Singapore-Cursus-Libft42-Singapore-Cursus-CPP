@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 09:58:53 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/24 19:36:15 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/24 19:40:05 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ int	main(void)
 		spDup.addNumber(42);
 		std::cout << spDup << std::endl;
 	}
+
+	//test span with at least 10,000 numbers
+	//try with more numbers, might be testing for speed, so better only sort
+	//once at the end for add range
 
 	return(0);
 }
