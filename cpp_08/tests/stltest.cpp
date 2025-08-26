@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stltest.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:10:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/25 01:08:32 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/26 14:30:34 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <stack>
 #include <iterator>
 #include <algorithm>
 #include <stdexcept>
@@ -88,6 +89,38 @@ int	main(void)
 	// 	{
 	// 		std::cerr << e.what() << '\n';
 	// 	}
+	{
+		std::cout << "\n============= Basic Stack Test =============" << std::endl;
+		std::stack<int>	stackInt;
+		
+		stackInt.push(42);
+		stackInt.push(24);
+		stackInt.push(-5);
+
+
+		std::cout << "Top: " << stackInt.top() << " | Size: " << stackInt.size() << std::endl;
+		stackInt.pop();
+		std::cout << "Top: " << stackInt.top() << " | Size: " << stackInt.size() << std::endl;
+		std::cout << "Top address: " << &(stackInt.top()) << " | Size: " << stackInt.size() << std::endl;
+
+
+		std::list<int> lInt;
+
+		for (int i = 0; i < 5; ++i)
+			lInt.push_back(i);
+		
+		for (std::list<int>::iterator it = lInt.begin(); it != lInt.end(); ++it)
+			std::cout << "Address: " << &it << " | Value: " << *it << std::endl;  
+		
+			
+		
+
+
+
+		
+
+		
+	}
 
 
 
