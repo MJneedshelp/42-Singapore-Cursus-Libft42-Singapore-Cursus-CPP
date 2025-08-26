@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:04:13 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/26 23:51:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/27 02:20:18 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,44 @@ int	main(void)
 	std::cout << "[Wolverine] Top: " << wolverine.top() << " | Size: " << wolverine.size() << std::endl;
 	std::cout << "[Logan] Top: " << logan.top() << " | Size: " << logan.size() << std::endl;
 	std::cout << "[weaponX] Top: " << weaponX.top() << " | Size: " << weaponX.size() << std::endl;
+
+	std::cout << "\n============= 1. From beginning to end =============" << std::endl;
+	MutantStack<int>::iterator itWolve;
+
+	wolverine.push(-99);
+	std::cout << "[Wolverine] Values: ";
+	for (itWolve = wolverine.begin(); itWolve != wolverine.end(); ++itWolve)
+		std::cout << *itWolve << " ";
+	std::cout << std::endl;
+
+	std::cout << "========== 1a. Mutation using iterators  ==========" << std::endl;
+	itWolve = wolverine.begin();
+	*(itWolve) = 99;
+	std::cout << "[Wolverine] Values: ";
+	for (itWolve = wolverine.begin(); itWolve != wolverine.end(); ++itWolve)
+		std::cout << *itWolve << " ";
+	std::cout << std::endl;
+
+	std::cout << "\n============= 2. From beginning to end constantly =============" << std::endl;
+	MutantStack<int>::const_iterator itWolveConst;
+
+	std::cout << "[Wolverine] Values: ";
+	for (itWolveConst = wolverine.cbegin(); itWolveConst != wolverine.cend(); ++itWolveConst)
+		std::cout << *itWolveConst << " ";
+	std::cout << std::endl;
+
+	// std::cout << "========== 2a. Mutation using iterators (uncompilable) ==========" << std::endl;
+	// itWolveConst = wolverine.begin();
+	// *(itWolveConst) = 99;
+
+	std::cout << "\n============= 3. Pop Stack =============" << std::endl;
+	wolverine.pop();
+	std::cout << "[Wolverine] Values: ";
+		for (itWolveConst = wolverine.cbegin(); itWolveConst != wolverine.cend(); ++itWolveConst)
+	std::cout << *itWolveConst << " ";
+	std::cout << std::endl;
+
+
 
 
 
