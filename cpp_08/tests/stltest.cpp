@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 10:10:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/26 14:30:34 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/26 18:11:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,22 @@ int	main(void)
 	// 	}
 	{
 		std::cout << "\n============= Basic Stack Test =============" << std::endl;
-		std::stack<int>	stackInt;
+		std::stack<int>					stackInt;
+		std::deque<int>::const_iterator	itTest;
+
 		
 		stackInt.push(42);
 		stackInt.push(24);
 		stackInt.push(-5);
 
-
+		// itTest = stackInt.c
+		
 		std::cout << "Top: " << stackInt.top() << " | Size: " << stackInt.size() << std::endl;
 		stackInt.pop();
 		std::cout << "Top: " << stackInt.top() << " | Size: " << stackInt.size() << std::endl;
 		std::cout << "Top address: " << &(stackInt.top()) << " | Size: " << stackInt.size() << std::endl;
+
+		
 
 
 		std::list<int> lInt;
