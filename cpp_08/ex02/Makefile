@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mintan <mintan@student.42.fr>              +#+  +:+       +#+         #
+#    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/08/26 14:02:54 by mintan           ###   ########.fr        #
+#    Updated: 2025/08/26 23:30:11 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEP_FLAGS = -MMD -MP
 NAME = x-men
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = main Span
+SRC_NAMES = main
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)
@@ -53,5 +53,16 @@ re:	fclean all
 .PHONY: all clean re fclean
 
 print_art:
-	@echo " miles / yards / inches / foot"
-	@echo " kilometre / metre / centimetre "
+	@echo " ⠀⠀⠀⠀⠀⠀⣀⣤⣶⣾⣿⣿⣿⣿⣿⣿⣷⣶⣤⣀"
+	@echo " ⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀"
+	@echo " ⠀⠀⣰⣿⣿⣿⣿⣿⡟⠋⠉⠀⠀⠀⠀⠉⠙⢻⣿⣿⣿⣿⣿⣆⠀⠀"
+	@echo " ⠀⣼⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣧⠀"
+	@echo " ⣸⣿⣿⣿⡿⠉⠻⣿⣿⣿⣿⣦⡀⢀⣴⣿⣿⣿⣿⠟⠉⢿⣿⣿⣿⣇"
+	@echo " ⣿⣿⣿⣿⠃⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠘⣿⣿⣿⣿"
+	@echo " ⣿⣿⣿⣿⠀⠀⠀⠀⠀⢈⣿⣿⣿⣿⣿⣿⡁⠀⠀⠀⠀⠀⣿⣿⣿⣿"
+	@echo " ⣿⣿⣿⣿⡄⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⢠⣿⣿⣿⣿"
+	@echo " ⢹⣿⣿⣿⣷⣀⣴⣿⣿⣿⣿⠟⠁⠈⠻⣿⣿⣿⣿⣦⣀⣾⣿⣿⣿⡏"
+	@echo " ⠀⢻⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⡟⠀"
+	@echo " ⠀⠀⠹⣿⣿⣿⣿⣿⣧⣄⣀⠀⠀⠀⠀⣀⣠⣼⣿⣿⣿⣿⣿⠏⠀⠀"
+	@echo " ⠀⠀⠀⠈⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀"
+	@echo " ⠀⠀⠀⠀⠀⠀⠉⠛⠿⢿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠉⠀⠀⠀⠀⠀⠀"
