@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/28 20:23:49 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 02:08:56 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int	main(void)
 {
 	/* Try to read the input files */
-
 	try
 	{
-		Database	in1("input", "input.txt", '|');
+		Database	input("input", "input.txt", '|');
+		Database	data("input", "../data/data.csv", ',');
 
-		in1.printMap();
+
+
+		data.printMap();
 	}
 	catch(const std::exception& e)
 	{

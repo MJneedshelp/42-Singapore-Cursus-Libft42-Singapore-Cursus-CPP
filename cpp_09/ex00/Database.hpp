@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/28 20:33:28 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 02:09:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <cctype>
 
 #define ERR_FILE	"File does not exist or read permissions are not given: "
 
@@ -38,7 +39,6 @@ class Database
 
 		/* Members */
 
-
 		/* Type definitions - Alias */
 		typedef	std::multimap<std::string, std::string>					multimap;
 		typedef	std::multimap<std::string, std::string>::iterator		mmIt;
@@ -49,7 +49,6 @@ class Database
 
 		/* Member Functions */
 		void	printMap(void)	const;
-
 
 	private:
 		/* Unused OCF - Decide if I want to implement later*/
@@ -63,13 +62,12 @@ class Database
 		multimap	_data;	//store the value as string first. convert at the point of use
 
 
-
-		/* Checker functions*/
+		/* Checker + clean-up functions*/
 		bool		_checkFile(std::string path, std::ifstream &iFile);
+		bool		_isSpace(char c);
+		void		_trimLeft(std::string &str);
+		void		_trimRight(std::string &str);
+		void		_trimStr(std::string &str);
 		void		_populateMM(std::ifstream &iFile);
-
 };
-
-
-
 #endif

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:52:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/28 20:40:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 02:07:17 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ Database::Database(std::string name, std::string path, char delim):
 	std::string		line;
 
 	if (_checkFile(path, iFile))
-	{
-		//populate multimap
 		this->_populateMM(iFile);
-		this->_data.insert(multimap::value_type("k1", "v1"));
-	}
 	else
 		throw (std::runtime_error(ERR_FILE + path));
 
@@ -84,19 +80,65 @@ void	Database::_populateMM(std::ifstream &iFile)
 {
 	std::string	line;
 	int			pos;
-	std::string	subStr;
+	std::string	key;
+	std::string	val;
 
 	while (getline(iFile, line))
 	{
 		pos = line.find(this->_delim);
-		subStr = line.substr(0, pos);
-		// for (strIt it = subStr.begin(); it != subStr.end(); ++it)
-		// {
-		// 	if (*it == ' ')
-		// 		subStr.erase(it);
-		// }
-		std::cout << subStr << std::endl;
-
+		key = line.substr(0, pos);
+		if (pos == -1)
+			val = "";
+		else
+			val = line.substr(pos + 1, line.length() - pos);
+		this->_trimStr(key);
+		this->_trimStr(val);
+		this->_data.insert(multimap::value_type(key, val));
 	}
-		// std::cout << line << std::endl;
 }
+
+bool	Database::_isSpace(char c)
+{
+	return(std::isspace(static_cast<unsigned char>(c)));
+}
+
+void	Database::_trimLeft(std::string &str)
+{
+	strIt	itSt;
+	strIt	itEnd;
+
+	itSt = str.begin();
+	itEnd = itSt;
+	if (_isSpace(*itSt))
+	{
+		while (_isSpace(*(++itEnd)))
+			;
+	}
+	else
+		return;
+	str.erase(itSt, itEnd);
+}
+
+void	Database::_trimRight(std::string &str)
+{
+	strIt	itSt;
+	strIt	itEnd;
+
+	itEnd = str.end();
+	itSt = itEnd - 1;
+	if (_isSpace(*itSt))
+	{
+		while (_isSpace(*(itSt - 1)))
+			itSt--;
+	}
+	else
+		return;
+	str.erase(itSt, itEnd);
+}
+
+void	Database::_trimStr(std::string &str)
+{
+	this->_trimLeft(str);
+	this->_trimRight(str);
+}
+
