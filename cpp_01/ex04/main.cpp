@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:25:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/18 02:30:12 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/28 18:47:31 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool	checkFile(const char *path, std::ifstream &ifile)
 }
 
 /* Description: generates the name of the replacement file and assigns it
-   to the
+   to the outputf file
 */
 
 std::string	generateOfilename(char *ifileName)
