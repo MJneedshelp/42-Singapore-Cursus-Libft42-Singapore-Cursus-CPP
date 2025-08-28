@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:04:13 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/27 02:20:18 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/28 09:52:10 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,13 @@ int	main(void)
 	// itWolveConst = wolverine.begin();
 	// *(itWolveConst) = 99;
 
-	std::cout << "\n============= 3. Pop Stack =============" << std::endl;
+	std::cout << "\n============= 3. Stack Functions =============" << std::endl;
 	wolverine.pop();
-	std::cout << "[Wolverine] Values: ";
-		for (itWolveConst = wolverine.cbegin(); itWolveConst != wolverine.cend(); ++itWolveConst)
-	std::cout << *itWolveConst << " ";
+	std::cout << "[Wolverine] Values after pop: ";
+	for (itWolveConst = wolverine.cbegin(); itWolveConst != wolverine.cend(); ++itWolveConst)
+		std::cout << *itWolveConst << " ";
 	std::cout << std::endl;
-
-
-
-
-
-
-
-
-
-
-
-
-
+	std::cout << "[Wolverine] Top: " << wolverine.top() << std::endl;
 
 	return (0);
 }
