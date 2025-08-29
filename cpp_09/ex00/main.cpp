@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 09:15:33 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 16:58:48 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int argc, char *argv[])
 	std::cout << s1.compare(s3) << std::endl;
 	std::cout << s1.compare(s4) << std::endl;
 
-
+	
 
 
 

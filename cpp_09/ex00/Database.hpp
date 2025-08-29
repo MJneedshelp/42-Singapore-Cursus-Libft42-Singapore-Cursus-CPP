@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 09:14:08 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 16:44:26 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,11 @@ class Database
 		Database(std::string name, std::string path, char delim);
 		~Database();
 
-
-		/* Members */
-
 		/* Type definitions - Alias */
 		typedef	std::multimap<std::string, std::string>					multimap;
 		typedef	std::multimap<std::string, std::string>::iterator		mmIt;
 		typedef	std::multimap<std::string, std::string>::const_iterator	mmCIt;
 		typedef	std::string::iterator									strIt;
-
-
 
 		/* Member Functions */
 		void	printMap(void)	const;
