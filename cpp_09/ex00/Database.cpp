@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:52:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 02:07:17 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 08:50:57 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,13 @@ Database::~Database()
 	return;
 }
 
-
-
 /* Member Functions */
 void	Database::printMap()	const
 {
-	std::cout << "[name]: " << this->_name << std::endl;
+	std::cout << "[database name]: " << this->_name << std::endl;
 	for (mmCIt it = this->_data.begin(); it != this->_data.end(); ++it)
 		std::cout << "[key]: " << it->first << " | [value]: " << it->second << std::endl;
 }
-
-
-
 
 /* Checker Functions */
 

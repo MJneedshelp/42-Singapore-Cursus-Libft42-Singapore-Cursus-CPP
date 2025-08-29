@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 02:09:52 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 08:48:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ class Database
 		std::string	_name;
 		char		_delim;
 		multimap	_data;	//store the value as string first. convert at the point of use
-
 
 		/* Checker + clean-up functions*/
 		bool		_checkFile(std::string path, std::ifstream &iFile);
