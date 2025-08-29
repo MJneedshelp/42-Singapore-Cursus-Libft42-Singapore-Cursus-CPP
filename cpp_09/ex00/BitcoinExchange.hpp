@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 22:46:27 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 23:01:41 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ class BitcoinExchange
 
 
 		/* Helper functions */
-		bool	_isUnsignedInt(std::string const &input)	const;
+		bool	_isInt(std::string const &input)	const;
+		bool	_isPositive(std::string const &input)	const;
 		bool	_checkValidDate(std::string const &str)	const;
 
 
