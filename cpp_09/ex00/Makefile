@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/08/28 19:16:12 by mintan           ###   ########.fr        #
+#    Updated: 2025/08/29 22:45:47 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEP_FLAGS = -MMD -MP
 NAME = btc
 
 # Source, Object and Dependency (headers) files
-SRC_NAMES = main Database
+SRC_NAMES = main Database BitcoinExchange
 SRCS = $(addsuffix .cpp, $(SRC_NAMES))
 OBJ = $(SRCS:.cpp=.o)
 DEP = $(OBJ:.o=.d)

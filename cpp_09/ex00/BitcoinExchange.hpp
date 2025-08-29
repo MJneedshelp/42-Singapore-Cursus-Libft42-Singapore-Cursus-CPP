@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 17:41:11 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 22:46:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 class BitcoinExchange
 {
 	public:
-		BitcoinExchange(std::string const &path);
+		BitcoinExchange(std::string const &inputPath, char const &delim);
 		~BitcoinExchange();
+
+		Database	_data;
+		Database	_input;
 
 
 	private:
@@ -28,9 +31,10 @@ class BitcoinExchange
 		BitcoinExchange(BitcoinExchange const &src);
 		BitcoinExchange& operator=(BitcoinExchange const &src);
 
+
 		/* Private members */
-		Database	_data;
-		Database	_input;	//hmmmm instatiate the whole database object in this class
+		// Database	_data;
+		// Database	_input;
 
 
 

@@ -6,11 +6,12 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 17:40:47 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 22:48:54 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Database.hpp"
+#include "BitcoinExchange.hpp"
 
 /* Description: checks if there is a valid number of input arguments: 2
 */
@@ -35,12 +36,11 @@ int	main(int argc, char *argv[])
 	/* Try to read the input files */
 	try
 	{
-		Database	input("input", std::string(argv[1]), '|');
-		Database	data("data", "../data/data.csv", ',');
+		BitcoinExchange	btc(std::string(argv[1]), '|');
 
+		btc._input.printMap();
 
-
-		input.printMap();
+		// input.printMap();
 	}
 	catch(const std::exception& e)
 	{
