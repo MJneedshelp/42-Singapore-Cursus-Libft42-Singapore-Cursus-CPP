@@ -6,14 +6,14 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:25:15 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/28 18:47:31 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 09:13:51 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 
-#define ERR_NOARG "This programme must be run with 3 args: file, str1, str2!"
+#define ERR_NOARG "This programme must be run with 1 arg: inputfilepath"
 #define ERR_INVALFILE "The provided filepath cannot be opened!"
 
 

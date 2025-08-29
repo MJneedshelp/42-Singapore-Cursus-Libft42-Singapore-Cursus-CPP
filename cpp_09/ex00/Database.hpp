@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 08:48:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 09:14:08 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 #include <string>
 #include <cctype>
 
-#define ERR_FILE	"File does not exist or read permissions are not given: "
+#define ERR_NOARG "This programme must be run with 1 arg: inputfilepath"
+#define ERR_FILE "File does not exist or read permissions are not given: "
 
 class Database
 {

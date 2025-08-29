@@ -6,23 +6,41 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 09:02:14 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 09:15:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Database.hpp"
 
-int	main(void)
+/* Description: checks if there is a valid number of input arguments: 2
+*/
+
+bool	validInArgs(int argc)
 {
+	if (argc != 2)
+	{
+		std::cerr << ERR_NOARG << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
+
+int	main(int argc, char *argv[])
+{
+	if (validInArgs(argc) == false)
+		return (1);
+
+
 	/* Try to read the input files */
 	try
 	{
-		Database	input("input", "input.txt", '|');
+		Database	input("input", std::string(argv[1]), '|');
 		Database	data("input", "../data/data.csv", ',');
 
 
 
-		// input.printMap();
+		input.printMap();
 	}
 	catch(const std::exception& e)
 	{

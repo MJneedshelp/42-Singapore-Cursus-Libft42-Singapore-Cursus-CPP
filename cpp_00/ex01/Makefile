@@ -6,7 +6,7 @@
 #    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/07 15:29:24 by mintan            #+#    #+#              #
-#    Updated: 2025/06/16 08:41:40 by mintan           ###   ########.fr        #
+#    Updated: 2025/08/29 09:10:40 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ DEP_FLAGS = -MMD -MP
 NAME = myeightfriends
 SRCS = main.cpp PhoneBookClass.cpp ContactClass.cpp
 OBJ = $(SRCS:.cpp=.o)
+DEP = $(OBJ:.o=.d)
 
 # Target to make using Make all
 all: $(NAME) print_art
