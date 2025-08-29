@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 17:13:07 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 17:41:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class BitcoinExchange
 {
 	public:
-		BitcoinExchange(Database::multimap const &input, Database::multimap const &data);
+		BitcoinExchange(std::string const &path);
 		~BitcoinExchange();
 
 
@@ -29,8 +29,8 @@ class BitcoinExchange
 		BitcoinExchange& operator=(BitcoinExchange const &src);
 
 		/* Private members */
-		Database::multimap	_input;	//hmmmm instatiate the whole database object in this class
-		Database::multimap	_data;
+		Database	_data;
+		Database	_input;	//hmmmm instatiate the whole database object in this class
 
 
 

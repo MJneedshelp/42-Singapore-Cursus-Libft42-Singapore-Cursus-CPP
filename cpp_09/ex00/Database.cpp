@@ -6,14 +6,14 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:52:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 08:50:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 17:39:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Database.hpp"
 
 /* Constructor and Destructors */
-Database::Database(std::string name, std::string path, char delim):
+Database::Database(std::string const &name, std::string const &path, char const &delim):
 	_name(name), _delim(delim)
 {
 	std::ifstream	iFile;

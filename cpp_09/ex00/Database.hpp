@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 16:44:26 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/29 17:39:18 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Database
 {
 	public:
 		/* OCF */
-		Database(std::string name, std::string path, char delim);
+		Database(std::string const &name, std::string const &path, char const &delim);
 		~Database();
 
 		/* Type definitions - Alias */
