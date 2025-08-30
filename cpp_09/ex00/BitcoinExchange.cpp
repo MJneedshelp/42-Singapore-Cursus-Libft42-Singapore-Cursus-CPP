@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 22:48:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/30 15:57:55 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,24 @@ BitcoinExchange::~BitcoinExchange()
 {
 	return;
 }
+
+
+
+
+
+/* Helper functions */
+bool	BitcoinExchange::_isValidMonth(int const month)	const
+{
+	return (month >= 1 && month <= 12);
+}
+
+bool	BitcoinExchange::_isValidDay(int const day)	const
+{
+	return (day >= 1 && day <= 31);
+}
+
+bool	BitcoinExchange::_isValidDate(calendar cal)	const
+{
+	
+}
+
