@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 22:48:54 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/30 17:34:58 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char *argv[])
 
 		btc._input.printMap();
 
-		// input.printMap();
+		
 	}
 	catch(const std::exception& e)
 	{

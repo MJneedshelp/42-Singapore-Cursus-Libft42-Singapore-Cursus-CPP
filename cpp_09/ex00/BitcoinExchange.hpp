@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/30 15:57:54 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/30 17:28:56 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,9 @@ class BitcoinExchange
 		
 		bool	_isValidMonth(int const month)	const;	//int between 1 and 12
 		bool	_isValidDay(int const day)	const;		//int between 1 and 31
+		bool	_isLeapYear(int const year) const;		//checks if the year is a leap year
 		bool	_isValidDate(calendar cal)	const;	//check valid month and day combination, also check for leap years
-		
-		/* So the rule is this: Years divisible by 400 are leaps years. Years divisible by 100 but not by 400 are 
-		   NOT leap years. Years not divisible by 100 but divisible by 4 are leap years. Years not divisible by 4 
-		   are not leap years.
-		*/
+	
 		
 
 
