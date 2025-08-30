@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:59:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/25 01:13:57 by mintan           ###   ########.fr       */
+/*   Updated: 2025/08/30 14:59:54 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ class Span
 
 	private:
 		Span();
-		// Span(Span const &src);
-		// Span&				operator=(Span const &src);
 		std::vector<int>	_intVec;
 		unsigned int		_fill;
 		std::string			_maxSizeStr;
