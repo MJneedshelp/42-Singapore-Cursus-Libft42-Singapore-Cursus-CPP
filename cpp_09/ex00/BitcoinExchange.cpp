@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/02 19:27:26 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/02 20:13:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,22 @@ bool	BitcoinExchange::_isValidDay(int const day)
 
 bool	BitcoinExchange::_isLeapYear(int const year)
 {
-	if (year % 4 == 0)
-	{
-		if (year % 100 == 0 && year % 400 == 0)
-			return (true);
-	}
-	return (false);
+    if (year % 4 == 0)
+    {
+        if (year % 100 == 0)
+        {
+            if (year % 400 == 0)
+                return (true);
+            return (false);
+        }
+        return (true);
+    }
+    return (false);
 }
 
 
 bool	BitcoinExchange::_isValidDate(calendar cal)
 {
-	/* Check validity of each year, month and date values */
 	int	year;
 	int	month;
 	int	day;
@@ -62,11 +66,14 @@ bool	BitcoinExchange::_isValidDate(calendar cal)
 	month = (cal.find(CAL_KEY_MM))->second;
 	day = (cal.find(CAL_KEY_DD))->second;
 
+	std::cout << year << "-" << month << "-" << day << ": ";
 	if (!(_isValidMonth(month) && _isValidDay(day)))
 		return (false);
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && (day == 31))
 		return (false);
-	if ((month == 2 && day == 29) && !(_isLeapYear(year)))\
+	if (month == 2 && day > 29)
+		return (false);
+	if ((month == 2 && day == 29) && !_isLeapYear(year))
 		return (false);
 	return (true);
 }

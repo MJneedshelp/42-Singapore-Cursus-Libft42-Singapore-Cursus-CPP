@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/02 19:38:36 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/02 20:02:04 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,73 @@ int	main(int argc, char *argv[])
 		std::multimap<std::string, int>	cal3;
 		std::multimap<std::string, int>	cal4;
 		std::multimap<std::string, int>	cal5;
+		std::multimap<std::string, int>	cal6;
+		std::multimap<std::string, int>	cal7;
+		std::multimap<std::string, int>	cal8;
+		std::multimap<std::string, int>	cal9;
+		std::multimap<std::string, int>	cal10;
 
-		/* 2025-13-25 */
+
+
+		/* 2025-13-25 -> invalid month */
 		cal1.insert(std::make_pair(CAL_KEY_YYYY, 2025));
 		cal1.insert(std::make_pair(CAL_KEY_MM, 13));
 		cal1.insert(std::make_pair(CAL_KEY_DD, 25));
-		std::cout << cal1.find(CAL_KEY_YYYY)->second << "-" << cal1.find(CAL_KEY_MM)->second \
-		<< "-" << cal1.find(CAL_KEY_DD)->second << ": " << btc._isValidDate(cal1) << std::endl;
+		std::cout << btc._isValidDate(cal1) << std::endl;
 
+		/* 2025-11-32 -> invalid day */
+		cal2.insert(std::make_pair(CAL_KEY_YYYY, 2025));
+		cal2.insert(std::make_pair(CAL_KEY_MM, 11));
+		cal2.insert(std::make_pair(CAL_KEY_DD, 32));
+		std::cout << btc._isValidDate(cal2) << std::endl;
+
+		/* 2025-11-31 -> invalid day x month */
+		cal3.insert(std::make_pair(CAL_KEY_YYYY, 2025));
+		cal3.insert(std::make_pair(CAL_KEY_MM, 11));
+		cal3.insert(std::make_pair(CAL_KEY_DD, 31));
+		std::cout << btc._isValidDate(cal3) << std::endl;
+
+		/* 2025-09-31 -> invalid day x month */
+		cal4.insert(std::make_pair(CAL_KEY_YYYY, 2025));
+		cal4.insert(std::make_pair(CAL_KEY_MM, 9));
+		cal4.insert(std::make_pair(CAL_KEY_DD, 31));
+		std::cout << btc._isValidDate(cal4) << std::endl;
+
+		/* 2120-02-30 -> invalid feb */
+		cal5.insert(std::make_pair(CAL_KEY_YYYY, 2120));
+		cal5.insert(std::make_pair(CAL_KEY_MM, 2));
+		cal5.insert(std::make_pair(CAL_KEY_DD, 30));
+		std::cout << btc._isValidDate(cal5) << std::endl;
+
+		/* 2100-02-29 -> invalid leapyear */
+		cal6.insert(std::make_pair(CAL_KEY_YYYY, 2100));
+		cal6.insert(std::make_pair(CAL_KEY_MM, 2));
+		cal6.insert(std::make_pair(CAL_KEY_DD, 29));
+		std::cout << btc._isValidDate(cal6) << std::endl;
+
+		/* 1920-02-28 -> valid */
+		cal7.insert(std::make_pair(CAL_KEY_YYYY, 1920));
+		cal7.insert(std::make_pair(CAL_KEY_MM, 2));
+		cal7.insert(std::make_pair(CAL_KEY_DD, 28));
+		std::cout << btc._isValidDate(cal7) << std::endl;
+
+		/* 1920-12-31 -> valid */
+		cal8.insert(std::make_pair(CAL_KEY_YYYY, 1920));
+		cal8.insert(std::make_pair(CAL_KEY_MM, 12));
+		cal8.insert(std::make_pair(CAL_KEY_DD, 31));
+		std::cout << btc._isValidDate(cal8) << std::endl;
+
+		/* 1920-02-29 -> valid */
+		cal9.insert(std::make_pair(CAL_KEY_YYYY, 1920));
+		cal9.insert(std::make_pair(CAL_KEY_MM, 2));
+		cal9.insert(std::make_pair(CAL_KEY_DD, 29));
+		std::cout << btc._isValidDate(cal9) << std::endl;
+
+		/* 1920-05-15 -> valid */
+		cal10.insert(std::make_pair(CAL_KEY_YYYY, 1920));
+		cal10.insert(std::make_pair(CAL_KEY_MM, 5));
+		cal10.insert(std::make_pair(CAL_KEY_DD, 15));
+		std::cout << btc._isValidDate(cal10) << std::endl;
 
 
 
