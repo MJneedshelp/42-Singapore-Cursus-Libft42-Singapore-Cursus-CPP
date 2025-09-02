@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/30 17:28:56 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/02 17:36:33 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define BITCOINEXCHANGE_H
 
 #include "Database.hpp"
+
+#define ERR_DATE_INVALID "xxxxx"
+
+#define CAL_KEY_YYYY "yyyy"
+#define CAL_KEY_MM "mm"
+#define CAL_KEY_DD "dd"
+
 
 class BitcoinExchange
 {
@@ -25,8 +32,10 @@ class BitcoinExchange
 		Database	_input;
 
 		/* Type definitions - Alias */
-		typedef	std::multimap<std::string, int>		calendar;
-		
+		typedef	std::multimap<std::string, int>					calendar;
+		typedef	std::multimap<std::string, int>::const_iterator	itCal;
+
+
 
 	private:
 		/* OCF which will not be implemented */
@@ -41,28 +50,28 @@ class BitcoinExchange
 
 
 
-		/* Helper functions */		
-		bool	_isInt(std::string const &input)	const;
-		bool	_isPositive(std::string const &input)	const;
-		bool	_checkValidDate(std::string const &str)	const;
-		
-		bool	_isValidMonth(int const month)	const;	//int between 1 and 12
-		bool	_isValidDay(int const day)	const;		//int between 1 and 31
-		bool	_isLeapYear(int const year) const;		//checks if the year is a leap year
-		bool	_isValidDate(calendar cal)	const;	//check valid month and day combination, also check for leap years
-	
-		
+		/* Helper functions */
+		static	bool	_isInt(std::string const &input)	const;
+		static	bool	_isPositive(std::string const &input)	const;
+		static	bool	_checkValidDate(std::string const &str)	const;
+
+		static	bool	_isValidMonth(int const month);	//int between 1 and 12
+		static	bool	_isValidDay(int const day);		//int between 1 and 31
+		static	bool	_isLeapYear(int const year);		//checks if the year is a leap year
+		static	bool	_isValidDate(calendar cal);	//check valid month and day combination, also check for leap years
 
 
-		
+
+
+
 		/* function to split a string by '-' and store in a multimap of 3 keys:
 			- year
 			- month
 			- date
 		*/
 
-		/* function to evaluate each of the keys for year, month, day. iterate through 
-		   and use switch case to call the function to check year month day 
+		/* function to evaluate each of the keys for year, month, day. iterate through
+		   and use switch case to call the function to check year month day
 		*/
 
 
