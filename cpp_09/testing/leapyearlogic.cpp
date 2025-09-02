@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:35:17 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/02 17:18:17 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/02 19:24:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int main(void)
     int y8 = 2024;
     int y9 = 2025;
     int y10 = 2103;
+    int y11 = 0000;
+
 
 
     std::cout << y1 << ": " << _isLeapYear(y1) << std::endl;
@@ -51,6 +53,8 @@ int main(void)
     std::cout << y8 << ": " << _isLeapYear(y8) << std::endl;
     std::cout << y9 << ": " << _isLeapYear(y9) << std::endl;
     std::cout << y10 << ": " << _isLeapYear(y10) << std::endl;
+    std::cout << y11 << ": " << _isLeapYear(y11) << std::endl;
+
 
 
     return (0);

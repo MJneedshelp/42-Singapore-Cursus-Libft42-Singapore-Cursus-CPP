@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Database.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:52:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/30 15:35:53 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/02 19:31:14 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ Database::Database(std::string const &name, std::string const &path, char const 
 		this->_populateMM(iFile);
 	else
 		throw (std::runtime_error(ERR_FILE + path));
-
 }
 
 Database::~Database()
