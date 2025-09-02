@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/02 17:38:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/02 17:54:04 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ bool	BitcoinExchange::_isValidDate(calendar cal)
 
 	if (!(_isValidMonth(month) && _isValidDay(day)))
 		return (false);
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && (day == 31))
+		return (false);
+
 
 
 
