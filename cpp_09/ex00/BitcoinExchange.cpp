@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/03 12:54:23 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/03 13:13:18 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,24 @@ void	BitcoinExchange::calculate()	const
 
 	for (Database::mmCIt it = this->_input.data.begin(); it != this->_input.data.end(); ++it)	//Loop through each key in the input
 	{
-		if (it->first == INPUT_KEY_DATE)														//ignore if the key is date
+		if (it->first != INPUT_KEY_DATE)														//ignore if the key is date
 		{
+			std::cout << "key: " << it->first << std::endl;
 			//populate the calendar with the year, month and day from the input key -> bool
 			//if the calendar can't even be populated -> format wrong, not int etc
-			//check if cal is valid
+			if (_populateCal(it->first, cal) && _isValidDate(cal))
+			{
+				//start to match keys from data
+			}
+			else
+			{
+				//print invalid date message
+			}
+
+
 
 
 		}
-		std::cout << "key: " << it->first << std::endl;
-		_populateCal(it->first, cal);
-
-
-		std::cout << "Test cal: " << (cal.find(CAL_KEY_YYYY))->first << std::endl;
-
-
-
 		cal.clear();
 	}
 }
@@ -120,14 +122,22 @@ bool	BitcoinExchange::_populateCal(std::string const &date, calendar &cal)
 	posSt = 0;
 	for (int ctr = 0; ctr < 3; ++ctr)
 	{
-		if (ctr != 2)
+		if (ctr < 2)
 		{
-			posEnd = date.find(DELIM_DATE);	//checks if the date is formatted: yyyy-mm-dd using delimiter checks
+			posEnd = date.find(DELIM_DATE, posSt);	//checks if the date is formatted: yyyy-mm-dd using delimiter checks
 			if (posEnd == date.npos)
 				return (false);
-			ymd = date.substr(posSt, posEnd);
-			std::cout << "ymd: " << ymd << std::endl;
+			ymd = date.substr(posSt, posEnd - posSt);
+			posSt = posEnd + 1;
 		}
+		else
+			ymd = date.substr(posSt, date.npos);
+		std::cout << "ymd: " << ymd << std::endl;
+		//do more checks on int and what not before storing in the map
+
+
+
+
 	}
 
 
