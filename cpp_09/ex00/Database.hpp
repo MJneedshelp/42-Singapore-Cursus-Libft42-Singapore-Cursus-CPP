@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/29 17:39:18 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/03 08:50:10 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ class Database
 		typedef	std::multimap<std::string, std::string>::const_iterator	mmCIt;
 		typedef	std::string::iterator									strIt;
 
-		/* Member Functions */
-		void	printMap(void)	const;
+		/* Member + Member Functions */
+		multimap	data;	//store the value as string first. convert at the point of use
+		void		printMap(void)	const;
 
 	private:
 		/* Unused OCF - Decide if I want to implement later*/
@@ -55,7 +56,6 @@ class Database
 		/* Private members */
 		std::string	_name;
 		char		_delim;
-		multimap	_data;	//store the value as string first. convert at the point of use
 
 		/* Checker + clean-up functions*/
 		bool		_checkFile(std::string path, std::ifstream &iFile);

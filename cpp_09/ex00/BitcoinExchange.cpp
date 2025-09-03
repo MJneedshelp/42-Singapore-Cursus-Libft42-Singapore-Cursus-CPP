@@ -6,11 +6,12 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/02 20:13:49 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/03 08:56:06 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include "Database.hpp"
 
 /* Constructors and Destructors */
 BitcoinExchange::BitcoinExchange(std::string const &inputPath, char const &delim):
@@ -23,6 +24,23 @@ BitcoinExchange::BitcoinExchange(std::string const &inputPath, char const &delim
 BitcoinExchange::~BitcoinExchange()
 {
 	return;
+}
+
+/* Main function */
+
+/* Description: main function to extract each of the entries in the input and
+   calculate the value by multiplying it with the corresponding exchange rate
+*/
+void	BitcoinExchange::calculate()	const
+{
+	for (Database::mmCIt it = this->_input.data.begin(); it != this->_input.data.end(); ++it)	//Loop through each key in the input
+	{
+		if (it->first == INPUT_KEY_DATE)														//ignore if the key is date
+		{
+			std::cout << "works" << std::endl;
+		}
+		std::cout << "key: " << it->first << std::endl;
+	}
 }
 
 

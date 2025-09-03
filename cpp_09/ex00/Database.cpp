@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:52:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/02 19:31:14 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/03 08:50:27 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Database::~Database()
 void	Database::printMap()	const
 {
 	std::cout << "[database name]: " << this->_name << std::endl;
-	for (mmCIt it = this->_data.begin(); it != this->_data.end(); ++it)
+	for (mmCIt it = this->data.begin(); it != this->data.end(); ++it)
 		std::cout << "[key]: " << it->first << " | [value]: " << it->second << std::endl;
 }
 
@@ -86,7 +86,7 @@ void	Database::_populateMM(std::ifstream &iFile)
 			val = line.substr(pos + 1, line.length() - pos);
 		this->_trimStr(key);
 		this->_trimStr(val);
-		this->_data.insert(multimap::value_type(key, val));
+		this->data.insert(multimap::value_type(key, val));
 	}
 }
 
