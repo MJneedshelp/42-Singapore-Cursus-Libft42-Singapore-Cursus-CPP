@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/03 12:49:26 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 06:47:55 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BITCOINEXCHANGE_H
 
 #include "Database.hpp"
+#include <limits.h>
+#include <cstdlib>
 
 #define ERR_DATE_INVALID "xxxxx"
 
@@ -57,10 +59,8 @@ class BitcoinExchange
 
 
 		/* Helper functions */
-		// static	bool	_isInt(std::string const &input)	const;
-		// static	bool	_isPositive(std::string const &input)	const;
-		// static	bool	_checkValidDate(std::string const &str)	const;
-
+		static	bool	_isPosInt(std::string const &input);
+		static	bool	_withinIntLimits(std::string const &input);
 		static	bool	_isValidMonth(int const month);	//int between 1 and 12
 		static	bool	_isValidDay(int const day);		//int between 1 and 31
 		static	bool	_isLeapYear(int const year);		//checks if the year is a leap year
