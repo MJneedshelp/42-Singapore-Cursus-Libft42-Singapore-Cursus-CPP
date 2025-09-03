@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/03 08:57:37 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/03 12:55:05 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	main(int argc, char *argv[])
 	{
 		BitcoinExchange	btc(std::string(argv[1]), '|');
 
-		btc._input.printMap();
+		// btc._input.printMap();
 
-		// btc.calculate();
+		btc.calculate();
 
 
 

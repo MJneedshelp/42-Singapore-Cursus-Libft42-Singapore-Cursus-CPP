@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/03 08:54:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/03 12:49:26 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 #define CAL_KEY_YYYY "yyyy"
 #define CAL_KEY_MM "mm"
 #define CAL_KEY_DD "dd"
+#define DELIM_DATE '-'
+
 
 
 class BitcoinExchange
@@ -62,11 +64,11 @@ class BitcoinExchange
 		static	bool	_isValidMonth(int const month);	//int between 1 and 12
 		static	bool	_isValidDay(int const day);		//int between 1 and 31
 		static	bool	_isLeapYear(int const year);		//checks if the year is a leap year
-		static	bool	_isValidDate(calendar cal);	//check valid month and day combination, also check for leap years
+		static	bool	_isValidDate(calendar &cal);	//check valid month and day combination, also check for leap years
 
 
 
-
+		static	bool	_populateCal(std::string const &date, calendar &cal);
 
 		/* function to split a string by '-' and store in a multimap of 3 keys:
 			- year
