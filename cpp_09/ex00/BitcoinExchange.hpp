@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 06:47:55 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 07:07:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <limits.h>
 #include <cstdlib>
 
-#define ERR_DATE_INVALID "xxxxx"
+#define ERR_DATE_INVALID "[ERROR] invalid date input: "
 
 #define INPUT_KEY_DATE "date"
 #define CAL_KEY_YYYY "yyyy"

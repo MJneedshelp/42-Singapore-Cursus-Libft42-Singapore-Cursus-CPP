@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 07:03:20 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 07:32:08 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,19 @@ void	BitcoinExchange::calculate()	const
 	{
 		if (it->first != INPUT_KEY_DATE)														//ignore if the key is date
 		{
-			//populate the calendar with the year, month and day from the input key -> bool
-			//if the calendar can't even be populated -> format wrong, not int etc
 			if (_populateCal(it->first, cal) && _isValidDate(cal))
 			{
 				//start to match keys from data
 				std::cout << "key: " << it->first << " is valid date" << std::endl;
+				//find key based
 
 			}
 			else
-			{
-				std::cout << "key: " << it->first << " is invalid date" << std::endl;
-
-			}
-
-
-
-
+				std::cout << ERR_DATE_INVALID << it->first << std::endl;
 		}
 		cal.clear();
 	}
 }
-
-
-
-
 
 /* Helper functions */
 bool	BitcoinExchange::_isPosInt(const std::string &input)
@@ -151,7 +139,6 @@ bool	BitcoinExchange::_populateCal(std::string const &date, calendar &cal)
 		}
 		else
 			ymd = date.substr(posSt, date.npos);
-		std::cout << "ymd: " << ymd << std::endl;
 		if (!_isPosInt(ymd))
 			return (false);
 		switch (ctr)
