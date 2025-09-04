@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 10:42:50 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 15:59:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,8 @@ void	BitcoinExchange::calculate()	const
 	{
 		if (it->first != INPUT_KEY_DATE)														//ignore if the key is date
 		{
-			if (!(_populateCal(it->first, cal) && _isValidDate(cal)))							//Check valid key
-			{
-				std::cout << ERR_DATE_INVALID << it->first << std::endl;
-				cal.clear();
+			if (!_isValidInput(it, cal))
 				continue;
-			}
-			// std::cout << "Pos int: " << _isPosInt(it->second) << " | Pos float: " << _isPosFloat(it->second) << std::endl;
-			if (!(_isPosInt(it->second) || _isPosFloat(it->second)))							//Check for valid value from input -> continue if invalid
-			{
-				std::cout << ERR_VALUE_INVALID << it->second << std::endl;
-				cal.clear();
-				continue;
-			}
 			//start to match keys from data
 			std::cout << "valid key: " << it->first << " | valid value: " << it->second << std::endl;
 			//find key in data
@@ -65,7 +54,7 @@ void	BitcoinExchange::calculate()	const
 			}
 			else
 			{
-				//test finding first
+				std::cout << "Found key: " << dbIt->first << " | Found value: " << dbIt->second << std::endl;
 			}
 			//output the calculation here
 		}
@@ -116,6 +105,16 @@ bool	BitcoinExchange::_isPosFloat(const std::string &input)
 	if (numDots > 1)
 		return (false);
 	return(true);
+}
+
+bool	BitcoinExchange::_isWithinRange(int lower, int upper, int val)
+{
+	return ( lower <= val && val <= upper);
+}
+
+bool	BitcoinExchange::_isWithinRange(int lower, int upper, float val)
+{
+	return ( lower <= val && val <= upper);
 }
 
 
@@ -204,9 +203,40 @@ bool	BitcoinExchange::_populateCal(std::string const &date, calendar &cal)
 				break;
 		}
 	}
+	return (true);
+}
 
-
-
-
+bool	BitcoinExchange::_isValidInput(Database::mmCIt &it, calendar &cal)
+{
+	if (!(_populateCal(it->first, cal) && _isValidDate(cal)))							//Check valid key
+	{
+		std::cout << ERR_DATE_INVALID << it->first << std::endl;
+		cal.clear();
+		return (false);
+	}
+	if (_isPosInt(it->second))
+	{
+		if (!_isWithinRange(RNG_VAL_LOW, RNG_VAL_UPPER, std::atoi(it->second.c_str())))
+		{
+			std::cout << ERR_VALUE_INVALID << it->second << std::endl;
+			cal.clear();
+			return (false);
+		}
+	}
+	else if (_isPosFloat(it->second))
+	{
+		if (!_isWithinRange(RNG_VAL_LOW, RNG_VAL_UPPER, std::strtof(it->second.c_str(), NULL)))
+		{
+			std::cout << ERR_VALUE_INVALID << it->second << std::endl;
+			cal.clear();
+			return (false);
+		}
+	}
+	else
+	{
+		std::cout << ERR_VALUE_INVALID << it->second << std::endl;
+		cal.clear();
+		return (false);
+	}
 	return (true);
 }
