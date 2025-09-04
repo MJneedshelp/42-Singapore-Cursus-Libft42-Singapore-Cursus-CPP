@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 07:32:08 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 09:24:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,36 @@ BitcoinExchange::~BitcoinExchange()
 */
 void	BitcoinExchange::calculate()	const
 {
-	calendar	cal;
+	calendar		cal;
+	Database::mmCIt	dbIt;
 
 	for (Database::mmCIt it = this->_input.data.begin(); it != this->_input.data.end(); ++it)	//Loop through each key in the input
 	{
 		if (it->first != INPUT_KEY_DATE)														//ignore if the key is date
 		{
-			if (_populateCal(it->first, cal) && _isValidDate(cal))
+			if (!(_populateCal(it->first, cal) && _isValidDate(cal)))
 			{
-				//start to match keys from data
-				std::cout << "key: " << it->first << " is valid date" << std::endl;
-				//find key based
+				std::cout << ERR_DATE_INVALID << it->first << std::endl;
+				cal.clear();
+				continue;
+			}
+			//Check for valid value from input -> continue if invalid
 
+			//start to match keys from data
+			std::cout << "key: " << it->first << " is valid date" << std::endl;
+			//find key in data
+			dbIt = this->_data.data.find(it->first);
+			if (dbIt == this->_data.data.end())
+			{
+				//do a reverse search from bottom and find the first it that is less than the current
+				//get new dbIT
+				;
 			}
 			else
-				std::cout << ERR_DATE_INVALID << it->first << std::endl;
+			{
+				//test finding first
+			}
+			//output the calculation here
 		}
 		cal.clear();
 	}
