@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 07:07:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 09:53:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include <limits.h>
 #include <cstdlib>
 
-#define ERR_DATE_INVALID "[ERROR] invalid date input: "
+#define ERR_DATE_INVALID "[ERROR] invalid date: "
+#define ERR_VALUE_INVALID "[ERROR] invalid value: "
+
 
 #define INPUT_KEY_DATE "date"
 #define CAL_KEY_YYYY "yyyy"
@@ -61,6 +63,7 @@ class BitcoinExchange
 		/* Helper functions */
 		static	bool	_isPosInt(std::string const &input);
 		static	bool	_withinIntLimits(std::string const &input);
+		static	bool	_isPosFloat(std::string const &input);
 		static	bool	_isValidMonth(int const month);	//int between 1 and 12
 		static	bool	_isValidDay(int const day);		//int between 1 and 31
 		static	bool	_isLeapYear(int const year);		//checks if the year is a leap year

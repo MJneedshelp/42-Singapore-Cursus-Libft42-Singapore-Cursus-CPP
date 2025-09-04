@@ -5,11 +5,4 @@ Testing/qualitest.o
 cpp_05/ex02/YourHead_shrubbery
 cpp_05/ex03/Kelly_shrubbery
 Testing/UND.out
-
-Testing/reinterpret.out
-Testing/castoperatortest.out
-Testing/constcast.out
-Testing/explicit.out
-Testing/stringparsetest.out
-cpp_07/tests/templatetest.out
 *.out

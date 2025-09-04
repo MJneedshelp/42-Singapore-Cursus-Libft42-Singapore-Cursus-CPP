@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:52:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/03 08:50:27 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 10:42:07 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ void	Database::_populateMM(std::ifstream &iFile)
 
 	while (getline(iFile, line))
 	{
+		_trimStr(line);
+		if (line.empty())
+			continue;
 		pos = line.find(this->_delim);
 		key = line.substr(0, pos);
 		if (pos == -1)
