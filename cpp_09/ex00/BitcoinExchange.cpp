@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 15:59:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/04 16:38:44 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	BitcoinExchange::calculate()	const
 {
 	calendar		cal;
 	Database::mmCIt	dbIt;
+	float			result;
 
 	for (Database::mmCIt it = this->_input.data.begin(); it != this->_input.data.end(); ++it)	//Loop through each key in the input
 	{
@@ -42,7 +43,6 @@ void	BitcoinExchange::calculate()	const
 		{
 			if (!_isValidInput(it, cal))
 				continue;
-			//start to match keys from data
 			std::cout << "valid key: " << it->first << " | valid value: " << it->second << std::endl;
 			//find key in data
 			dbIt = this->_data.data.find(it->first);
@@ -54,9 +54,12 @@ void	BitcoinExchange::calculate()	const
 			}
 			else
 			{
-				std::cout << "Found key: " << dbIt->first << " | Found value: " << dbIt->second << std::endl;
+				result = std::strtof(it->second.c_str(), NULL) * std::strtof(dbIt->second.c_str(), NULL);
+				std::cout << it->first << " => " << it->second << " x " << dbIt->second << " = " << result << std::endl;
 			}
-			//output the calculation here
+			//output the calculation here -> check if the input is int of float
+			// result = std::strtof(it->second.c_str(), NULL) * std::strtof(dbIt->second.c_str(), NULL);
+			// std::cout << it->first << " => " << it->second << " x " << dbIt->second << " = " << result << std::endl;
 		}
 		cal.clear();
 	}
