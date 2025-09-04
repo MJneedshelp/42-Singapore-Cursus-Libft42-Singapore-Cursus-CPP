@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:52:23 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 10:42:07 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/05 01:10:01 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	Database::printMap()	const
 		- if reading causes the file to not be good -> likely that provided
 		  path is a directory
 */
-
 bool	Database::_checkFile(std::string path, std::ifstream &iFile)
 {
 	std::string	test;
@@ -137,4 +136,3 @@ void	Database::_trimStr(std::string &str)
 	this->_trimLeft(str);
 	this->_trimRight(str);
 }
-

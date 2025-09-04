@@ -6,16 +6,12 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/03 08:50:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/05 01:13:06 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Description: class that contains the following main elements:
-	1. multimap to store the both the data and the input
-	2. Member functions:
-		a. take in a file path and parse and store in
-		XX fill in later
-		XX constructor to take in a file path and check if the file existsd
+/* Description: class that cleans up the input / data file and stores the
+   each entries as a key value pair in the a multimap<string, string>
 */
 
 #ifndef DATABASE_H
@@ -44,11 +40,11 @@ class Database
 		typedef	std::string::iterator									strIt;
 
 		/* Member + Member Functions */
-		multimap	data;	//store the value as string first. convert at the point of use
+		multimap	data;
 		void		printMap(void)	const;
 
 	private:
-		/* Unused OCF - Decide if I want to implement later*/
+		/* Unused OCF */
 		Database();
 		Database(Database const &src);
 		Database&	operator=(Database const &src);

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/04 16:38:44 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/05 01:14:19 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /* Constructors and Destructors */
 BitcoinExchange::BitcoinExchange(std::string const &inputPath, char const &delim):
-	_data("Data", "../data/data.csv", ','),
+	_data("Data", "data.csv", ','),
 	_input("Input", inputPath, delim)
 {
 	return;
@@ -26,8 +26,6 @@ BitcoinExchange::~BitcoinExchange()
 	return;
 }
 
-/* Main function */
-
 /* Description: main function to extract each of the entries in the input and
    calculate the value by multiplying it with the corresponding exchange rate
 */
@@ -37,29 +35,25 @@ void	BitcoinExchange::calculate()	const
 	Database::mmCIt	dbIt;
 	float			result;
 
-	for (Database::mmCIt it = this->_input.data.begin(); it != this->_input.data.end(); ++it)	//Loop through each key in the input
+	for (Database::mmCIt it = this->_input.data.begin(); it != this->_input.data.end(); ++it)
 	{
-		if (it->first != INPUT_KEY_DATE)														//ignore if the key is date
+		if (it->first != INPUT_KEY_DATE)
 		{
 			if (!_isValidInput(it, cal))
 				continue;
-			std::cout << "valid key: " << it->first << " | valid value: " << it->second << std::endl;
-			//find key in data
 			dbIt = this->_data.data.find(it->first);
 			if (dbIt == this->_data.data.end())
 			{
-				//do a reverse search from bottom and find the first it that is less than the current
-				//get new dbIT
-				;
+				dbIt = this->_findClosestData(it->first);
+				if (dbIt == this->_data.data.end())
+				{
+					std::cout << ERR_DATE_EARLY << it->first << std::endl;
+					cal.clear();
+					continue;
+				}
 			}
-			else
-			{
-				result = std::strtof(it->second.c_str(), NULL) * std::strtof(dbIt->second.c_str(), NULL);
-				std::cout << it->first << " => " << it->second << " x " << dbIt->second << " = " << result << std::endl;
-			}
-			//output the calculation here -> check if the input is int of float
-			// result = std::strtof(it->second.c_str(), NULL) * std::strtof(dbIt->second.c_str(), NULL);
-			// std::cout << it->first << " => " << it->second << " x " << dbIt->second << " = " << result << std::endl;
+			result = std::strtof(it->second.c_str(), NULL) * std::strtof(dbIt->second.c_str(), NULL);
+			std::cout << it->first << " => " << it->second << " x " << dbIt->second << " = " << result << std::endl;
 		}
 		cal.clear();
 	}
@@ -119,10 +113,6 @@ bool	BitcoinExchange::_isWithinRange(int lower, int upper, float val)
 {
 	return ( lower <= val && val <= upper);
 }
-
-
-
-
 
 bool	BitcoinExchange::_isValidMonth(int const month)
 {
@@ -211,20 +201,11 @@ bool	BitcoinExchange::_populateCal(std::string const &date, calendar &cal)
 
 bool	BitcoinExchange::_isValidInput(Database::mmCIt &it, calendar &cal)
 {
-	if (!(_populateCal(it->first, cal) && _isValidDate(cal)))							//Check valid key
+	if (!(_populateCal(it->first, cal) && _isValidDate(cal)))
 	{
 		std::cout << ERR_DATE_INVALID << it->first << std::endl;
 		cal.clear();
 		return (false);
-	}
-	if (_isPosInt(it->second))
-	{
-		if (!_isWithinRange(RNG_VAL_LOW, RNG_VAL_UPPER, std::atoi(it->second.c_str())))
-		{
-			std::cout << ERR_VALUE_INVALID << it->second << std::endl;
-			cal.clear();
-			return (false);
-		}
 	}
 	else if (_isPosFloat(it->second))
 	{
@@ -242,4 +223,14 @@ bool	BitcoinExchange::_isValidInput(Database::mmCIt &it, calendar &cal)
 		return (false);
 	}
 	return (true);
+}
+
+Database::mmCIt	BitcoinExchange::_findClosestData(std::string const &key)	const
+{
+	for (Database::mmCIt it = --(this->_data.data.end()); it != --(this->_data.data.begin()); --it)
+	{
+		if (it->first.compare(key) < 0)
+			return (it);
+	}
+	return (this->_data.data.end());
 }
