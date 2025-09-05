@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/05 01:14:19 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/05 16:38:16 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,10 +227,10 @@ bool	BitcoinExchange::_isValidInput(Database::mmCIt &it, calendar &cal)
 
 Database::mmCIt	BitcoinExchange::_findClosestData(std::string const &key)	const
 {
-	for (Database::mmCIt it = --(this->_data.data.end()); it != --(this->_data.data.begin()); --it)
-	{
-		if (it->first.compare(key) < 0)
-			return (it);
-	}
-	return (this->_data.data.end());
+	Database::mmCIt it;
+
+	it = this->_data.data.lower_bound(key);
+	if(it == this->_data.data.begin())
+		return (this->_data.data.end());
+	return(--it);
 }

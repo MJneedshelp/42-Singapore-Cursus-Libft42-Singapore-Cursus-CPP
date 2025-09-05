@@ -23,7 +23,7 @@ Invalid Values
 1901-42-42 | 456
 
 No Earlier Entry
-2009-01-01 | 1
+2009-01-01 | 0
 
 Valid Entries
 2009-01-04 | 1
