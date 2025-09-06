@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:30:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/05 01:13:06 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/06 18:46:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #include <string>
 #include <cctype>
 
-#define ERR_NOARG "This programme must be run with 1 arg: inputfilepath"
-#define ERR_FILE "File does not exist or read permissions are not given: "
+#define ERR_NOARG "[ERROR] This programme must be run with 1 arg: inputfilepath"
+#define ERR_FILE "[ERROR] File does not exist or read permissions are not given: "
 
 class Database
 {
@@ -33,7 +33,7 @@ class Database
 		Database(std::string const &name, std::string const &path, char const &delim);
 		~Database();
 
-		/* Type definitions - Alias */
+		/* Type Definitions - Alias */
 		typedef	std::multimap<std::string, std::string>					multimap;
 		typedef	std::multimap<std::string, std::string>::iterator		mmIt;
 		typedef	std::multimap<std::string, std::string>::const_iterator	mmCIt;

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/05 01:13:39 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/06 18:46:30 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class BitcoinExchange
 		Database	_data;
 		Database	_input;
 
-		/* Type definitions - Alias */
+		/* Type Definitions - Alias */
 		typedef	std::multimap<std::string, int>					calendar;
 		typedef	std::multimap<std::string, int>::const_iterator	itCal;
 
