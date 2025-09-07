@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:27:04 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/07 14:00:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/07 16:44:39 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@
 
 #define ERR_NOARG "[ERROR] This programme must be run with 1 arg: stack"
 #define ERR_EMPTYARG "[ERROR] You cannot have an empty stack"
-#define ERR_STACKEND "[ERROR] Unable to resolve all operands with the given stack"
 #define ERR_RNGEXCEED1 "[ERROR] The provided integer has exceeded the range: "
 #define ERR_RNGEXCEED2 "[Lower, Upper] "
 #define ERR_INVALIDINPUT "[ERROR] The provided input is not an integer or an operator: "
+#define ERR_ZERODIVISION "[ERROR] Invalid input: Division by 0 detected"
+#define ERR_WRONGORDER "[ERROR] Unable to resolve all operands with the given stack"
+
+
 
 
 
@@ -47,7 +50,7 @@ class RPN
 
 
 		/* Member Functions */
-		void	_stackStack(std::string const &input);	//throw if there is an error
+		void	_stackStack();	//throw if there is an error
 
 		void	printResult(void);
 
@@ -60,7 +63,8 @@ class RPN
 		RPN&	operator=(RPN const &src);
 
 		/* Data members */
-		std::stack<int>	_stack;
+		std::string const	_input;
+		std::stack<int>		_stack;
 
 
 		/* Helper functions */

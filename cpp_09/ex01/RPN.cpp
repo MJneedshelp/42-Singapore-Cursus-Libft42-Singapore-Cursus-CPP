@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/07 14:03:24 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/07 16:51:39 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 /* Used constructors and destructors*/
 
-RPN::RPN(std::string const &input)
+RPN::RPN(std::string const &input): _input(input)
 {
-	this->_stackStack(input);
 	return;
 }
 
@@ -26,9 +25,7 @@ RPN::~RPN()
 }
 
 /* Member Functions */
-
-
-void	RPN::_stackStack(std::string const &input)
+void	RPN::_stackStack()
 {
 	std::string				extract;
 	std::string::size_type	posSt;
@@ -36,10 +33,10 @@ void	RPN::_stackStack(std::string const &input)
 
 	posSt = 0;
 	posEnd = 0;
-	while (posEnd != input.npos)
+	while (posEnd != this->_input.npos)
 	{
-		posEnd = input.find(' ', posSt);
-		extract = input.substr(posSt, posEnd - posSt);
+		posEnd = this->_input.find(' ', posSt);
+		extract = this->_input.substr(posSt, posEnd - posSt);
 		posSt = posEnd + 1;
 		if (extract.empty())
 			continue;
@@ -47,7 +44,7 @@ void	RPN::_stackStack(std::string const &input)
 		{
 			case 0:		//operator
 			{
-				//resolve operation
+				this->_resolveOperation(extract);
 				break;
 			}
 			case 1:		//operand
@@ -56,6 +53,7 @@ void	RPN::_stackStack(std::string const &input)
 				break;
 			}
 			default:	//invalid input
+				break;
 				throw(std::exception());
 		}
 	}
@@ -66,20 +64,12 @@ void	RPN::_stackStack(std::string const &input)
 void	RPN::printResult()
 {
 	if (this->_stack.size() != 1)
-		std::cerr << ERR_STACKEND << std::endl;
+		std::cerr << ERR_WRONGORDER << std::endl;
 	else
 		std::cout << "[Result] " << this->_stack.top() << std::endl;
 }
 
-
-
-
-
-
-
 /* Helper Functions */
-
-
 bool	RPN::_withinIntLimits(const std::string &input)
 {
 	long	inputLong;
@@ -89,7 +79,6 @@ bool	RPN::_withinIntLimits(const std::string &input)
 		return (false);
 	return(true);
 }
-
 
 bool	RPN::_isInt(const std::string &input)
 {
@@ -127,20 +116,17 @@ int	RPN::_validateExtract(std::string const &extract)
 	{
 		if (_isWithinRange(RNG_VAL_LOW, RNG_VAL_UPPER, std::atoi(extract.c_str())))
 			return (0);
-		else
-		{
-			std::cerr << ERR_NOARG + extract << " | " << ERR_RNGEXCEED2 \
-			<< RNG_VAL_LOW << ", " << RNG_VAL_UPPER << std::endl;
-			return (-1);
-		}
+		// std::cerr << ERR_NOARG + extract << " | " << ERR_RNGEXCEED2
+		// << RNG_VAL_LOW << ", " << RNG_VAL_UPPER << std::endl;
+		// return (-1);
+		throw (std::runtime_error(ERR_NOARG + extract + " | " + ERR_RNGEXCEED2 \
+		+ std::to_string(RNG_VAL_LOW) + ", " + std::to_string(RNG_VAL_UPPER)));
+
 	}
 	else if (_isOperator(extract))
 		return (1);
-	else
-	{
-		std::cerr << ERR_INVALIDINPUT + extract << std::endl;
-		return (-1);
-	}
+	// std::cerr << ERR_INVALIDINPUT + extract << std::endl;
+	throw (std::runtime_error(ERR_INVALIDINPUT + extract));
 }
 
 void	RPN::_resolveOperation(std::string const &extract)
@@ -148,9 +134,8 @@ void	RPN::_resolveOperation(std::string const &extract)
 	int	operandFirst;
 	int	operandSecond;
 
-	//check if there is at least 2 items on the stack first, if not throw
-
-
+	if (this->_stack.size() < 2)
+		throw(std::runtime_error(ERR_WRONGORDER));
 	switch (_isOperator(extract))
 	{
 		case 1:	//+
@@ -165,7 +150,8 @@ void	RPN::_resolveOperation(std::string const &extract)
 		}
 		case 3:	///
 		{
-			//chck for division by 0
+			if (operandSecond == 0)
+				throw(std::runtime_error(ERR_ZERODIVISION));
 			this->_stack.push(operandFirst / operandSecond);
 			break;
 		}
@@ -174,7 +160,6 @@ void	RPN::_resolveOperation(std::string const &extract)
 			this->_stack.push(operandFirst * operandSecond);
 			break;
 		}
-
 		default:
 			break;
 	}
