@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/08 00:04:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/08 00:18:52 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,8 @@ bool	RPN::_isWithinRange(int lower, int upper, int val)
 
 int	RPN::_isOperator(std::string const &input)
 {
-	if (input == "+")
-		return (1);
-	if (input == "-")
-		return (2);
-	if (input == "/")
-		return (3);
-	if (input == "*")
-		return (4);
+	if (input == "+" || input == "-" || input == "/" || input == "*")
+		return (static_cast<char>(input[0]));
 	return (0);
 }
 
@@ -150,24 +144,24 @@ void	RPN::_resolveOperation(std::string const &extract)
 	this->_stack.pop();
 	switch (_isOperator(extract))
 	{
-		case 1:	//+
+		case '+':
 		{
 			this->_stack.push(operandFirst + operandSecond);
 			break;
 		}
-		case 2:	//-
+		case '-':
 		{
 			this->_stack.push(operandFirst - operandSecond);
 			break;
 		}
-		case 3:	///
+		case '/':
 		{
 			if (operandSecond == 0)
 				throw(std::runtime_error(ERR_ZERODIVISION));
 			this->_stack.push(operandFirst / operandSecond);
 			break;
 		}
-		case 4:	//*
+		case '*':
 		{
 			this->_stack.push(operandFirst * operandSecond);
 			break;

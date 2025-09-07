@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/08 00:03:54 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/08 00:19:39 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	validInArgs(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	std::cout << "========== Main programme ==========" << std::endl;
+	std::cout << "========== Main Programme ==========" << std::endl;
 	if (validInArgs(argc, argv) == false)
 		return (1);
 
