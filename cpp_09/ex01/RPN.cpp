@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/07 21:22:49 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/07 21:38:17 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,12 @@ bool	RPN::_isInt(const std::string &input)
 {
 	for (unsigned int i = 0; i < input.length(); ++i)
 	{
-		if (i == 0 && static_cast<char>(input[i]) == '-')
+		if (i == 0 && static_cast<char>(input[i]) == '-' && input.length() > 1)
 			continue;
 		if (!std::isdigit(static_cast<int>(input[i])))
 			return (false);
 	}
+
 	return (_withinIntLimits(input));
 }
 
@@ -124,9 +125,9 @@ int	RPN::_validateExtract(std::string const &extract)
 	{
 		if (_isWithinRange(RNG_VAL_LOW, RNG_VAL_UPPER, std::atoi(extract.c_str())))
 			return (1);
-		errMsg = ERR_NOARG + extract + " | " + ERR_RNGEXCEED2 + \
+		errMsg = ERR_RNGEXCEED1 + extract + " | " + ERR_RNGEXCEED2 + \
 		_myItoa(RNG_VAL_LOW) + ", " + _myItoa(RNG_VAL_UPPER);
-		throw (errMsg);
+		throw (std::runtime_error(errMsg));
 	}
 	throw (std::runtime_error(ERR_INVALIDINPUT + extract));
 }
