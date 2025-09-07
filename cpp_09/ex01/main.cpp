@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/07 22:12:32 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/08 00:03:54 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,10 +255,34 @@ int	main(int argc, char *argv[])
 			std::cerr << e.what() << std::endl;
 		}
 	}
-	//Test some positive tests here
-	//try 2 2 2 2 2 + + + +
-	return (0);
+	{
+		std::cout << "\n========== Test 7a: Positive Tests ==========" << std::endl;
+		std::string	input("5 1 2 + 4 * + 3 -");
+		RPN			rpn(input);
 
+		std::cout << "========== Input: " << input << " ==========" << std::endl;
+		rpn.stackStack();
+		rpn.printResult();
+	}
+	{
+		std::cout << "\n========== Test 7b: Positive Tests ==========" << std::endl;
+		std::string	input("1 2 3 4 5 + + + +");
+		RPN			rpn(input);
+
+		std::cout << "========== Input: " << input << " ==========" << std::endl;
+		rpn.stackStack();
+		rpn.printResult();
+	}
+	{
+		std::cout << "\n========== Test 7c: Positive Tests ==========" << std::endl;
+		std::string	input("9 3 / 2 2 + * 5 -");
+		RPN			rpn(input);
+
+		std::cout << "========== Input: " << input << " ==========" << std::endl;
+		rpn.stackStack();
+		rpn.printResult();
+	}
+	return (0);
 }
 
 

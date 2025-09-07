@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/07 21:38:17 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/08 00:04:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ void	RPN::stackStack()
 		posSt = posEnd + 1;
 		if (extract.empty())
 			continue;
-
-		// std::cout << "Extract: " << extract << " | validation: " << _validateExtract(extract) <<std::endl;
-
 		switch (_validateExtract(extract))
 		{
 			case 0:		//operator
@@ -145,16 +142,12 @@ void	RPN::_resolveOperation(std::string const &extract)
 	int	operandFirst;
 	int	operandSecond;
 
-	// std::cout << "stack size: " << this->_stack.size() << std::endl;
 	if (this->_stack.size() < 2)
 		throw(std::runtime_error(ERR_WRONGORDER));
 	operandSecond = this->_stack.top();
 	this->_stack.pop();
 	operandFirst = this->_stack.top();
 	this->_stack.pop();
-
-	// std::cout << "first, second: " << operandFirst << ", " << operandSecond << " | operator: " << _isOperator(extract) <<  std::endl;
-
 	switch (_isOperator(extract))
 	{
 		case 1:	//+
@@ -183,6 +176,3 @@ void	RPN::_resolveOperation(std::string const &extract)
 			break;
 	}
 }
-
-
-
