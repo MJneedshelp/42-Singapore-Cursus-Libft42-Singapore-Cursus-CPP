@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/06 21:38:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/07 13:10:06 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,16 @@ int	main(int argc, char *argv[])
 	if (validInArgs(argc, argv) == false)
 		return (1);
 
-	std::string	input(argv[1]);
-	RPN			obj(input);
+	// std::string	input(argv[1]);
+	// RPN			obj(input);
 
-	obj.printStack();
+	// obj.printStack();
+
+	std::string	s("+");
+
+	if (s == "+" || s == "-" || s == "/" || s == "*")
+		std::cout << "works" << std::endl;
+
 
 	return (0);
 

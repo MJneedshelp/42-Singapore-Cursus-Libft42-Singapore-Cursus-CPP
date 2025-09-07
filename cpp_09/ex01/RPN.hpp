@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:27:04 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/06 21:32:32 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/07 14:00:40 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,21 @@
 #include <stack>
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <limits.h>
+
+#define RNG_VAL_LOW -10
+#define RNG_VAL_UPPER 10
 
 
 #define ERR_NOARG "[ERROR] This programme must be run with 1 arg: stack"
 #define ERR_EMPTYARG "[ERROR] You cannot have an empty stack"
+#define ERR_STACKEND "[ERROR] Unable to resolve all operands with the given stack"
+#define ERR_RNGEXCEED1 "[ERROR] The provided integer has exceeded the range: "
+#define ERR_RNGEXCEED2 "[Lower, Upper] "
+#define ERR_INVALIDINPUT "[ERROR] The provided input is not an integer or an operator: "
+
+
 
 
 class RPN
@@ -36,8 +47,9 @@ class RPN
 
 
 		/* Member Functions */
-		void	printStack(void);
-		void	calculate(void);							//goes through each stack member -> validate -> include in the calculation if no errors
+		void	_stackStack(std::string const &input);	//throw if there is an error
+
+		void	printResult(void);
 
 
 
@@ -48,12 +60,20 @@ class RPN
 		RPN&	operator=(RPN const &src);
 
 		/* Data members */
-		std::stack<std::string>	_stack;
+		std::stack<int>	_stack;
 
 
 		/* Helper functions */
-		void			_stackStack(std::string const &input);	//split the string via spaces and populate the stack
-		static	void	_validateStack();					//validate the stack. can use this function during calculate
+		static	bool	_isInt(std::string const &input);
+		static	bool	_withinIntLimits(std::string const &input);
+		static	bool	_isWithinRange(int lower, int upper, int val);
+		static	int		_isOperator(std::string const &input);
+		static	int		_validateExtract(std::string const &extract);
+		void			_resolveOperation(std::string const &extract);
+
+
+
+
 
 
 
