@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/07 16:46:43 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/07 21:24:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,70 @@ bool	validInArgs(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
+	std::cout << "========== Main programme ==========" << std::endl;
 	if (validInArgs(argc, argv) == false)
 		return (1);
 
 	std::string	input(argv[1]);
-	RPN			obj(input);
+	RPN			rpn(input);
 
-	// obj.printStack();
+	try
+	{
+		rpn.stackStack();
+		rpn.printResult();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	{
+		std::cout << "\n========== Test 1: Empty Input ==========" << std::endl;
+		std::string	input("");
+		RPN			rpn(input);
 
+		std::cout << "========== Input: " << input << "==========" << std::endl;
+		try
+		{
+			rpn.stackStack();
+			rpn.printResult();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << "\n========== Test 2a: Invalid Input ==========" << std::endl;
+		std::string	input("8 9 + seven /");
+		RPN			rpn(input);
 
+		std::cout << "========== Input: " << input << " ==========" << std::endl;
+		try
+		{
+			rpn.stackStack();
+			rpn.printResult();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << "\n========== Test 2b: Invalid Input ==========" << std::endl;
+		std::string	input("(1 + 1)");
+		RPN			rpn(input);
+
+		std::cout << "========== Input: " << input << " ==========" << std::endl;
+		try
+		{
+			rpn.stackStack();
+			rpn.printResult();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
 
 	return (0);
 

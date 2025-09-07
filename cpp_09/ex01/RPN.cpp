@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/07 16:51:39 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/07 21:22:49 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ RPN::~RPN()
 }
 
 /* Member Functions */
-void	RPN::_stackStack()
+void	RPN::stackStack()
 {
 	std::string				extract;
 	std::string::size_type	posSt;
 	std::string::size_type	posEnd;
 
+	if (this->_input.empty())
+		throw (std::runtime_error(ERR_EMPTYARG));
 	posSt = 0;
 	posEnd = 0;
 	while (posEnd != this->_input.npos)
@@ -40,6 +42,9 @@ void	RPN::_stackStack()
 		posSt = posEnd + 1;
 		if (extract.empty())
 			continue;
+
+		// std::cout << "Extract: " << extract << " | validation: " << _validateExtract(extract) <<std::endl;
+
 		switch (_validateExtract(extract))
 		{
 			case 0:		//operator
@@ -54,7 +59,6 @@ void	RPN::_stackStack()
 			}
 			default:	//invalid input
 				break;
-				throw(std::exception());
 		}
 	}
 }
@@ -112,21 +116,27 @@ int	RPN::_isOperator(std::string const &input)
 
 int	RPN::_validateExtract(std::string const &extract)
 {
-	if (_isInt(extract))
+	std::string	errMsg;
+
+	if (_isOperator(extract))
+		return (0);
+	else if (_isInt(extract))
 	{
 		if (_isWithinRange(RNG_VAL_LOW, RNG_VAL_UPPER, std::atoi(extract.c_str())))
-			return (0);
-		// std::cerr << ERR_NOARG + extract << " | " << ERR_RNGEXCEED2
-		// << RNG_VAL_LOW << ", " << RNG_VAL_UPPER << std::endl;
-		// return (-1);
-		throw (std::runtime_error(ERR_NOARG + extract + " | " + ERR_RNGEXCEED2 \
-		+ std::to_string(RNG_VAL_LOW) + ", " + std::to_string(RNG_VAL_UPPER)));
-
+			return (1);
+		errMsg = ERR_NOARG + extract + " | " + ERR_RNGEXCEED2 + \
+		_myItoa(RNG_VAL_LOW) + ", " + _myItoa(RNG_VAL_UPPER);
+		throw (errMsg);
 	}
-	else if (_isOperator(extract))
-		return (1);
-	// std::cerr << ERR_INVALIDINPUT + extract << std::endl;
 	throw (std::runtime_error(ERR_INVALIDINPUT + extract));
+}
+
+std::string	RPN::_myItoa(int i)
+{
+	std::ostringstream	oss;
+
+	oss << i;
+	return(oss.str());
 }
 
 void	RPN::_resolveOperation(std::string const &extract)
@@ -134,8 +144,16 @@ void	RPN::_resolveOperation(std::string const &extract)
 	int	operandFirst;
 	int	operandSecond;
 
+	// std::cout << "stack size: " << this->_stack.size() << std::endl;
 	if (this->_stack.size() < 2)
 		throw(std::runtime_error(ERR_WRONGORDER));
+	operandSecond = this->_stack.top();
+	this->_stack.pop();
+	operandFirst = this->_stack.top();
+	this->_stack.pop();
+
+	// std::cout << "first, second: " << operandFirst << ", " << operandSecond << " | operator: " << _isOperator(extract) <<  std::endl;
+
 	switch (_isOperator(extract))
 	{
 		case 1:	//+
