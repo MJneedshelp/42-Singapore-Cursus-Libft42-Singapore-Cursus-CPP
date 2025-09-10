@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/08 00:18:52 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/11 01:47:04 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ bool	RPN::_isInt(const std::string &input)
 		if (!std::isdigit(static_cast<int>(input[i])))
 			return (false);
 	}
-
 	return (_withinIntLimits(input));
 }
 
