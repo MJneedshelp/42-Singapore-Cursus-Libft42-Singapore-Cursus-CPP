@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/11 02:44:17 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/11 17:13:24 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	PmergeMe::vecSort()
 	// std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
 
 	//do smth here to sort the pairs, probably using swap and the recursion level to get numbers
+	//test using the can use std::max_element to find the position of then use swa
 	if (std::pow(2, this->_recurseLv) <= (this->_dataVec.size() / 2))
 	{
 		std::cout << "Recursion level: " << this->_recurseLv << std::endl;
