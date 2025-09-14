@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 17:52:46 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/14 19:14:35 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ void	PmergeMe::_vecSortPairs()
 	int		cmpWindow;
 	int		RHS;
 	int		LHS;
+	vecIT	itRHS;
+	vecIT	itLHS;
 
 	stepSz = std::pow(2, this->_recurseLv);
 	cmpWindow = stepSz;
@@ -116,12 +118,20 @@ void	PmergeMe::_vecSortPairs()
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
 	{
 		RHS = cmpWindow - 1;
-		LHS = RHS - std::pow(2, this->_recurseLv - 1);
+		LHS = RHS - (stepSz / 2);
+		itRHS = this->_dataVec.begin() + (cmpWindow - 1);
+		itLHS = itRHS - (stepSz / 2);
 
 		std::cout << "LHS: " << this->_dataVec[LHS] << " | RHS: " << this->_dataVec[RHS] << std::endl;
+		std::cout << "LHS: " << *itLHS << " | RHS: " << *itRHS << std::endl;
 
-		if (this->_dataVec[RHS] < this->_dataVec[LHS])
+
+		if (*itRHS < *itLHS)
 		{
+			// std::swap_ranges(vec.begin(), vec.begin() + 2, vec.begin() + 2);
+			std::swap_ranges(itLHS, itLHS, itLHS + (stepSz / 2));
+
+
 			std::cout << "Perform swap" << std::endl;
 		}
 		else
@@ -130,4 +140,5 @@ void	PmergeMe::_vecSortPairs()
 		cmpWindow += stepSz;
 		std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
 	}
+	this->printContainer(Vector);
 }
