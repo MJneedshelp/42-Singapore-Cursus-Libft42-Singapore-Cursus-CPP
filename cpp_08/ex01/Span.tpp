@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.tpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 23:16:07 by mintan            #+#    #+#             */
-/*   Updated: 2025/08/25 00:38:40 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/14 23:19:20 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	Span::addRange(It itSt, It itEnd)
 
 	rngSz = std::distance(itSt, itEnd);
 	oss << this->_fill + rngSz - this->maxSize;
-	// std::cout << "Distance: " << rngSz << std::endl;
 	if (this->_fill + rngSz > this->maxSize)
 		throw(std::runtime_error(ERR_RNGEXCEED + oss.str()));
 	this->_intVec.insert(this->_intVec.begin(), itSt, itEnd);

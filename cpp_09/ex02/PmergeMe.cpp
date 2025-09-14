@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 20:55:52 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/14 23:12:07 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@ void	PmergeMe::populateVec(int argc, char *argv[])
 
 void	PmergeMe::vecSort()
 {
+	std::vector<int>	mainChain;
+	std::vector<int>	pEnd;
+
 	++(this->_recurseLv);
 	// std::cout << "Recursion level: " << this->_recurseLv << std::endl;
 	// std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
 
-	//do smth here to sort the pairs, probably using swap and the recursion level to get numbers
-	//test using the can use std::max_element to find the position of then use swa
 	this->_vecSortPairs();
 	if (std::pow(2, this->_recurseLv) <= (this->_dataVec.size() / 2))
 	{
@@ -57,6 +58,8 @@ void	PmergeMe::vecSort()
 		std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
 		this->vecSort();
 	}
+
+	//form the main chain using std::copy or vector.insert
 	//start doing the main chain and jacobsthal and binary insertion here
 }
 

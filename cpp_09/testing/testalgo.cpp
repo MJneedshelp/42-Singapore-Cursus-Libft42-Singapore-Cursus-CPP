@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 19:09:14 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/14 23:25:28 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <iterator>
 
 typedef	std::vector<int>::iterator			vecIT;
 
@@ -32,6 +33,8 @@ void    printVec(std::vector<int> vec)
 int main(void)
 {
     std::vector<int>    vec;
+	std::vector<int>	vecIns;
+	std::vector<int>	vecCpy;
 
     vec.push_back(1);
     vec.push_back(2);
@@ -43,6 +46,13 @@ int main(void)
     printVec(vec);
     std::swap_ranges(vec.begin(), vec.begin() + 1, vec.begin() + 1);
     printVec(vec);
+
+	vecIns.insert(vecIns.begin(), vec.begin(), vec.begin() + 2);
+    printVec(vecIns);
+
+	std::copy(vec.begin(), vec.begin() + 2, vecCpy.begin());
+    printVec(vecCpy);
+
 
     return (0);
 }
