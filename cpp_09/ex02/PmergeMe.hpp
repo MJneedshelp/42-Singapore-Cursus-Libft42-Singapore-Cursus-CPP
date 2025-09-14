@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/11 02:29:19 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/14 17:30:16 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ class PmergeMe
 		/* Type Definitions - Alias */
 		typedef	std::vector<int>::const_iterator	vecCIT;
 		typedef	std::vector<int>::iterator			vecIT;
+		typedef	std::vector<int>::size_type			vecSize;
 
 
 		/* Member Functions */
@@ -64,6 +65,9 @@ class PmergeMe
 		/* Helper Functions */
 		static	bool		_isPosInt(std::string const &input);
 		static	bool		_withinIntLimits(std::string const &input);
+
+		void				_vecSortPairs();
+
 
 
 };
