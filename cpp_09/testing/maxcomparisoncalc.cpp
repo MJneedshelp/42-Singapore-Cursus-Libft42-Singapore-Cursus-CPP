@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   maxcomparisoncalc.cpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 14:52:37 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/09 15:11:37 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/14 20:57:22 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cmath>
 #include <iostream>
 
-/* Description: function to calculate the max number of comparisons given n 
-   number of inputs. This is used to the check the number of comparisons when 
+/* Description: function to calculate the max number of comparisons given n
+   number of inputs. This is used to the check the number of comparisons when
    implementing the Ford-Johnson algorithm
 */
 int F(int n)
@@ -34,7 +34,7 @@ int F(int n)
 
 int main(void)
 {
-    for (int i = 1; i < 22; ++i)
+    for (int i = 1; i < 23; ++i)
     {
         std::cout << "n: " << i << " | max comparisons: " << F(i) << std::endl;
     }

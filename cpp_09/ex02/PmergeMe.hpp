@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 17:30:16 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/14 21:11:41 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class PmergeMe
 
 
 		/* Member Functions */
+		int		getNumCmpr()	const;
 		void	populateVec(int argc, char *argv[]);
 		void	vecSort();
 		void	printContainer(int containerType)	const;		//maybe can make into a template function
@@ -67,6 +68,8 @@ class PmergeMe
 		static	bool		_withinIntLimits(std::string const &input);
 
 		void				_vecSortPairs();
+		void				_vecBinaryInsert();		//function to binary insert, create chains inside first
+		void				_vecCreateChains();		//create main and Pend
 
 
 

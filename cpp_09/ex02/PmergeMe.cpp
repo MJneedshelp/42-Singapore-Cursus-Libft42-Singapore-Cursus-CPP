@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 19:32:24 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/14 20:55:52 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ PmergeMe::~PmergeMe()
 
 
 /* Member Functions */
+int		PmergeMe::getNumCmpr()	const
+{
+	return (this->_numCmpr);
+}
+
 void	PmergeMe::populateVec(int argc, char *argv[])
 {
 	for (int i = 1; i < argc; ++i)
@@ -63,7 +68,6 @@ void	PmergeMe::printContainer(int containerType)	const
 		{
 			// for (vecCIT it = this->_dataVec.begin(); it != this->_dataVec.end(); ++it)
 				// std::cout << *it << " ";
-
 			for (vecSize i = 0; i < this->_dataVec.size(); ++i)
 				std::cout << this->_dataVec[i] << " ";
 			break;
@@ -123,8 +127,10 @@ void	PmergeMe::_vecSortPairs()
 			// std::cout << "Range start: " << *(itLHS - (stepSz / 2) + 1) << " | Range end: " << *itLHS << std::endl;
 			std::swap_ranges(itLHS - (stepSz / 2) + 1, itLHS + 1, itLHS + 1);
 		}
+		this->_numCmpr++;
 		cmpWindow += stepSz;
 		// std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
 	}
 	this->printContainer(Vector);
+	std::cout << "Num of comparisons so far: " << this->getNumCmpr() << std::endl;
 }
