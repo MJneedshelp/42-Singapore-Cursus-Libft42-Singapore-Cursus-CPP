@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 17:35:12 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/14 17:52:46 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,15 @@ bool	PmergeMe::_isPosInt(const std::string &input)
 
 void	PmergeMe::_vecSortPairs()
 {
-	vecSize	stepSz;
-	vecSize	cmpWindow;
+	int		stepSz;
+	int		cmpWindow;
 	int		RHS;
 	int		LHS;
 
 	stepSz = std::pow(2, this->_recurseLv);
 	cmpWindow = stepSz;
 	std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
-	while (this->_dataVec.size() - cmpWindow >= stepSz)	//check condition here
+	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
 	{
 		RHS = cmpWindow - 1;
 		LHS = RHS - std::pow(2, this->_recurseLv - 1);
@@ -128,6 +128,6 @@ void	PmergeMe::_vecSortPairs()
 			std::cout << "No need to swap" << std::endl;
 
 		cmpWindow += stepSz;
-		std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << std::endl;
+		std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
 	}
 }
