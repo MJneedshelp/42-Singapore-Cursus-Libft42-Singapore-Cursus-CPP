@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 21:11:41 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/15 13:03:07 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class PmergeMe
 		~PmergeMe();
 
 		/* Type Definitions - Alias */
+		typedef	std::vector<int>					vec;
 		typedef	std::vector<int>::const_iterator	vecCIT;
 		typedef	std::vector<int>::iterator			vecIT;
 		typedef	std::vector<int>::size_type			vecSize;
@@ -50,6 +51,8 @@ class PmergeMe
 		void	vecSort();
 		void	printContainer(int containerType)	const;		//maybe can make into a template function
 
+		/* Static Functions */
+		void	printVect(vec vector, std::string name);
 
 	private:
 		/* Unused OCF */
@@ -59,17 +62,17 @@ class PmergeMe
 
 		/* Private Members */
 
-		std::vector<int>	_dataVec;
-		int					_numCmpr;
-		int					_recurseLv;
+		vec				_dataVec;
+		int				_numCmpr;
+		int				_recurseLv;
 
 		/* Helper Functions */
-		static	bool		_isPosInt(std::string const &input);
-		static	bool		_withinIntLimits(std::string const &input);
+		static	bool	_isPosInt(std::string const &input);
+		static	bool	_withinIntLimits(std::string const &input);
 
-		void				_vecSortPairs();
-		void				_vecBinaryInsert();		//function to binary insert, create chains inside first
-		void				_vecCreateChains();		//create main and Pend
+		void			_vecSortPairs();
+		void			_vecBinaryInsert();		//function to binary insert, create chains inside first
+		void			_vecCreateChains(vec mainChain, vec pEnd);		//create main and Pend
 
 
 

@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 23:12:07 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/15 13:06:20 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	PmergeMe::populateVec(int argc, char *argv[])
 
 void	PmergeMe::vecSort()
 {
-	std::vector<int>	mainChain;
-	std::vector<int>	pEnd;
+	vec	mainChain;
+	vec	pEnd;
 
 	++(this->_recurseLv);
 	// std::cout << "Recursion level: " << this->_recurseLv << std::endl;
@@ -60,7 +60,11 @@ void	PmergeMe::vecSort()
 	}
 
 	//form the main chain using std::copy or vector.insert
+	this->_vecCreateChains(mainChain, pEnd);
+
 	//start doing the main chain and jacobsthal and binary insertion here
+	--(this->_recurseLv);
+
 }
 
 void	PmergeMe::printContainer(int containerType)	const
@@ -81,7 +85,13 @@ void	PmergeMe::printContainer(int containerType)	const
 	std::cout << std::endl;
 }
 
-
+void	PmergeMe::printVect(vec vector, std::string name)
+{
+	std::cout << "Vector Name: " << name << " | ";
+	for (vecCIT it = vector.begin(); it != vector.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
 
 
 
@@ -136,4 +146,22 @@ void	PmergeMe::_vecSortPairs()
 	}
 	this->printContainer(Vector);
 	std::cout << "Num of comparisons so far: " << this->getNumCmpr() << std::endl;
+}
+
+
+void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd)
+{
+	std::cout << "Inside create chains now" << std::endl;
+	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
+	std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
+
+	int	blockSz;
+
+	blockSz = std::pow(2, this->_recurseLv - 1);
+	//insert the b1
+	mainChain.insert(mainChain.begin(), this->_dataVec.begin(), this->_dataVec.begin() + blockSz);
+	PmergeMe::printVect(mainChain, "Main Chain");
+	pEnd.push_back(1);
+
+
 }
