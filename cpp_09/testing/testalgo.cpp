@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/15 12:23:18 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/16 07:51:38 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,14 @@ int main(void)
     std::swap_ranges(vec.begin(), vec.begin() + 1, vec.begin() + 1);
     printVec(vec);
 
-	vecIns.insert(vecIns.begin(), vec.begin(), vec.begin() + 2);
+	vecIns.insert(vecIns.end(), vec.begin(), vec.begin() + 2);
     printVec(vecIns);
 
-	std::copy(vec.begin(), vec.begin() + 2, std::back_inserter(vecCpy));
-    printVec(vecCpy);
+	vecIns.insert(vecIns.end(), vec.begin() + 2, vec.begin() + 4);
+    printVec(vecIns);
+
+
+
 
 
     return (0);

@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/15 13:06:20 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/16 07:52:39 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,13 +155,24 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd)
 	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
 	std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
 
-	int	blockSz;
+	int	stepSz;
+	int	cmpWindow;
+	
 
-	blockSz = std::pow(2, this->_recurseLv - 1);
+	stepSz = std::pow(2, this->_recurseLv - 1);
+	cmpWindow = stepSz * 2;
+	std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
+
 	//insert the b1
-	mainChain.insert(mainChain.begin(), this->_dataVec.begin(), this->_dataVec.begin() + blockSz);
+	mainChain.insert(mainChain.end(), this->_dataVec.begin(), this->_dataVec.begin() + stepSz);
+
 	PmergeMe::printVect(mainChain, "Main Chain");
-	pEnd.push_back(1);
+
+	//insert all the As
+	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
+	{
+
+	}
 
 
 }
