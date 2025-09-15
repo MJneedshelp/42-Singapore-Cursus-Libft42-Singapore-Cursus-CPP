@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/14 23:25:28 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/15 12:23:18 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    printVec(std::vector<int> vec)
 
 int main(void)
 {
-    std::vector<int>    vec;
+    std::vector<int>	vec;
 	std::vector<int>	vecIns;
 	std::vector<int>	vecCpy;
 
@@ -50,7 +50,7 @@ int main(void)
 	vecIns.insert(vecIns.begin(), vec.begin(), vec.begin() + 2);
     printVec(vecIns);
 
-	std::copy(vec.begin(), vec.begin() + 2, vecCpy.begin());
+	std::copy(vec.begin(), vec.begin() + 2, std::back_inserter(vecCpy));
     printVec(vecCpy);
 
 
