@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/15 13:03:07 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/16 09:10:29 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <iterator>
 
 #define ERR_NOARG "[ERROR] This programme must be run with at least 1 input arg"
 #define ERR_INVALIDINPUT "[ERROR] The provided input is not positive integer: "
@@ -72,7 +73,7 @@ class PmergeMe
 
 		void			_vecSortPairs();
 		void			_vecBinaryInsert();		//function to binary insert, create chains inside first
-		void			_vecCreateChains(vec mainChain, vec pEnd);		//create main and Pend
+		void			_vecCreateChains(vec mainChain, vec pEnd, vec tail);		//create main and Pend
 
 
 
