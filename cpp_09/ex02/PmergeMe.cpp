@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/16 09:44:00 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/16 10:56:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,11 @@ void	PmergeMe::vecSort()
 	}
 
 	//form the main chain using std::copy or vector.insert
-	this->_vecCreateChains(mainChain, pEnd, tail);
+	this->_vecCreateChains(&mainChain, &pEnd, &tail);
+
+	PmergeMe::printVect(mainChain, "Main Chain");
+	PmergeMe::printVect(pEnd, "pEnd");
+	PmergeMe::printVect(tail, "tail");
 
 	//start doing the main chain and jacobsthal and binary insertion here
 	--(this->_recurseLv);
@@ -80,6 +84,7 @@ void	PmergeMe::printContainer(int containerType)	const
 				std::cout << this->_dataVec[i] << " ";
 			break;
 		}
+		// another case here for the other container
 		default:
 			break;
 	}
@@ -143,14 +148,13 @@ void	PmergeMe::_vecSortPairs()
 		}
 		this->_numCmpr++;
 		cmpWindow += stepSz;
-		// std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
 	}
 	this->printContainer(Vector);
 	std::cout << "Num of comparisons so far: " << this->getNumCmpr() << std::endl;
 }
 
 
-void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd, vec tail)
+void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 {
 	std::cout << "Inside create chains now" << std::endl;
 	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
@@ -167,7 +171,7 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd, vec tail)
 	cmpWindow = stepSz * 2;
 
 	//insert the b1
-	mainChain.insert(mainChain.end(), this->_dataVec.begin(), this->_dataVec.begin() + stepSz);
+	mainChain->insert(mainChain->end(), this->_dataVec.begin(), this->_dataVec.begin() + stepSz);
 
 	// std::cout << "After insert b1" << std::endl;
 	// PmergeMe::printVect(mainChain, "Main Chain");
@@ -177,9 +181,9 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd, vec tail)
 	smallIT = this->_dataVec.begin() + cmpWindow;
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
 	{
-		mainChain.insert(mainChain.end(), bigIT, bigIT + stepSz);
+		mainChain->insert(mainChain->end(), bigIT, bigIT + stepSz);
 		if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + stepSz) >= 0)
-			pEnd.insert(pEnd.end(), smallIT, smallIT + stepSz);
+			pEnd->insert(pEnd->end(), smallIT, smallIT + stepSz);
 		cmpWindow += stepSz * 2;
 		bigIT += stepSz * 2;
 		smallIT += stepSz * 2;
@@ -190,15 +194,5 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd, vec tail)
 	else
 		tailIT = this->_dataVec.begin() + cmpWindow;
 	tailSz = this->_dataVec.end() - tailIT;
-	tail.insert(tail.end(), tailIT, tailIT + tailSz);
-	
-	
-	PmergeMe::printVect(mainChain, "Main Chain");
-	PmergeMe::printVect(pEnd, "pEnd");
-	PmergeMe::printVect(tail, "tail");
-
-
-
-
-
+	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
