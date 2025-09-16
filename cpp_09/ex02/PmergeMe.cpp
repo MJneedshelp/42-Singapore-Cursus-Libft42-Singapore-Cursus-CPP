@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/16 07:52:39 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/16 08:07:12 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,13 +155,14 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd)
 	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
 	std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
 
-	int	stepSz;
-	int	cmpWindow;
-	
+	int		stepSz;
+	int		cmpWindow;
+	vecCIT	bigIT;
+
 
 	stepSz = std::pow(2, this->_recurseLv - 1);
 	cmpWindow = stepSz * 2;
-	std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
+	// std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
 
 	//insert the b1
 	mainChain.insert(mainChain.end(), this->_dataVec.begin(), this->_dataVec.begin() + stepSz);
@@ -169,10 +170,17 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd)
 	PmergeMe::printVect(mainChain, "Main Chain");
 
 	//insert all the As
+	bigIT = this->_dataVec.begin() + stepSz;
+	// std::cout << "check big it: " << *bigIT << std::endl;
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
 	{
-
+		mainChain.insert(mainChain.end(), bigIT, bigIT + stepSz);
+		cmpWindow += stepSz * 2;
+		bigIT += stepSz;	//should be x 2 here. see if you can simplkfy
 	}
+	PmergeMe::printVect(mainChain, "Main Chain");
+
+	pEnd.push_back(1);
 
 
 }
