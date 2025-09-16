@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/16 09:15:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/16 09:44:00 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,10 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd, vec tail)
 
 	int		stepSz;
 	int		cmpWindow;
+	int		tailSz;
 	vecCIT	bigIT;
 	vecCIT	smallIT;
 	vecCIT	tailIT;
-
 
 	stepSz = std::pow(2, this->_recurseLv - 1);
 	cmpWindow = stepSz * 2;
@@ -184,16 +184,15 @@ void	PmergeMe::_vecCreateChains(vec mainChain, vec pEnd, vec tail)
 		bigIT += stepSz * 2;
 		smallIT += stepSz * 2;
 	}
-	// cmpWindow -= stepSz * 2;
-	// tailIT = this->_dataVec.begin() + cmpWindow;
-	tailIT = smallIT - stepSz * 2;
+	cmpWindow -= stepSz * 2;
+	if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + stepSz) >= 0)
+		tailIT = this->_dataVec.begin() + cmpWindow + stepSz;
+	else
+		tailIT = this->_dataVec.begin() + cmpWindow;
+	tailSz = this->_dataVec.end() - tailIT;
+	tail.insert(tail.end(), tailIT, tailIT + tailSz);
 	
-	unsigned int	rngSz;
-	rngSz = std::distance(tailIT, this->_dataVec.end());
-
-
-	tail.insert(tail.end(), tailIT, tailIT);
-	std::cout << "After insert As and Bs" << std::endl;
+	
 	PmergeMe::printVect(mainChain, "Main Chain");
 	PmergeMe::printVect(pEnd, "pEnd");
 	PmergeMe::printVect(tail, "tail");
