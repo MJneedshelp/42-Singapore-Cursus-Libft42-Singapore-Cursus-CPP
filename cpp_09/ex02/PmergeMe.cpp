@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/16 10:56:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/20 17:12:42 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	PmergeMe::vecSort()
 	PmergeMe::printVect(tail, "tail");
 
 	//start doing the main chain and jacobsthal and binary insertion here
+
+
 	--(this->_recurseLv);
 
 }
@@ -125,6 +127,14 @@ bool	PmergeMe::_isPosInt(const std::string &input)
 	}
 	return (_withinIntLimits(input));
 }
+
+unsigned int	PmergeMe::_genJacobsthalNum(unsigned int lv)
+{
+	if (lv < 2)
+		return (lv);
+	return (_genJacobsthalNum(lv - 1) + (2 * _genJacobsthalNum(lv - 2)));
+}
+
 
 void	PmergeMe::_vecSortPairs()
 {

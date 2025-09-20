@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/16 10:52:31 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/20 17:12:34 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ class PmergeMe
 		/* Static Functions */
 		void	printVect(vec vector, std::string name);
 
+		static	unsigned int	_genJacobsthalNum(unsigned int lv);
+
+
 	private:
 		/* Unused OCF */
 		// PmergeMe();
@@ -68,8 +71,9 @@ class PmergeMe
 		int				_recurseLv;
 
 		/* Helper Functions */
-		static	bool	_isPosInt(std::string const &input);
-		static	bool	_withinIntLimits(std::string const &input);
+		static	bool			_withinIntLimits(std::string const &input);
+		static	bool			_isPosInt(std::string const &input);
+		// static	unsigned int	_genJacobsthalNum(unsigned int lv);
 
 		void			_vecSortPairs();
 		void			_vecBinaryInsert();		//function to binary insert, create chains inside first
