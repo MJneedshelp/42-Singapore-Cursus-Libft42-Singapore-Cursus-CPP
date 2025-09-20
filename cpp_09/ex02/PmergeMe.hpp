@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/20 17:46:01 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/21 06:52:58 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ class PmergeMe
 		void	printVect(vec vector, std::string name);
 
 		static	unsigned int	_genJacobsthalNum(unsigned int lv);
+		static	unsigned int	_getNearestJacobsthalLv(unsigned int jn);
 
 
 	private:
@@ -74,10 +75,16 @@ class PmergeMe
 		static	bool			_withinIntLimits(std::string const &input);
 		static	bool			_isPosInt(std::string const &input);
 		// static	unsigned int	_genJacobsthalNum(unsigned int lv);
+		// static	unsigned int	_getNearestJacobsthalLv(unsigned int jn);
+
 
 		void			_vecSortPairs();
 		void			_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail);		//create main and Pend
+		void			_vecParsePEnd(vec *pEnd, vec *bound);
+
 		void			_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *tail);		//function to binary insert, create chains inside first
+
+		void			_vecCombineChains(vec *mainChain, vec *pEnd, vec *tail);		//function to binary insert, create chains inside first
 
 
 

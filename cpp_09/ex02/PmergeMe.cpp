@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/20 18:11:03 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/21 06:58:38 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	PmergeMe::vecSort()
 	this->_dataVec.erase(this->_dataVec.begin(), this->_dataVec.end());
 
 	//start doing the main chain and jacobsthal and binary insertion here and insert the non-participating part at the end
-	this->_vecBinaryInsert(&mainChain, &pEnd, &tail);
+	// this->_vecBinaryInsert(&mainChain, &pEnd, &tail);
 
 	//copy the main main chain back to the original chain
 	this->_dataVec.insert(this->_dataVec.end(), mainChain.begin(), mainChain.end());
@@ -143,6 +143,17 @@ unsigned int	PmergeMe::_genJacobsthalNum(unsigned int lv)
 		return (lv);
 	return (_genJacobsthalNum(lv - 1) + (2 * _genJacobsthalNum(lv - 2)));
 }
+
+unsigned int	PmergeMe::_getNearestJacobsthalLv(unsigned int jn)
+{
+	unsigned int	lv;
+
+	lv = 0;
+	while (_genJacobsthalNum(lv) <= jn)
+		lv++;
+	return (--lv);
+}
+
 
 
 void	PmergeMe::_vecSortPairs()
@@ -216,11 +227,31 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
 
-void	PmergeMe::_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *tail)
+// void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
+// {
+// 	//given a number, what's the next closest jacobsthal number?
+// 	//say 25
+
+// }
+
+
+
+
+
+
+
+
+
+void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd, vec *tail)
 {
+	vec	bound;
+
 	if (pEnd->size() > 0)
 	{
 		//binary insertion of elements into the main chain based on jacobsthal numbers
+			//parse pEnd and rearrange it in the order that you want to do the binary search from
+			//while parsing pEnd, find the bound for each of the elements in the main chain and store it in another vector
+			//
 		;
 	}
 	if (tail->size() > 0)
