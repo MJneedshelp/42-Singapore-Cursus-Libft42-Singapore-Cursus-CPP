@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/20 17:13:41 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/20 18:11:15 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	main(int argc, char *argv[])
 	}
 
 	guren.printContainer(Vector);
-	// guren.vecSort();
+	guren.vecSort();
 
-	std::cout << "Print Jacobsthal Numbers: ";
-	for (unsigned int i = 0; i < 20; ++i)
-		std::cout << PmergeMe::_genJacobsthalNum(i) << " ";
-	std:: cout << std::endl;
+	// std::cout << "Print Jacobsthal Numbers: ";
+	// for (unsigned int i = 0; i < 20; ++i)
+	// 	std::cout << PmergeMe::_genJacobsthalNum(i) << " ";
+	// std:: cout << std::endl;
 
 	return (0);
 }

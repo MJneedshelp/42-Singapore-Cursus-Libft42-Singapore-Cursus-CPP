@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/16 07:51:38 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/20 17:47:46 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,24 @@ int main(void)
 
 	vecIns.insert(vecIns.end(), vec.begin() + 2, vec.begin() + 4);
     printVec(vecIns);
+
+	vec.erase(vec.begin(), vec.end());
+    printVec(vec);
+	std::cout << "vec size: " << vec.size() << std::endl;
+
+
+	vec = vecIns;
+    printVec(vec);
+
+	vecIns.push_back(1);
+    printVec(vecIns);
+    printVec(vec);
+
+	std::cout << "vec size: " << vec.size() << std::endl;
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/20 17:12:34 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/20 17:46:01 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ class PmergeMe
 		// static	unsigned int	_genJacobsthalNum(unsigned int lv);
 
 		void			_vecSortPairs();
-		void			_vecBinaryInsert();		//function to binary insert, create chains inside first
 		void			_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail);		//create main and Pend
+		void			_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *tail);		//function to binary insert, create chains inside first
 
 
 

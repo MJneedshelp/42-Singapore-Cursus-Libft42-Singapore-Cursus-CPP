@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/20 17:12:42 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/20 18:11:03 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,16 @@ void	PmergeMe::vecSort()
 	PmergeMe::printVect(pEnd, "pEnd");
 	PmergeMe::printVect(tail, "tail");
 
-	//start doing the main chain and jacobsthal and binary insertion here
+	// erase the orginal chain
+	this->_dataVec.erase(this->_dataVec.begin(), this->_dataVec.end());
+
+	//start doing the main chain and jacobsthal and binary insertion here and insert the non-participating part at the end
+	this->_vecBinaryInsert(&mainChain, &pEnd, &tail);
+
+	//copy the main main chain back to the original chain
+	this->_dataVec.insert(this->_dataVec.end(), mainChain.begin(), mainChain.end());
+	PmergeMe::printVect(this->_dataVec, "Original Chain");
+
 
 
 	--(this->_recurseLv);
@@ -206,3 +215,15 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	tailSz = this->_dataVec.end() - tailIT;
 	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
+
+void	PmergeMe::_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *tail)
+{
+	if (pEnd->size() > 0)
+	{
+		//binary insertion of elements into the main chain based on jacobsthal numbers
+		;
+	}
+	if (tail->size() > 0)
+		mainChain->insert(mainChain->end(), tail->begin(), tail->end());
+}
+
