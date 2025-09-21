@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 02:25:38 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 02:51:41 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
 
-int	PmergeMe::_findBoundElem(unsigned int elemN)
+int	PmergeMe::_findBoundElem(unsigned int elemN)	//finds the corresponding start of the A element in the mainchain given the elemN
 {
 
 }
