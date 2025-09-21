@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/21 06:52:58 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/21 17:13:45 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ class PmergeMe
 		vec				_dataVec;
 		int				_numCmpr;
 		int				_recurseLv;
+		int				_elemSize;
 
 		/* Helper Functions */
 		static	bool			_withinIntLimits(std::string const &input);

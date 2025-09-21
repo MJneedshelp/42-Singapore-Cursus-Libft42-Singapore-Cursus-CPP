@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/21 07:00:35 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/21 17:26:41 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,22 @@ int	main(int argc, char *argv[])
 	}
 
 	guren.printContainer(Vector);
-	// guren.vecSort();
+	guren.vecSort();
 
-	std::cout << "Print Jacobsthal Numbers: ";
-	for (unsigned int i = 0; i < 20; ++i)
-		std::cout << PmergeMe::_genJacobsthalNum(i) << " ";
-	std:: cout << std::endl;
+	// std::cout << "Print Jacobsthal Numbers: ";
+	// for (unsigned int i = 0; i < 20; ++i)
+	// 	std::cout << PmergeMe::_genJacobsthalNum(i) << " ";
+	// std:: cout << std::endl;
 
-	std::cout << "Get nearest Jacobsthal lv: " << std::endl;
-	std::cout << "2: " << PmergeMe::_getNearestJacobsthalLv(2) << std::endl;
-	std::cout << "3: " << PmergeMe::_getNearestJacobsthalLv(3) << std::endl;
-	std::cout << "5: " << PmergeMe::_getNearestJacobsthalLv(5) << std::endl;
-	std::cout << "11: " << PmergeMe::_getNearestJacobsthalLv(11) << std::endl;
-	std::cout << "15: " << PmergeMe::_getNearestJacobsthalLv(15) << std::endl;
-	std::cout << "20: " << PmergeMe::_getNearestJacobsthalLv(20) << std::endl;
-	std::cout << "21: " << PmergeMe::_getNearestJacobsthalLv(21) << std::endl;
-
-
-	std::cout << "30: " << PmergeMe::_getNearestJacobsthalLv(30) << std::endl;
+	// std::cout << "Get nearest Jacobsthal lv: " << std::endl;
+	// std::cout << "2: " << PmergeMe::_getNearestJacobsthalLv(2) << std::endl;
+	// std::cout << "3: " << PmergeMe::_getNearestJacobsthalLv(3) << std::endl;
+	// std::cout << "5: " << PmergeMe::_getNearestJacobsthalLv(5) << std::endl;
+	// std::cout << "11: " << PmergeMe::_getNearestJacobsthalLv(11) << std::endl;
+	// std::cout << "15: " << PmergeMe::_getNearestJacobsthalLv(15) << std::endl;
+	// std::cout << "20: " << PmergeMe::_getNearestJacobsthalLv(20) << std::endl;
+	// std::cout << "21: " << PmergeMe::_getNearestJacobsthalLv(21) << std::endl;
+	// std::cout << "30: " << PmergeMe::_getNearestJacobsthalLv(30) << std::endl;
 
 
 

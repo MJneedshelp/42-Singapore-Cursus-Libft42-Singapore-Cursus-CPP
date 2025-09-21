@@ -6,14 +6,14 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/21 06:58:38 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/21 17:44:56 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 /* Constructors and Destructors */
-PmergeMe::PmergeMe(): _numCmpr(0), _recurseLv(0)
+PmergeMe::PmergeMe(): _numCmpr(0), _recurseLv(0), _elemSize(0)
 {
 	return;
 }
@@ -49,16 +49,13 @@ void	PmergeMe::vecSort()
 	vec	tail;
 
 	++(this->_recurseLv);
-	// std::cout << "Recursion level: " << this->_recurseLv << std::endl;
-	// std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
+	this->_elemSize = std::pow(2, this->_recurseLv - 1);
+	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
+	std::cout << "Elem size: " << this->_elemSize << std::endl;
 
 	this->_vecSortPairs();
 	if (std::pow(2, this->_recurseLv) <= (this->_dataVec.size() / 2))
-	{
-		std::cout << "Recursion level: " << this->_recurseLv << std::endl;
-		std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
 		this->vecSort();
-	}
 
 	//form the main chain using std::copy or vector.insert
 	this->_vecCreateChains(&mainChain, &pEnd, &tail);
@@ -73,13 +70,16 @@ void	PmergeMe::vecSort()
 	//start doing the main chain and jacobsthal and binary insertion here and insert the non-participating part at the end
 	// this->_vecBinaryInsert(&mainChain, &pEnd, &tail);
 
-	//copy the main main chain back to the original chain
+	//copy the main main chain and the tail back to the original chain
 	this->_dataVec.insert(this->_dataVec.end(), mainChain.begin(), mainChain.end());
+	this->_dataVec.insert(this->_dataVec.end(), tail.begin(), tail.end());
 	PmergeMe::printVect(this->_dataVec, "Original Chain");
 
 
 
 	--(this->_recurseLv);
+	this->_elemSize = std::pow(2, this->_recurseLv - 1);
+
 
 }
 
@@ -163,7 +163,7 @@ void	PmergeMe::_vecSortPairs()
 	vecIT	itRHS;
 	vecIT	itLHS;
 
-	stepSz = std::pow(2, this->_recurseLv);
+	stepSz = this->_elemSize * 2;
 	cmpWindow = stepSz;
 	// std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
@@ -188,39 +188,38 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 {
 	std::cout << "Inside create chains now" << std::endl;
 	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
-	std::cout << "Pair size: " << std::pow(2, this->_recurseLv) << std::endl;
+	std::cout << "Elem size: " << this->_elemSize << std::endl;
 
-	int		stepSz;
 	int		cmpWindow;
 	int		tailSz;
 	vecCIT	bigIT;
 	vecCIT	smallIT;
 	vecCIT	tailIT;
 
-	stepSz = std::pow(2, this->_recurseLv - 1);
-	cmpWindow = stepSz * 2;
+	cmpWindow = this->_elemSize * 2;
 
 	//insert the b1
-	mainChain->insert(mainChain->end(), this->_dataVec.begin(), this->_dataVec.begin() + stepSz);
+	mainChain->insert(mainChain->end(), this->_dataVec.begin(), \
+	this->_dataVec.begin() + this->_elemSize);
 
 	// std::cout << "After insert b1" << std::endl;
-	// PmergeMe::printVect(mainChain, "Main Chain");
+	// PmergeMe::printVect(*mainChain, "Main Chain");
 
 	//insert all the As into main chain and Bs into pEnd and the remaining into tail
-	bigIT = this->_dataVec.begin() + stepSz;
+	bigIT = this->_dataVec.begin() + this->_elemSize;
 	smallIT = this->_dataVec.begin() + cmpWindow;
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
 	{
-		mainChain->insert(mainChain->end(), bigIT, bigIT + stepSz);
-		if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + stepSz) >= 0)
-			pEnd->insert(pEnd->end(), smallIT, smallIT + stepSz);
-		cmpWindow += stepSz * 2;
-		bigIT += stepSz * 2;
-		smallIT += stepSz * 2;
+		mainChain->insert(mainChain->end(), bigIT, bigIT + this->_elemSize);
+		if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + this->_elemSize) >= 0)
+			pEnd->insert(pEnd->end(), smallIT, smallIT + this->_elemSize);
+		cmpWindow += this->_elemSize * 2;
+		bigIT += this->_elemSize * 2;
+		smallIT += this->_elemSize * 2;
 	}
-	cmpWindow -= stepSz * 2;
-	if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + stepSz) >= 0)
-		tailIT = this->_dataVec.begin() + cmpWindow + stepSz;
+	cmpWindow -= this->_elemSize * 2;
+	if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + this->_elemSize) >= 0)
+		tailIT = this->_dataVec.begin() + cmpWindow + this->_elemSize;
 	else
 		tailIT = this->_dataVec.begin() + cmpWindow;
 	tailSz = this->_dataVec.end() - tailIT;
