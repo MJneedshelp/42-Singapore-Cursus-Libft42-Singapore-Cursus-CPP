@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/21 17:26:41 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 00:54:36 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@ int	main(int argc, char *argv[])
 	// std::cout << "20: " << PmergeMe::_getNearestJacobsthalLv(20) << std::endl;
 	// std::cout << "21: " << PmergeMe::_getNearestJacobsthalLv(21) << std::endl;
 	// std::cout << "30: " << PmergeMe::_getNearestJacobsthalLv(30) << std::endl;
+
+
+
+	// for (unsigned int lv = 3; lv <= 7; ++lv)
+	// {
+	// 	int	currJacobN = PmergeMe::_genJacobsthalNum(lv);
+	// 	int	prevJacobN = PmergeMe::_genJacobsthalNum(lv - 1);
+	// 	std::cout << "Current Jacobs Num: " << ccurrJacobN << " | Prev Jacobs Num: " << prevJacobN << std::endl;
+	// }
 
 
 

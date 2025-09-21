@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/21 19:13:13 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 02:25:38 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,15 +226,64 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
 
+int	PmergeMe::_findBoundElem(unsigned int elemN)
+{
+
+}
+
+
 void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
 {
-	//given a number, what's the next closest jacobsthal number?
-	//say 25
-	int	jacobLv;
+	unsigned int	elemN;
+	unsigned int	jacobLv;
+	unsigned int	closestJacobN;
+	int				currJacobN;
+	int				prevJacobN;
+	vec				tempPEnd;
+	vecCIT			itSt;
 
-	// std::cout <<
-	jacobLv = pEnd->size() / this->_elemSize + 1;
-	std::cout << "Jacob level: " << jacobLv << std::endl;
+	elemN = pEnd->size() / this->_elemSize + 1;
+	jacobLv = _getNearestJacobsthalLv(elemN);
+	closestJacobN = _genJacobsthalNum(jacobLv);
+	std::cout << "Elem Nth: " << elemN << " | Nearest jacob level: " << jacobLv << std::endl;
+	if (elemN < 3)		//means that there is only b2 in pENd
+	{
+		//look for the corresponding value for a2 in the main chain and store the value in bound
+		//the idea is that the value can be used to find the position later to keep as the boundary before binary insertion
+		//if there is no corresponding bound, add -1 inot bound => maybe can turn into a function
+		//return
+	}
+	for (unsigned int lv = 3; lv <= jacobLv; ++lv)
+	{
+		currJacobN = _genJacobsthalNum(lv);
+		prevJacobN = _genJacobsthalNum(lv - 1);
+		std::cout << "Current Jacobs Num: " << currJacobN << " | Prev Jacobs Num: " << prevJacobN << std::endl;
+
+
+		while (currJacobN >  prevJacobN)
+		{
+			itSt = pEnd->begin() + (this->_elemSize * (currJacobN - 2));
+			tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
+			//find the corresponding bound value and add to bound vec
+			currJacobN--;
+		}
+	}
+
+	while (elemN > closestJacobN)	//if there are elements after the largest jacobN
+	{
+		itSt = pEnd->begin() + (this->_elemSize * (elemN - 2));
+		tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
+		elemN--;
+		//add all the extra elems after the jacoblv starting from the back + add bound
+	}
+
+	//clear pEnd and copy assign from tempPEnd
+	(*pEnd).erase(pEnd->begin(), pEnd->end());
+	*pEnd = tempPEnd;
+
+
+
+
 
 	bound->push_back(1);	//remove later
 }
@@ -251,6 +300,8 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 			//while parsing pEnd, find the bound for each of the elements in the main chain and store it in another vector
 			//
 		this->_vecParsePEnd(pEnd, &bound);
+		printVect(*pEnd, "pEnd (after parse)");
+
 		;
 		bound.push_back(mainChain->size());	//remove later
 	}
