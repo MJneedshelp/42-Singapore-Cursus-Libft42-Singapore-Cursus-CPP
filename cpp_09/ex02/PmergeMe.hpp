@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/21 17:13:45 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/21 19:03:29 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ class PmergeMe
 
 		void			_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *tail);		//function to binary insert, create chains inside first
 
-		void			_vecCombineChains(vec *mainChain, vec *pEnd, vec *tail);		//function to binary insert, create chains inside first
+		void			_vecCombineChains(vec *mainChain, vec *pEnd);		//function to binary insert, create chains inside first
 
 
 

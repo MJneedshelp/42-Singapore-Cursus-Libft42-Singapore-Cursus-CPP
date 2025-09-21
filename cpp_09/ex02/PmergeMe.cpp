@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/21 17:44:56 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/21 19:13:13 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,14 @@ void	PmergeMe::vecSort()
 	this->_dataVec.erase(this->_dataVec.begin(), this->_dataVec.end());
 
 	//start doing the main chain and jacobsthal and binary insertion here and insert the non-participating part at the end
-	// this->_vecBinaryInsert(&mainChain, &pEnd, &tail);
+	this->_vecCombineChains(&mainChain, &pEnd);
 
 	//copy the main main chain and the tail back to the original chain
 	this->_dataVec.insert(this->_dataVec.end(), mainChain.begin(), mainChain.end());
-	this->_dataVec.insert(this->_dataVec.end(), tail.begin(), tail.end());
+	this->_dataVec.insert(this->_dataVec.end(), pEnd.begin(), pEnd.end());	//remove later after the binary insert
+
+	if (tail.size() > 0)
+		this->_dataVec.insert(this->_dataVec.end(), tail.begin(), tail.end());
 	PmergeMe::printVect(this->_dataVec, "Original Chain");
 
 
@@ -202,9 +205,6 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	mainChain->insert(mainChain->end(), this->_dataVec.begin(), \
 	this->_dataVec.begin() + this->_elemSize);
 
-	// std::cout << "After insert b1" << std::endl;
-	// PmergeMe::printVect(*mainChain, "Main Chain");
-
 	//insert all the As into main chain and Bs into pEnd and the remaining into tail
 	bigIT = this->_dataVec.begin() + this->_elemSize;
 	smallIT = this->_dataVec.begin() + cmpWindow;
@@ -226,22 +226,21 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
 
-// void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
-// {
-// 	//given a number, what's the next closest jacobsthal number?
-// 	//say 25
+void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
+{
+	//given a number, what's the next closest jacobsthal number?
+	//say 25
+	int	jacobLv;
 
-// }
+	// std::cout <<
+	jacobLv = pEnd->size() / this->_elemSize + 1;
+	std::cout << "Jacob level: " << jacobLv << std::endl;
+
+	bound->push_back(1);	//remove later
+}
 
 
-
-
-
-
-
-
-
-void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd, vec *tail)
+void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 {
 	vec	bound;
 
@@ -251,9 +250,9 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd, vec *tail)
 			//parse pEnd and rearrange it in the order that you want to do the binary search from
 			//while parsing pEnd, find the bound for each of the elements in the main chain and store it in another vector
 			//
+		this->_vecParsePEnd(pEnd, &bound);
 		;
+		bound.push_back(mainChain->size());	//remove later
 	}
-	if (tail->size() > 0)
-		mainChain->insert(mainChain->end(), tail->begin(), tail->end());
 }
 
