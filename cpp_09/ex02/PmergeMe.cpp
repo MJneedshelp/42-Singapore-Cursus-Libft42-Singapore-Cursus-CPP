@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 18:40:40 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 00:24:27 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,29 @@ bool	PmergeMe::validateInput(int argc, char *argv[])
 	return (true);
 }
 
+void	PmergeMe::printContainer(int containerType)	const
+{
+	switch (containerType)
+	{
+		case Vector:
+		{
+			for (vecSize i = 0; i < this->_dataVec.size(); ++i)
+				std::cout << this->_dataVec[i] << " ";
+			break;
+		}
+		case List:
+		{
+			for (lstCIT it = this->_dataLst.begin(); it != this->_dataLst.end(); ++it)
+				std::cout << *it << " ";
+			break;
+		}
+		default:
+			break;
+	}
+	std::cout << std::endl;
+}
+
+/* Member Functions for vector<int> */
 void	PmergeMe::populateVec(int argc, char *argv[])
 {
 	for (int i = 1; i < argc; ++i)
@@ -92,25 +115,18 @@ void	PmergeMe::vecSort()
 	this->_elemSize = std::pow(2, this->_recurseLv - 1);
 }
 
-void	PmergeMe::printContainer(int containerType)	const
+/* Member Functions for list<int> */
+
+
+void	PmergeMe::populateList(int argc, char *argv[])
 {
-	switch (containerType)
-	{
-		case Vector:
-		{
-			// for (vecCIT it = this->_dataVec.begin(); it != this->_dataVec.end(); ++it)
-				// std::cout << *it << " ";
-			for (vecSize i = 0; i < this->_dataVec.size(); ++i)
-				std::cout << this->_dataVec[i] << " ";
-			break;
-		}
-		// another case here for the other container
-		default:
-			break;
-	}
-	std::cout << std::endl;
+	for (int i = 1; i < argc; ++i)
+		this->_dataLst.push_back(std::atoi(argv[i]));
 }
 
+
+
+/* Static Functions */
 /* Description: Function to print out a vector. Mainly used for troubleshooting
 */
 void	PmergeMe::printVect(vec vector, std::string name)
@@ -119,6 +135,24 @@ void	PmergeMe::printVect(vec vector, std::string name)
 	for (vecCIT it = vector.begin(); it != vector.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;
+}
+
+/* Description: function to calculate the max number of comparisons given n
+   number of inputs. This is used to the check the number of comparisons when
+   implementing the Ford-Johnson algorithm
+*/
+int	PmergeMe::calculateMaxCmpr(int n)
+{
+	int		result;
+	double	intermediate;
+
+	result = 0;
+	for (int k = 1; k <= n; ++k)
+	{
+		intermediate = (3.0 / 4.0) * k;
+		result += static_cast<int>(ceil(log2(intermediate)));
+	}
+	return (result);
 }
 
 
@@ -165,6 +199,7 @@ unsigned int	PmergeMe::_getNearestJacobsthalLv(unsigned int jn)
 	return (--lv);
 }
 
+/* Sorting Functions for Vector<int> */
 /* Description: Compares and sort pairs of numbers. Also keeps track of the
    number of comparisons. Recursion level => Element Size => Step size
 */
@@ -229,7 +264,7 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 /* Description: finds the corresponding bound element in the Main Chain given
    the element in pEnd
 */
-int	PmergeMe::_findBoundElem(unsigned int elemN, vec *mainChain)
+int	PmergeMe::_vecFindBoundElem(unsigned int elemN, vec *mainChain)
 {
 	if ((*mainChain).size() <= elemN * this->_elemSize)
 		return (-1);
@@ -263,7 +298,7 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	closestJacobN = _genJacobsthalNum(jacobLv);
 	if (elemN < 3)
 	{
-		bound->push_back(this->_findBoundElem(elemN, mainChain));
+		bound->push_back(this->_vecFindBoundElem(elemN, mainChain));
 		return;
 	}
 	for (unsigned int lv = 3; lv <= jacobLv; ++lv)
@@ -274,7 +309,7 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 		{
 			itSt = pEnd->begin() + (this->_elemSize * (currJacobN - 2));
 			tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
-			bound->push_back(this->_findBoundElem(currJacobN, mainChain));
+			bound->push_back(this->_vecFindBoundElem(currJacobN, mainChain));
 			currJacobN--;
 		}
 	}
@@ -282,7 +317,7 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	{
 		itSt = pEnd->begin() + (this->_elemSize * (elemN - 2));
 		tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
-		bound->push_back(this->_findBoundElem(elemN, mainChain));
+		bound->push_back(this->_vecFindBoundElem(elemN, mainChain));
 		elemN--;
 	}
 	(*pEnd).erase(pEnd->begin(), pEnd->end());

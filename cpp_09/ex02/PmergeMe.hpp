@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 18:34:18 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 00:09:29 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <ctime>
 #include <set>
 #include <vector>
+#include <list>
 #include <algorithm>
 #include <iterator>
 
@@ -30,7 +31,8 @@
 
 enum	e_ContainerType
 {
-	Vector
+	Vector,
+	List
 	//name of the second container
 };
 
@@ -48,21 +50,34 @@ class PmergeMe
 		typedef	std::vector<int>::iterator			vecIT;
 		typedef	std::vector<int>::size_type			vecSize;
 
+		typedef	std::list<int>						lst;
+		typedef	std::list<int>::const_iterator		lstCIT;
+		typedef	std::list<int>::iterator			lstIT;
+		typedef	std::list<int>::size_type			lstSize;
+
+
 		/* Member Functions */
-		void	initialiseMbrs();
-		int		getNumCmpr()							const;
-		bool	validateInput(int argc, char *argv[]);
-		void	populateVec(int argc, char *argv[]);
-		void	vecSort();
-		void	printContainer(int containerType)		const;		//maybe can make into a template function
+		void					initialiseMbrs();
+		int						getNumCmpr()							const;
+		bool					validateInput(int argc, char *argv[]);
+		void					printContainer(int containerType)		const;		//maybe can make into a template function
+
+		/* Member Functions for vector<int> */
+		void					populateVec(int argc, char *argv[]);
+		void					vecSort();
+
+		/* Member Functions for list<int> */
+		void					populateList(int argc, char *argv[]);
+
+
 
 		/* Static Functions */
 		static	void			printVect(vec vector, std::string name);
+		static	void			printList(lst list, std::string name);
+		static	int				calculateMaxCmpr(int n);
 
 		/* Public Members */
-		int				seqSize;
-
-
+		int						seqSize;
 
 	private:
 		/* Unused OCF */
@@ -70,10 +85,11 @@ class PmergeMe
 		PmergeMe	operator=(PmergeMe const &src);
 
 		/* Private Members */
-		vec				_dataVec;
-		int				_numCmpr;
-		int				_recurseLv;
-		int				_elemSize;
+		vec						_dataVec;
+		lst						_dataLst;
+		int						_numCmpr;
+		int						_recurseLv;
+		int						_elemSize;
 
 		/* Helper Functions */
 		static	bool			_withinIntLimits(std::string const &input);
@@ -84,7 +100,7 @@ class PmergeMe
 		/* Sorting Functions for Vector<int> */
 		void					_vecSortPairs();
 		void					_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail);
-		int						_findBoundElem(unsigned int elemN, vec *mainChain);
+		int						_vecFindBoundElem(unsigned int elemN, vec *mainChain);
 		void					_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound);
 		void					_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound);
 		void					_vecCombineChains(vec *mainChain, vec *pEnd);
