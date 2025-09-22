@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 10:32:38 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 11:15:45 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void	PmergeMe::populateVec(int argc, char *argv[])
 	}
 }
 
+/* Description: Uses the Ford-Johnson algorithm on a vector. Recursively performs
+   the following steps:
+	1. Sort pairs
+	2. Create the Main Chain, pEnd and Tail
+	3. Combine all the different chains into the Main Chain
+	4. Copy assign the Main Chain back into the original chain
+*/
+
 void	PmergeMe::vecSort()
 {
 	vec	mainChain;
@@ -76,6 +84,7 @@ void	PmergeMe::vecSort()
 
 	if (tail.size() > 0)
 		this->_dataVec.insert(this->_dataVec.end(), tail.begin(), tail.end());
+
 	PmergeMe::printVect(this->_dataVec, "Original Chain");
 
 
@@ -157,8 +166,9 @@ unsigned int	PmergeMe::_getNearestJacobsthalLv(unsigned int jn)
 	return (--lv);
 }
 
-
-
+/* Description: Compares and sort pairs of numbers. Also keeps track of the
+   number of comparisons. Recursion level => Element Size => Step size
+*/
 void	PmergeMe::_vecSortPairs()
 {
 	int		stepSz;
@@ -186,7 +196,8 @@ void	PmergeMe::_vecSortPairs()
 	std::cout << "Num of comparisons so far: " << this->getNumCmpr() << std::endl;
 }
 
-
+/* Description: creates the Main Chain, pEnd and Tail
+*/
 void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 {
 	std::cout << "Inside create chains now" << std::endl;
@@ -226,14 +237,19 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
 
-int	PmergeMe::_findBoundElem(unsigned int elemN, vec *mainChain)	//finds the corresponding start of the A element in the mainchain given the elemN
+/* Description: finds the corresponding bound element in the Main Chain given
+   the element in pEnd
+*/
+int	PmergeMe::_findBoundElem(unsigned int elemN, vec *mainChain)
 {
 	if ((*mainChain).size() <= elemN * this->_elemSize)
 		return (-1);
 	return (*(mainChain->begin() + (elemN * this->_elemSize)));
 }
 
-
+/* Description: Rearranges the pEnd in order of insertion based on Jacobsthal
+   Numbers
+*/
 void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 {
 	unsigned int	elemN;
@@ -250,20 +266,14 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	std::cout << "Elem Nth: " << elemN << " | Nearest jacob level: " << jacobLv << std::endl;
 	if (elemN < 3)		//means that there is only b2 in pENd
 	{
-		//look for the corresponding value for a2 in the main chain and store the value in bound
-		//the idea is that the value can be used to find the position later to keep as the boundary before binary insertion
-		//if there is no corresponding bound, add -1 inot bound => maybe can turn into a function
-		//return
 		bound->push_back(this->_findBoundElem(elemN, mainChain));
 		return;
-
 	}
 	for (unsigned int lv = 3; lv <= jacobLv; ++lv)
 	{
 		currJacobN = _genJacobsthalNum(lv);
 		prevJacobN = _genJacobsthalNum(lv - 1);
 		// std::cout << "Current Jacobs Num: " << currJacobN << " | Prev Jacobs Num: " << prevJacobN << std::endl;
-
 
 		while (currJacobN >  prevJacobN)
 		{
@@ -280,7 +290,6 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 		tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
 		bound->push_back(this->_findBoundElem(elemN, mainChain));
 		elemN--;
-		//add all the extra elems after the jacoblv starting from the back + add bound
 	}
 
 	//clear pEnd and copy assign from tempPEnd
@@ -288,24 +297,21 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	*pEnd = tempPEnd;
 }
 
-
+/* Description: Combines the pEnd into the Main Chain using binary insertion.
+   Rearranges pEnd first based on Jacobsthal numbers. Binary insertion elements
+   from pEnd. Search area is bound by the corresponding element in the
+   Main Chain
+*/
 void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 {
 	vec	bound;
 
 	if (pEnd->size() > 0)
 	{
-		//binary insertion of elements into the main chain based on jacobsthal numbers
-			//parse pEnd and rearrange it in the order that you want to do the binary search from
-			//while parsing pEnd, find the bound for each of the elements in the main chain and store it in another vector
-			//
 		this->_vecParsePEnd(mainChain, pEnd, &bound);
 		printVect(*pEnd, "pEnd (after parse)");
 		printVect(bound, "Bound");
-
-
-		;
-		bound.push_back(mainChain->size());	//remove later
+		//binary insertion of each element from pEnd
 	}
 }
 
