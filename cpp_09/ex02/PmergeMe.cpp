@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 18:07:25 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 18:40:40 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,31 @@ int		PmergeMe::getNumCmpr()	const
 	return (this->_numCmpr);
 }
 
+bool	PmergeMe::validateInput(int argc, char *argv[])
+{
+	std::set<int>	setCheck;
+
+	for (int i = 1; i < argc; ++i)
+	{
+		if (!_isPosInt(std::string(argv[i])))
+		{
+			std::cerr << ERR_INVALIDINPUT + std::string(argv[i]) << std::endl;
+			return (false);
+		}
+		if (!setCheck.insert(std::atoi(argv[i])).second)
+		{
+			std::cerr << ERR_DUPEINPUT + std::string(argv[i]) << std::endl;
+			return (false);
+		}
+	}
+	this->seqSize = argc - 1;
+	return (true);
+}
+
 void	PmergeMe::populateVec(int argc, char *argv[])
 {
 	for (int i = 1; i < argc; ++i)
-	{
-		//validate each argument -> think about duplicates later
-		//maybe can use maps or set to validate
-		if (!_isPosInt(std::string(argv[i])))
-			throw (std::runtime_error(ERR_INVALIDINPUT + std::string(argv[i])));
 		this->_dataVec.push_back(std::atoi(argv[i]));
-	}
-	this->seqSize = argc - 1;
 }
 
 /* Description: Uses the Ford-Johnson algorithm on a vector. Recursively performs

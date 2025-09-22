@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 18:15:01 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 18:24:05 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ int main(void)
 
 	std::set<int>	testSet;
 
-	testSet.insert(1);
-
-	std::cout << " Test set: ";
+	std::cout << "Test insert 1: " << testSet.insert(1).second << std::endl;
+	std::cout << "Test insert 1: " << testSet.insert(1).second << std::endl;
+	std::cout << "Test set: ";
 	for (std::set<int>::const_iterator it = testSet.begin(); it != testSet.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;

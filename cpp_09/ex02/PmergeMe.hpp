@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 18:08:56 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 18:34:18 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 #include <limits.h>
 #include <cmath>
 #include <ctime>
-
-
+#include <set>
 #include <vector>
 #include <algorithm>
 #include <iterator>
 
 #define ERR_NOARG "[ERROR] This programme must be run with at least 1 input arg"
 #define ERR_INVALIDINPUT "[ERROR] The provided input is not positive integer: "
+#define ERR_DUPEINPUT "[ERROR] The provided input is a duplicate: "
+
 
 enum	e_ContainerType
 {
@@ -49,10 +50,11 @@ class PmergeMe
 
 		/* Member Functions */
 		void	initialiseMbrs();
-		int		getNumCmpr()	const;
+		int		getNumCmpr()							const;
+		bool	validateInput(int argc, char *argv[]);
 		void	populateVec(int argc, char *argv[]);
 		void	vecSort();
-		void	printContainer(int containerType)	const;		//maybe can make into a template function
+		void	printContainer(int containerType)		const;		//maybe can make into a template function
 
 		/* Static Functions */
 		static	void			printVect(vec vector, std::string name);
