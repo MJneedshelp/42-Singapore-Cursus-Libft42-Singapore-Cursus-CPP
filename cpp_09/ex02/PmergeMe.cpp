@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 02:51:41 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 10:32:38 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,13 +226,15 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	tail->insert(tail->end(), tailIT, tailIT + tailSz);
 }
 
-int	PmergeMe::_findBoundElem(unsigned int elemN)	//finds the corresponding start of the A element in the mainchain given the elemN
+int	PmergeMe::_findBoundElem(unsigned int elemN, vec *mainChain)	//finds the corresponding start of the A element in the mainchain given the elemN
 {
-
+	if ((*mainChain).size() <= elemN * this->_elemSize)
+		return (-1);
+	return (*(mainChain->begin() + (elemN * this->_elemSize)));
 }
 
 
-void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
+void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 {
 	unsigned int	elemN;
 	unsigned int	jacobLv;
@@ -252,19 +254,22 @@ void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
 		//the idea is that the value can be used to find the position later to keep as the boundary before binary insertion
 		//if there is no corresponding bound, add -1 inot bound => maybe can turn into a function
 		//return
+		bound->push_back(this->_findBoundElem(elemN, mainChain));
+		return;
+
 	}
 	for (unsigned int lv = 3; lv <= jacobLv; ++lv)
 	{
 		currJacobN = _genJacobsthalNum(lv);
 		prevJacobN = _genJacobsthalNum(lv - 1);
-		std::cout << "Current Jacobs Num: " << currJacobN << " | Prev Jacobs Num: " << prevJacobN << std::endl;
+		// std::cout << "Current Jacobs Num: " << currJacobN << " | Prev Jacobs Num: " << prevJacobN << std::endl;
 
 
 		while (currJacobN >  prevJacobN)
 		{
 			itSt = pEnd->begin() + (this->_elemSize * (currJacobN - 2));
 			tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
-			//find the corresponding bound value and add to bound vec
+			bound->push_back(this->_findBoundElem(currJacobN, mainChain));
 			currJacobN--;
 		}
 	}
@@ -273,6 +278,7 @@ void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
 	{
 		itSt = pEnd->begin() + (this->_elemSize * (elemN - 2));
 		tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
+		bound->push_back(this->_findBoundElem(elemN, mainChain));
 		elemN--;
 		//add all the extra elems after the jacoblv starting from the back + add bound
 	}
@@ -280,12 +286,6 @@ void	PmergeMe::_vecParsePEnd(vec *pEnd, vec *bound)
 	//clear pEnd and copy assign from tempPEnd
 	(*pEnd).erase(pEnd->begin(), pEnd->end());
 	*pEnd = tempPEnd;
-
-
-
-
-
-	bound->push_back(1);	//remove later
 }
 
 
@@ -299,8 +299,10 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 			//parse pEnd and rearrange it in the order that you want to do the binary search from
 			//while parsing pEnd, find the bound for each of the elements in the main chain and store it in another vector
 			//
-		this->_vecParsePEnd(pEnd, &bound);
+		this->_vecParsePEnd(mainChain, pEnd, &bound);
 		printVect(*pEnd, "pEnd (after parse)");
+		printVect(bound, "Bound");
+
 
 		;
 		bound.push_back(mainChain->size());	//remove later
