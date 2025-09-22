@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 11:15:45 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 12:43:14 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,7 +263,9 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	elemN = pEnd->size() / this->_elemSize + 1;
 	jacobLv = _getNearestJacobsthalLv(elemN);
 	closestJacobN = _genJacobsthalNum(jacobLv);
+
 	std::cout << "Elem Nth: " << elemN << " | Nearest jacob level: " << jacobLv << std::endl;
+
 	if (elemN < 3)		//means that there is only b2 in pENd
 	{
 		bound->push_back(this->_findBoundElem(elemN, mainChain));
@@ -297,6 +299,44 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	*pEnd = tempPEnd;
 }
 
+
+void	PmergeMe::_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound)
+{
+	int		elemNum;
+	int		pEndComparator;
+	vecIT	boundElemSt;
+	vecIT	boundElemEnd;
+	int		boundDist;
+
+	elemNum = (*pEnd).size() / this->_elemSize;
+	//step through each element in pEnd
+	for (int i = 1; i <= elemNum; ++i)
+	{
+		boundElemSt = mainChain->begin();
+		pEndComparator = *(pEnd->begin() + (i * this->_elemSize) - 1);
+		if ((*bound)[i - 1] == -1)
+			boundElemEnd = mainChain->end();
+		else
+			boundElemEnd = std::find(mainChain->begin(), mainChain->end(), (*bound)[i - 1]);
+
+		boundDist = std::distance(boundElemSt, boundElemEnd) / this->_elemSize;
+		std::cout << "pEnd comparator: " << pEndComparator \
+		<< " | Bound element: " << *boundElemEnd << " | Bound Distance: " << boundDist << std::endl;
+
+		// std::cout << "pEnd comparator: " << pEndComparator
+		// << " | Bound element: " << *(boundElemEnd - 1) << std::endl;
+
+		//do the binary insert here, keep adjusting the bound area of comparison until there's
+		//only 1 element to compare
+
+		// while (boundElemSt != boundElemEnd)
+		// {
+
+		// }
+	}
+	std::cout << "Test: " << (*mainChain).size() << std::endl;
+}
+
 /* Description: Combines the pEnd into the Main Chain using binary insertion.
    Rearranges pEnd first based on Jacobsthal numbers. Binary insertion elements
    from pEnd. Search area is bound by the corresponding element in the
@@ -309,9 +349,11 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 	if (pEnd->size() > 0)
 	{
 		this->_vecParsePEnd(mainChain, pEnd, &bound);
+
 		printVect(*pEnd, "pEnd (after parse)");
 		printVect(bound, "Bound");
-		//binary insertion of each element from pEnd
+
+		this->_vecBinaryInsert(mainChain, pEnd, &bound);
 	}
 }
 
