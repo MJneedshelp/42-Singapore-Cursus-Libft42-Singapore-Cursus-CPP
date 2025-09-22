@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 11:25:29 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 18:06:53 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,46 @@ int	main(int argc, char *argv[])
 		return (1);
 
 
-	PmergeMe	guren;
+	PmergeMe		mergeMe;
+	std::clock_t	vecStart;
+	std::clock_t	vecEnd;
+
+
 
 	try
 	{
-		guren.populateVec(argc, argv);
+		mergeMe.populateVec(argc, argv);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 		return (1);
 	}
+	std::cout << "========== Original Sequence ==========" << std::endl;
+	mergeMe.printContainer(Vector);
 
-	guren.printContainer(Vector);
-	guren.vecSort();
+	vecStart = std::clock();
+	mergeMe.vecSort();
+	vecEnd = std::clock();
+
+
+
+	std::cout << "\n========== Sorted Sequence ==========" << std::endl;
+	mergeMe.printContainer(Vector);
+
+	std::cout << "\n========== Time Taken | No. of Elements: " << mergeMe.seqSize \
+	<< " ==========" << std::endl;
+	// std::cout << "Vector<int> (s): " << double(vecEnd - vecStart) / CLOCKS_PER_SEC  << std::endl;
+	std::cout << "Vector<int> (microseconds): " << double(vecEnd - vecStart) << std::endl;
+
+
+
+
+
+
+
+	// PmergeMe::printVect(this->_dataVec, "Original Chain");
+	// std::cout << "No. of comparisons: " << this->getNumCmpr() << std::endl;
 
 	// std::cout << "Print Jacobsthal Numbers: ";
 	// for (unsigned int i = 0; i < 20; ++i)

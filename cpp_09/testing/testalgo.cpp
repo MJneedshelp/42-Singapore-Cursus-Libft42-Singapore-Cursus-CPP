@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/20 17:47:46 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 18:15:01 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <cmath>
 
 #include <vector>
+#include <set>
+
 #include <algorithm>
 #include <iterator>
 
@@ -67,6 +69,31 @@ int main(void)
 
 	std::cout << "vec size: " << vec.size() << std::endl;
 
+	int	result;
+	int	start;
+	int	divisor;
+	int	ctr;
+
+	start = 3;
+	divisor = 2;
+	ctr = 0;
+	result = start / divisor;
+	while (result >= 1)
+	{
+		result = result / divisor;
+		ctr++;
+	}
+	std::cout << "counter: " << ctr << std::endl;
+
+
+	std::set<int>	testSet;
+
+	testSet.insert(1);
+
+	std::cout << " Test set: ";
+	for (std::set<int>::const_iterator it = testSet.begin(); it != testSet.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
 
 
 

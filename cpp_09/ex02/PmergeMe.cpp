@@ -6,14 +6,14 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 12:43:14 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 18:07:25 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 /* Constructors and Destructors */
-PmergeMe::PmergeMe(): _numCmpr(0), _recurseLv(0), _elemSize(0)
+PmergeMe::PmergeMe(): seqSize(0), _numCmpr(0), _recurseLv(0), _elemSize(0)
 {
 	return;
 }
@@ -23,9 +23,14 @@ PmergeMe::~PmergeMe()
 	return;
 }
 
-
-
 /* Member Functions */
+void	PmergeMe::initialiseMbrs()
+{
+	this->_numCmpr = 0;
+	this->_recurseLv = 0;
+	this->_elemSize = 0;
+}
+
 int		PmergeMe::getNumCmpr()	const
 {
 	return (this->_numCmpr);
@@ -36,18 +41,20 @@ void	PmergeMe::populateVec(int argc, char *argv[])
 	for (int i = 1; i < argc; ++i)
 	{
 		//validate each argument -> think about duplicates later
+		//maybe can use maps or set to validate
 		if (!_isPosInt(std::string(argv[i])))
 			throw (std::runtime_error(ERR_INVALIDINPUT + std::string(argv[i])));
 		this->_dataVec.push_back(std::atoi(argv[i]));
 	}
+	this->seqSize = argc - 1;
 }
 
 /* Description: Uses the Ford-Johnson algorithm on a vector. Recursively performs
    the following steps:
 	1. Sort pairs
 	2. Create the Main Chain, pEnd and Tail
-	3. Combine all the different chains into the Main Chain
-	4. Copy assign the Main Chain back into the original chain
+	3. Combine pEnd into the Main Chain using binary insertion
+	4. Copy assign the Main Chain and Tail back into the original chain
 */
 
 void	PmergeMe::vecSort()
@@ -58,41 +65,17 @@ void	PmergeMe::vecSort()
 
 	++(this->_recurseLv);
 	this->_elemSize = std::pow(2, this->_recurseLv - 1);
-	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
-	std::cout << "Elem size: " << this->_elemSize << std::endl;
-
 	this->_vecSortPairs();
 	if (std::pow(2, this->_recurseLv) <= (this->_dataVec.size() / 2))
 		this->vecSort();
-
-	//form the main chain using std::copy or vector.insert
 	this->_vecCreateChains(&mainChain, &pEnd, &tail);
-
-	PmergeMe::printVect(mainChain, "Main Chain");
-	PmergeMe::printVect(pEnd, "pEnd");
-	PmergeMe::printVect(tail, "tail");
-
-	// erase the orginal chain
 	this->_dataVec.erase(this->_dataVec.begin(), this->_dataVec.end());
-
-	//start doing the main chain and jacobsthal and binary insertion here and insert the non-participating part at the end
 	this->_vecCombineChains(&mainChain, &pEnd);
-
-	//copy the main main chain and the tail back to the original chain
 	this->_dataVec.insert(this->_dataVec.end(), mainChain.begin(), mainChain.end());
-	this->_dataVec.insert(this->_dataVec.end(), pEnd.begin(), pEnd.end());	//remove later after the binary insert
-
 	if (tail.size() > 0)
 		this->_dataVec.insert(this->_dataVec.end(), tail.begin(), tail.end());
-
-	PmergeMe::printVect(this->_dataVec, "Original Chain");
-
-
-
 	--(this->_recurseLv);
 	this->_elemSize = std::pow(2, this->_recurseLv - 1);
-
-
 }
 
 void	PmergeMe::printContainer(int containerType)	const
@@ -114,6 +97,8 @@ void	PmergeMe::printContainer(int containerType)	const
 	std::cout << std::endl;
 }
 
+/* Description: Function to print out a vector. Mainly used for troubleshooting
+*/
 void	PmergeMe::printVect(vec vector, std::string name)
 {
 	std::cout << "Vector Name: " << name << " | ";
@@ -178,32 +163,26 @@ void	PmergeMe::_vecSortPairs()
 
 	stepSz = this->_elemSize * 2;
 	cmpWindow = stepSz;
-	// std::cout << "Step size: " << stepSz << " | Compare Window: " << cmpWindow << " | Container size: " << this->_dataVec.size() << std::endl;
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
 	{
 		itRHS = this->_dataVec.begin() + (cmpWindow - 1);
 		itLHS = itRHS - (stepSz / 2);
 		if (*itRHS < *itLHS)
-		{
-			// std::swap_ranges(vec.begin(), vec.begin() + 2, vec.begin() + 2);
-			// std::cout << "Range start: " << *(itLHS - (stepSz / 2) + 1) << " | Range end: " << *itLHS << std::endl;
 			std::swap_ranges(itLHS - (stepSz / 2) + 1, itLHS + 1, itLHS + 1);
-		}
 		this->_numCmpr++;
 		cmpWindow += stepSz;
 	}
-	this->printContainer(Vector);
-	std::cout << "Num of comparisons so far: " << this->getNumCmpr() << std::endl;
 }
 
-/* Description: creates the Main Chain, pEnd and Tail
+/* Description: creates the Main Chain, pEnd and Tail. Steps:
+	1. Insert b1 from the original vector into the Main Chain
+	2. Step through the original vector:
+		- add all the a1....an into the Main Chain
+		- add all the b2....bn into the pEnd
+	3. Add the non-participating members into the Tail
 */
 void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 {
-	std::cout << "Inside create chains now" << std::endl;
-	std::cout << "Recursion level: " << this->_recurseLv << std::endl;
-	std::cout << "Elem size: " << this->_elemSize << std::endl;
-
 	int		cmpWindow;
 	int		tailSz;
 	vecCIT	bigIT;
@@ -211,12 +190,8 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 	vecCIT	tailIT;
 
 	cmpWindow = this->_elemSize * 2;
-
-	//insert the b1
 	mainChain->insert(mainChain->end(), this->_dataVec.begin(), \
 	this->_dataVec.begin() + this->_elemSize);
-
-	//insert all the As into main chain and Bs into pEnd and the remaining into tail
 	bigIT = this->_dataVec.begin() + this->_elemSize;
 	smallIT = this->_dataVec.begin() + cmpWindow;
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
@@ -248,7 +223,16 @@ int	PmergeMe::_findBoundElem(unsigned int elemN, vec *mainChain)
 }
 
 /* Description: Rearranges the pEnd in order of insertion based on Jacobsthal
-   Numbers
+   Numbers. Steps:
+	1. Check number of elements in the pEnd
+	2. Get the highest Jacobsthal Number (Element N)
+	3. Arrange the pEnd elements into the tempPEnd starting from Jacobsthal No = 3
+	4. Find the corresponding binding element from the Main Chain -> Add the element
+	   bound
+	5. If there are elements above the highest Jacobsthal Number, add these
+	   elements into tempPEnd starting from the end. Also find the corresponding
+	   binding element for each of the elements from pEnd
+	6. Erase pEnd and copy assign tempPEnd back into pEnd
 */
 void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 {
@@ -263,10 +247,7 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	elemN = pEnd->size() / this->_elemSize + 1;
 	jacobLv = _getNearestJacobsthalLv(elemN);
 	closestJacobN = _genJacobsthalNum(jacobLv);
-
-	std::cout << "Elem Nth: " << elemN << " | Nearest jacob level: " << jacobLv << std::endl;
-
-	if (elemN < 3)		//means that there is only b2 in pENd
+	if (elemN < 3)
 	{
 		bound->push_back(this->_findBoundElem(elemN, mainChain));
 		return;
@@ -275,8 +256,6 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 	{
 		currJacobN = _genJacobsthalNum(lv);
 		prevJacobN = _genJacobsthalNum(lv - 1);
-		// std::cout << "Current Jacobs Num: " << currJacobN << " | Prev Jacobs Num: " << prevJacobN << std::endl;
-
 		while (currJacobN >  prevJacobN)
 		{
 			itSt = pEnd->begin() + (this->_elemSize * (currJacobN - 2));
@@ -285,31 +264,33 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
 			currJacobN--;
 		}
 	}
-
-	while (elemN > closestJacobN)	//if there are elements after the largest jacobN
+	while (elemN > closestJacobN)
 	{
 		itSt = pEnd->begin() + (this->_elemSize * (elemN - 2));
 		tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
 		bound->push_back(this->_findBoundElem(elemN, mainChain));
 		elemN--;
 	}
-
-	//clear pEnd and copy assign from tempPEnd
 	(*pEnd).erase(pEnd->begin(), pEnd->end());
 	*pEnd = tempPEnd;
 }
 
+/* Description: Steps through each element in the rearranged pEnd and perform
+   binary insertion for each of the elements from pEnd. Search area is always
+   bound by the binding element
+*/
 
 void	PmergeMe::_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound)
 {
 	int		elemNum;
 	int		pEndComparator;
+	int		mainChainComparator;
 	vecIT	boundElemSt;
 	vecIT	boundElemEnd;
+	vecIT	pEndElem;
 	int		boundDist;
 
 	elemNum = (*pEnd).size() / this->_elemSize;
-	//step through each element in pEnd
 	for (int i = 1; i <= elemNum; ++i)
 	{
 		boundElemSt = mainChain->begin();
@@ -318,23 +299,21 @@ void	PmergeMe::_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound)
 			boundElemEnd = mainChain->end();
 		else
 			boundElemEnd = std::find(mainChain->begin(), mainChain->end(), (*bound)[i - 1]);
-
 		boundDist = std::distance(boundElemSt, boundElemEnd) / this->_elemSize;
-		std::cout << "pEnd comparator: " << pEndComparator \
-		<< " | Bound element: " << *boundElemEnd << " | Bound Distance: " << boundDist << std::endl;
-
-		// std::cout << "pEnd comparator: " << pEndComparator
-		// << " | Bound element: " << *(boundElemEnd - 1) << std::endl;
-
-		//do the binary insert here, keep adjusting the bound area of comparison until there's
-		//only 1 element to compare
-
-		// while (boundElemSt != boundElemEnd)
-		// {
-
-		// }
+		while (boundDist >= 1)
+		{
+			boundDist = boundDist / 2;
+			mainChainComparator = *(boundElemSt + \
+			(boundDist * this->_elemSize) + this->_elemSize - 1);
+			if (pEndComparator > mainChainComparator)
+				boundElemSt = boundElemSt + ((boundDist + 1) * this->_elemSize);
+			else
+				boundElemEnd = boundElemSt + (boundDist * this->_elemSize);
+			this->_numCmpr++;
+		}
+		pEndElem = pEnd->begin() + (i - 1) * this->_elemSize;
+		mainChain->insert(boundElemSt, pEndElem, pEndElem + this->_elemSize);
 	}
-	std::cout << "Test: " << (*mainChain).size() << std::endl;
 }
 
 /* Description: Combines the pEnd into the Main Chain using binary insertion.
@@ -349,10 +328,6 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 	if (pEnd->size() > 0)
 	{
 		this->_vecParsePEnd(mainChain, pEnd, &bound);
-
-		printVect(*pEnd, "pEnd (after parse)");
-		printVect(bound, "Bound");
-
 		this->_vecBinaryInsert(mainChain, pEnd, &bound);
 	}
 }

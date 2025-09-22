@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 11:23:30 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/22 18:08:56 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <string>
 #include <limits.h>
 #include <cmath>
+#include <ctime>
+
 
 #include <vector>
 #include <algorithm>
@@ -45,28 +47,27 @@ class PmergeMe
 		typedef	std::vector<int>::iterator			vecIT;
 		typedef	std::vector<int>::size_type			vecSize;
 
-
 		/* Member Functions */
+		void	initialiseMbrs();
 		int		getNumCmpr()	const;
 		void	populateVec(int argc, char *argv[]);
 		void	vecSort();
 		void	printContainer(int containerType)	const;		//maybe can make into a template function
 
 		/* Static Functions */
-		void	printVect(vec vector, std::string name);
+		static	void			printVect(vec vector, std::string name);
 
-		static	unsigned int	_genJacobsthalNum(unsigned int lv);
-		static	unsigned int	_getNearestJacobsthalLv(unsigned int jn);
+		/* Public Members */
+		int				seqSize;
+
 
 
 	private:
 		/* Unused OCF */
-		// PmergeMe();
 		PmergeMe(PmergeMe const &src);
 		PmergeMe	operator=(PmergeMe const &src);
 
 		/* Private Members */
-
 		vec				_dataVec;
 		int				_numCmpr;
 		int				_recurseLv;
@@ -75,20 +76,17 @@ class PmergeMe
 		/* Helper Functions */
 		static	bool			_withinIntLimits(std::string const &input);
 		static	bool			_isPosInt(std::string const &input);
-		// static	unsigned int	_genJacobsthalNum(unsigned int lv);
-		// static	unsigned int	_getNearestJacobsthalLv(unsigned int jn);
+		static	unsigned int	_genJacobsthalNum(unsigned int lv);
+		static	unsigned int	_getNearestJacobsthalLv(unsigned int jn);
 
-
-		void			_vecSortPairs();
-		void			_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail);
-		int				_findBoundElem(unsigned int elemN, vec *mainChain);
-		void			_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound);
-		void			_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound);
-		void			_vecCombineChains(vec *mainChain, vec *pEnd);
-
+		/* Sorting Functions for Vector<int> */
+		void					_vecSortPairs();
+		void					_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail);
+		int						_findBoundElem(unsigned int elemN, vec *mainChain);
+		void					_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound);
+		void					_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound);
+		void					_vecCombineChains(vec *mainChain, vec *pEnd);
 
 
 };
-
-
 #endif
