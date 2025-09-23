@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 00:09:29 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 08:32:02 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ class PmergeMe
 
 		/* Member Functions for list<int> */
 		void					populateList(int argc, char *argv[]);
+		void					listSort();
+
 
 
 
@@ -105,6 +107,12 @@ class PmergeMe
 		void					_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound);
 		void					_vecCombineChains(vec *mainChain, vec *pEnd);
 
-
+		/* Sorting Functions for List<int> */
+		void					_listSortPairs();
+		void					_listCreateChains(vec *mainChain, vec *pEnd, vec *tail);
+		int						_listFindBoundElem(unsigned int elemN, vec *mainChain);
+		void					_listParsePEnd(vec *mainChain, vec *pEnd, vec *bound);
+		void					_listBinaryInsert(vec *mainChain, vec *pEnd, vec *bound);
+		void					_listCombineChains(vec *mainChain, vec *pEnd);
 };
 #endif

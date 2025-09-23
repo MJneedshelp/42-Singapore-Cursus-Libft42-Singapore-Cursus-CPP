@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/22 18:24:05 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 08:40:12 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <set>
+#include <list>
 
 #include <algorithm>
 #include <iterator>
@@ -94,6 +95,17 @@ int main(void)
 	for (std::set<int>::const_iterator it = testSet.begin(); it != testSet.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;
+
+
+	std::list<int>	testList;
+
+	testList.push_back(1);
+	testList.push_back(2);
+
+	std::cout << "List test: " << *(testList.begin() + 1) << std::endl;
+
+
+
 
 
 

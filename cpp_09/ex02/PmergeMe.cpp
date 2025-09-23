@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 00:24:27 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 08:35:34 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,43 @@ void	PmergeMe::vecSort()
 }
 
 /* Member Functions for list<int> */
-
-
 void	PmergeMe::populateList(int argc, char *argv[])
 {
 	for (int i = 1; i < argc; ++i)
 		this->_dataLst.push_back(std::atoi(argv[i]));
 }
+
+/* Description: Uses the Ford-Johnson algorithm on a vector. Recursively performs
+   the following steps:
+	1. Sort pairs
+	2. Create the Main Chain, pEnd and Tail
+	3. Combine pEnd into the Main Chain using binary insertion
+	4. Copy assign the Main Chain and Tail back into the original chain
+*/
+
+void	PmergeMe::listSort()
+{
+	lst	mainChain;
+	lst	pEnd;
+	lst	tail;
+
+	++(this->_recurseLv);
+	this->_elemSize = std::pow(2, this->_recurseLv - 1);
+	this->_listSortPairs();
+	if (std::pow(2, this->_recurseLv) <= (this->_dataLst.size() / 2))
+		this->listSort();
+	this->_listCreateChains(&mainChain, &pEnd, &tail);
+	this->_dataLst.erase(this->_dataLst.begin(), this->_dataLst.end());
+	this->_listCombineChains(&mainChain, &pEnd);
+	this->_dataLst.insert(this->_dataLst.end(), mainChain.begin(), mainChain.end());
+	if (tail.size() > 0)
+		this->_dataLst.insert(this->_dataLst.end(), tail.begin(), tail.end());
+	--(this->_recurseLv);
+	this->_elemSize = std::pow(2, this->_recurseLv - 1);
+}
+
+
+
 
 
 
@@ -381,3 +411,27 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 	}
 }
 
+
+/* Sorting Functions for List<int> */
+/* Description: Compares and sort pairs of numbers. Also keeps track of the
+   number of comparisons. Recursion level => Element Size => Step size
+*/
+void	PmergeMe::_vecSortPairs()
+{
+	int		stepSz;
+	int		cmpWindow;
+	lstIT	itRHS;
+	lstIT	itLHS;
+
+	stepSz = this->_elemSize * 2;
+	cmpWindow = stepSz;
+	while (static_cast<int>(this->_dataLst.size()) - cmpWindow >= 0)
+	{
+		itRHS = this->_dataLst.begin() + (cmpWindow - 1);
+		itLHS = itRHS - (stepSz / 2);
+		if (*itRHS < *itLHS)
+			std::swap_ranges(itLHS - (stepSz / 2) + 1, itLHS + 1, itLHS + 1);
+		this->_numCmpr++;
+		cmpWindow += stepSz;
+	}
+}

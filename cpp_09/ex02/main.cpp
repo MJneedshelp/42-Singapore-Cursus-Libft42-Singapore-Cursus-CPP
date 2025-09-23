@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 00:23:45 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 08:28:39 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char *argv[])
 
 	mergeMe.initialiseMbrs();
 
-	std::cout << "\n========== Processing Other Container ==========" << std::endl;
+	std::cout << "\n========== Processing List<int> ==========" << std::endl;
 	start = std::clock();
 	//container sort
 	end = std::clock();
