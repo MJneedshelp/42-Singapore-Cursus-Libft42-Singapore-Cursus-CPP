@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 08:35:34 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 10:53:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void	PmergeMe::printContainer(int containerType)	const
 				std::cout << this->_dataVec[i] << " ";
 			break;
 		}
-		case List:
+		case Deque:
 		{
-			for (lstCIT it = this->_dataLst.begin(); it != this->_dataLst.end(); ++it)
+			for (dqCIT it = this->_dataDQ.begin(); it != this->_dataDQ.end(); ++it)
 				std::cout << *it << " ";
 			break;
 		}
@@ -115,11 +115,11 @@ void	PmergeMe::vecSort()
 	this->_elemSize = std::pow(2, this->_recurseLv - 1);
 }
 
-/* Member Functions for list<int> */
-void	PmergeMe::populateList(int argc, char *argv[])
+/* Member Functions for deque<int> */
+void	PmergeMe::populateDQ(int argc, char *argv[])
 {
 	for (int i = 1; i < argc; ++i)
-		this->_dataLst.push_back(std::atoi(argv[i]));
+		this->_dataDQ.push_back(std::atoi(argv[i]));
 }
 
 /* Description: Uses the Ford-Johnson algorithm on a vector. Recursively performs
@@ -129,24 +129,23 @@ void	PmergeMe::populateList(int argc, char *argv[])
 	3. Combine pEnd into the Main Chain using binary insertion
 	4. Copy assign the Main Chain and Tail back into the original chain
 */
-
-void	PmergeMe::listSort()
+void	PmergeMe::dqSort()
 {
-	lst	mainChain;
-	lst	pEnd;
-	lst	tail;
+	dq	mainChain;
+	dq	pEnd;
+	dq	tail;
 
 	++(this->_recurseLv);
 	this->_elemSize = std::pow(2, this->_recurseLv - 1);
-	this->_listSortPairs();
-	if (std::pow(2, this->_recurseLv) <= (this->_dataLst.size() / 2))
-		this->listSort();
-	this->_listCreateChains(&mainChain, &pEnd, &tail);
-	this->_dataLst.erase(this->_dataLst.begin(), this->_dataLst.end());
-	this->_listCombineChains(&mainChain, &pEnd);
-	this->_dataLst.insert(this->_dataLst.end(), mainChain.begin(), mainChain.end());
+	this->_dqSortPairs();
+	if (std::pow(2, this->_recurseLv) <= (this->_dataDQ.size() / 2))
+		this->dqSort();
+	this->_dqCreateChains(&mainChain, &pEnd, &tail);
+	this->_dataDQ.erase(this->_dataDQ.begin(), this->_dataDQ.end());
+	this->_dqCombineChains(&mainChain, &pEnd);
+	this->_dataDQ.insert(this->_dataDQ.end(), mainChain.begin(), mainChain.end());
 	if (tail.size() > 0)
-		this->_dataLst.insert(this->_dataLst.end(), tail.begin(), tail.end());
+		this->_dataDQ.insert(this->_dataDQ.end(), tail.begin(), tail.end());
 	--(this->_recurseLv);
 	this->_elemSize = std::pow(2, this->_recurseLv - 1);
 }
@@ -412,26 +411,186 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 }
 
 
-/* Sorting Functions for List<int> */
+
+/* Sorting Functions for Deque<int> */
 /* Description: Compares and sort pairs of numbers. Also keeps track of the
    number of comparisons. Recursion level => Element Size => Step size
 */
-void	PmergeMe::_vecSortPairs()
+void	PmergeMe::_dqSortPairs()
 {
 	int		stepSz;
 	int		cmpWindow;
-	lstIT	itRHS;
-	lstIT	itLHS;
+	dqIT	itRHS;
+	dqIT	itLHS;
 
 	stepSz = this->_elemSize * 2;
 	cmpWindow = stepSz;
-	while (static_cast<int>(this->_dataLst.size()) - cmpWindow >= 0)
+	while (static_cast<int>(this->_dataDQ.size()) - cmpWindow >= 0)
 	{
-		itRHS = this->_dataLst.begin() + (cmpWindow - 1);
+		itRHS = this->_dataDQ.begin() + (cmpWindow - 1);
 		itLHS = itRHS - (stepSz / 2);
 		if (*itRHS < *itLHS)
 			std::swap_ranges(itLHS - (stepSz / 2) + 1, itLHS + 1, itLHS + 1);
 		this->_numCmpr++;
 		cmpWindow += stepSz;
+	}
+}
+
+
+/* Description: creates the Main Chain, pEnd and Tail. Steps:
+	1. Insert b1 from the original deque into the Main Chain
+	2. Step through the original deque:
+		- add all the a1....an into the Main Chain
+		- add all the b2....bn into the pEnd
+	3. Add the non-participating members into the Tail
+*/
+void	PmergeMe::_dqCreateChains(dq *mainChain, dq *pEnd, dq *tail)
+{
+	int		cmpWindow;
+	int		tailSz;
+	dqCIT	bigIT;
+	dqCIT	smallIT;
+	dqCIT	tailIT;
+
+	cmpWindow = this->_elemSize * 2;
+	mainChain->insert(mainChain->end(), this->_dataDQ.begin(), \
+	this->_dataDQ.begin() + this->_elemSize);
+	bigIT = this->_dataDQ.begin() + this->_elemSize;
+	smallIT = this->_dataDQ.begin() + cmpWindow;
+	while (static_cast<int>(this->_dataDQ.size()) - cmpWindow >= 0)
+	{
+		mainChain->insert(mainChain->end(), bigIT, bigIT + this->_elemSize);
+		if (static_cast<int>(this->_dataDQ.size()) - (cmpWindow + this->_elemSize) >= 0)
+			pEnd->insert(pEnd->end(), smallIT, smallIT + this->_elemSize);
+		cmpWindow += this->_elemSize * 2;
+		bigIT += this->_elemSize * 2;
+		smallIT += this->_elemSize * 2;
+	}
+	cmpWindow -= this->_elemSize * 2;
+	if (static_cast<int>(this->_dataDQ.size()) - (cmpWindow + this->_elemSize) >= 0)
+		tailIT = this->_dataDQ.begin() + cmpWindow + this->_elemSize;
+	else
+		tailIT = this->_dataDQ.begin() + cmpWindow;
+	tailSz = this->_dataDQ.end() - tailIT;
+	tail->insert(tail->end(), tailIT, tailIT + tailSz);
+}
+
+/* Description: finds the corresponding bound element in the Main Chain given
+   the element in pEnd
+*/
+int	PmergeMe::_dqFindBoundElem(unsigned int elemN, dq *mainChain)
+{
+	if ((*mainChain).size() <= elemN * this->_elemSize)
+		return (-1);
+	return (*(mainChain->begin() + (elemN * this->_elemSize)));
+}
+
+/* Description: Rearranges the pEnd in order of insertion based on Jacobsthal
+   Numbers. Steps:
+	1. Check number of elements in the pEnd
+	2. Get the highest Jacobsthal Number (Element N)
+	3. Arrange the pEnd elements into the tempPEnd starting from Jacobsthal No = 3
+	4. Find the corresponding binding element from the Main Chain -> Add the element
+	   bound
+	5. If there are elements above the highest Jacobsthal Number, add these
+	   elements into tempPEnd starting from the end. Also find the corresponding
+	   binding element for each of the elements from pEnd
+	6. Erase pEnd and copy assign tempPEnd back into pEnd
+*/
+void	PmergeMe::_dqParsePEnd(dq *mainChain, dq *pEnd, dq *bound)
+{
+	unsigned int	elemN;
+	unsigned int	jacobLv;
+	unsigned int	closestJacobN;
+	int				currJacobN;
+	int				prevJacobN;
+	dq				tempPEnd;
+	dqCIT			itSt;
+
+	elemN = pEnd->size() / this->_elemSize + 1;
+	jacobLv = _getNearestJacobsthalLv(elemN);
+	closestJacobN = _genJacobsthalNum(jacobLv);
+	if (elemN < 3)
+	{
+		bound->push_back(this->_dqFindBoundElem(elemN, mainChain));
+		return;
+	}
+	for (unsigned int lv = 3; lv <= jacobLv; ++lv)
+	{
+		currJacobN = _genJacobsthalNum(lv);
+		prevJacobN = _genJacobsthalNum(lv - 1);
+		while (currJacobN >  prevJacobN)
+		{
+			itSt = pEnd->begin() + (this->_elemSize * (currJacobN - 2));
+			tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
+			bound->push_back(this->_dqFindBoundElem(currJacobN, mainChain));
+			currJacobN--;
+		}
+	}
+	while (elemN > closestJacobN)
+	{
+		itSt = pEnd->begin() + (this->_elemSize * (elemN - 2));
+		tempPEnd.insert(tempPEnd.end(), itSt, itSt + this->_elemSize);
+		bound->push_back(this->_dqFindBoundElem(elemN, mainChain));
+		elemN--;
+	}
+	(*pEnd).erase(pEnd->begin(), pEnd->end());
+	*pEnd = tempPEnd;
+}
+
+/* Description: Steps through each element in the rearranged pEnd and perform
+   binary insertion for each of the elements from pEnd. Search area is always
+   bound by the binding element
+*/
+
+void	PmergeMe::_dqBinaryInsert(dq *mainChain, dq *pEnd, dq *bound)
+{
+	int		elemNum;
+	int		pEndComparator;
+	int		mainChainComparator;
+	dqIT	boundElemSt;
+	dqIT	boundElemEnd;
+	dqIT	pEndElem;
+	int		boundDist;
+
+	elemNum = (*pEnd).size() / this->_elemSize;
+	for (int i = 1; i <= elemNum; ++i)
+	{
+		boundElemSt = mainChain->begin();
+		pEndComparator = *(pEnd->begin() + (i * this->_elemSize) - 1);
+		if ((*bound)[i - 1] == -1)
+			boundElemEnd = mainChain->end();
+		else
+			boundElemEnd = std::find(mainChain->begin(), mainChain->end(), (*bound)[i - 1]);
+		boundDist = std::distance(boundElemSt, boundElemEnd) / this->_elemSize;
+		while (boundDist >= 1)
+		{
+			boundDist = boundDist / 2;
+			mainChainComparator = *(boundElemSt + \
+			(boundDist * this->_elemSize) + this->_elemSize - 1);
+			if (pEndComparator > mainChainComparator)
+				boundElemSt = boundElemSt + ((boundDist + 1) * this->_elemSize);
+			else
+				boundElemEnd = boundElemSt + (boundDist * this->_elemSize);
+			this->_numCmpr++;
+		}
+		pEndElem = pEnd->begin() + (i - 1) * this->_elemSize;
+		mainChain->insert(boundElemSt, pEndElem, pEndElem + this->_elemSize);
+	}
+}
+
+/* Description: Combines the pEnd into the Main Chain using binary insertion.
+   Rearranges pEnd first based on Jacobsthal numbers. Binary insertion elements
+   from pEnd. Search area is bound by the corresponding element in the
+   Main Chain
+*/
+void	PmergeMe::_dqCombineChains(dq *mainChain, dq *pEnd)
+{
+	dq	bound;
+
+	if (pEnd->size() > 0)
+	{
+		this->_dqParsePEnd(mainChain, pEnd, &bound);
+		this->_dqBinaryInsert(mainChain, pEnd, &bound);
 	}
 }

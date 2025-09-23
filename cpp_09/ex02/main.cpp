@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 08:28:39 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 10:56:10 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,18 @@ int	main(int argc, char *argv[])
 	std::clock_t	end;
 	double			vecTime;
 	int				vecNumCmpr;
-	//one more time for the other container
+	double			dqTime;
+	int				dqNumCmpr;
 
 	if (!mergeMe.validateInput(argc, argv))
 		return (1);
 
 	mergeMe.populateVec(argc, argv);
-	mergeMe.populateList(argc, argv);
+	mergeMe.populateDQ(argc, argv);
 
 	std::cout << "========== Original Sequence ==========" << std::endl;
 	mergeMe.printContainer(Vector);
-	mergeMe.printContainer(List);
-
-
+	mergeMe.printContainer(Deque);
 
 	std::cout << "\n========== Processing Vector<int> ==========" << std::endl;
 	start = std::clock();
@@ -60,12 +59,11 @@ int	main(int argc, char *argv[])
 
 	mergeMe.initialiseMbrs();
 
-	std::cout << "\n========== Processing List<int> ==========" << std::endl;
+	std::cout << "\n========== Processing Deque<int> ==========" << std::endl;
 	start = std::clock();
-	//container sort
+	mergeMe.dqSort();
 	end = std::clock();
-	//container time and number of comparisons
-
+	dqNumCmpr = mergeMe.getNumCmpr();
 
 	std::cout << "\n========== Sorted Sequence ==========" << std::endl;
 	mergeMe.printContainer(Vector);
@@ -73,9 +71,13 @@ int	main(int argc, char *argv[])
 	std::cout << "\n========== Time Taken | No. of Elements: " << mergeMe.seqSize \
 	<< " | Max No. of Comparisons: " << \
 	PmergeMe::calculateMaxCmpr(mergeMe.seqSize) << " ==========" << std::endl;
+
 	std::cout << "Vector<int> (microseconds): " << vecTime  << \
 	" | No. of comparisons: " << vecNumCmpr << std::endl;
-	//put in the number of comparisons as well
+
+	std::cout << "Deque<int> (microseconds): " << dqTime  << \
+	" | No. of comparisons: " << dqNumCmpr << std::endl;
+
 
 
 
