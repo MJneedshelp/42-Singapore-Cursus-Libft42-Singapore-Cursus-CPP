@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+         #
+#    By: mintan <mintan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/20 03:15:27 by mintan            #+#    #+#              #
-#    Updated: 2025/09/11 01:41:56 by mintan           ###   ########.fr        #
+#    Updated: 2025/09/23 17:53:58 by mintan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME): $(OBJ)
 
 # Generate all the .o files from the .c files for the programme
 %.o: %.cpp
-	$(CXX) $(CXX_FLAGS) $(STD_FLAG) $(DEP_FLAGS) -c $< -o $@
+	$(CXX) $(CXX_FLAGS) $(STD_FLAG) $(DEP_FLAGS) -c -g $< -o $@
 
 # Clear the build files
 clean:
