@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 10:53:13 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/23 11:00:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,14 @@ void	PmergeMe::printContainer(int containerType)	const
 	{
 		case Vector:
 		{
+			std::cout << "Vector: ";
 			for (vecSize i = 0; i < this->_dataVec.size(); ++i)
 				std::cout << this->_dataVec[i] << " ";
 			break;
 		}
 		case Deque:
 		{
+			std::cout << "Deque: ";
 			for (dqCIT it = this->_dataDQ.begin(); it != this->_dataDQ.end(); ++it)
 				std::cout << *it << " ";
 			break;

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 10:53:22 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/23 10:57:28 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,11 @@
 #define ERR_INVALIDINPUT "[ERROR] The provided input is not positive integer: "
 #define ERR_DUPEINPUT "[ERROR] The provided input is a duplicate: "
 
-
 enum	e_ContainerType
 {
 	Vector,
 	Deque
-	//name of the second container
 };
-
-
 
 class PmergeMe
 {

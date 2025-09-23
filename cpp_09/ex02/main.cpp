@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 10:56:10 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/23 11:09:07 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ bool	validInArgs(int argc)
 	}
 	return (true);
 }
-
-
-
 
 int	main(int argc, char *argv[])
 {
@@ -48,6 +45,7 @@ int	main(int argc, char *argv[])
 
 	std::cout << "========== Original Sequence ==========" << std::endl;
 	mergeMe.printContainer(Vector);
+	std::cout << std::endl;
 	mergeMe.printContainer(Deque);
 
 	std::cout << "\n========== Processing Vector<int> ==========" << std::endl;
@@ -63,10 +61,13 @@ int	main(int argc, char *argv[])
 	start = std::clock();
 	mergeMe.dqSort();
 	end = std::clock();
+	dqTime = double(end - start);
 	dqNumCmpr = mergeMe.getNumCmpr();
 
 	std::cout << "\n========== Sorted Sequence ==========" << std::endl;
 	mergeMe.printContainer(Vector);
+	std::cout << std::endl;
+	mergeMe.printContainer(Deque);
 
 	std::cout << "\n========== Time Taken | No. of Elements: " << mergeMe.seqSize \
 	<< " | Max No. of Comparisons: " << \
@@ -77,12 +78,6 @@ int	main(int argc, char *argv[])
 
 	std::cout << "Deque<int> (microseconds): " << dqTime  << \
 	" | No. of comparisons: " << dqNumCmpr << std::endl;
-
-
-
-
-
-
 
 	return (0);
 }
