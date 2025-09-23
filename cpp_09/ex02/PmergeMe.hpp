@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 08:32:02 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 10:53:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <ctime>
 #include <set>
 #include <vector>
-#include <list>
+#include <deque>
 #include <algorithm>
 #include <iterator>
 
@@ -32,7 +32,7 @@
 enum	e_ContainerType
 {
 	Vector,
-	List
+	Deque
 	//name of the second container
 };
 
@@ -50,10 +50,10 @@ class PmergeMe
 		typedef	std::vector<int>::iterator			vecIT;
 		typedef	std::vector<int>::size_type			vecSize;
 
-		typedef	std::list<int>						lst;
-		typedef	std::list<int>::const_iterator		lstCIT;
-		typedef	std::list<int>::iterator			lstIT;
-		typedef	std::list<int>::size_type			lstSize;
+		typedef	std::deque<int>						dq;
+		typedef	std::deque<int>::const_iterator		dqCIT;
+		typedef	std::deque<int>::iterator			dqIT;
+		typedef	std::deque<int>::size_type			dqSize;
 
 
 		/* Member Functions */
@@ -66,16 +66,14 @@ class PmergeMe
 		void					populateVec(int argc, char *argv[]);
 		void					vecSort();
 
-		/* Member Functions for list<int> */
-		void					populateList(int argc, char *argv[]);
-		void					listSort();
-
-
+		/* Member Functions for deque<int> */
+		void					populateDQ(int argc, char *argv[]);
+		void					dqSort();
 
 
 		/* Static Functions */
 		static	void			printVect(vec vector, std::string name);
-		static	void			printList(lst list, std::string name);
+		static	void			printDQ(dq dq, std::string name);
 		static	int				calculateMaxCmpr(int n);
 
 		/* Public Members */
@@ -88,7 +86,7 @@ class PmergeMe
 
 		/* Private Members */
 		vec						_dataVec;
-		lst						_dataLst;
+		dq						_dataDQ;
 		int						_numCmpr;
 		int						_recurseLv;
 		int						_elemSize;
@@ -108,11 +106,11 @@ class PmergeMe
 		void					_vecCombineChains(vec *mainChain, vec *pEnd);
 
 		/* Sorting Functions for List<int> */
-		void					_listSortPairs();
-		void					_listCreateChains(vec *mainChain, vec *pEnd, vec *tail);
-		int						_listFindBoundElem(unsigned int elemN, vec *mainChain);
-		void					_listParsePEnd(vec *mainChain, vec *pEnd, vec *bound);
-		void					_listBinaryInsert(vec *mainChain, vec *pEnd, vec *bound);
-		void					_listCombineChains(vec *mainChain, vec *pEnd);
+		void					_dqSortPairs();
+		void					_dqCreateChains(dq *mainChain, dq *pEnd, dq *tail);
+		int						_dqFindBoundElem(unsigned int elemN, dq *mainChain);
+		void					_dqParsePEnd(dq *mainChain, dq *pEnd, dq *bound);
+		void					_dqBinaryInsert(dq *mainChain, dq *pEnd, dq *bound);
+		void					_dqCombineChains(dq *mainChain, dq *pEnd);
 };
 #endif
