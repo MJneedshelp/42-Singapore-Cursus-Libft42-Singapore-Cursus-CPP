@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:26:11 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 08:40:12 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/23 23:02:51 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,62 +47,62 @@ int main(void)
     vec.push_back(6);
 
     printVec(vec);
-    std::swap_ranges(vec.begin(), vec.begin() + 1, vec.begin() + 1);
+    std::swap_ranges(vec.begin(), vec.begin() + 2, vec.begin() + 2);
     printVec(vec);
 
-	vecIns.insert(vecIns.end(), vec.begin(), vec.begin() + 2);
-    printVec(vecIns);
+	// vecIns.insert(vecIns.end(), vec.begin(), vec.begin() + 2);
+    // printVec(vecIns);
 
-	vecIns.insert(vecIns.end(), vec.begin() + 2, vec.begin() + 4);
-    printVec(vecIns);
+	// vecIns.insert(vecIns.end(), vec.begin() + 2, vec.begin() + 4);
+    // printVec(vecIns);
 
-	vec.erase(vec.begin(), vec.end());
-    printVec(vec);
-	std::cout << "vec size: " << vec.size() << std::endl;
-
-
-	vec = vecIns;
-    printVec(vec);
-
-	vecIns.push_back(1);
-    printVec(vecIns);
-    printVec(vec);
-
-	std::cout << "vec size: " << vec.size() << std::endl;
-
-	int	result;
-	int	start;
-	int	divisor;
-	int	ctr;
-
-	start = 3;
-	divisor = 2;
-	ctr = 0;
-	result = start / divisor;
-	while (result >= 1)
-	{
-		result = result / divisor;
-		ctr++;
-	}
-	std::cout << "counter: " << ctr << std::endl;
+	// vec.erase(vec.begin(), vec.end());
+    // printVec(vec);
+	// std::cout << "vec size: " << vec.size() << std::endl;
 
 
-	std::set<int>	testSet;
+	// vec = vecIns;
+    // printVec(vec);
 
-	std::cout << "Test insert 1: " << testSet.insert(1).second << std::endl;
-	std::cout << "Test insert 1: " << testSet.insert(1).second << std::endl;
-	std::cout << "Test set: ";
-	for (std::set<int>::const_iterator it = testSet.begin(); it != testSet.end(); ++it)
-		std::cout << *it << " ";
-	std::cout << std::endl;
+	// vecIns.push_back(1);
+    // printVec(vecIns);
+    // printVec(vec);
+
+	// std::cout << "vec size: " << vec.size() << std::endl;
+
+	// int	result;
+	// int	start;
+	// int	divisor;
+	// int	ctr;
+
+	// start = 3;
+	// divisor = 2;
+	// ctr = 0;
+	// result = start / divisor;
+	// while (result >= 1)
+	// {
+	// 	result = result / divisor;
+	// 	ctr++;
+	// }
+	// std::cout << "counter: " << ctr << std::endl;
 
 
-	std::list<int>	testList;
+	// std::set<int>	testSet;
 
-	testList.push_back(1);
-	testList.push_back(2);
+	// std::cout << "Test insert 1: " << testSet.insert(1).second << std::endl;
+	// std::cout << "Test insert 1: " << testSet.insert(1).second << std::endl;
+	// std::cout << "Test set: ";
+	// for (std::set<int>::const_iterator it = testSet.begin(); it != testSet.end(); ++it)
+	// 	std::cout << *it << " ";
+	// std::cout << std::endl;
 
-	std::cout << "List test: " << *(testList.begin() + 1) << std::endl;
+
+	// std::list<int>	testList;
+
+	// testList.push_back(1);
+	// testList.push_back(2);
+
+	// std::cout << "List test: " << *(testList.begin() + 1) << std::endl;
 
 
 
