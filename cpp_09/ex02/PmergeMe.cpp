@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/24 01:24:17 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/25 00:37:11 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -380,15 +380,15 @@ void	PmergeMe::_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound)
 		else
 			boundElemEnd = std::find(mainChain->begin(), mainChain->end(), (*bound)[i - 1]);
 		boundDist = std::distance(boundElemSt, boundElemEnd) / this->_elemSize;
-		while (boundDist >= 1)
+		while (boundDist > 0)
 		{
-			boundDist = boundDist / 2;
 			mainChainComparator = *(boundElemSt + \
-			(boundDist * this->_elemSize) + this->_elemSize - 1);
+			((boundDist / 2) * this->_elemSize) + this->_elemSize - 1);
 			if (pEndComparator > mainChainComparator)
-				boundElemSt = boundElemSt + ((boundDist + 1) * this->_elemSize);
+				boundElemSt = boundElemSt + (((boundDist / 2) + 1) * this->_elemSize);
 			else
-				boundElemEnd = boundElemSt + (boundDist * this->_elemSize);
+				boundElemEnd = boundElemSt + ((boundDist / 2) * this->_elemSize);
+			boundDist = std::distance(boundElemSt, boundElemEnd) / this->_elemSize;
 			this->_numCmpr++;
 		}
 		pEndElem = pEnd->begin() + (i - 1) * this->_elemSize;
@@ -567,13 +567,13 @@ void	PmergeMe::_dqBinaryInsert(dq *mainChain, dq *pEnd, dq *bound)
 		boundDist = std::distance(boundElemSt, boundElemEnd) / this->_elemSize;
 		while (boundDist >= 1)
 		{
-			boundDist = boundDist / 2;
 			mainChainComparator = *(boundElemSt + \
-			(boundDist * this->_elemSize) + this->_elemSize - 1);
+			((boundDist / 2) * this->_elemSize) + this->_elemSize - 1);
 			if (pEndComparator > mainChainComparator)
-				boundElemSt = boundElemSt + ((boundDist + 1) * this->_elemSize);
+				boundElemSt = boundElemSt + (((boundDist / 2) + 1) * this->_elemSize);
 			else
-				boundElemEnd = boundElemSt + (boundDist * this->_elemSize);
+				boundElemEnd = boundElemSt + ((boundDist / 2) * this->_elemSize);
+			boundDist = std::distance(boundElemSt, boundElemEnd) / this->_elemSize;
 			this->_numCmpr++;
 		}
 		pEndElem = pEnd->begin() + (i - 1) * this->_elemSize;
