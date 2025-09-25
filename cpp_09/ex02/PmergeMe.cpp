@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/25 10:10:47 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/25 10:51:22 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,8 +268,11 @@ void	PmergeMe::_vecCreateChains(vec *mainChain, vec *pEnd, vec *tail)
 		if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + this->_elemSize) >= 0)
 			pEnd->insert(pEnd->end(), smallIT, smallIT + this->_elemSize);
 		cmpWindow += this->_elemSize * 2;
-		bigIT += this->_elemSize * 2;
-		smallIT += this->_elemSize * 2;
+		if (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
+		{
+			bigIT += this->_elemSize * 2;
+			smallIT += this->_elemSize * 2;
+		}
 	}
 	cmpWindow -= this->_elemSize * 2;
 	if (static_cast<int>(this->_dataVec.size()) - (cmpWindow + this->_elemSize) >= 0)
@@ -450,8 +453,11 @@ void	PmergeMe::_dqCreateChains(dq *mainChain, dq *pEnd, dq *tail)
 		if (static_cast<int>(this->_dataDQ.size()) - (cmpWindow + this->_elemSize) >= 0)
 			pEnd->insert(pEnd->end(), smallIT, smallIT + this->_elemSize);
 		cmpWindow += this->_elemSize * 2;
-		bigIT += this->_elemSize * 2;
-		smallIT += this->_elemSize * 2;
+		if (static_cast<int>(this->_dataDQ.size()) - cmpWindow >= 0)
+		{
+			bigIT += this->_elemSize * 2;
+			smallIT += this->_elemSize * 2;
+		}
 	}
 	cmpWindow -= this->_elemSize * 2;
 	if (static_cast<int>(this->_dataDQ.size()) - (cmpWindow + this->_elemSize) >= 0)

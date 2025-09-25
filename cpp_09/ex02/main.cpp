@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:54:52 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/25 10:17:43 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/25 10:51:43 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,28 @@ int	main(int argc, char *argv[])
 	PmergeMe		mergeMe;
 	std::clock_t	start;
 	std::clock_t	end;
-	// double			vecTime;
-	// int				vecNumCmpr;
+	double			vecTime;
+	int				vecNumCmpr;
 	double			dqTime;
 	int				dqNumCmpr;
 
 	if (!mergeMe.validateInput(argc, argv))
 		return (1);
 
-	// mergeMe.populateVec(argc, argv);
+	mergeMe.populateVec(argc, argv);
 	mergeMe.populateDQ(argc, argv);
 
 	std::cout << "========== Original Sequence ==========" << std::endl;
-	// mergeMe.printContainer(Vector);
-	// std::cout << std::endl;
+	mergeMe.printContainer(Vector);
+	std::cout << std::endl;
 	mergeMe.printContainer(Deque);
 
-	// std::cout << "\n========== Processing Vector<int> ==========" << std::endl;
-	// start = std::clock();
-	// mergeMe.vecSort();
-	// end = std::clock();
-	// vecTime = double(end - start);
-	// vecNumCmpr = mergeMe.getNumCmpr();
+	std::cout << "\n========== Processing Vector<int> ==========" << std::endl;
+	start = std::clock();
+	mergeMe.vecSort();
+	end = std::clock();
+	vecTime = double(end - start);
+	vecNumCmpr = mergeMe.getNumCmpr();
 
 	mergeMe.initialiseMbrs();
 
@@ -73,8 +73,8 @@ int	main(int argc, char *argv[])
 	<< " | Max No. of Comparisons: " << \
 	PmergeMe::calculateMaxCmpr(mergeMe.seqSize) << " ==========" << std::endl;
 
-	// std::cout << "Vector<int> (microseconds): " << vecTime  << 
-	// " | No. of comparisons: " << vecNumCmpr << std::endl;
+	std::cout << "Vector<int> (microseconds): " << vecTime  << \
+	" | No. of comparisons: " << vecNumCmpr << std::endl;
 
 	std::cout << "Deque<int> (microseconds): " << dqTime  <<
 	" | No. of comparisons: " << dqNumCmpr << std::endl;
