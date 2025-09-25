@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/25 09:03:06 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/25 10:10:47 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,9 +234,9 @@ void	PmergeMe::_vecSortPairs()
 	while (static_cast<int>(this->_dataVec.size()) - cmpWindow >= 0)
 	{
 		itRHS = this->_dataVec.begin() + (cmpWindow - 1);
-		itLHS = itRHS - (stepSz / 2);
+		itLHS = itRHS - this->_elemSize;
 		if (*itRHS < *itLHS)
-			std::swap_ranges(itLHS - (stepSz / 2) + 1, itLHS + 1, itLHS + 1);
+			std::swap_ranges(itLHS - (this->_elemSize - 1), itLHS + 1, itLHS + 1);
 		this->_numCmpr++;
 		cmpWindow += stepSz;
 	}
@@ -413,15 +413,12 @@ void	PmergeMe::_dqSortPairs()
 	stepSz = this->_elemSize * 2;
 	cmpWindow = stepSz;
 
-	itRHS = this->_dataDQ.begin() + (cmpWindow - 1);
-	itLHS = itRHS - (stepSz / 2);
-
 	while (static_cast<int>(this->_dataDQ.size()) - cmpWindow >= 0)
 	{
 		itRHS = this->_dataDQ.begin() + (cmpWindow - 1);
-		itLHS = itRHS - (stepSz / 2);
+		itLHS = itRHS - this->_elemSize;
 		if (*itRHS < *itLHS)
-			std::swap_ranges(itLHS - (stepSz / 2) + 1, itLHS + 1, itLHS + 1);
+			std::swap_ranges(itLHS - (this->_elemSize - 1), itLHS + 1, itLHS + 1);
 		this->_numCmpr++;
 		cmpWindow += stepSz;
 	}
