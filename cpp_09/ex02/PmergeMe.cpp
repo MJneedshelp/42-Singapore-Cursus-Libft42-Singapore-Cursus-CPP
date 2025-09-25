@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/25 00:37:11 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/25 08:49:24 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	PmergeMe::populateVec(int argc, char *argv[])
 	3. Combine pEnd into the Main Chain using binary insertion
 	4. Copy assign the Main Chain and Tail back into the original chain
 */
-
 void	PmergeMe::vecSort()
 {
 	vec	mainChain;
@@ -152,11 +151,6 @@ void	PmergeMe::dqSort()
 	this->_elemSize = std::pow(2, this->_recurseLv - 1);
 }
 
-
-
-
-
-
 /* Static Functions */
 /* Description: Function to print out a vector. Mainly used for troubleshooting
 */
@@ -185,12 +179,6 @@ int	PmergeMe::calculateMaxCmpr(int n)
 	}
 	return (result);
 }
-
-
-
-
-
-
 
 /* Helper Functions */
 bool	PmergeMe::_withinIntLimits(const std::string &input)
@@ -359,7 +347,6 @@ void	PmergeMe::_vecParsePEnd(vec *mainChain, vec *pEnd, vec *bound)
    binary insertion for each of the elements from pEnd. Search area is always
    bound by the binding element
 */
-
 void	PmergeMe::_vecBinaryInsert(vec *mainChain, vec *pEnd, vec *bound)
 {
 	int		elemNum;
@@ -412,8 +399,6 @@ void	PmergeMe::_vecCombineChains(vec *mainChain, vec *pEnd)
 	}
 }
 
-
-
 /* Sorting Functions for Deque<int> */
 /* Description: Compares and sort pairs of numbers. Also keeps track of the
    number of comparisons. Recursion level => Element Size => Step size
@@ -437,7 +422,6 @@ void	PmergeMe::_dqSortPairs()
 		cmpWindow += stepSz;
 	}
 }
-
 
 /* Description: creates the Main Chain, pEnd and Tail. Steps:
 	1. Insert b1 from the original deque into the Main Chain
@@ -544,7 +528,6 @@ void	PmergeMe::_dqParsePEnd(dq *mainChain, dq *pEnd, dq *bound)
    binary insertion for each of the elements from pEnd. Search area is always
    bound by the binding element
 */
-
 void	PmergeMe::_dqBinaryInsert(dq *mainChain, dq *pEnd, dq *bound)
 {
 	int		elemNum;

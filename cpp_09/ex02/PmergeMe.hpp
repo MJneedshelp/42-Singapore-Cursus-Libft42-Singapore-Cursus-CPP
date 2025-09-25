@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:55:34 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/23 10:57:28 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/25 08:48:37 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ class PmergeMe
 		typedef	std::deque<int>::iterator			dqIT;
 		typedef	std::deque<int>::size_type			dqSize;
 
-
 		/* Member Functions */
 		void					initialiseMbrs();
 		int						getNumCmpr()							const;
@@ -65,7 +64,6 @@ class PmergeMe
 		/* Member Functions for deque<int> */
 		void					populateDQ(int argc, char *argv[]);
 		void					dqSort();
-
 
 		/* Static Functions */
 		static	void			printVect(vec vector, std::string name);
