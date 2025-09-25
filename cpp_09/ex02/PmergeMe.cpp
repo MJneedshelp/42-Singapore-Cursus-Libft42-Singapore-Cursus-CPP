@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:09:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/25 08:49:24 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/25 09:03:06 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,6 +412,10 @@ void	PmergeMe::_dqSortPairs()
 
 	stepSz = this->_elemSize * 2;
 	cmpWindow = stepSz;
+
+	itRHS = this->_dataDQ.begin() + (cmpWindow - 1);
+	itLHS = itRHS - (stepSz / 2);
+
 	while (static_cast<int>(this->_dataDQ.size()) - cmpWindow >= 0)
 	{
 		itRHS = this->_dataDQ.begin() + (cmpWindow - 1);
