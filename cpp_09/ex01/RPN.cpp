@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/29 08:42:39 by mj               ###   ########.fr       */
+/*   Updated: 2025/09/29 08:44:12 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ void	RPN::stackStack()
 			}
 			case 1:		//operand
 			{
-				// this->_stack.push(std::atoi(extract.c_str()));
 				this->_stack.push(std::strtof(extract.c_str(), NULL));
-
 				break;
 			}
 			default:	//invalid input
