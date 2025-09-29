@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:27:04 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/08 00:04:38 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/29 08:41:55 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ class RPN
 
 		/* Data members */
 		std::string const	_input;
-		std::stack<int>		_stack;
+		std::stack<double>	_stack;
 
 		/* Helper functions */
 		static	bool		_isInt(std::string const &input);

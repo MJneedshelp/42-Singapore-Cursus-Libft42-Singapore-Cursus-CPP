@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:28:40 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/11 01:47:04 by mintan           ###   ########.fr       */
+/*   Updated: 2025/09/29 08:42:39 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void	RPN::stackStack()
 			}
 			case 1:		//operand
 			{
-				this->_stack.push(std::atoi(extract.c_str()));
+				// this->_stack.push(std::atoi(extract.c_str()));
+				this->_stack.push(std::strtof(extract.c_str(), NULL));
+
 				break;
 			}
 			default:	//invalid input
@@ -132,8 +134,8 @@ std::string	RPN::_myItoa(int i)
 
 void	RPN::_resolveOperation(std::string const &extract)
 {
-	int	operandFirst;
-	int	operandSecond;
+	double	operandFirst;
+	double	operandSecond;
 
 	if (this->_stack.size() < 2)
 		throw(std::runtime_error(ERR_WRONGORDER));
