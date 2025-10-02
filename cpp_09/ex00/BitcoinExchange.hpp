@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:40:25 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/06 18:46:30 by mintan           ###   ########.fr       */
+/*   Updated: 2025/10/02 19:06:45 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #define ERR_DATE_INVALID "[ERROR] Dates should be in the yyyy-mm-dd format \
 and must exist in the calendar: "
 #define ERR_VALUE_INVALID "[ERROR] Values should be 0 <= value (int / float) <= 1000: "
+#define ERR_VALUE_EMPTY "[ERROR] No value provided for the date: "
 #define ERR_DATE_EARLY "[ERROR] There is no data earlier than the provided date: "
-
 #define INPUT_KEY_DATE "date"
 #define CAL_KEY_YYYY "yyyy"
 #define CAL_KEY_MM "mm"

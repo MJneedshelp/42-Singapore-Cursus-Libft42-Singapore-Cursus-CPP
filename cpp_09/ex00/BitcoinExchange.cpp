@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/05 16:38:16 by mintan           ###   ########.fr       */
+/*   Updated: 2025/10/02 19:07:22 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,12 @@ bool	BitcoinExchange::_isValidInput(Database::mmCIt &it, calendar &cal)
 	if (!(_populateCal(it->first, cal) && _isValidDate(cal)))
 	{
 		std::cout << ERR_DATE_INVALID << it->first << std::endl;
+		cal.clear();
+		return (false);
+	}
+	else if (std::empty(it->second))	//error where the value is empty
+	{
+		std::cout << ERR_VALUE_EMPTY + it->first << std::endl;
 		cal.clear();
 		return (false);
 	}

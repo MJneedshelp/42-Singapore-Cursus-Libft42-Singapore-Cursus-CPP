@@ -22,6 +22,10 @@ Invalid Values
 1901-03-22 | 1.0d
 1901-42-42 | 456
 
+No Value
+2012-02-25 |
+2012-02-25
+
 No Earlier Entry
 2009-01-01 | 0
 

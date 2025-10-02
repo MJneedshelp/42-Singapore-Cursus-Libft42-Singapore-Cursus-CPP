@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:41 by mintan            #+#    #+#             */
-/*   Updated: 2025/09/08 00:19:39 by mintan           ###   ########.fr       */
+/*   Updated: 2025/10/02 11:29:21 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,15 @@ int	main(int argc, char *argv[])
 	{
 		std::cout << "\n========== Test 7c: Positive Tests ==========" << std::endl;
 		std::string	input("9 3 / 2 2 + * 5 -");
+		RPN			rpn(input);
+
+		std::cout << "========== Input: " << input << " ==========" << std::endl;
+		rpn.stackStack();
+		rpn.printResult();
+	}
+	{
+		std::cout << "\n========== Test 7d: Positive Tests ==========" << std::endl;
+		std::string	input("3 4 / 9 +");
 		RPN			rpn(input);
 
 		std::cout << "========== Input: " << input << " ==========" << std::endl;
