@@ -6,7 +6,7 @@
 /*   By: mj <mj@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:49:50 by mintan            #+#    #+#             */
-/*   Updated: 2025/10/02 19:24:49 by mj               ###   ########.fr       */
+/*   Updated: 2025/10/02 19:31:20 by mj               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ bool	BitcoinExchange::_isValidInput(Database::mmCIt &it, calendar &cal)
 		cal.clear();
 		return (false);
 	}
-	else if (it->second.empty())	//error where the value is empty
+	else if (it->second.empty())
 	{
 		std::cout << ERR_VALUE_EMPTY + it->first << std::endl;
 		cal.clear();
