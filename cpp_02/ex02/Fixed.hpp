@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 00:36:44 by mintan            #+#    #+#             */
-/*   Updated: 2025/06/26 02:32:33 by mintan           ###   ########.fr       */
+/*   Updated: 2025/11/19 18:01:34 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,11 @@ class Fixed
 		static	Fixed&			max(Fixed &f1, Fixed &f2);
 		static	Fixed const&	max(Fixed const &f1, Fixed const &f2);
 
-
-
 	private:
 		int					_raw;
 		static const int	_numFractBits;
 		int					_encode(int const orVal) const;
 		int					_encode(float const orVal) const;
-
 };
 
 std::ostream&	operator<<(std::ostream &o, Fixed const &fixedptnum);
