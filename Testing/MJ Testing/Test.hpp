@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:34:10 by mintan            #+#    #+#             */
-/*   Updated: 2025/11/19 13:55:13 by mintan           ###   ########.fr       */
+/*   Updated: 2025/11/19 14:34:51 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Test
 
 	private:
 		vecInt								_myVec;
+		int									_test;
 
 };
 

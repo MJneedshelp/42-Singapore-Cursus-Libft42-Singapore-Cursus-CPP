@@ -6,13 +6,13 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:38:48 by mintan            #+#    #+#             */
-/*   Updated: 2025/11/19 13:54:05 by mintan           ###   ########.fr       */
+/*   Updated: 2025/11/19 14:35:01 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Test.hpp"
 
-Test::Test()
+Test::Test(): _test(5)
 {
 	return;
 }
